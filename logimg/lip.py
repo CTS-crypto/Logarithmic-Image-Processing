@@ -25,7 +25,7 @@ class LIPImage(LogImage):
         elif isinstance(other,int) or isinstance(other,float):
             add_image.image=self.image-other
         else:
-            raise TypeError('Invalid argument for sum')
+            raise TypeError('Invalid argument for sub')
         return add_image
         
     def __mul__(self,scalar)->'LIPImage':
@@ -67,3 +67,5 @@ class LIPSpace(LogSpace):
         plt.ylabel('φ')
         plt.grid()
         plt.show()
+
+LIPSpace().show_curve()

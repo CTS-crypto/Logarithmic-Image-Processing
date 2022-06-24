@@ -1,4 +1,3 @@
-import math
 import numpy as np
 import matplotlib.pyplot as plt
 from logimg import LogImage,LogSpace
@@ -6,7 +5,7 @@ from logimg import LogImage,LogSpace
 class PLIPFImage(LogImage):
     def __init__(self,image:np.ndarray,M=256) -> None:
         aux_image=np.array(image.tolist())
-        self.image=aux_image/(M-aux_image)
+        self.image=M*aux_image/(M-aux_image)
         self.M=M
 
     def __add__(self,other:'PLIPFImage')->'PLIPFImage':
@@ -26,7 +25,7 @@ class PLIPFImage(LogImage):
         elif isinstance(other,int) or isinstance(other,float):
             add_image.image=self.image-other
         else:
-            raise TypeError('Invalid argument for sum')
+            raise TypeError('Invalid argument for sub')
         return add_image
         
     def __mul__(self,scalar)->'PLIPFImage':
@@ -37,7 +36,7 @@ class PLIPFImage(LogImage):
         return add_image
 
     def transform(self)->np.ndarray:
-        return self.M*self.image/(1+self.image)
+        return self.M*self.image/(self.M+self.image)
         
 
 class PLIPFSpace(LogSpace):
@@ -60,10 +59,10 @@ class PLIPFSpace(LogSpace):
 
     def show_curve(self):
         x=range(256)
-        plt.plot(x, [i/self.M/(1-i/self.M) for i in x])
+        plt.plot(x, [i/(1-i/self.M) for i in x])
         plt.title('Curva representativa logarítmica del isomorfismo φ')
         plt.xlim(0,300)
-        plt.ylim(0,300)
+        plt.ylim(0,10000)
         plt.xlabel('gray-scale')
         plt.ylabel('φ')
         plt.grid()

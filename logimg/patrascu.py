@@ -6,7 +6,7 @@ from logimg import LogImage,LogSpace
 class PatrascuImage(LogImage):
     def __init__(self,image:np.ndarray,M=256) -> None:
         aux_image=(np.array(image.tolist())+1)/(M+1)
-        self.image=np.array( [ [ 0.25*math.log(aux_image[i][j]/(1-aux_image[i][j])) for j in range(aux_image.shape[1])] for i in range(aux_image.shape[0])])
+        self.image=np.array( [ [ M*0.25*math.log(aux_image[i][j]/(1-aux_image[i][j])) for j in range(aux_image.shape[1])] for i in range(aux_image.shape[0])])
         self.M=M
 
     def __add__(self,other:'PatrascuImage')->'PatrascuImage':
@@ -37,7 +37,7 @@ class PatrascuImage(LogImage):
         return add_image
 
     def transform(self)->np.ndarray:
-        return np.array( [ [ (self.M+1)*math.e**(4*(self.image[i][j]))/(1+math.e**(4*self.image[i][j]))-1 for j in range(self.image.shape[1])] for i in range(self.image.shape[0])])
+        return np.array( [ [ (self.M+1)*math.e**(4*self.image[i][j]/self.M)/(1+math.e**(4*self.image[i][j]/self.M))-1 for j in range(self.image.shape[1])] for i in range(self.image.shape[0])])
         
 
 class PatrascuSpace(LogSpace):
@@ -60,10 +60,10 @@ class PatrascuSpace(LogSpace):
 
     def show_curve(self):
         x=range(256)
-        plt.plot(x, [ 0.25*math.log(((i+1)/(self.M+1))/(1-(i+1)/(self.M+1))) for i in x])
+        plt.plot(x, [ self.M*0.25*math.log(((i+1)/(self.M+1))/(1-(i+1)/(self.M+1))) for i in x])
         plt.title('Curva representativa logarítmica del isomorfismo φ')
         plt.xlim(-50,300)
-        plt.ylim(-2,2)
+        plt.ylim(-400,400)
         plt.xlabel('gray-scale')
         plt.ylabel('φ')
         plt.grid()

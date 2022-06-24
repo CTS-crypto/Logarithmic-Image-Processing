@@ -1,5 +1,4 @@
 import math
-from matplotlib import image
 import numpy as np
 import matplotlib.pyplot as plt
 from logimg import LogImage,LogSpace
@@ -26,7 +25,7 @@ class SLIPImage(LogImage):
         elif isinstance(other,int) or isinstance(other,float):
             add_image.image=self.image-other
         else:
-            raise TypeError('Invalid argument for sum')
+            raise TypeError('Invalid argument for sub')
         return add_image
         
     def __mul__(self,scalar)->'SLIPImage':
