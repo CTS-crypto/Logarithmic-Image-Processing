@@ -28,12 +28,16 @@ class LIPImage(LogImage):
             raise TypeError('Invalid argument for sub')
         return add_image
         
-    def __mul__(self,scalar)->'LIPImage':
-        if not (isinstance(scalar,int) or isinstance(scalar,float)):
-            raise TypeError('Invalid argument for multiplication') 
-        add_image=LIPImage(np.array([[1]]),self.M)
-        add_image.image=scalar*self.image
-        return add_image
+    def __mul__(self,other)->'LIPImage':
+        if isinstance(other,int) or isinstance(other,float):         
+            mul_image=LIPImage(np.array([[1]]),self.M)
+            mul_image.image=other*self.image
+            return mul_image
+        elif isinstance(other,LIPImage):
+            mul_image=LIPImage(np.array([[1]]),self.M)
+            mul_image.image=self.image*other.image
+            return mul_image
+        raise TypeError('Invalid argument for multiplication')
 
     def transform(self)->np.ndarray:
         return np.array( [ [ self.M*(1-1/math.e**(self.image[i][j]/self.M)) for j in range(self.image.shape[1])] for i in range(self.image.shape[0])])
@@ -53,6 +57,11 @@ class LIPSpace(LogSpace):
         g_aux=np.array(g.tolist())
         return (f_aux-g_aux)/(1-g_aux/self.M)
 
+    def mul(self,f:np.ndarray,g:np.ndarray)->np.ndarray:
+        f_aux=LIPImage(f,self.M)
+        g_aux=LIPImage(g,self.M)
+        return (f_aux*g_aux).transform()
+
     def s_mul(self,f:np.ndarray,scalar)->np.ndarray:
         f_aux=np.array(f.tolist())
         return self.M-self.M*(1-f_aux/self.M)**scalar
@@ -67,5 +76,3 @@ class LIPSpace(LogSpace):
         plt.ylabel('φ')
         plt.grid()
         plt.show()
-
-LIPSpace().show_curve()

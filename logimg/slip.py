@@ -28,12 +28,16 @@ class SLIPImage(LogImage):
             raise TypeError('Invalid argument for sub')
         return add_image
         
-    def __mul__(self,scalar)->'SLIPImage':
-        if not (isinstance(scalar,int) or isinstance(scalar,float)):
-            raise TypeError('Invalid argument for multiplication') 
-        add_image=SLIPImage(np.array([[1]]),self.M)
-        add_image.image=scalar*self.image
-        return add_image
+    def __mul__(self,other)->'SLIPImage':
+        if isinstance(other,int) or isinstance(other,float):         
+            mul_image=SLIPImage(np.array([[1]]),self.M)
+            mul_image.image=other*self.image
+            return mul_image
+        elif isinstance(other,SLIPImage):
+            mul_image=SLIPImage(np.array([[1]]),self.M)
+            mul_image.image=self.image*other.image
+            return mul_image
+        raise TypeError('Invalid argument for multiplication')
 
     def transform(self)->np.ndarray:
         return np.array( [ [ self.M*np.sign(self.image[i][j])*(1-math.e**(-abs(self.image[i][j])/self.M)) for j in range(self.image.shape[1])] for i in range(self.image.shape[0])])
@@ -54,6 +58,11 @@ class SLIPSpace(LogSpace):
 
     def sub(self,f:np.ndarray,g:np.ndarray)->np.ndarray:
         return self.sum(f,self.s_mul(g,-1))
+
+    def mul(self,f:np.ndarray,g:np.ndarray)->np.ndarray:
+        f_aux=SLIPImage(f,self.M)
+        g_aux=SLIPImage(g,self.M)
+        return (f_aux*g_aux).transform()
 
     def s_mul(self,f:np.ndarray,scalar)->np.ndarray:
         f_aux=f.tolist()

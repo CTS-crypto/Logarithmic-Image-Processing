@@ -29,12 +29,16 @@ class PatrascuImage(LogImage):
             raise TypeError('Invalid argument for sum')
         return add_image
         
-    def __mul__(self,scalar)->'PatrascuImage':
-        if not (isinstance(scalar,int) or isinstance(scalar,float)):
-            raise TypeError('Invalid argument for multiplication') 
-        add_image=PatrascuImage(np.array([[1]]),self.M)
-        add_image.image=scalar*self.image
-        return add_image
+    def __mul__(self,other)->'PatrascuImage':
+        if isinstance(other,int) or isinstance(other,float):         
+            mul_image=PatrascuImage(np.array([[1]]),self.M)
+            mul_image.image=other*self.image
+            return mul_image
+        elif isinstance(other,PatrascuImage):
+            mul_image=PatrascuImage(np.array([[1]]),self.M)
+            mul_image.image=self.image*other.image
+            return mul_image
+        raise TypeError('Invalid argument for multiplication')
 
     def transform(self)->np.ndarray:
         return np.array( [ [ (self.M+1)*math.e**(4*self.image[i][j]/self.M)/(1+math.e**(4*self.image[i][j]/self.M))-1 for j in range(self.image.shape[1])] for i in range(self.image.shape[0])])
@@ -53,6 +57,11 @@ class PatrascuSpace(LogSpace):
         f_aux=(np.array(f.tolist())+1)/(self.M+1)
         g_aux=(np.array(g.tolist())+1)/(self.M+1)
         return (self.M+1)*(f_aux*(1-g_aux))/((1-f_aux)*g_aux+(1-g_aux)*f_aux)-1
+
+    def mul(self,f:np.ndarray,g:np.ndarray)->np.ndarray:
+        f_aux=PatrascuImage(f,self.M)
+        g_aux=PatrascuImage(g,self.M)
+        return (f_aux*g_aux).transform()
 
     def s_mul(self,f:np.ndarray,scalar)->np.ndarray:
         f_aux=(np.array(f.tolist())+1)/(self.M+1)
