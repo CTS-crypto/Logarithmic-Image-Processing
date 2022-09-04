@@ -47,28 +47,49 @@ class SLIPSpace(LogSpace):
     def __init__(self, M=256) -> None:
         super().__init__(M)
         
-    def sum(self,f:np.ndarray,g:np.ndarray)->np.ndarray:
-        f_aux=f.tolist()
-        g_aux=g.tolist()
+    def sum(self,f,g):
         def calculate_pixel_sum(x,y):
             gamma1=np.sign(x)*np.sign(x+y)
             gamma2=np.sign(y)*np.sign(x+y)
             return self.M*np.sign(x+y)*(1-(1-abs(x)/self.M)**gamma1*(1-abs(y)/self.M)**gamma2)
-        return np.array( [ [ calculate_pixel_sum(f_aux[i][j],g_aux[i][j]) for j in range(len(f_aux[0]))] for i in range(len(f_aux))])
+        if isinstance(f,np.ndarray):
+            f_aux=f.tolist()
+        if isinstance(g,np.ndarray):
+            g_aux=g.tolist()
+        if isinstance(f,np.ndarray) and isinstance(g,np.ndarray):
+            return np.array( [ [ calculate_pixel_sum(f_aux[i][j],g_aux[i][j]) for j in range(len(f_aux[0]))] for i in range(len(f_aux))])
+        elif isinstance(f,np.ndarray):
+            return np.array( [ [ calculate_pixel_sum(f_aux[i][j],g) for j in range(len(f_aux[0]))] for i in range(len(f_aux))])
+        elif isinstance(g,np.ndarray):
+            return np.array( [ [ calculate_pixel_sum(f,g_aux[i][j]) for j in range(len(f_aux[0]))] for i in range(len(f_aux))])
+        else:
+            return calculate_pixel_sum(f,g)
 
-    def sub(self,f:np.ndarray,g:np.ndarray)->np.ndarray:
+    def sub(self,f,g):
         return self.sum(f,self.s_mul(g,-1))
 
-    def mul(self,f:np.ndarray,g:np.ndarray)->np.ndarray:
-        f_aux=SLIPImage(f,self.M)
-        g_aux=SLIPImage(g,self.M)
-        return (f_aux*g_aux).transform()
+    def mul(self,f,g):
+        if isinstance(f,np.ndarray):
+            f_aux=SLIPImage(f,self.M)
+        else:
+            f_aux=SLIPImage([[f]],self.M)
+        if isinstance(g,np.ndarray):
+            g_aux=SLIPImage(g,self.M)
+        else:
+            g_aux=SLIPImage([[g]],self.M)
+        if isinstance(f,np.ndarray):
+            return (f_aux*g_aux).transform()
+        else:
+            return (f_aux*g_aux).transform()[0][0]
 
-    def s_mul(self,f:np.ndarray,scalar)->np.ndarray:
-        f_aux=f.tolist()
+    def s_mul(self,f,scalar):
         def calculate_pixel_s_mul(x,scalar):
             return self.M*np.sign(x*scalar)*(1-(1-abs(x)/self.M)**abs(scalar))
-        return np.array( [ [ calculate_pixel_s_mul(f_aux[i][j],scalar) for j in range(len(f_aux[0]))] for i in range(len(f_aux))])
+        if isinstance(f_aux,np.ndarray):
+            f_aux=f.tolist()
+            return np.array( [ [ calculate_pixel_s_mul(f_aux[i][j],scalar) for j in range(len(f_aux[0]))] for i in range(len(f_aux))])
+        else:
+            return calculate_pixel_s_mul(f,scalar)
 
     def show_curve(self):
         x=range(-255,256)

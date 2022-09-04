@@ -5,7 +5,7 @@ from logimg import LogImage,LogSpace
 
 class LIPImage(LogImage):
     def __init__(self,image:np.ndarray,M=256) -> None:
-        self.image=np.array( [ [ -M * math.log(1-image[i][j]/M) for j in range(image.shape[1])] for i in range(image.shape[0])])
+        self.image=np.array( [ [ -M * math.log((1+image[i][j])/M) for j in range(image.shape[1])] for i in range(image.shape[0])])
         self.M=M
 
     def __add__(self,other:'LIPImage')->'LIPImage':
@@ -40,35 +40,61 @@ class LIPImage(LogImage):
         raise TypeError('Invalid argument for multiplication')
 
     def transform(self)->np.ndarray:
-        return np.array( [ [ self.M*(1-1/math.e**(self.image[i][j]/self.M)) for j in range(self.image.shape[1])] for i in range(self.image.shape[0])])
+        return np.array( [ [ self.M/math.e**(self.image[i][j]/self.M)-1 for j in range(self.image.shape[1])] for i in range(self.image.shape[0])])
         
-
 class LIPSpace(LogSpace):
     def __init__(self, M=256) -> None:
         super().__init__(M)
-        
-    def sum(self,f:np.ndarray,g:np.ndarray)->np.ndarray:
-        f_aux=np.array(f.tolist())
-        g_aux=np.array(g.tolist())
+
+    def equation(self, f):
+        if isinstance(f,np.ndarray):
+            return np.array( [ [ -self.M * math.log(1-f[i][j]/self.M) for j in range(f.shape[1])] for i in range(f.shape[0])])
+        else:
+            return -self.M * math.log(1-f/self.M)
+
+    def inverse_equation(self, f):
+        if isinstance(f,np.ndarray):
+            return np.array( [ [ self.M*(1-1/math.e**(f[i][j]/self.M)) for j in range(f.shape[1])] for i in range(f.shape[0])])
+        else:
+            return self.M*(1-1/math.e**(f/self.M))
+     
+    def sum(self,f,g):
+        if isinstance(f,np.ndarray):
+            f_aux=np.array(f.tolist())
+        else:
+            f_aux=f
+        if isinstance(g,np.ndarray):
+            g_aux=np.array(g.tolist())
+        else:
+            g_aux=g
         return f_aux+g_aux-(f_aux*g_aux)/self.M
 
-    def sub(self,f:np.ndarray,g:np.ndarray)->np.ndarray:
-        f_aux=np.array(f.tolist())
-        g_aux=np.array(g.tolist())
+    def sub(self,f,g):
+        if isinstance(f,np.ndarray):
+            f_aux=np.array(f.tolist())
+        else:
+            f_aux=f
+        if isinstance(g,np.ndarray):
+            g_aux=np.array(g.tolist())
+        else:
+            g_aux=g
         return (f_aux-g_aux)/(1-g_aux/self.M)
 
-    def mul(self,f:np.ndarray,g:np.ndarray)->np.ndarray:
-        f_aux=LIPImage(f,self.M)
-        g_aux=LIPImage(g,self.M)
-        return (f_aux*g_aux).transform()
+    def mul(self,f,g):
+        f_aux=self.equation(f)
+        g_aux=self.equation(g)
+        return self.inverse_equation(f_aux*g_aux)
 
-    def s_mul(self,f:np.ndarray,scalar)->np.ndarray:
-        f_aux=np.array(f.tolist())
+    def s_mul(self,f,scalar):
+        if isinstance(f,np.ndarray):
+            f_aux=np.array(f.tolist())
+        else:
+            f_aux=f
         return self.M-self.M*(1-f_aux/self.M)**scalar
 
     def show_curve(self):
         x=range(256)
-        plt.plot(x, [-self.M * math.log(1-i/self.M) for i in x])
+        plt.plot(x, [self.equation(i) for i in x])
         plt.title('Curva representativa logarítmica del isomorfismo φ')
         plt.xlim(0,300)
         plt.ylim(0,1600)

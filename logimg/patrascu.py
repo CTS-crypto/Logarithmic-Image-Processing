@@ -48,23 +48,48 @@ class PatrascuSpace(LogSpace):
     def __init__(self, M=256) -> None:
         super().__init__(M)
         
-    def sum(self,f:np.ndarray,g:np.ndarray)->np.ndarray:
-        f_aux=(np.array(f.tolist())+1)/(self.M+1)
-        g_aux=(np.array(g.tolist())+1)/(self.M+1)
+    def sum(self,f,g):
+        if isinstance(f,np.ndarray):
+            f_aux=(np.array(f.tolist())+1)/(self.M+1)
+        else:
+            f_aux=(f+1)/(self.M+1)
+        if isinstance(g,np.ndarray):
+            g_aux=(np.array(g.tolist())+1)/(self.M+1)
+        else:
+            g_aux=(g+1)/(self.M+1)
         return (self.M+1)*(f_aux*g_aux)/((1-f_aux)*(1-g_aux)+f_aux*g_aux)-1
 
-    def sub(self,f:np.ndarray,g:np.ndarray)->np.ndarray:
-        f_aux=(np.array(f.tolist())+1)/(self.M+1)
-        g_aux=(np.array(g.tolist())+1)/(self.M+1)
+
+    def sub(self,f,g):
+        if isinstance(f,np.ndarray):
+            f_aux=(np.array(f.tolist())+1)/(self.M+1)
+        else:
+            f_aux=(f+1)/(self.M+1)
+        if isinstance(g,np.ndarray):
+            g_aux=(np.array(g.tolist())+1)/(self.M+1)
+        else:
+            g_aux=(g+1)/(self.M+1)
         return (self.M+1)*(f_aux*(1-g_aux))/((1-f_aux)*g_aux+(1-g_aux)*f_aux)-1
 
-    def mul(self,f:np.ndarray,g:np.ndarray)->np.ndarray:
-        f_aux=PatrascuImage(f,self.M)
-        g_aux=PatrascuImage(g,self.M)
-        return (f_aux*g_aux).transform()
+    def mul(self,f,g):
+        if isinstance(f,np.ndarray):
+            f_aux=PatrascuImage(f,self.M)
+        else:
+            f_aux=PatrascuImage([[f]],self.M)
+        if isinstance(g,np.ndarray):
+            g_aux=PatrascuImage(g,self.M)
+        else:
+            g_aux=PatrascuImage([[g]],self.M)
+        if isinstance(f,np.ndarray):
+            return (f_aux*g_aux).transform()
+        else:
+            return (f_aux*g_aux).transform()[0][0]
 
-    def s_mul(self,f:np.ndarray,scalar)->np.ndarray:
-        f_aux=(np.array(f.tolist())+1)/(self.M+1)
+    def s_mul(self,f,scalar):
+        if isinstance(f,np.ndarray):
+            f_aux=(np.array(f.tolist())+1)/(self.M+1)
+        else:
+            f_aux=(f+1)/(self.M+1)
         return (self.M+1)*f_aux**scalar/(f_aux**scalar+(1-f_aux)**scalar)-1
 
     def show_curve(self):

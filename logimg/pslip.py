@@ -47,23 +47,47 @@ class PSLIPSpace(LogSpace):
     def __init__(self, M=256) -> None:
         super().__init__(M)
         
-    def sum(self,f:np.ndarray,g:np.ndarray)->np.ndarray:
-        f_aux=np.array(f.tolist())/self.M
-        g_aux=np.array(g.tolist())/self.M
+    def sum(self,f,g):
+        if isinstance(f,np.ndarray):
+            f_aux=np.array(f.tolist())/self.M
+        else:
+            f_aux=f/self.M
+        if isinstance(g,np.ndarray):
+            g_aux=np.array(g.tolist())/self.M
+        else:
+            g_aux=g/self.M
         return self.M*(f_aux+g_aux-2*f_aux*g_aux)/(1-f_aux*g_aux)
 
-    def sub(self,f:np.ndarray,g:np.ndarray)->np.ndarray:
-        f_aux=np.array(f.tolist())/self.M
-        g_aux=np.array(g.tolist())/self.M
+    def sub(self,f,g):
+        if isinstance(f,np.ndarray):
+            f_aux=np.array(f.tolist())/self.M
+        else:
+            f_aux=f/self.M
+        if isinstance(g,np.ndarray):
+            g_aux=np.array(g.tolist())/self.M
+        else:
+            g_aux=g/self.M
         return self.M*(f_aux-g_aux)/(1+f_aux*g_aux-2*g_aux)
 
-    def mul(self,f:np.ndarray,g:np.ndarray)->np.ndarray:
-        f_aux=PSLIPImage(f,self.M)
-        g_aux=PSLIPImage(g,self.M)
-        return (f_aux*g_aux).transform()
+    def mul(self,f,g):
+        if isinstance(f,np.ndarray):
+            f_aux=PSLIPImage(f,self.M)
+        else:
+            f_aux=PSLIPImage([[f]],self.M)
+        if isinstance(g,np.ndarray):
+            g_aux=PSLIPImage(g,self.M)
+        else:
+            g_aux=PSLIPImage([[g]],self.M)
+        if isinstance(f,np.ndarray):
+            return (f_aux*g_aux).transform()
+        else:
+            return (f_aux*g_aux).transform()[0][0]
 
-    def s_mul(self,f:np.ndarray,scalar)->np.ndarray:
-        f_aux=np.array(f.tolist())/self.M
+    def s_mul(self,f,scalar):
+        if isinstance(f,np.ndarray):
+            f_aux=np.array(f.tolist())/self.M
+        else:
+            f_aux=f/self.M
         return self.M*scalar*f_aux/(1+(scalar-1)*f_aux)
 
     def show_curve(self):
