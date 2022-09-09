@@ -4,12 +4,6 @@
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
-128 x 248/
-280 x 420/
-1280 x 1024/
-gray 128 x 248/
-gray 280 x 420/
-gray 1280 x 1024/ 
 *.py[cod]
 *$py.class
 

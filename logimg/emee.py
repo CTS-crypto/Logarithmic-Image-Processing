@@ -58,22 +58,3 @@ def emee(image,alpha,d_1,d_2):
             min_value,max_value=find_min_max(image,i,i+d_1,j,j+d_2)
             inner_sum+=((max_value+0.5)/(min_value+0.5))**alpha*log((max_value+0.05)/(min_value+0.5))
     return alpha/(k_1*k_2)*inner_sum
-
-camera=np.array(data.camera().tolist())
-moon=np.array(data.moon().tolist())
-
-plus=camera+moon
-
-for i in range(len(plus)):
-    for j in range(len(plus[0])):
-        if plus[i][j]>255:
-            plus[i][j]=255
-
-
-from lip import LIPSpace
-
-print(emee(camera,1,4,4))
-print(emee(moon,1,4,4))
-print(emee(LIPSpace().sum(camera,moon),1,4,4))
-print(emee(plus,1,4,4))
-print(emee(data.camera() + data.moon(),1,4,4))
