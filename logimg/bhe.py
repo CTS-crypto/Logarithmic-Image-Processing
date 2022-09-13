@@ -33,7 +33,7 @@ def bhe(image:np.ndarray,X_min=0,X_max=255)->np.ndarray:
     return new_image
 
 def space_bhe(image:np.ndarray,space:LogSpace,X_min=0,X_max=255)->np.ndarray:
-    neg_image=space.neg(image)
+    neg_image=space.M-1-image
     median=int(np.median(neg_image))
     leq_median=0
     g_median=0
