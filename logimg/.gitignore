@@ -6,6 +6,13 @@
 __pycache__/
 *.py[cod]
 *$py.class
+gray 256 x 180/
+gray 336 x 396/
+gray 370 x 260/
+gray 370 x 500/
+gray 480 x 640/
+gray 640 x 430/
+gray 1280 x 1024/
 
 # C extensions
 *.so
