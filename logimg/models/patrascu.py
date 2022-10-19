@@ -5,7 +5,7 @@ from .logimg import LogImage,LogSpace
 
 class PatrascuImage(LogImage):
     def __init__(self,image:np.ndarray,M=256) -> None:
-        aux_image=np.array(image.tolist()+0.0001)/M
+        aux_image=(np.array(image.tolist())+0.0001)/M
         self.image=np.array( [ [ 0.25*math.log(aux_image[i][j]/(1-aux_image[i][j])) for j in range(aux_image.shape[1])] for i in range(aux_image.shape[0])])
         self.M=M
 
@@ -50,7 +50,7 @@ class PatrascuSpace(LogSpace):
 
     def equation(self, f):
         if isinstance(f,np.ndarray):
-            aux_image=np.array(f.tolist()+0.0001)/self.M
+            aux_image=(np.array(f.tolist())+0.0001)/self.M
             return np.array( [ [ 0.25*math.log(aux_image[i][j]/(1-aux_image[i][j])) for j in range(aux_image.shape[1])] for i in range(aux_image.shape[0])])
         else:
             f_aux=(f+0.0001)/self.M
@@ -68,7 +68,7 @@ class PatrascuSpace(LogSpace):
         else:
             f_aux=(f+0.0001)/self.M
         if isinstance(g,np.ndarray):
-            g_aux=np.array(g.tolist()+0.0001)/self.M
+            g_aux=(np.array(g.tolist())+0.0001)/self.M
         else:
             g_aux=(g+0.0001)/self.M
         return self.M*(f_aux*g_aux)/((1-f_aux)*(1-g_aux)+f_aux*g_aux)

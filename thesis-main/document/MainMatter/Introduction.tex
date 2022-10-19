@@ -1,2 +1,98 @@
 \chapter*{Introducción}\label{chapter:introduction}
 \addcontentsline{toc}{chapter}{Introducción}
+
+En la mayoría de las circunstancias imaginables, las imágenes digitales se obtienen por medios que implican máquinas con fuente de alimentación finita; por lo tanto, las imágenes digitales se definen en un rango finito de valores. Los algoritmos de procesamiento de imágenes, tradicionalmente, se basan en operaciones reales clásicas para su implementación. Bajo ciertas circunstancias, tal combinación, denominada Procesamiento Lineal Clásico de Imágenes (CLIP) demuestra sus limitaciones. Por ejemplo, mencionemos el desbordamiento del rango superior, que se resuelve brutalmente mediante el truncamiento. En consecuencia, aparecieron estructuras más elaboradas, como los modelos de Procesamiento Logarítmico de Imágenes (LIP).
+
+El punto de partida de los modelos logarítmicos de procesamiento de imágenes radica en la teoría homomórfica introducida por Alan V. Oppenheim. Las implementaciones de los modelos LIP han sido proporcionadas por Michel Jourlin y Jean-Charles Pinoli  y por Vasile Pătraşcu respectivamente. Luego, el esquema de un nuevo modelo pseudo-logarítmico ha sido propuesto por Constantin Vertan. Adem\'as se han propuesto otros modelos inspirados en el modelo desarrollado por Jourlin y Pinoli. Con estos modelos se han desarrollado diversas aplicaciones: corrección de iluminación, mejora de contraste, mejora de imagen en color, ecualización de histogramas, mejora de rango dinámico, detección de bordes, etc.
+
+La primera derivación de dicho modelo, propuesta por Jourlin y Pinoli, se ha desarrollado para el caso de la luz transmitida. La construcción matemática comienza definiendo la suma de dos imágenes $f$ y $g$, interpretable como la superposición de los obstáculos (objetos) generando, respectivamente, $f$ y $g$; la multiplicación se deriva por inducción de la suma repetida; las propiedades consiguientes surgen naturalmente. A diferencia de sus predecesores, Pătraşcu derivó su modelo desde un punto de vista matemático al imponer algunas propiedades definidas a las leyes básicas (suma y multiplicación por escalar).
+
+La construcción matemática de un modelo no lineal de este tipo puede comenzar definiendo las leyes operativas (la suma y la multiplicación escalar) o, de manera equivalente, mediante la determinación de una función que mapee el conjunto de definición del modelo investigado en la estructura algebraica de números reales.
+
+Para tener un uso práctico, es de sentido común imponer algunas propiedades a cualquier modelo recién determinado. Para ser más precisos, se debe tener en cuenta la naturaleza del conjunto de definición, los medios de determinación de las leyes, las propiedades de cierre y los requisitos para formar un espacio vectorial. 
+
+Consideremos una función, $\varphi : E \rightarrow F$. Dentro de esta elección, el conjunto $E$ es el conjunto de definición de la imagen. Normalmente, si los valores de la imagen son intensidades, como cualquier plano en representación de color RGB, el conjunto $E$ tiene la forma $[0,M)$; en el caso del espacio YUV (YCbCr), para los canales de diferencias de color, el conjunto $E$ tiene una forma simétrica, como $( - M/2 , + M/2 )$. Así, en cualquier circunstancia, el conjunto está acotado:
+
+\begin{equation}
+	\exists m_E=inf(E),\exists M_E=sup(E)
+\end{equation}
+
+Una imagen en niveles de gris $f$ se define sobre un dominio $D$ incluido en el espacio $\mathbb{R}^2$ (o en el espacio $\mathbb{R}^3$  para imágenes 3D) y toma sus valores (niveles de gris) en la escala de grises $[0, M)$. Para imágenes de 8 bits, $ M = 256$ y los 256 niveles de gris están en la escala de números enteros $[0,..., 255]$. Clásicamente, el 0 corresponde al extremo negro, pero es posible hacer la otra elección, siendo el 0 asociado al extremo blanco.
+
+La función $\varphi$ define la estructura del modelo y asigna el conjunto de definición de imagen, E, a un subconjunto de números reales, F.
+
+Además, se suman dos operaciones al conjunto dado, E: suma de dos elementos del conjunto, $\oplus$ , y multiplicación por un escalar, $\otimes$ . Dado un escalar, $\alpha \in K \subseteq \mathbb{R}$ , y dos elementos del conjunto, $u$ y $v$ , podemos determinar las fórmulas exactas para las operaciones mencionadas utilizando la función generativa $\varphi$ :
+
+\begin{equation}
+	\varphi(u\oplus v) = \varphi(u)+\varphi(v), \forall u,v \in E
+\end{equation}
+
+\begin{equation}
+	\varphi(\alpha \otimes u) = \alpha \cdot \varphi(u), \forall u \in E, \forall \alpha \in K
+\end{equation}
+
+Las ecuaciones (2) y (3) son las condiciones que debe cumplir un homomorfismo entre dos estructuras algebraicas similares. La admisi\'on de un inverso y la existencia de biyectividad indica la presencia de un isomorfismo.
+
+Ahora analicemos la ecuación (3). Mientras que $u$ puede ser cualquier elemento del conjunto de entrada finito $E$ , $\alpha$ es, típicamente, un escalar real positivo $(K=\mathbb{R}^+)$. Bajo la condición de biyectividad asumida, $\exists u_m: \varphi( u_m ) = inf( F )$ y respectivamente, $\exists u_M , \varphi ( u_M ) = sup( F )$ .
+
+Con respecto a la restricción de biyectividad y la existencia de $\varphi^{-1}$, las leyes de definición están determinadas por:
+
+\begin{equation}
+	u \oplus v = \varphi^{-1}(\varphi(u)+\varphi(v))	
+\end{equation}
+
+\begin{equation}	
+	a \otimes u = \varphi^{-1}(\alpha\cdot\varphi(u))
+\end{equation} 
+
+La propiedad de cierre tanto de la suma como de la multiplicación escalar es de suma importancia práctica, ya que la suma de dos imágenes cualquiera debería conducir a otra imagen válida y, respectivamente, cualquier imagen amplificada o atenuada debería ser una imagen. Formalmente, se puede escribir:
+
+\begin{equation}
+	\forall u,v \in E, z = u \oplus v \Rightarrow z \in E
+\end{equation}
+
+\begin{equation}
+	\forall u \in E, \forall \alpha \in K, z=\alpha \otimes v \Rightarrow z \in E
+\end{equation}
+
+Dadas las dos leyes operativas, $\oplus$, $\otimes$, el conjunto vectorial $E$ y el conjunto escalar $K$, la definición formal del espacio vectorial implica varias propiedades. La ley de la suma debe ser asociativa, conmutativa y debe tener elemento identidad. La distributividad debe mantenerse para la multiplicación escalar sobre la suma de vectores y para la multiplicación escalar en el espacio de los escalares. La multiplicación escalar debe tener elemento identidad y ser compatible con la multiplicación en el espacio de los escalares.
+
+Las propiedades conmutativas, asociativas y distributivas de las leyes implícitas son importantes porque el orden de las operaciones no debería importar en una suma ponderada de imágenes. Bajo la hipótesis asumida de aplicación biyectiva y debido a que la función $\varphi^{-1}$ asigna la estructura $\mathbb{R}$ al conjunto dado, estas propiedades se verifican.
+
+La existencia del elemento identidad, $u_0$ , con respecto a la suma, implica condiciones adicionales sobre la función de mapeo, $\varphi$. La condición es una consecuencia del comportamiento isomorfo:
+
+\begin{equation}
+	\forall u\in E, \exists u_0 : u \oplus u_0 = u | \varphi(u_0)=0_F
+\end{equation}
+
+
+De manera similar, el elemento de identidad de la multiplicación escalar tiene que ser 1:
+
+\begin{equation}
+	\forall u \in E - \{u_0\}, \exists \alpha_1 : \alpha_1 \otimes u = u | \alpha_1 = 1
+\end{equation}
+
+\section*{Objetivos}
+
+Dado lo planteado anteriormente ser\'ia de gran utilidad contar con un \textit{framework} para la realizaci\'on de las operaciones b\'asicas utilizando los modelos anteriormente mencionados, as\'i como como la comparaci\'on de los mismos en diferentes situaciones para poder conocer seg\'un la situaci\'on usar el m\'as adecuado para obtener los mejores resultados.
+
+Por este motivo uno de los objetivos de esta tesis es el dise\~no de un m\'odulo de Python donde se encuentren los modelos no lineales para el procesamiento de im\'agenes (en escala de grises) mencionados anteriormente. En dicho m\'odulo aparecer\'an implementadas funcionalidades para transformar una imagen $f$ a su estructura algebraica correspondiente en el espacio deseado, lo cual permitir\'a realizar en dicho espacio las operaciones que se deseen. Tambi\'en aparecer\'a, por supuesto, para cada espacio una funcionalidad que dada una estructura permita obtener su equivalente en el espacio original. O sea que, en resumen para cada espacio $F$ se implementar\'an las funciones $\varphi_F$ y $\varphi^{-1}_F$, as\'i como la definici\'on de los operadores de las diferentes operaciones b\'asicas (suma, resta, multiplicaci\'on y potenciaci\'on).
+
+Otro objetivo es para cada uno de los modelos implementar las operaciones b\'asicas sin tener que pasar las im\'agenes a otro espacio. Es decir, seg\'un sea la operaci\'on obtener resultados similares a si se hubieran transformado las im\'agenes al espacio en cuesti\'on, operado con dichas transformaciones y luego el resultado obtenido de dicha operaci\'on, transformarlo al espacio original. O sea que se implementar\'an las operaciones: $\oplus$, $\ominus$, $\otimes$, otras propias del modelo (como las funci\'on de tono de gris en algunos de los modelos) y otras \'utiles como la curva del isomorfismo.
+
+Adem\'as otro objetivo es la evaluaci\'on de los diferentes modelos en cuanto a las diferentes operaciones, tipos de im\'agenes y situaciones.
+
+Para la realizaci\'on de cada uno de estos objetivos generales, se definen los siguientes objetivos espec\'ificos:
+
+\begin{enumerate}
+	\item Revisar la literatura referente a los modelos no lineales de procesamiento de im\'agenes.
+	\item Implementaci\'on en Python de los diferentes modelos a partir de la bibliograf\'ia consultada
+	\item Creaci\'on de un corpus con diferentes tipos de im\'agenes para evaluar los modelos.
+	\item Selecci\'on de m\'etricas para la evaluaci\'on de los modelos.
+	\item Evaluaci\'on de los modelos como se describi\'o anteriormente.
+	\item Arribar a conclusiones sobre la eficacia y utilidad de estos modelos. 
+\end{enumerate}
+
+\section*{Organizaci\'on del resto del documento}
+
+Esta secci\'on ser\'a llenada luego de haber finalizado los otros cap\'itulos y secciones del documento.

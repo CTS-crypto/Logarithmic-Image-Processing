@@ -7,7 +7,7 @@ class HLIPImage(LogImage):
     def __init__(self,image:np.ndarray,M=256) -> None:
         aux_image=2/M*(image-M/2)
         zero_replace=(1-0.9999)/(1+0.9999)
-        self.image=np.array( [ [ M/2 * math.log( zero_replace if aux_image[i][j]==-1 else (1-aux_image[i][j])/(1+aux_image[i][j])) for j in range(image.shape[1])] for i in range(image.shape[0])])
+        self.image=np.array( [ [ M/2 * math.log( zero_replace if aux_image[i][j]==-1 else (1+aux_image[i][j])/(1-aux_image[i][j])) for j in range(image.shape[1])] for i in range(image.shape[0])])
         self.M=M
 
     def __add__(self,other:'HLIPImage')->'HLIPImage':
@@ -42,7 +42,7 @@ class HLIPImage(LogImage):
         raise TypeError('Invalid argument for multiplication')
 
     def transform(self)->np.ndarray:
-        aux= np.array( [ [ (math.e**(2/self.M*self.image)-1)/((math.e**(2/self.M*self.image)+1)) for j in range(self.image.shape[1])] for i in range(self.image.shape[0])])
+        aux= np.array( [ [ (math.e**(2/self.M*self.image[i][j])-1)/((math.e**(2/self.M*self.image[i][j])+1)) for j in range(self.image.shape[1])] for i in range(self.image.shape[0])])
         return self.M/2*(aux+1)
 
 class HLIPSpace(LogSpace):
@@ -58,7 +58,7 @@ class HLIPSpace(LogSpace):
 
     def inverse_equation(self, f):
         if isinstance(f,np.ndarray):
-            return np.array( [ [ (math.e**(2/self.M*f)-1)/((math.e**(2/self.M*f)+1)) for j in range(f.shape[1])] for i in range(f.shape[0])])
+            return np.array( [ [ (math.e**(2/self.M*f[i][j])-1)/((math.e**(2/self.M*f[i][j])+1)) for j in range(f.shape[1])] for i in range(f.shape[0])])
         else:
             return (math.e**(2/self.M*f)-1)/((math.e**(2/self.M*f)+1))
      
@@ -67,7 +67,7 @@ class HLIPSpace(LogSpace):
             f_aux=np.array(f.tolist())
         else:
             f_aux=f
-        return 2/self.M(f_aux-self.M/2)
+        return 2/self.M*(f_aux-self.M/2)
 
     def inverse_gray_tone(self,f):
         return self.M/2*(f+1)

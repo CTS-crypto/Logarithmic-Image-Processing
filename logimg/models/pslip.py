@@ -55,7 +55,7 @@ class PSLIPSpace(LogSpace):
             return self.M*f/(self.M-f)
 
     def inverse_equation(self, f):
-        return self.M*self.image/(self.M+self.image)
+        return self.M*f/(self.M+f)
 
     def sum(self,f,g):
         if isinstance(f,np.ndarray):

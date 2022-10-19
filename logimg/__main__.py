@@ -8,3 +8,5 @@ from skimage import io
 
 a=io.imread('000000037751.jpg')
 ha=HLIPImage(a)
+
+ha.transform()
