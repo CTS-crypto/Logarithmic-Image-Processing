@@ -5,7 +5,7 @@ from .logimg import LogImage,LogSpace
 class PSLIPImage(LogImage):
     def __init__(self,image:np.ndarray,M=256) -> None:
         aux_image=np.array(image.tolist())
-        self.image=M*aux_image/(M-aux_image)
+        self.image=aux_image/(M-aux_image)
         self.M=M
 
     def __add__(self,other:'PSLIPImage')->'PSLIPImage':
@@ -40,7 +40,7 @@ class PSLIPImage(LogImage):
         raise TypeError('Invalid argument for multiplication')
 
     def transform(self)->np.ndarray:
-        return self.M*self.image/(self.M+self.image)
+        return self.M*self.image/(1+self.image)
         
 
 class PSLIPSpace(LogSpace):
@@ -50,12 +50,12 @@ class PSLIPSpace(LogSpace):
     def equation(self, f):
         if isinstance(f,np.ndarray):
             aux_image=np.array(f.tolist())
-            return self.M*aux_image/(self.M-aux_image)
+            return aux_image/(self.M-aux_image)
         else:
-            return self.M*f/(self.M-f)
+            return f/(self.M-f)
 
     def inverse_equation(self, f):
-        return self.M*f/(self.M+f)
+        return self.M*f/(1+f)
 
     def sum(self,f,g):
         if isinstance(f,np.ndarray):

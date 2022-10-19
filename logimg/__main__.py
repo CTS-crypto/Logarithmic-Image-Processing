@@ -6,7 +6,9 @@ import matplotlib.pyplot as plt
 from .emee import emee
 from skimage import io
 
-a=io.imread('000000037751.jpg')
-ha=HLIPImage(a)
+a=io.imread('CXR7_IM-2263-1001.png',as_gray=True)
 
-ha.transform()
+print(a)
+
+plt.imshow(a,cmap='gray',interpolation='nearest')
+plt.show()
