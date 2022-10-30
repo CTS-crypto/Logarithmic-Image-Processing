@@ -13,6 +13,7 @@ gray 370 x 500/
 gray 480 x 640/
 gray 640 x 430/
 gray 1280 x 1024/
+gray others/
 
 # C extensions
 *.so

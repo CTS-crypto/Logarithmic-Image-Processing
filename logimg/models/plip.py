@@ -12,7 +12,7 @@ class PLIPSpace(LogSpace):
         self.lambd=lambd
         self.beta=beta
 
-    def neg(self, f, mi=None):
+    def gray_tone(self, f, mi=None):
         if mi is None:
             mi=self.mi
         if isinstance(f,np.ndarray):
@@ -20,6 +20,9 @@ class PLIPSpace(LogSpace):
         else:
             f_aux=f
         return mi-f_aux
+
+    def inverse_gray_tone(self,f,mi=None):
+        return self.gray_tone(f,mi)
 
     def equation(self, f, lambd=None, beta=None):
         if lambd is None:

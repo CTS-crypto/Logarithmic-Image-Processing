@@ -46,6 +46,16 @@ class LIPSpace(LogSpace):
     def __init__(self, M=256) -> None:
         super().__init__(M)
 
+    def gray_tone(self,f):
+        if isinstance(f,np.ndarray):
+            f_aux=np.array(f.tolist())
+        else:
+            f_aux=f
+        return self.M-f_aux
+
+    def inverse_gray_tone(self,f):
+        return self.gray_tone(f)
+
     def equation(self, f):
         if isinstance(f,np.ndarray):
             return np.array( [ [ -self.M * math.log(0.0001 if f[i][j]==self.M else 1-f[i][j]/self.M) for j in range(f.shape[1])] for i in range(f.shape[0])])
@@ -57,16 +67,6 @@ class LIPSpace(LogSpace):
             return np.array( [ [ self.M*(1-1/math.e**(f[i][j]/self.M)) for j in range(f.shape[1])] for i in range(f.shape[0])])
         else:
             return self.M*(1-1/math.e**(f/self.M))
-     
-    def gray_tone(self,f):
-        if isinstance(f,np.ndarray):
-            f_aux=np.array(f.tolist())
-        else:
-            f_aux=f
-        return self.M-f_aux
-
-    def inverse_gray_tone(self,f):
-        return self.gray_tone(f)
 
     def sum(self,f,g):
         if isinstance(f,np.ndarray):

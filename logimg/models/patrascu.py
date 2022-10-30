@@ -58,7 +58,7 @@ class PatrascuSpace(LogSpace):
 
     def inverse_equation(self, f):
         if isinstance(f,np.ndarray):
-            return np.array( [ [ self.M*math.e**(4*self.image[i][j])/(1+math.e**(4*self.image[i][j]))-0.0001 for j in range(f.shape[1])] for i in range(f.shape[0])])
+            return np.array( [ [ self.M*math.e**(4*f[i][j])/(1+math.e**(4*f[i][j]))-0.0001 for j in range(f.shape[1])] for i in range(f.shape[0])])
         else:
             return self.M*math.e**(4*f)/(1+math.e**(4*f))-0.0001
         

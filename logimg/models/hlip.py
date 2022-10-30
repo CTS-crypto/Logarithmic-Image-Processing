@@ -49,19 +49,6 @@ class HLIPSpace(LogSpace):
     def __init__(self, M=256) -> None:
         super().__init__(M)
 
-    def equation(self, f):
-        if isinstance(f,np.ndarray):
-            zero_replace=(1-0.9999)/(1+0.9999)
-            return np.array( [ [ self.M/2 * math.log( zero_replace if f[i][j]==-1 else (1-f[i][j])/(1+f[i][j])) for j in range(f.shape[1])] for i in range(f.shape[0])])
-        else:
-            return self.M/2 * math.log( zero_replace if f==-1 else (1-f)/(1+f))
-
-    def inverse_equation(self, f):
-        if isinstance(f,np.ndarray):
-            return np.array( [ [ (math.e**(2/self.M*f[i][j])-1)/((math.e**(2/self.M*f[i][j])+1)) for j in range(f.shape[1])] for i in range(f.shape[0])])
-        else:
-            return (math.e**(2/self.M*f)-1)/((math.e**(2/self.M*f)+1))
-     
     def gray_tone(self,f):
         if isinstance(f,np.ndarray):
             f_aux=np.array(f.tolist())
@@ -71,6 +58,19 @@ class HLIPSpace(LogSpace):
 
     def inverse_gray_tone(self,f):
         return self.M/2*(f+1)
+
+    def equation(self, f):
+        if isinstance(f,np.ndarray):
+            zero_replace=(1-0.9999)/(1+0.9999)
+            return np.array( [ [ self.M/2 * math.log( zero_replace if f[i][j]==-1 else (1+f[i][j])/(1-f[i][j])) for j in range(f.shape[1])] for i in range(f.shape[0])])
+        else:
+            return self.M/2 * math.log( zero_replace if f==-1 else (1+f)/(1-f))
+
+    def inverse_equation(self, f):
+        if isinstance(f,np.ndarray):
+            return np.array( [ [ (math.e**(2/self.M*f[i][j])-1)/((math.e**(2/self.M*f[i][j])+1)) for j in range(f.shape[1])] for i in range(f.shape[0])])
+        else:
+            return (math.e**(2/self.M*f)-1)/((math.e**(2/self.M*f)+1))
 
     def sum(self,f,g):
         if isinstance(f,np.ndarray):

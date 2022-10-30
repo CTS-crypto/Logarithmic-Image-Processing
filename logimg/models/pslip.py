@@ -46,16 +46,22 @@ class PSLIPImage(LogImage):
 class PSLIPSpace(LogSpace):
     def __init__(self, M=256) -> None:
         super().__init__(M)
-        
-    def equation(self, f):
+
+    def gray_tone(self,f):
         if isinstance(f,np.ndarray):
-            aux_image=np.array(f.tolist())
-            return aux_image/(self.M-aux_image)
+            f_aux=np.array(f.tolist())
         else:
-            return f/(self.M-f)
+            f_aux=f
+        return f_aux/self.M
+
+    def inverse_gray_tone(self,f):
+        return self.M*f
+
+    def equation(self, f):
+        return f/(1-f)
 
     def inverse_equation(self, f):
-        return self.M*f/(1+f)
+        return f/(1+f)
 
     def sum(self,f,g):
         if isinstance(f,np.ndarray):
