@@ -48,7 +48,16 @@ class PatrascuSpace(LogSpace):
     def __init__(self, M=256) -> None:
         super().__init__(M)
 
-    def equation(self, f):
+    def gray_tone(self, f):
+        if isinstance(f,np.ndarray):
+            return np.array(f.tolist())
+        else:
+            return f
+
+    def inverse_gray_tone(self, f):
+        return self.gray_tone(f)
+
+    def function(self, f):
         if isinstance(f,np.ndarray):
             aux_image=(np.array(f.tolist())+0.0001)/self.M
             return np.array( [ [ 0.25*math.log(aux_image[i][j]/(1-aux_image[i][j])) for j in range(aux_image.shape[1])] for i in range(aux_image.shape[0])])
@@ -56,7 +65,7 @@ class PatrascuSpace(LogSpace):
             f_aux=(f+0.0001)/self.M
             return 0.25*math.log(f_aux/(1-f_aux))
 
-    def inverse_equation(self, f):
+    def inverse_function(self, f):
         if isinstance(f,np.ndarray):
             return np.array( [ [ self.M*math.e**(4*f[i][j])/(1+math.e**(4*f[i][j]))-0.0001 for j in range(f.shape[1])] for i in range(f.shape[0])])
         else:
@@ -85,9 +94,9 @@ class PatrascuSpace(LogSpace):
         return self.M*(f_aux*(1-g_aux))/((1-f_aux)*g_aux+(1-g_aux)*f_aux)
 
     def mul(self,f,g):
-        f_aux=self.equation(f)
-        g_aux=self.equation(g)
-        return self.inverse_equation(f_aux*g_aux)
+        f_aux=self.function(f)
+        g_aux=self.function(g)
+        return self.inverse_function(f_aux*g_aux)
 
     def s_mul(self,f,scalar):
         if isinstance(f,np.ndarray):
@@ -98,7 +107,7 @@ class PatrascuSpace(LogSpace):
 
     def show_curve(self):
         x=range(256)
-        plt.plot(x, [self.equation(i) for i in x])
+        plt.plot(x, [self.function(i) for i in x])
         plt.title('Curva representativa logarítmica del isomorfismo φ')
         plt.xlim(0,300)
         plt.ylim(0,1600)

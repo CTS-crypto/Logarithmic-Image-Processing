@@ -59,14 +59,14 @@ class HLIPSpace(LogSpace):
     def inverse_gray_tone(self,f):
         return self.M/2*(f+1)
 
-    def equation(self, f):
+    def function(self, f):
         if isinstance(f,np.ndarray):
             zero_replace=(1-0.9999)/(1+0.9999)
             return np.array( [ [ self.M/2 * math.log( zero_replace if f[i][j]==-1 else (1+f[i][j])/(1-f[i][j])) for j in range(f.shape[1])] for i in range(f.shape[0])])
         else:
             return self.M/2 * math.log( zero_replace if f==-1 else (1+f)/(1-f))
 
-    def inverse_equation(self, f):
+    def inverse_function(self, f):
         if isinstance(f,np.ndarray):
             return np.array( [ [ (math.e**(2/self.M*f[i][j])-1)/((math.e**(2/self.M*f[i][j])+1)) for j in range(f.shape[1])] for i in range(f.shape[0])])
         else:
@@ -95,9 +95,9 @@ class HLIPSpace(LogSpace):
         return (f_aux-g_aux)/(1-f_aux*g_aux)
 
     def mul(self,f,g):
-        f_aux=self.equation(f)
-        g_aux=self.equation(g)
-        return self.inverse_equation(f_aux*g_aux)
+        f_aux=self.function(f)
+        g_aux=self.function(g)
+        return self.inverse_function(f_aux*g_aux)
 
     def s_mul(self,f,scalar):
         if isinstance(f,np.ndarray):
@@ -108,7 +108,7 @@ class HLIPSpace(LogSpace):
 
     def show_curve(self):
         x=range(257)
-        plt.plot(x, [self.equation(i) for i in x])
+        plt.plot(x, [self.function(i) for i in x])
         plt.title('Curva representativa logarítmica del isomorfismo φ')
         plt.xlim(0,300)
         plt.ylim(0,1600)

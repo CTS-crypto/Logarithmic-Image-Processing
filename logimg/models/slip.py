@@ -5,7 +5,7 @@ from .logimg import LogImage,LogSpace
 
 class SLIPImage(LogImage):
     def __init__(self,image:np.ndarray,M=256) -> None:
-        self.image=np.array( [ [ -M*np.sign(image[i][j])*math.log(0.0001/M if image[i][j]==0 else math.abs(image[i][j])/M) for j in range(image.shape[1])] for i in range(image.shape[0])])
+        self.image=np.array( [ [ -M*np.sign(image[i][j])*math.log(0.0001 if abs(image[i][j])==M else 1-abs(image[i][j])/M) for j in range(image.shape[1])] for i in range(image.shape[0])])
         self.M=M
 
     def __add__(self,other:'SLIPImage')->'SLIPImage':
@@ -47,17 +47,26 @@ class SLIPSpace(LogSpace):
     def __init__(self, M=256) -> None:
         super().__init__(M)
 
-    def equation(self, f):
+    def gray_tone(self,f):
         if isinstance(f,np.ndarray):
-            return np.array( [ [ -self.M * np.sign(f[i][j]) * math.log(1.0001-math.abs(f[i][j])/self.M if math.abs(f[i][j])==math.abs(self.M) else 1-math.abs(f[i][j])/self.M) for j in range(f.shape[1])] for i in range(f.shape[0])])
+            return np.array(f.tolist())
         else:
-            return -self.M * np.sign(f) * math.log(1.0001-math.abs(f)/self.M if math.abs(f)==math.abs(self.M) else 1-math.abs(f)/self.M)
+            return f
 
-    def inverse_equation(self, f):
+    def inverse_gray_tone(self,f):
+        return self.gray_tone(f)
+
+    def function(self, f):
         if isinstance(f,np.ndarray):
-            return np.array( [ [ self.M*np.sign(f[i][j])*(1-1/math.e**(math.abs(f[i][j])/self.M)) for j in range(f.shape[1])] for i in range(f.shape[0])])
+            return np.array( [ [ -self.M * np.sign(f[i][j]) * math.log(0.0001 if abs(f[i][j])==self.M else 1-abs(f[i][j])/self.M) for j in range(f.shape[1])] for i in range(f.shape[0])])
         else:
-            return self.M*np.sign(f)*(1-1/math.e**(math.abs(f)/self.M))
+            return -self.M * np.sign(f) * math.log(0.0001 if abs(f)==self.M else 1-abs(f)/self.M)
+
+    def inverse_function(self, f):
+        if isinstance(f,np.ndarray):
+            return np.array( [ [ self.M*np.sign(f[i][j])*(1-1/math.e**(abs(f[i][j])/self.M)) for j in range(f.shape[1])] for i in range(f.shape[0])])
+        else:
+            return self.M*np.sign(f)*(1-1/math.e**(abs(f)/self.M))
             
     def sum(self,f,g):
         def calculate_pixel_sum(x,y):
@@ -81,22 +90,22 @@ class SLIPSpace(LogSpace):
         return self.sum(f,self.s_mul(g,-1))
 
     def mul(self,f,g):
-        f_aux=self.equation(f)
-        g_aux=self.equation(g)
-        return self.inverse_equation(f_aux*g_aux)
+        f_aux=self.function(f)
+        g_aux=self.function(g)
+        return self.inverse_function(f_aux*g_aux)
 
     def s_mul(self,f,scalar):
         def calculate_pixel_s_mul(x,scalar):
             return self.M*np.sign(x*scalar)*(1-(1-abs(x)/self.M)**abs(scalar))
-        if isinstance(f_aux,np.ndarray):
+        if isinstance(f,np.ndarray):
             f_aux=f.tolist()
             return np.array( [ [ calculate_pixel_s_mul(f_aux[i][j],scalar) for j in range(len(f_aux[0]))] for i in range(len(f_aux))])
         else:
             return calculate_pixel_s_mul(f,scalar)
 
     def show_curve(self):
-        x=range(-256,257)
-        plt.plot(x, [-self.M*np.sign(i)*math.log(1-abs(i)/self.M) for i in x])
+        x=range(-255,256)
+        plt.plot(x, [self.function(i) for i in x])
         plt.title('Curva representativa logarítmica del isomorfismo φ')
         plt.xlim(-300,300)
         plt.ylim(-1600,1600)

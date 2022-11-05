@@ -24,7 +24,7 @@ class PLIPSpace(LogSpace):
     def inverse_gray_tone(self,f,mi=None):
         return self.gray_tone(f,mi)
 
-    def equation(self, f, lambd=None, beta=None):
+    def function(self, f, lambd=None, beta=None):
         if lambd is None:
             lambd=self.lambd
         if beta is None:
@@ -34,7 +34,7 @@ class PLIPSpace(LogSpace):
         else:
             return -lambd * math.log(1.0001-f/lambd if f==lambd else 1-f/lambd)**beta
 
-    def inverse_equation(self, f, lambd=None, beta=None):
+    def inverse_function(self, f, lambd=None, beta=None):
         if lambd is None:
             lambd=self.lambd
         if beta is None:
@@ -71,9 +71,9 @@ class PLIPSpace(LogSpace):
         return (f_aux-g_aux)/(1+0.0001-g_aux/k)
 
     def mul(self,f,g,lambd=None,beta=None):
-        f_aux=self.equation(f,lambd,beta)
-        g_aux=self.equation(g,lambd,beta)
-        return self.inverse_equation(f_aux*g_aux,lambd,beta)
+        f_aux=self.function(f,lambd,beta)
+        g_aux=self.function(g,lambd,beta)
+        return self.inverse_function(f_aux*g_aux,lambd,beta)
 
     def s_mul(self,f,scalar,gamma=None):
         if gamma is None:
@@ -86,7 +86,7 @@ class PLIPSpace(LogSpace):
 
     def show_curve(self,lambd=None,beta=None):
         x=range(256)
-        plt.plot(x, [self.equation(i,lambd,beta) for i in x])
+        plt.plot(x, [self.function(i,lambd,beta) for i in x])
         plt.title('Curva representativa logarítmica del isomorfismo φ')
         plt.xlim(0,300)
         plt.ylim(0,1600)

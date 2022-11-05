@@ -58,11 +58,19 @@ class LogSpace(ABC):
         self.M=M
 
     @abstractmethod
-    def equation(self,f):
+    def gray_tone(self,f):
         ...
 
     @abstractmethod
-    def inverse_equation(self,f):
+    def inverse_gray_tone(self,g):
+        ...
+
+    @abstractmethod
+    def function(self,f):
+        ...
+
+    @abstractmethod
+    def inverse_function(self,f):
         ...
 
     @abstractmethod

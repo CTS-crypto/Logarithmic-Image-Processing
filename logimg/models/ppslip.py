@@ -10,3 +10,9 @@ class PPSLIPSpace(PSLIPSpace):
         else:
             f_aux=f
         return f_aux/M
+
+    def inverse_gray_tone(self,f,M=None):
+        if M is None:
+            return super().gray_tone(f)
+        else:
+            return M*f

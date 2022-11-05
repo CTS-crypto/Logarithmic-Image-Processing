@@ -57,45 +57,45 @@ class PSLIPSpace(LogSpace):
     def inverse_gray_tone(self,f):
         return self.M*f
 
-    def equation(self, f):
+    def function(self, f):
         return f/(1-f)
 
-    def inverse_equation(self, f):
+    def inverse_function(self, f):
         return f/(1+f)
 
     def sum(self,f,g):
         if isinstance(f,np.ndarray):
-            f_aux=np.array(f.tolist())/self.M
+            f_aux=np.array(f.tolist())
         else:
-            f_aux=f/self.M
+            f_aux=f
         if isinstance(g,np.ndarray):
-            g_aux=np.array(g.tolist())/self.M
+            g_aux=np.array(g.tolist())
         else:
-            g_aux=g/self.M
-        return self.M*(f_aux+g_aux-2*f_aux*g_aux)/(1-f_aux*g_aux)
+            g_aux=g
+        return (f_aux+g_aux-2*f_aux*g_aux)/(1-f_aux*g_aux)
 
     def sub(self,f,g):
         if isinstance(f,np.ndarray):
-            f_aux=np.array(f.tolist())/self.M
+            f_aux=np.array(f.tolist())
         else:
-            f_aux=f/self.M
+            f_aux=f
         if isinstance(g,np.ndarray):
-            g_aux=np.array(g.tolist())/self.M
+            g_aux=np.array(g.tolist())
         else:
-            g_aux=g/self.M
-        return self.M*(f_aux-g_aux)/(1+f_aux*g_aux-2*g_aux)
+            g_aux=g
+        return (f_aux-g_aux)/(1+f_aux*g_aux-2*g_aux)
 
     def mul(self,f,g):
-        f_aux=self.equation(f)
-        g_aux=self.equation(g)
-        return self.inverse_equation(f_aux*g_aux)
+        f_aux=self.function(f)
+        g_aux=self.function(g)
+        return self.inverse_function(f_aux*g_aux)
 
     def s_mul(self,f,scalar):
         if isinstance(f,np.ndarray):
-            f_aux=np.array(f.tolist())/self.M
+            f_aux=np.array(f.tolist())
         else:
-            f_aux=f/self.M
-        return self.M*scalar*f_aux/(1+(scalar-1)*f_aux)
+            f_aux=f
+        return scalar*f_aux/(1+(scalar-1)*f_aux)
 
     def show_curve(self):
         x=range(256)

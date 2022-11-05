@@ -56,13 +56,13 @@ class LIPSpace(LogSpace):
     def inverse_gray_tone(self,f):
         return self.gray_tone(f)
 
-    def equation(self, f):
+    def function(self, f):
         if isinstance(f,np.ndarray):
             return np.array( [ [ -self.M * math.log(0.0001 if f[i][j]==self.M else 1-f[i][j]/self.M) for j in range(f.shape[1])] for i in range(f.shape[0])])
         else:
             return -self.M * math.log(1.0001-f/self.M if f==self.M else 1-f/self.M)
 
-    def inverse_equation(self, f):
+    def inverse_function(self, f):
         if isinstance(f,np.ndarray):
             return np.array( [ [ self.M*(1-1/math.e**(f[i][j]/self.M)) for j in range(f.shape[1])] for i in range(f.shape[0])])
         else:
@@ -91,9 +91,9 @@ class LIPSpace(LogSpace):
         return (f_aux-g_aux)/(1+0.0001-g_aux/self.M)
 
     def mul(self,f,g):
-        f_aux=self.equation(f)
-        g_aux=self.equation(g)
-        return self.inverse_equation(f_aux*g_aux)
+        f_aux=self.function(f)
+        g_aux=self.function(g)
+        return self.inverse_function(f_aux*g_aux)
 
     def s_mul(self,f,scalar):
         if isinstance(f,np.ndarray):
@@ -104,7 +104,7 @@ class LIPSpace(LogSpace):
 
     def show_curve(self):
         x=range(257)
-        plt.plot(x, [self.equation(i) for i in x])
+        plt.plot(x, [self.function(i) for i in x])
         plt.title('Curva representativa logarítmica del isomorfismo φ')
         plt.xlim(0,300)
         plt.ylim(0,1600)
