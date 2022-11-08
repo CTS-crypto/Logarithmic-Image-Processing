@@ -1,33 +1,32 @@
-from skimage import data
-import numpy as np
 import matplotlib.pyplot as plt
-from .algorithms.affine_transform import space_affine_transform
-from .models.lip import LIPSpace
-from .models.hlip import HLIPSpace
-from .models.pslip import PSLIPSpace
-from .models.slip import SLIPSpace
+from skimage import io
+from .models.lip import LIPImage,LIPSpace
+from skimage.filters import scharr
 
+a=io.imread('000000038118.jpg')
+b=io.imread('CXR7_IM-2263-1001.png')
 
-m=data.moon()
-
-print(np.min(m),np.max(m))
-
-plt.imshow(m,cmap='gray',interpolation='nearest')
-
+plt.imshow(a,cmap='gray',interpolation='nearest')
+plt.show()
+plt.imshow(b, cmap='gray', interpolation='nearest') 
 plt.show()
 
-plt.hist(m.ravel(),bins=256)
+js=LIPSpace()
 
+ja=js.function(js.gray_tone(a))
+
+sja=js.M-js.inverse_gray_tone(js.inverse_function(scharr(ja)))
+
+plt.imshow(sja,cmap='gray',interpolation='nearest')
 plt.show()
 
-m1=space_affine_transform(m,-256,256,SLIPSpace())
+io.imsave('x.jpg',sja)
 
-print(np.min(m1),np.max(m1))
+jb=js.function(js.gray_tone(b))
 
-plt.imshow(m1,cmap='gray',interpolation='nearest')
+sjb=js.M-js.inverse_gray_tone(js.inverse_function(scharr(jb)))
 
+plt.imshow(sjb,cmap='gray',interpolation='nearest')
 plt.show()
 
-plt.hist(m1.ravel(),bins=256)
-
-plt.show()
+io.imsave('b.jpg',sjb)

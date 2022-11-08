@@ -5,7 +5,9 @@ from .logimg import LogImage,LogSpace
 
 class LIPImage(LogImage):
     def __init__(self,image:np.ndarray,M=256) -> None:
-        self.image=np.array( [ [ -M * math.log( 0.0001/M if image[i][j]==0 else image[i][j]/M) for j in range(image.shape[1])] for i in range(image.shape[0])])
+        eps=0.00001
+        aux_image=np.maximum(eps,image)
+        self.image=np.array( [ [ -M * math.log(aux_image[i][j]/M) for j in range(image.shape[1])] for i in range(image.shape[0])])
         self.M=M
 
     def __add__(self,other:'LIPImage')->'LIPImage':
@@ -47,20 +49,21 @@ class LIPSpace(LogSpace):
         super().__init__(M)
 
     def gray_tone(self,f):
+        eps=0.00001
         if isinstance(f,np.ndarray):
-            f_aux=np.array(f.tolist())
+            f_aux=np.maximum(eps,f)
         else:
-            f_aux=f
+            f_aux=max(eps,f)
         return self.M-f_aux
 
     def inverse_gray_tone(self,f):
-        return self.gray_tone(f)
+        return self.M-f
 
     def function(self, f):
         if isinstance(f,np.ndarray):
-            return np.array( [ [ -self.M * math.log(0.0001 if f[i][j]==self.M else 1-f[i][j]/self.M) for j in range(f.shape[1])] for i in range(f.shape[0])])
+            return np.array( [ [ -self.M * math.log(1-f[i][j]/self.M) for j in range(f.shape[1])] for i in range(f.shape[0])])
         else:
-            return -self.M * math.log(1.0001-f/self.M if f==self.M else 1-f/self.M)
+            return -self.M * math.log(1-f/self.M)
 
     def inverse_function(self, f):
         if isinstance(f,np.ndarray):
@@ -88,7 +91,7 @@ class LIPSpace(LogSpace):
             g_aux=np.array(g.tolist())
         else:
             g_aux=g
-        return (f_aux-g_aux)/(1+0.0001-g_aux/self.M)
+        return (f_aux-g_aux)/(1-g_aux/self.M)
 
     def mul(self,f,g):
         f_aux=self.function(f)

@@ -5,7 +5,7 @@ from .logimg import LogImage,LogSpace
 
 class SLIPImage(LogImage):
     def __init__(self,image:np.ndarray,M=256) -> None:
-        self.image=np.array( [ [ -M*np.sign(image[i][j])*math.log(0.0001 if abs(image[i][j])==M else 1-abs(image[i][j])/M) for j in range(image.shape[1])] for i in range(image.shape[0])])
+        self.image=np.array( [ [ -M*np.sign(image[i][j])*math.log(1-abs(image[i][j])/M) for j in range(image.shape[1])] for i in range(image.shape[0])])
         self.M=M
 
     def __add__(self,other:'SLIPImage')->'SLIPImage':
@@ -58,9 +58,9 @@ class SLIPSpace(LogSpace):
 
     def function(self, f):
         if isinstance(f,np.ndarray):
-            return np.array( [ [ -self.M * np.sign(f[i][j]) * math.log(0.0001 if abs(f[i][j])==self.M else 1-abs(f[i][j])/self.M) for j in range(f.shape[1])] for i in range(f.shape[0])])
+            return np.array( [ [ -self.M * np.sign(f[i][j]) * math.log(1-abs(f[i][j])/self.M) for j in range(f.shape[1])] for i in range(f.shape[0])])
         else:
-            return -self.M * np.sign(f) * math.log(0.0001 if abs(f)==self.M else 1-abs(f)/self.M)
+            return -self.M * np.sign(f) * math.log(1-abs(f)/self.M)
 
     def inverse_function(self, f):
         if isinstance(f,np.ndarray):

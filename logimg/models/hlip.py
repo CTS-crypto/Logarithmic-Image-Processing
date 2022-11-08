@@ -5,9 +5,10 @@ from .logimg import LogImage,LogSpace
 
 class HLIPImage(LogImage):
     def __init__(self,image:np.ndarray,M=256) -> None:
-        aux_image=2/M*(image-M/2)
-        zero_replace=(1-0.9999)/(1+0.9999)
-        self.image=np.array( [ [ M/2 * math.log( zero_replace if aux_image[i][j]==-1 else (1+aux_image[i][j])/(1-aux_image[i][j])) for j in range(image.shape[1])] for i in range(image.shape[0])])
+        eps=0.00001
+        aux_image=np.maximum(eps,image)
+        aux_image=2/M*(aux_image-M/2)
+        self.image=np.array( [ [ 0.5 * math.log((1+aux_image[i][j])/(1-aux_image[i][j])) for j in range(image.shape[1])] for i in range(image.shape[0])])
         self.M=M
 
     def __add__(self,other:'HLIPImage')->'HLIPImage':
@@ -42,7 +43,7 @@ class HLIPImage(LogImage):
         raise TypeError('Invalid argument for multiplication')
 
     def transform(self)->np.ndarray:
-        aux= np.array( [ [ (math.e**(2/self.M*self.image[i][j])-1)/((math.e**(2/self.M*self.image[i][j])+1)) for j in range(self.image.shape[1])] for i in range(self.image.shape[0])])
+        aux= np.array( [ [ (math.e**(2*self.image[i][j])-1)/((math.e**(2*self.image[i][j])+1)) for j in range(self.image.shape[1])] for i in range(self.image.shape[0])])
         return self.M/2*(aux+1)
 
 class HLIPSpace(LogSpace):
@@ -50,10 +51,11 @@ class HLIPSpace(LogSpace):
         super().__init__(M)
 
     def gray_tone(self,f):
+        eps=0.00001
         if isinstance(f,np.ndarray):
-            f_aux=np.array(f.tolist())
+            f_aux=np.maximum(eps,f)
         else:
-            f_aux=f
+            f_aux=max(eps,f)
         return 2/self.M*(f_aux-self.M/2)
 
     def inverse_gray_tone(self,f):
@@ -61,16 +63,15 @@ class HLIPSpace(LogSpace):
 
     def function(self, f):
         if isinstance(f,np.ndarray):
-            zero_replace=(1-0.9999)/(1+0.9999)
-            return np.array( [ [ self.M/2 * math.log( zero_replace if f[i][j]==-1 else (1+f[i][j])/(1-f[i][j])) for j in range(f.shape[1])] for i in range(f.shape[0])])
+            return np.array( [ [ 0.5 * math.log((1+f[i][j])/(1-f[i][j])) for j in range(f.shape[1])] for i in range(f.shape[0])])
         else:
-            return self.M/2 * math.log( zero_replace if f==-1 else (1+f)/(1-f))
+            return 0.5 * math.log((1+f)/(1-f))
 
     def inverse_function(self, f):
         if isinstance(f,np.ndarray):
-            return np.array( [ [ (math.e**(2/self.M*f[i][j])-1)/((math.e**(2/self.M*f[i][j])+1)) for j in range(f.shape[1])] for i in range(f.shape[0])])
+            return np.array( [ [ (math.e**(2*f[i][j])-1)/((math.e**(2*f[i][j])+1)) for j in range(f.shape[1])] for i in range(f.shape[0])])
         else:
-            return (math.e**(2/self.M*f)-1)/((math.e**(2/self.M*f)+1))
+            return (math.e**(2*f)-1)/(math.e**(2*f)+1)
 
     def sum(self,f,g):
         if isinstance(f,np.ndarray):
@@ -104,7 +105,7 @@ class HLIPSpace(LogSpace):
             f_aux=np.array(f.tolist())
         else:
             f_aux=f
-        return ((1+f)**scalar-(1-f)**scalar)/((1+f)**scalar+(1-f)**scalar)
+        return ((1+f_aux)**scalar-(1-f_aux)**scalar)/((1+f_aux)**scalar+(1-f_aux)**scalar)
 
     def show_curve(self):
         x=range(257)

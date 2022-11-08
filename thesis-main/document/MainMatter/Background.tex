@@ -1,1 +1,166 @@
 \chapter{Estado del Arte}\label{chapter:state-of-the-art}
+
+En este cap\'itulo se abordar\'a primeramente sobre los antecedentes matem\'aticos que dan soporte a los modelos no lineales. Luego se analizar\'a en profundidad algunos de los m\'as conocidos.
+
+\section{Antecedentes Matemáticos}
+
+\subsection{Definición de las Leyes}
+
+Dado un escalar, $\alpha \in K \subseteq \mathbb{R}$ , y dos elementos del conjunto, $u$ y $v$ , podemos determinar las fórmulas exactas para las operaciones mencionadas utilizando la función generativa $\varphi$ :
+
+\begin{equation}
+	\varphi(u\oplus v) = \varphi(u)+\varphi(v), \forall u,v \in E
+\end{equation}
+
+\begin{equation}
+	\varphi(\alpha \otimes u) = \alpha \cdot \varphi(u), \forall u \in E, \forall \alpha \in K
+\end{equation}
+
+Las ecuaciones (1.1) y (1.2) son las condiciones que debe cumplir un homomorfismo entre dos estructuras algebraicas similares. La admisi\'on de un inverso y la existencia de biyectividad indica la presencia de un isomorfismo.
+
+Ahora analicemos la ecuación (1.2). Mientras que $u$ puede ser cualquier elemento del conjunto de entrada finito $E$ , $\alpha$ es, típicamente, un escalar real positivo $(K=\mathbb{R}^+)$. Bajo la condición de biyectividad asumida, $\exists u_m: \varphi( u_m ) = inf( F )$ y respectivamente, $\exists u_M , \varphi ( u_M ) = sup( F )$ .
+
+Con respecto a la restricción de biyectividad y la existencia de $\varphi^{-1}$, las leyes de definición están determinadas por:
+
+\begin{equation}
+	u \oplus v = \varphi^{-1}(\varphi(u)+\varphi(v))	
+\end{equation}
+
+\begin{equation}	
+	a \otimes u = \varphi^{-1}(\alpha\cdot\varphi(u))
+\end{equation} 
+
+\subsection{Propiedad de cierre}
+
+La propiedad de cierre tanto de la suma como de la multiplicación escalar es de suma importancia práctica, ya que la suma de dos imágenes cualquiera debería conducir a otra imagen válida y, respectivamente, cualquier imagen amplificada o atenuada debería ser una imagen. Formalmente, se puede escribir:
+
+\begin{equation}
+	\forall u,v \in E, z = u \oplus v \Rightarrow z \in E
+\end{equation}
+
+\begin{equation}
+	\forall u \in E, \forall \alpha \in K, z=\alpha \otimes v \Rightarrow z \in E
+\end{equation}
+
+Estas propiedades se mantienen bajo la hipótesis de biyectividad asumida ya que: 
+
+\begin{equation}
+	z=\varphi^{-1}(\varphi(u)+\varphi(v)) \land \forall x \in F, \varphi^{-1}(x) \in E \Rightarrow z \in E
+\end{equation}
+
+\subsection{Espacio vectorial}
+Dadas las dos leyes operativas, $\oplus$, $\otimes$, el conjunto vectorial $E$ y el conjunto escalar $K$, la definición formal del espacio vectorial implica varias propiedades. La ley de la suma debe ser asociativa, conmutativa, debe tener elemento identidad y elemento inverso. La distributividad debe mantenerse para la multiplicación escalar sobre la suma de vectores y para la multiplicación escalar en el espacio de los escalares. La multiplicación escalar debe tener elemento identidad y ser compatible con la multiplicación en el espacio de los escalares.
+
+Las propiedades conmutativas, asociativas y distributivas de las leyes implícitas son importantes porque el orden de las operaciones no debería importar en una suma ponderada de imágenes. Bajo la hipótesis asumida de aplicación biyectiva y debido a que la función $\varphi^{-1}$ asigna la estructura $\mathbb{R}$ al conjunto dado, estas propiedades se verifican.
+
+La existencia del elemento identidad, $u_0$ , con respecto a la suma, implica condiciones adicionales sobre la función de mapeo, $\varphi$. La condición es una consecuencia del comportamiento isomorfo:
+
+\begin{equation}
+	\forall u\in E, \exists u_0 : u \oplus u_0 = u | \varphi(u_0)=0
+\end{equation}
+
+El elemento inverso, $u^-$ , para espacios asimétricos tiene una aplicación bastante poco práctica: ``\textquestiondown¡dado un valor de intensidad, el elemento inverso es algo que absorbe perfectamente la luz!?''. Este es más importante para definir la sustracción de una imagen de otra para que sea consistente con la suma. Sin embargo, el elemento inverso tiene sentido si hablamos de espacios de color simétricos. En tal caso, la función de mapeo debe tomar valores en un intervalo simétrico:
+
+\begin{equation}
+	\forall u \in E, \exists u^- \Rightarrow u \oplus u^- = u_0 | \varphi(u) + \varphi(u^-) = 0 \Rightarrow \varphi(u^-)=-\varphi(u) 
+\end{equation}
+
+De manera similar, el elemento de identidad de la multiplicación escalar tiene que ser 1:
+
+\begin{equation}
+	\forall u \in E - \{u_0\}, \exists \alpha_1 : \alpha_1 \otimes u = u | \alpha_1 = 1
+\end{equation}
+
+\section{Modelo Cl\'asico para el Procesamiento Logar\'itmico de Im\'agenes}
+
+El Modelo Cl\'asico para el Procesamiento Logar\'itmico de Im\'agenes (LIP) fue el primero de estos modelos en ser presentado. Fue introducido por Michel Jourlin y Jean-Charles Pinoli~\cite{jourlin1988model}. En el modelo LIP, una imagen se representa mediante su función de tono de gris asociada. La función de tono de gris $f$ está relacionada con la función de nivel de gris $\hat{f}$ de la siguiente manera:
+
+\begin{equation}
+	f = M - \hat{f}
+\end{equation}
+
+En algunos trabajos como~\cite{jourlin1988model} y~\cite{navarro2013symmetric} la función de tono de gris se valora en el intervalo acotado de números reales $[0, M)$, donde $M$ es estrictamente positivo, denominado rango de tonos de grises. Sin embargo dado (1.11) si los valores de gris est\'an en el rango $[0,M)$ es evidente que el rango de tonos de grises tiene que ser $(0,M]$, tal como se plantea en~\cite{panetta2010parameterized}. Este segundo rango fue el que se tuvo en cuenta en la realizaci\'on de este trabajo. Los elementos en dicho rango se denominan tonos de grises.
+
+La escala de intensidad se invierte de manera que 0 representa la blancura o transparencia total y M representa la negrura u opacidad absoluta. En el modelo LIP, la operación de adición se define para sumar dos imágenes de luz transmitida. Físicamente, la adición de dos imágenes de luz transmitida sigue la ley de transmitancia clásica. 
+
+El objetivo inicial del modelo LIP era definir una operación aditiva que fuera cerrada en el rango de tonos de grises. La suma de dos tonos de gris $f$ y $g$ se define como:
+
+\begin{equation}
+	f\oplus g=f+g-\frac{fg}{M}
+\end{equation}
+
+y la multiplicación por un escalar real positivo $\lambda \in \mathbb{R}^+$ se define como:
+
+\begin{equation}
+	\lambda \oplus f = M - M\left(1-\frac{f}{M}\right)^\lambda
+\end{equation}
+
+En orden de extender el modelo a un espacio vectorial se extiende el rango de tonos de grises a $(-\infty,M]$. Esto permiti\'o entonces extender la multipliaci\'on por un escalar a cualquier n\'umero real $\lambda$, permitiendo a su vez definir la resta como:
+
+\begin{equation}
+	f \ominus g = \frac{f-g}{1-\frac{g}{M}}
+\end{equation}
+
+El conjunto de funciones de tono de gris valuadas en el rango $(-\infty, M)$ está relacionado con $\mathbb{R}$ a través del isomorfismo fundamental ~\cite{jourlin2016logarithmic} definido como:
+
+\begin{equation}
+	\varphi(f) = -M\ln\left(1-\frac{f}{M}\right)
+\end{equation}
+
+y el su inverso:
+
+\begin{equation}
+	\varphi^{-1} (f) = M\left(1-e^{-\frac{f}{M}}\right)
+\end{equation}
+
+Obs\'ervese que cuando el nivel de gris es 0 entonces el tones de gris es $M$, por lo que la funci\'on del isomorfismo se indefine. Caso similar ocurre con la resta. La resoluci\'on a estos problemas se aborda en secciones posteriores.
+
+Obs\'ervese adem\'as que sustituyendo (1.11) en (1.15) para un nivel de gris $\hat{f}$ podemos obtener su correspondiente en el isomorfismo mediante la funci\'on:
+
+\begin{equation}
+	\phi(\hat{f}) = -M\ln\left(1-\frac{M-\hat{f}}{M}\right) = -M\ln\left(\frac{\hat{f}}{M}\right)
+\end{equation}
+
+y su inversa se define como:
+
+\begin{equation}
+	\phi^{-1}(\hat{f}) = Me^{-\frac{\hat{f}}{M}} 
+\end{equation}
+
+Las operaciones para el conjunto de im\'agenes $I(D,E):D\subset R^2$ se extienden de forma natural, aplicando la operaci\'on en cuesti\'on a cada pixel de la imagen (funci\'on de tono de gris, multiplicaci\'on escalar, funci\'on de isomorfismo, etc.) o parejas de pixeles que se encuentra en la misma posici\'on en dos im\'agenes diferentes (suma, resta, etc). 
+
+\section{Modelo Homom\'orfico para el Procesamiento Logar\'imico de Im\'agenes}
+
+El Modelo Homom\'orfico para el Procesamiento Logar\'itmico de Im\'agenes (HLIP) fue presentado por Vasile Pătraşcu~\cite{patrascu2014mathematical}. Dentro del modelo matemático desarrollado, el conjunto de tonos de gris será el intervalo acotado $E = (-1, 1)$ puesto en correspondencia uno a uno con el intervalo de niveles de gris $[0,M)$, por la funci\'on de tono de gris:
+
+\begin{equation}
+	f=\frac{2}{M}\left(\hat{f}-\frac{M}{2}\right)
+\end{equation}
+
+Obs\'ervese que cuando $\hat{f}=0$ entonces $f=-1$, la soluci\'on a este problema se aborda en pr\'oximas secciones.
+
+$\forall f,g \in E$ la suma es definida por la siguiente relaci\'on:
+
+\begin{equation}
+	f \oplus g=\frac{f+g}{1+fg}
+\end{equation}
+
+El elemento neutro para la suma es $\theta = 0$. Cada elemento $v \in E$ tiene como opuesto al elemento $w = - v$ y esto verifica la siguiente ecuación: $v \oplus w = \theta$.
+
+La suma $\oplus$ es estable, asociativa, conmutativa, tiene un elemento neutro y cada elemento tiene un opuesto. Significa que esta operación establece en $E$ una estructura de grupo conmutativo.
+
+La resta puede ser tambi\'en definida como:
+
+\begin{equation}
+	f\ominus g=\frac{f-g}{1-fg}
+\end{equation}
+
+$\forall \lambda \in \mathbb{R}, \forall f \in E $, se define el producto entre $\lambda$ y $f$ por:
+ 
+\begin{equation}
+	\lambda \otimes f =\frac{(1+f)^\lambda-(1-f)^\lambda}{(1+f)^\lambda+(1-f)^\lambda}
+\end{equation}
+
+donde nuevamente las operaciones en el lado derecho de la igualdad se mantienen en $E$. Las dos operaciones, suma $\oplus$ y multiplicación escalar $\otimes$ establecen una estructura de espacio vectorial.
+
+Las operaciones para el conjunto de im\'agenes $I(D,E):D\subset R^2$ se extienden de forma natural como se explic\'o en el modelo anterior.  

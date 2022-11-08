@@ -15,14 +15,15 @@ class PLIPSpace(LogSpace):
     def gray_tone(self, f, mi=None):
         if mi is None:
             mi=self.mi
+        eps=0.00001
         if isinstance(f,np.ndarray):
-            f_aux=np.array(f.tolist())
+            f_aux=np.maximum(eps,f)
         else:
-            f_aux=f
+            f_aux=max(eps,f)
         return mi-f_aux
 
     def inverse_gray_tone(self,f,mi=None):
-        return self.gray_tone(f,mi)
+        return mi - f
 
     def function(self, f, lambd=None, beta=None):
         if lambd is None:
@@ -30,9 +31,9 @@ class PLIPSpace(LogSpace):
         if beta is None:
             beta=self.beta
         if isinstance(f,np.ndarray):
-            return np.array( [ [ -lambd * math.log( 0.0001 if f[i][j]==lambd else 1-f[i][j]/lambd)**beta for j in range(f.shape[1])] for i in range(f.shape[0])])
+            return np.array( [ [ -lambd * math.log( 1-f[i][j]/lambd)**beta for j in range(f.shape[1])] for i in range(f.shape[0])])
         else:
-            return -lambd * math.log(1.0001-f/lambd if f==lambd else 1-f/lambd)**beta
+            return -lambd * math.log(1-f/lambd)**beta
 
     def inverse_function(self, f, lambd=None, beta=None):
         if lambd is None:
@@ -68,7 +69,7 @@ class PLIPSpace(LogSpace):
             g_aux=np.array(g.tolist())
         else:
             g_aux=g
-        return (f_aux-g_aux)/(1+0.0001-g_aux/k)
+        return (f_aux-g_aux)/(1-g_aux/k)
 
     def mul(self,f,g,lambd=None,beta=None):
         f_aux=self.function(f,lambd,beta)
