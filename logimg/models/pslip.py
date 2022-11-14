@@ -85,11 +85,6 @@ class PSLIPSpace(LogSpace):
             g_aux=g
         return (f_aux-g_aux)/(1+f_aux*g_aux-2*g_aux)
 
-    def mul(self,f,g):
-        f_aux=self.function(f)
-        g_aux=self.function(g)
-        return self.inverse_function(f_aux*g_aux)
-
     def s_mul(self,f,scalar):
         if isinstance(f,np.ndarray):
             f_aux=np.array(f.tolist())
@@ -98,12 +93,20 @@ class PSLIPSpace(LogSpace):
         return scalar*f_aux/(1+(scalar-1)*f_aux)
 
     def show_curve(self):
-        x=range(256)
-        plt.plot(x, [i/(1-i/self.M) for i in x])
-        plt.title('Curva representativa logarítmica del isomorfismo φ')
-        plt.xlim(0,300)
-        plt.ylim(0,10000)
-        plt.xlabel('gray-scale')
+        x=[self.gray_tone(i/256*self.M) for i in range(256)]
+        x.append(self.gray_tone(255.99/256*self.M))
+        plt.plot(x, [self.function(i) for i in x])
+        p1=(self.gray_tone(0),self.function(self.gray_tone(1)))
+        p2=(self.gray_tone(128/256*self.M),self.function(self.gray_tone(128/256*self.M)))
+        p3=(self.gray_tone(255/256*self.M),self.function(self.gray_tone(255/256*self.M)))
+        plt.plot(p1[0],p1[1],marker='o',color='red',label=p1)
+        plt.plot(p2[0],p2[1],marker='o',color='orange',label=p2)
+        plt.plot(p3[0],p3[1],marker='o',color='yellow',label=p3)
+        plt.legend()
+        plt.title(f'Curva representativa del isomorfismo PSLIP, M = {self.M}')
+        plt.xlim(-0.1,1.1)
+        plt.ylim(-5,300)
+        plt.xlabel('Escala de gris')
         plt.ylabel('φ')
         plt.grid()
         plt.show()

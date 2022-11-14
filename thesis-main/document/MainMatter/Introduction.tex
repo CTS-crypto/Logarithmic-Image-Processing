@@ -11,11 +11,7 @@ La construcción matemática de un modelo no lineal puede comenzar definiendo la
 
 Para tener un uso práctico, es de sentido común imponer algunas propiedades a cualquier modelo recién determinado. Para ser más precisos, se debe tener en cuenta la naturaleza del conjunto de definición, los medios de determinación de las leyes, las propiedades de cierre y los requisitos para formar un espacio vectorial. 
 
-Consideremos una función, $\varphi : E \rightarrow F$. Dentro de esta elección, el conjunto $E$ es el conjunto de definición de la imagen. Normalmente, si los valores de la imagen son intensidades, como cualquier plano en representación de color RGB, el conjunto $E$ tiene la forma $[0,M)$; en el caso del espacio YUV (YCbCr), para los canales de diferencias de color, el conjunto $E$ tiene una forma simétrica, como $( - M/2 , + M/2 )$. Así, en cualquier circunstancia, el conjunto está acotado:
-
-\begin{equation*}
-	\exists m_E=inf(E),\exists M_E=sup(E)
-\end{equation*}
+Consideremos una función, $\varphi : E \rightarrow F$. Dentro de esta elección, el conjunto $E$ es el conjunto de definición de la imagen. Normalmente, si los valores de la imagen son intensidades, como cualquier plano en representación de color RGB, el conjunto $E$ tiene la forma $[0,M)$; en el caso del espacio YUV (YCbCr), para los canales de diferencias de color, el conjunto $E$ tiene una forma simétrica, como $( - M/2 , + M/2 )$. Así, en cualquier circunstancia, el conjunto está acotado: $\exists m_E=inf(E),\exists M_E=sup(E)$
 
 Una imagen en niveles de gris $f$ se define sobre un dominio $D$ incluido en el espacio $\mathbb{R}^2$ (o en el espacio $\mathbb{R}^3$  para imágenes 3D) y toma sus valores (niveles de gris) en la escala de grises $[0, M)$. Para imágenes de 8 bits, $ M = 256$ y los 256 niveles de gris están en la escala de números enteros $[0,..., 255]$. Clásicamente, el 0 corresponde al extremo negro, pero es posible hacer la otra elección, siendo el 0 asociado al extremo blanco. El conjunto de imágenes de niveles o tonos de gris definidas en D y que toman valores de $E$ lo definiremos como $I(D,E)$.
 
@@ -36,7 +32,7 @@ Para la realizaci\'on de cada uno de estos objetivos generales, se definen los s
 \begin{enumerate}
 	\item Revisar la literatura referente a los modelos no lineales de procesamiento de im\'agenes.
 	\item Implementaci\'on en Python de los diferentes modelos a partir de la bibliograf\'ia consultada
-	\item Creaci\'on de un corpus con diferentes tipos de im\'agenes para evaluar los modelos.
+	\item Creaci\'on de un \textit{corpus} con diferentes tipos de im\'agenes para evaluar los modelos.
 	\item Selecci\'on de m\'etricas para la evaluaci\'on de los modelos.
 	\item Evaluaci\'on de los modelos como se describi\'o anteriormente.
 	\item Arribar a conclusiones sobre la eficacia y utilidad de estos modelos. 

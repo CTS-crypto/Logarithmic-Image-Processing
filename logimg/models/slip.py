@@ -89,11 +89,6 @@ class SLIPSpace(LogSpace):
     def sub(self,f,g):
         return self.sum(f,self.s_mul(g,-1))
 
-    def mul(self,f,g):
-        f_aux=self.function(f)
-        g_aux=self.function(g)
-        return self.inverse_function(f_aux*g_aux)
-
     def s_mul(self,f,scalar):
         def calculate_pixel_s_mul(x,scalar):
             return self.M*np.sign(x*scalar)*(1-(1-abs(x)/self.M)**abs(scalar))
@@ -104,12 +99,25 @@ class SLIPSpace(LogSpace):
             return calculate_pixel_s_mul(f,scalar)
 
     def show_curve(self):
-        x=range(-255,256)
+        x=[i/256*self.M for i in range(-255,255)]
+        x.insert(0,-255.9999/256*self.M)
+        x.append(255.9999/256*self.M)
         plt.plot(x, [self.function(i) for i in x])
-        plt.title('Curva representativa logarítmica del isomorfismo φ')
-        plt.xlim(-300,300)
-        plt.ylim(-1600,1600)
-        plt.xlabel('gray-scale')
+        p1=(0,self.function(0))
+        p2=(128/256*self.M,self.function(128/256*self.M))
+        p3=(255/256*self.M,self.function(255/256*self.M))
+        p4=(-128/256*self.M,self.function(-128/256*self.M))
+        p5=(-255/256*self.M,self.function(-255/256*self.M))
+        plt.plot(p1[0],p1[1],marker='o',color='red',label=p1)
+        plt.plot(p2[0],p2[1],marker='o',color='orange',label=p2)
+        plt.plot(p3[0],p3[1],marker='o',color='yellow',label=p3)
+        plt.plot(p4[0],p4[1],marker='o',color='green',label=p4)
+        plt.plot(p5[0],p5[1],marker='o',color='purple',label=p5)
+        plt.legend()
+        plt.title(f'Curva representativa del isomorfismo SLIP, M = {self.M}')
+        plt.xlim(-300/256*self.M,300/256*self.M)
+        plt.ylim(-2000/256*self.M,2000/256*self.M)
+        plt.xlabel('Escala de gris')
         plt.ylabel('φ')
         plt.grid()
         plt.show()

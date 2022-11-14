@@ -8,6 +8,10 @@ class LogImage(ABC):
         self.image
         self.M
 
+    @property
+    def shape(self)->tuple:
+        return self.image.shape
+    
     def __repr__(self) -> str:
         return self.image.__repr__()
 
@@ -16,18 +20,6 @@ class LogImage(ABC):
 
     def __getitem__(self,index):
         return self.image[index]
-
-    @property
-    def shape(self)->tuple:
-        return self.image.shape
-
-    def show(self)->None:
-        plt.imshow(self.image, cmap='gray', interpolation='nearest') 
-        plt.show()
-
-    def histogram(self)->None:
-        plt.hist(self.image)
-        plt.show()
 
     @abstractmethod
     def __add__(self,other)->'LogImage':
@@ -51,6 +43,14 @@ class LogImage(ABC):
     @abstractmethod
     def transform(self)->np.ndarray:
         ...
+
+    def show(self)->None:
+        plt.imshow(self.image, cmap='gray', interpolation='nearest') 
+        plt.show()
+
+    def histogram(self)->None:
+        plt.hist(self.image)
+        plt.show()
 
 class LogSpace(ABC):
     @abstractmethod
@@ -81,9 +81,10 @@ class LogSpace(ABC):
     def sub(self,f,g):
         ...
 
-    @abstractmethod
     def mul(self,f,g):
-        ...
+        f_aux=self.function(f)
+        g_aux=self.function(g)
+        return self.inverse_function(f_aux*g_aux)
 
     @abstractmethod
     def s_mul(self,f,scalar):

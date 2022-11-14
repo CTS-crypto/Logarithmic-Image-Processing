@@ -4,26 +4,26 @@ import matplotlib.pyplot as plt
 from .logimg import LogSpace
 
 class PLIPSpace(LogSpace):
-    def __init__(self, M=256,mi=256,gamma=256,k=256,lambd=256,beta=1) -> None:
+    def __init__(self, M=256,mu=256,gamma=256,k=256,lambd=256,beta=1) -> None:
         super().__init__(M)
-        self.mi=mi
+        self.mu=mu
         self.gamma=gamma
         self.k=k
         self.lambd=lambd
         self.beta=beta
 
-    def gray_tone(self, f, mi=None):
-        if mi is None:
-            mi=self.mi
+    def gray_tone(self, f, mu=None):
+        if mu is None:
+            mu=self.mu
         eps=0.00001
         if isinstance(f,np.ndarray):
             f_aux=np.maximum(eps,f)
         else:
             f_aux=max(eps,f)
-        return mi-f_aux
+        return mu-f_aux
 
-    def inverse_gray_tone(self,f,mi=None):
-        return mi - f
+    def inverse_gray_tone(self,f,mu=None):
+        return mu - f
 
     def function(self, f, lambd=None, beta=None):
         if lambd is None:
@@ -86,12 +86,24 @@ class PLIPSpace(LogSpace):
         return gamma-gamma*(1-f_aux/gamma)**scalar
 
     def show_curve(self,lambd=None,beta=None):
-        x=range(256)
+        if lambd is None:
+            lambd=self.lambd
+        if beta is None:
+            beta=self.beta
+        x=[i/256*self.M for i in range(int(-300/self.M*lambd),int(256/self.M*lambd))]
+        x.append(255.9999/256*lambd)
         plt.plot(x, [self.function(i,lambd,beta) for i in x])
-        plt.title('Curva representativa logarítmica del isomorfismo φ')
-        plt.xlim(0,300)
-        plt.ylim(0,1600)
-        plt.xlabel('gray-scale')
+        p1=(0,self.function(0,lambd,beta))
+        p2=(128/256*self.M,self.function(128/256*self.M,lambd,beta))
+        p3=(255/256*self.M,self.function(255/256*self.M,lambd,beta))
+        plt.plot(p1[0],p1[1],marker='o',color='red',label=p1)
+        plt.plot(p2[0],p2[1],marker='o',color='orange',label=p2)
+        plt.plot(p3[0],p3[1],marker='o',color='yellow',label=p3)
+        plt.legend()
+        plt.title(f'Curva representativa del isomorfismo PLIP, M = {self.M}, λ(M) = {lambd}, β = {beta}')
+        plt.xlim(-300/256*lambd,300/256*lambd)
+        plt.ylim(-500/256*lambd,2000/256*lambd)
+        plt.xlabel('Escala de gris')
         plt.ylabel('φ')
         plt.grid()
         plt.show()

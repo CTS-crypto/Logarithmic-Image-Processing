@@ -42,7 +42,9 @@ class LIPImage(LogImage):
         raise TypeError('Invalid argument for multiplication')
 
     def transform(self)->np.ndarray:
-        return np.array( [ [ self.M/math.e**(self.image[i][j]/self.M) for j in range(self.image.shape[1])] for i in range(self.image.shape[0])])
+        eps=0.00001
+        aux_image=np.maximum(eps,self.image)
+        return np.array( [ [ self.M/math.e**(aux_image[i][j]/self.M) for j in range(self.image.shape[1])] for i in range(self.image.shape[0])])
         
 class LIPSpace(LogSpace):
     def __init__(self, M=256) -> None:
@@ -57,7 +59,7 @@ class LIPSpace(LogSpace):
         return self.M-f_aux
 
     def inverse_gray_tone(self,f):
-        return self.M-f
+        return self.gray_tone(f)
 
     def function(self, f):
         if isinstance(f,np.ndarray):
@@ -93,11 +95,6 @@ class LIPSpace(LogSpace):
             g_aux=g
         return (f_aux-g_aux)/(1-g_aux/self.M)
 
-    def mul(self,f,g):
-        f_aux=self.function(f)
-        g_aux=self.function(g)
-        return self.inverse_function(f_aux*g_aux)
-
     def s_mul(self,f,scalar):
         if isinstance(f,np.ndarray):
             f_aux=np.array(f.tolist())
@@ -106,12 +103,20 @@ class LIPSpace(LogSpace):
         return self.M-self.M*(1-f_aux/self.M)**scalar
 
     def show_curve(self):
-        x=range(257)
+        x=[i/256*self.M for i in range(-300,256)]
+        x.append(255.9999/256*self.M)
         plt.plot(x, [self.function(i) for i in x])
-        plt.title('Curva representativa logarítmica del isomorfismo φ')
-        plt.xlim(0,300)
-        plt.ylim(0,1600)
-        plt.xlabel('gray-scale')
+        p1=(0,self.function(0))
+        p2=(128/256*self.M,self.function(128/256*self.M))
+        p3=(255/256*self.M,self.function(255/256*self.M))
+        plt.plot(p1[0],p1[1],marker='o',color='red',label=p1)
+        plt.plot(p2[0],p2[1],marker='o',color='orange',label=p2)
+        plt.plot(p3[0],p3[1],marker='o',color='yellow',label=p3)
+        plt.legend()
+        plt.title(f'Curva representativa del isomorfismo LIP, M = {self.M}')
+        plt.xlim(-300/256*self.M,300/256*self.M)
+        plt.ylim(-500/256*self.M,2000/256*self.M)
+        plt.xlabel('Escala de gris')
         plt.ylabel('φ')
         plt.grid()
         plt.show()

@@ -43,7 +43,7 @@ class HLIPImage(LogImage):
         raise TypeError('Invalid argument for multiplication')
 
     def transform(self)->np.ndarray:
-        aux= np.array( [ [ (math.e**(2*self.image[i][j])-1)/((math.e**(2*self.image[i][j])+1)) for j in range(self.image.shape[1])] for i in range(self.image.shape[0])])
+        aux= np.array( [ [ (math.e**(2*self.image[i][j])-1)/(math.e**(2*self.image[i][j])+1) for j in range(self.image.shape[1])] for i in range(self.image.shape[0])])
         return self.M/2*(aux+1)
 
 class HLIPSpace(LogSpace):
@@ -69,7 +69,7 @@ class HLIPSpace(LogSpace):
 
     def inverse_function(self, f):
         if isinstance(f,np.ndarray):
-            return np.array( [ [ (math.e**(2*f[i][j])-1)/((math.e**(2*f[i][j])+1)) for j in range(f.shape[1])] for i in range(f.shape[0])])
+            return np.array( [ [ (math.e**(2*f[i][j])-1)/(math.e**(2*f[i][j])+1) for j in range(f.shape[1])] for i in range(f.shape[0])])
         else:
             return (math.e**(2*f)-1)/(math.e**(2*f)+1)
 
@@ -95,11 +95,6 @@ class HLIPSpace(LogSpace):
             g_aux=g
         return (f_aux-g_aux)/(1-f_aux*g_aux)
 
-    def mul(self,f,g):
-        f_aux=self.function(f)
-        g_aux=self.function(g)
-        return self.inverse_function(f_aux*g_aux)
-
     def s_mul(self,f,scalar):
         if isinstance(f,np.ndarray):
             f_aux=np.array(f.tolist())
@@ -108,12 +103,21 @@ class HLIPSpace(LogSpace):
         return ((1+f_aux)**scalar-(1-f_aux)**scalar)/((1+f_aux)**scalar+(1-f_aux)**scalar)
 
     def show_curve(self):
-        x=range(257)
+        x=[self.gray_tone(i/256*self.M) for i in range(1,256)]
+        x.insert(0,self.gray_tone(0.0001/256*self.M))
+        x.append(self.gray_tone(255.9999/256*self.M))
+        p1=(self.gray_tone(1),self.function(self.gray_tone(1)))
+        p2=(self.gray_tone(128/256*self.M),self.function(self.gray_tone(128/256*self.M)))
+        p3=(self.gray_tone(255/256*self.M),self.function(self.gray_tone(255/256*self.M)))
+        plt.plot(p1[0],p1[1],marker='o',color='red',label=p1)
+        plt.plot(p2[0],p2[1],marker='o',color='orange',label=p2)
+        plt.plot(p3[0],p3[1],marker='o',color='yellow',label=p3)
+        plt.legend()
         plt.plot(x, [self.function(i) for i in x])
-        plt.title('Curva representativa logarítmica del isomorfismo φ')
-        plt.xlim(0,300)
-        plt.ylim(0,1600)
-        plt.xlabel('gray-scale')
+        plt.title(f'Curva representativa del isomorfismo HLIP, M = {self.M}')
+        plt.xlim(-2,2)
+        plt.ylim(-6,6)
+        plt.xlabel('Escala de gris')
         plt.ylabel('φ')
         plt.grid()
         plt.show()
