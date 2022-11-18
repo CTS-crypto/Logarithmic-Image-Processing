@@ -23,6 +23,8 @@ class PLIPSpace(LogSpace):
         return mu-f_aux
 
     def inverse_gray_tone(self,f,mu=None):
+        if mu is None:
+            mu=self.mu
         return mu - f
 
     def function(self, f, lambd=None, beta=None):

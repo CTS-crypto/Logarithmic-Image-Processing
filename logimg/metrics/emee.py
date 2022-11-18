@@ -1,4 +1,5 @@
 from math import log
+from numpy import array
 
 def find_min_max(image,n_1,n_2,m_1,m_2):
 
@@ -48,11 +49,12 @@ def find_min_max(image,n_1,n_2,m_1,m_2):
     return min_value,max_value
 
 def emee(image,alpha,d_1,d_2,c):
+    aux_image=array(image)
     inner_sum = 0
-    k_1=len(image)//d_1
-    k_2=len(image[0])//d_2
-    for i in range(0,len(image),d_1):
-        for j in range(0,len(image[0]),d_2):
-            min_value,max_value=find_min_max(image,i,i+d_1,j,j+d_2)
+    k_1=len(aux_image)//d_1
+    k_2=len(aux_image[0])//d_2
+    for i in range(0,len(aux_image),d_1):
+        for j in range(0,len(aux_image[0]),d_2):
+            min_value,max_value=find_min_max(aux_image,i,i+d_1,j,j+d_2)
             inner_sum+=((max_value+c)/(min_value+c))**alpha*log((max_value+c)/(min_value+c))
     return alpha/(k_1*k_2)*inner_sum

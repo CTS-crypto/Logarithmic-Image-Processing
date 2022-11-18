@@ -184,7 +184,15 @@ Luego de hallado este valor para cada pixel se promedian los resultados para det
 
 \subsection{Algoritmos}
 
-\subsubsection{Transformaci\'on af\'in}
+\subsubsection{Detecci\'on de Bordes}
+
+La detecci\'on de bordes es uno de los algoritmos m\'as utilizados en el procesamiento de im\'agenes. Para esto se pueden utilizar diferentes filtros como el filtro de Sobel, el filtro de Prewitt, el filtro de Scharr, etc. En particular los tres mencionados anteriormente aparecen implementados en la librer\'ia \verb|skimage.filters| de Python. En este trabajo se presenta una extensi\'on de estos filtros para utilizarlos con los diferentes modelos no lineales abordados. 
+
+\subsubsection{Unsharp Masking}
+
+\textit{Unsharp Masking} es una t\'ecnica para mejorar la calidad de una imagen. Esta t\'ecnica consiste en determinar los bordes de una imagen y luego fusionar la imagen original con la imagen de bordes de dicha imagen. La fusi\'on m\'as com\'un es la suma lineal pero pueden existir otras formas de hacer la fusi\'on. En este trabajo se presenta una forma de extensi\'on de este algoritmo utilizando los diferentes modelos no lineales abordados.
+
+\subsubsection{Transformaci\'on Af\'in}
 
 Este algoritmo lo presenta Vasile Pătraşcu en~\cite{patrascu2003gray} donde adem\'as tambi\'en presenta otro modelo logar\'itmico pero dada la similitud de este con el HLIP no se aborda en este trabajo.
 
@@ -200,21 +208,3 @@ el hecho de que la imagen mejorada debe tener su media $\mu_u = \frac{a+b}{2}$ y
 \begin{equation}
 	\psi(f)=\frac{\sigma_u}{\sigma_f}\otimes(f\ominus\mu_f)
 \end{equation}
-
-\subsubsection{Algoritmo de Lee}
-
-En 1980, Jong-Sen Lee propuso un algoritmo simple para la mejora de imágenes~\cite{panetta2010parameterized}, que se puede expresar como:
-
-\begin{equation}
-	F'(i,j)=\theta A(i,j)+\rho+\zeta[F(i,j)-A(i,j)]
-\end{equation}
-
-donde $F (i, j)$ y $F' (i, j)$ representan los valores de brillo de píxeles de las imágenes original y procesada; $A(i, j)$ es el valor de brillo medio aritmético de una ventana $n \times n$ que está centrada en la posición del píxel $(i, j)$; y $\theta,~\rho$ y $\zeta$ son los coeficientes de ponderación.
-
-El algoritmo de Lee (LA) primero descompone una imagen en dos partes, una imagen suave y una imagen de diferencia. Luego, estas imágenes se ponderan y recombinado. El algoritmo se amplió utilizando los operadores LIP tradicionales para la mejora de imágenes y se mejor\'o aún más utilizando operadores PLIP~\cite{panetta2010parameterized}. En este trabajo este algoritmo se ampli\'o para que pueda ser utilizado con los operadores de cualquier espacio descendiente de \verb|LogSpace|, quedando definido por la siguiente expresi\'on:
-
-\begin{equation}
-	f'(i,j)=\eta\otimes a(i,j)\oplus\sigma\oplus\delta\otimes[f(i,j)\ominus a(i,j)]
-\end{equation}
-
-donde $f' (i, j)$ es la función de tono de gris de salida; $f (i, j)$ es la función de tono de gris de entrada; $a(i, j)$ es el promedio de los píxeles que rodean al píxel dado; y $\zeta, \sigma$ y $\delta$ son constantes operativas definidas por el usuario.

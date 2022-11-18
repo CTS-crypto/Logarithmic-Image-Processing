@@ -59,7 +59,7 @@ class LIPSpace(LogSpace):
         return self.M-f_aux
 
     def inverse_gray_tone(self,f):
-        return self.gray_tone(f)
+        return self.M-f
 
     def function(self, f):
         if isinstance(f,np.ndarray):

@@ -1,6 +1,6 @@
 from typing import Tuple
 from math import dist
-from numpy import ndarray
+from numpy import ndarray,array
 
 def abs_contrast_2_pixels(f:Tuple,g:Tuple,M:int) -> float:
     d=dist((f[0],f[1]),(g[0],g[1]))
@@ -19,13 +19,14 @@ def contrast_pixel(f:Tuple,img:ndarray,M:int,v:int) -> float:
     return acc/count
 
 def contrast_img(img:ndarray,M:int,v:int) -> float:
+    aux_img=array(img.tolist())
     acc=0
     count=0
     s=1
-    if img.shape[0]*img.shape[1]>90000:
+    if aux_img.shape[0]*aux_img.shape[1]>90000:
         s=3
-    for i in range(0,img.shape[0],s):
-        for j in range(0,img.shape[1],s):
-            acc+=contrast_pixel((i,j,img[i][j]),img,M,v)
+    for i in range(0,aux_img.shape[0],s):
+        for j in range(0,aux_img.shape[1],s):
+            acc+=contrast_pixel((i,j,aux_img[i][j]),img,M,v)
             count+=1
     return acc/count
