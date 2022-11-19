@@ -91,8 +91,6 @@ y su inversa:
 	\varphi^{-1}(x)=\lambda(M)\frac{x}{1+x}
 \end{equation}
 
-Para determinar para una determinada operaci\'on que par\'ametro proporciona el mejor resultado se utiliza como m\'etrica la EMEE como mismo se usa para el modelo PLIP.
-
 \section{M\'odulo de Python de Modelos no Lineales para el Procesamiento de Im\'agenes}
 
 El m\'odluo implementado cuenta con dos tipos de objetos fundamentales: las estructuras y los espacios.
@@ -158,7 +156,7 @@ Con la implementaci\'on de estos espacios se puede trabajar directamente con las
 
 \subsection{M\'etricas}
 
-Adem\'as de la EMEE para determinar los mejores par\'ametros en los modelos parametrizados, para hacer una comparaci\'on entre las diferentes resultados que arrojan las operaciones y algoritmos de procesamiento de im\'agenes se implement\'o un algoritmo para calcular el contraste promedio de un pixel en una imagen como se define en ~\cite{patrascu2014mathematical}.
+Adem\'as de la EMEE para determinar los mejores par\'ametros en el modelo PLIP, para hacer una comparaci\'on entre las diferentes resultados que arrojan las operaciones y algoritmos de procesamiento de im\'agenes se implement\'o un algoritmo para calcular el contraste promedio de un pixel en una imagen~\cite{patrascu2014mathematical}.
 
 Denotando $p_i =(x_i ,y_i )$, los pares de coordenadas que definen la posición espacial de un píxel en una imagen, el contraste relativo entre dos píxeles distintos $p_1 , p_2 \in D$ , para una imagen, $f : D \to E$ se define por la relación:
 
@@ -174,6 +172,28 @@ Del contraste relativo $C_R$ se define el contraste absoluto como:
 	C_A(p_1,p_2)=|C_R(p_1,p_2)|=\frac{1}{d(p_1,p_2)}\cdot\frac{|f(p_1)-f(p_2)|}{1-\frac{f(p_1)\cdot f(p_2)}{M^2}}
 \end{equation}
 
+Luego de la realizaci\'on de una serie de experimentos se decidi\'o modificar la ecuaci\'on anterior pues esta favorec\'ia a los pixeles de mayor intensidad mucho m\'as que a los pixeles de menor intensidad. V\'ease el siguiente ejemplo.
+
+Supongamos que tenemos dos parejeas de pixeles en la cl\'asica escala de enteros de 8 bits: $(p_1,p_2)$ y $(p_3,p_4)$: $f(p_1)=100,~f(p_2)=20,~f(p_3)=230,~f(p_4)=200 \land d(p_1,p_2)=d(p_3,p_4)=t$. Entonces:
+
+\begin{equation}
+	C_A(p_1,p_2)=\frac{1}{t}\cdot\frac{|100-20|}{1-\frac{100\cdot20}{256^2}}\approx\frac{82,51}{t}
+\end{equation} 
+
+\begin{equation}
+	C_A(p_1,p_2)=\frac{1}{t}\cdot\frac{|230-200|}{1-\frac{230\cdot200}{256^2}}\approx\frac{100,63}{t}
+\end{equation}
+
+Por tanto $C_A(p_1,p_2)<C_A(p_1,p_2)$ a pesar de que $d(p_1,p_2)=d(p_3,p_4)$ y la diferencia entre la intensidad de $p_1$ y $p_2$ es mucho mayor que la diferencia entre las intensidades de $p_3$ y $p_4$, lo cual en la mayor\'ia de situaciones es incorrecto.
+
+A pesar de esto la ecuaci\'on (2.10) mostr\'o resultados consecuentes con la calidad de las im\'agenes obtenidas en una gran cantidad de experimentos pero se mostr\'o deficiente en algunos donde premiaba una imagen m\'as intensa por encima de una menos intensa, en donde claramente se pod\'ia apreciar que la menos intensa ten\'ia una mayor calidad y un mejor contraste. Por este motivo se propuso sustituir la ecuaci\'on (2.10) por la siguiente:
+
+\begin{equation}
+	C_A(p_1,p_2)=\frac{|f(p_1)-f(p_2)|}{d(p_1,p_2)}\cdot\frac{256}{M}
+\end{equation}
+
+De esta forma el contraste absoluto entre dos pixeles es directamente proporcional a la diferencia de sus intensidades e inversamente proporcional a la distancia entre los mismos, lo cual tiene mucho sentido. El t\'ermino de $\frac{256}{M}$ se utiliza para escalar el resultado de tal forma que se puedan obtener resultados equivalentes, sin importar la escala en que se encuentre una imagen. Esta nueva medida propuesta mostr\'o resultados consecuentes a la calidad de la imagen obtenida tanto en los experimentos en la que la medida definida en (2.10) dio resultados consecuentes como en los que mostr\'o deficiencias.
+
 El contraste para un píxel arbitrario $p \in D$ , para una imagen $f \in F ( D , E )$, se define por la media del contraste absoluto entre el píxel $p$ y los píxeles $( p_i )_{i = 1,...,n}$ que pertenecen a una vecindad $V$. Así tenemos la siguiente fórmula:
 
 \begin{equation}
@@ -186,7 +206,7 @@ Luego de hallado este valor para cada pixel se promedian los resultados para det
 
 \subsubsection{Detecci\'on de Bordes}
 
-La detecci\'on de bordes es uno de los algoritmos m\'as utilizados en el procesamiento de im\'agenes. Para esto se pueden utilizar diferentes filtros como el filtro de Sobel, el filtro de Prewitt, el filtro de Scharr, etc. En particular los tres mencionados anteriormente aparecen implementados en la librer\'ia \verb|skimage.filters| de Python. En este trabajo se presenta una extensi\'on de estos filtros para utilizarlos con los diferentes modelos no lineales abordados. 
+La detecci\'on de bordes es uno de los algoritmos m\'as utilizados en el procesamiento de im\'agenes. Para esto se pueden utilizar diferentes filtros como el filtro de Sobel, el filtro de Prewitt, el filtro de Scharr, etc. En particular los tres mencionados anteriormente aparecen implementados en la librer\'ia \verb|skimage.filters| de Python~\cite{module_filters}. En este trabajo se presenta una extensi\'on de estos filtros para utilizarlos con los diferentes modelos no lineales abordados. 
 
 \subsubsection{Unsharp Masking}
 
@@ -202,9 +222,10 @@ Consid\'erese estas transformadas afines en el conjunto de imágenes $F (\Omega,
 	\psi(f)=\lambda\otimes(f\oplus\tau)
 \end{equation}
 
-donde $\lambda \in \mathbb{R}, \tau \in V y \omega\subset\mathbb{R}^2$ es el soporte de la imagen. Se prefirió usar esta forma porque muestra que una imagen se puede procesar en dos pasos: una traslación de nivel de gris con un valor constante $\tau$ , que conduce a un cambio en el brillo de la imagen, luego una multiplicación escalar con el factor $\lambda$  llevando a un cambio en el contraste de la imagen. Los parámetros $(\lambda, \tau )$ se eligieron de tal manera que se obtuviera una nueva imagen muy cercana (desde un punto de vista estadístico) a una imagen con una distribución uniforme del nivel de gris en el conjunto $V=(a,b)$. Este criterio muestra
-el hecho de que la imagen mejorada debe tener su media $\mu_u = \frac{a+b}{2}$ y su varianza $\sigma_u^2 = \frac{(b-a)^2}{12}$. De hecho, como resultado, no se est\'a haciendo más que aproximar la transformaci\'on no lineal que produce el algoritmo de ecualización de histogramas de nivel de gris con una transformaci\'on afín como la de (2.12). En estas condiciones para cualquier imagen $f$ con la media $\mu_f$ y la varianza $\sigma_f^2 $, la transformaci\'on afín  se convierte en:
+donde $\lambda \in \mathbb{R}, \tau \in V y \omega\subset\mathbb{R}^2$ es el soporte de la imagen. Se prefirió usar esta forma porque muestra que una imagen se puede procesar en dos pasos: una traslación de nivel de gris con un valor constante $\tau$ , que conduce a un cambio en el brillo de la imagen, luego una multiplicación escalar con el factor $\lambda$  llevando a un cambio en el contraste de la imagen. Los parámetros $(\lambda, \tau )$ se eligieron de tal manera que se obtuviera una nueva imagen muy cercana (desde un punto de vista estadístico) a una imagen con una distribución uniforme del nivel de gris en el conjunto $V=(a,b)$. Este criterio muestra el hecho de que la imagen mejorada debe tener su media $\mu_u = \frac{a+b}{2}$ y su varianza $\sigma_u^2 = \frac{(b-a)^2}{12}$. De hecho, como resultado, no se est\'a haciendo más que aproximar la transformaci\'on no lineal que produce el algoritmo de ecualización de histogramas de nivel de gris con una transformaci\'on afín como la de (2.15). En estas condiciones para cualquier imagen $f$ con la media $\mu_f$ y la varianza $\sigma_f^2 $, la transformaci\'on afín  se convierte en:
 
 \begin{equation}
 	\psi(f)=\frac{\sigma_u}{\sigma_f}\otimes(f\ominus\mu_f)
 \end{equation}
+
+Algo muy importante es que este algoritmo solo se puede utilizar en espacios acotados dado que se necesita una cota inferior $a$ y una cota superior $b$ para poder calcular los valores $u_u$ y $\sigma_u^2$ y no puede ocurrir desbordamiento. Bajo estas condiciones solo podemos utilizar los modelos sim\'etricos HLIP y SLIP definidos en los rangos $(-1,1)$ y $(- M, M)$ respectivamente. No se puede utilizar el modelo lineal pues este presenta desbordamiento tanto superior como inferior. El modelo LIP no tiene una cota inferior pues para definir la resta, la escala de gris se expandi\'o a $(-\infty,M)$. En el caso del PSLIP si bien los tonos de gris est\'an acotados en el intervalo real $[0,1)$ para definir la resta de dos pixeles $v_1\ominus v_2$ se exige que $v_1\geq v_2$, lo cual no se garantiza en este algoritmo.

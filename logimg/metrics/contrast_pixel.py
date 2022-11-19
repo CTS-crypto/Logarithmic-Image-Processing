@@ -4,7 +4,7 @@ from numpy import ndarray,array
 
 def abs_contrast_2_pixels(f:Tuple,g:Tuple,M:int) -> float:
     d=dist((f[0],f[1]),(g[0],g[1]))
-    return 1/d*abs(f[2]-g[2])/(1-f[2]*g[2]/M**2)
+    return abs(f[2]-g[2])/d*256/M
 
 def contrast_pixel(f:Tuple,img:ndarray,M:int,v:int) -> float:
     acc=0
