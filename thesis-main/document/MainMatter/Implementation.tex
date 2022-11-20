@@ -96,7 +96,7 @@ En las Fig 3.2 y Fig 3.3 se pueden observar varias curvas del modelo PLIP y PPSL
 
 \subsection{Suma de im\'agenes}
 
-Una de las formas m\'as utilizadas para la fusi\'on de im\'agenes es la suma de las mismas. Para los experimentos que se muestran a continuaci\'on se utilizar\'an las im\'agenes: Playa, Patineta, Carretera y Mptorista que se muestran en la Fig 3.4.
+Una de las formas m\'as utilizadas para la fusi\'on de im\'agenes es la suma de las mismas. Para los experimentos que se muestran a continuaci\'on se utilizar\'an las im\'agenes: Playa, Patineta, Monta\~na e Insecto que se muestran en la Fig 3.4.
 
 \begin{figure}
 	\begin{center}
@@ -104,10 +104,10 @@ Una de las formas m\'as utilizadas para la fusi\'on de im\'agenes es la suma de 
 		\includegraphics[width=5.5 cm]{images/originals/playa.jpg}}
 		\subfigure[Patineta]{
 			\includegraphics[width=5.5 cm]{images/originals/patineta.jpg}}
-		\subfigure[Carretera]{
-			\includegraphics[width=5.5 cm]{images/originals/carretera.jpg}}
-		\subfigure[Mototista]{
-			\includegraphics[width=5.5 cm]{images/originals/motorista.jpg}}
+		\subfigure[Monta\~na]{
+			\includegraphics[width=5.5 cm]{images/originals/montania.jpg}}
+		\subfigure[Insecto]{
+			\includegraphics[width=5.5 cm]{images/originals/insecto.jpg}}
 		\caption{Im\'agenes para los experimentos de suma}
 	\end{center}
 \end{figure}
@@ -134,21 +134,21 @@ Una de las formas m\'as utilizadas para la fusi\'on de im\'agenes es la suma de 
 
 \begin{figure}
 	\begin{center}
-		\subfigure[Lineal $C_p=3.02$]{
-			\includegraphics[width=5.5 cm]{images/sums/c y m/scd.png}}
-		\subfigure[LIP $C_p=1.48$]{
-			\includegraphics[width=5.5 cm]{images/sums/c y m/jscd.png}}
-		\subfigure[HLIP $C_p=4.21$]{
-			\includegraphics[width=5.5 cm]{images/sums/c y m/hscd.png}}
-		\subfigure[PSLIP $C_p=4.42$]{
-			\includegraphics[width=5.5 cm]{images/sums/c y m/psscd.png}}
-		\subfigure[SLIP $C_p=4.67$]{
-			\includegraphics[width=5.5 cm]{images/sums/c y m/sscd.png}}
-		\subfigure[PLIP $C_p=2.98$]{
-			\includegraphics[width=5.5 cm]{images/sums/c y m/pscd.png}}
-		\subfigure[PPSLIP $C_p=4.42$]{
-			\includegraphics[width=5.5 cm]{images/sums/c y m/ppsscd.png}}
-		\caption{Suma de Patineta y Playa utilizando los diferentes modelos}
+		\subfigure[Lineal $C_p=3.15$]{
+			\includegraphics[width=5.5 cm]{images/sums/m y i/scd.png}}
+		\subfigure[LIP $C_p=2.77$]{
+			\includegraphics[width=5.5 cm]{images/sums/m y i/jscd.png}}
+		\subfigure[HLIP $C_p=4.53$]{
+			\includegraphics[width=5.5 cm]{images/sums/m y i/hscd.png}}
+		\subfigure[PSLIP $C_p=3.47$]{
+			\includegraphics[width=5.5 cm]{images/sums/m y i/psscd.png}}
+		\subfigure[SLIP $C_p=3.65$]{
+			\includegraphics[width=5.5 cm]{images/sums/m y i/sscd.png}}
+		\subfigure[PLIP $C_p=3.13$]{
+			\includegraphics[width=5.5 cm]{images/sums/m y i/pscd.png}}
+		\subfigure[PPSLIP $C_p=3.47$]{
+			\includegraphics[width=5.5 cm]{images/sums/m y i/ppsscd.png}}
+		\caption{Suma de Monta\~na e Insecto utilizando los diferentes modelos}
 	\end{center}
 \end{figure}
 
@@ -156,7 +156,7 @@ En la Fig 3.5 se muestra la de la imagen  ``Playa'' y la imagen ''Patineta'' uti
 
 Para determinar los par\'ametros de $\gamma(M)$ y $\mu(M)$ en el modelo PLIP, se aplic\'o el cambio a tonos de gris utilizando el valor de $M=256$. Luego se prob\'o la suma con diferentes valores de $\gamma(M)$ (256, 300, 1026 y 4100) y por cada uno se probaron varios valores de $\mu(M)$ para cambiar a niveles de grises. Para determinar el mejor valor de $\mu(M)$ para cada $\gamma(M)$ se utiliz\'o la m\'etrica EMEE. Luego se calcul\'o el valor de $C_p$ por cada pareja y el mejor valor se obtuvo para $\mu(M)=256$ y $\gamma(M)=256$. Para determinar el mejor valor de $\gamma(M)$ para el modelo PPSLIP se realiz\'o la operaci\'on de suma utilizando varios par\'ametros y se determin\'o el mejor utilizando el valor de $C_p$, el resultado fue de $\gamma(M)=4100$. 
 
-En la figura 3.6 se puede observar otro ejemplo de la suma. En este caso el modelo LIP arroja una imagen muy oscura, mientras que el modelo lineal ofrece una m\'as clara. M\'as claras a\'un y con mejor valor de $C_p$ son las im\'agenes obtenidas por los modelos PSLIP y SLIP, siendo este \'ultimo el de mejor resultado. Se vuelve a apreciar el balance en el modelo HLIP, dando una imagen donde se combinan en gran medida los negros y los blancos. Esto es l\'ogico debido a que se est\'an sumando una imagen donde la informaci\'on de la imagen se obtiene de los niveles de intensidad altos y otra imagen donde la informaci\'on recae en los niveles de intensidad m\'as bajos. En esta caso el modelo PLIP tendi\'o a la linealidad en para lograr un mejor valor de $C_p$, mientras que por su parte el modelo PPSLIP se asemej\'o al modelo PPSLIP.
+En la figura 3.6 se puede observar otro ejemplo de la suma. En este caso el modelo LIP arroja una imagen muy oscura, mientras que el modelo lineal ofrece una m\'as clara. M\'as claras a\'un y con mejor valor de $C_p$ son las im\'agenes obtenidas por los modelos PSLIP y SLIPo. Se vuelve a apreciar el balance en el modelo HLIP, dando una imagen donde se combinan en gran medida los negros y los blancos, dando el mejor valor de $C_p$. En esta caso el modelo PLIP tendi\'o a la linealidad para lograr un mejor valor de $C_p$, mientras que por su parte el modelo PPSLIP se asemej\'o al modelo PPSLIP.
 
 Con estos experimentos ya se puede ir percatando lo que te\'oricamente se esperaba: la sensibilidad del modelo PLIP hacia los niveles de gris m\'as oscuros, la sensibilidad de los modelos PSLIP y SLIP hacia los niveles de gris m\'as claros y el balance que entre ambos que supone el modelo HLIP dado su car\'acter sim\'etrico. Aqu\'i aclarar que el modelo SLIP, aunque tambi\'en es sim\'etrico, una imagen trasformada a este modelo no se expande por toda la escala de gris del modelo como si ocurre en el HLIP, a no ser que se haga eso manualmente. Tambi\'en se puede apreciar como los modelos parametrizados utilizan los par\'ametros buscando la linealidad, para, en el caso del PLIP obtener una imagen m\'as clara, y para el caso del PPSLIP obtener una imagen m\'as oscura. 
 
