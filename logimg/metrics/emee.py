@@ -49,7 +49,7 @@ def find_min_max(image,n_1,n_2,m_1,m_2):
     return min_value,max_value
 
 def emee(image,alpha,d_1,d_2,c):
-    aux_image=array(image)
+    aux_image=array(image.tolist())
     inner_sum = 0
     k_1=len(aux_image)//d_1
     k_2=len(aux_image[0])//d_2
