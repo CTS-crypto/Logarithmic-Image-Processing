@@ -6,11 +6,11 @@ En esta secci\'on se abordar\'an algunos detalles que se tuvieron en cuenta a la
 
 \subsection{Modelos}
 
-Primeramente obs\'ervese que el rango de niveles de gris de una imagen se define como $[0,M)$. Por ende al transformar la imagen a una funci\'on de tono de gris utilizando la f\'ormula (1.11) cuando el nivel de gris es 0 el tono de gris es $M$, lo cual contradice que el rango de tono de gris para el modelo LIP es $[0,M)$. Por este motivo tanto para la clase \verb|LIPImage| como \verb|LIPSpace| antes de cambiar la imagen de niveles de gris a tonos de gris y viceversa esta primero se procesa de tal forma que el menor valor admisible sea un n\'umero cercano a cero pero mayor que este. En esta implementaci\'on se decidi\'o utilizar el n\'umero $0.0001$. No se opt\'o por otro alternativas como por ejemplo el \'epsilon de la m\'aquina porque al realizar operaciones aritm\'eticas este valor se convert\'ia en cero y por ende no solucionaba el problema planteado. Esta tambi\'en se hizo en la implementaci\'on del modelo PLIP. Para el caso del modelo SLIP no fue necesario pues se utiliza una funci\'on de tono de gris, se trabaja directamente con los niveles de gris.
+Primeramente obs\'ervese que el rango de niveles de gris de una imagen se define como $[0,M)$. Por ende al transformar la imagen a una funci\'on de tono de gris utilizando la f\'ormula (1.11) cuando el nivel de gris es 0 el tono de gris es $M$, lo cual contradice que el rango de tono de gris para el modelo LIP es $[0,M)$. Por este motivo tanto para la clase \verb|LIPImage| como \verb|LIPSpace| antes de cambiar la imagen de niveles de gris a tonos de gris y viceversa, esta primero se procesa de tal forma que el menor valor admisible sea un n\'umero cercano a cero, pero mayor que este. En esta implementaci\'on se decidi\'o utilizar el n\'umero $0.0001$. No se opt\'o por otras alternativas como por ejemplo el \'epsilon de la m\'aquina porque al realizar operaciones aritm\'eticas este valor se convert\'ia en cero y por ende no solucionaba el problema planteado. Esto tambi\'en se hizo en la implementaci\'on del modelo PLIP. Para el caso del modelo SLIP no fue necesario pues no se utiliza una funci\'on de cambio a tono de gris y se trabaja directamente con los niveles de gris.
 
-Otro problema que fue necesario resolver es que en el modelo HLIP los niveles de gris de la imagen a transformar deben estar en el rango $(0,M)$. La soluci\'on propuesta fue hacer algo similar al caso anterior pero solo antes de cambiar la imagen de nivel de gris a tono de gris.
+Otro problema que fue necesario resolver es que en el modelo HLIP los niveles de gris de la imagen a transformar deben estar en el rango $(0,M)$. La soluci\'on propuesta fue hacer algo similar al caso anterior, pero solo antes de cambiar la imagen de nivel de gris a tono de gris.
 
-Las implementaciones de todos los modelos tal y como se explic\'o en el cap\'itulo anterior se puede encontrar en el subm\'odulo ``models'', cada uno en su archivo correspondiente.
+Las implementaciones de todos los modelos tal y como se explic\'o en el cap\'itulo anterior se pueden encontrar en el subm\'odulo ``models'', cada uno en su archivo correspondiente.
 
 \subsection{M\'etricas}
 
@@ -22,17 +22,17 @@ En el archivo ``emee.py'' se encuentran dos funciones: \verb|emee| y \verb|find_
 La funci\'on \verb|find_min_max| se utiliza para calcular el menor y mayor valor de intensidad de un bloque. Da como salida una tupla con dicho valores en ese orden y recibe una imagen y 4 enteros: $n_1,n_2,m_1,m_2$, tal que $(n_1,m_1)$ son las coordenadas donde inicia el bloque y; $n_2$ y $m_2$ son la dimensi\'on horizontal y vertical del bloque respectivamente.
 
 \subsubsection{Contraste Promedio}
-En el archivo ``contrast\_pixel.py'' se encuentra tres funciones. La primera funci\'on \verb|abs_contrast_2_pixels| se utiliza para calcular el contraste absoluto entre 2 pixeles. Recibe dos tuplas de 3 elementos, tal que cada una representa representa un pixel (las coordenadas y el valor de intensidad del pixel), y el valor de $M$.  La segunda funci\'on \verb|contras_pixel| calcula el contraste de un pixel en una imagen; recibe como par\'ametros una tupla que representa al pixel, la imagen, el valor de $M$ y un valor $v$ que indica el radio de la vecindad a considerarse. 
+En el archivo ``contrast\_pixel.py'' se encuentran tres funciones. La primera funci\'on \verb|abs_contrast_2_pixels| se utiliza para calcular el contraste absoluto entre 2 p\'ixeles. Recibe dos \textit{tuplas} de 3 elementos, tal que cada una representa representa un p\'ixel (las coordenadas y el valor de intensidad del p\'ixel), y el valor de $M$.  La segunda funci\'on \verb|contras_pixel| calcula el contraste de un p\'ixel en una imagen; recibe como par\'ametros una \textit{tupla} que representa al p\'ixel, la imagen, el valor de $M$ y un valor $v$ que indica el radio de la vecindad a considerarse. 
 
-La \'ultima funci\'on \verb|contrast_img| da como salida el contraste promedio de un pixel en una imagen, o sea $C_p$. Esta funci\'on recibe como par\'ametros la imagen, el valor de $M$ y el radio de la vecindad que se debe tener en cuenta alrededor de un pixel. Como calcular el contraste para cada pixel de una imagen es un proceso que puede demorar seg\'un el tama\~no de la imagen, se tom\'o la decisi\'on de, para imagen cuya resoluci\'on fuese mayor que $300\times300$, escoger un subconjunto de pixeles. El criterio para escoger dichos pixeles fue el siguiente:
+La \'ultima funci\'on \verb|contrast_img| da como salida el contraste promedio de un p\'ixel en una imagen, o sea $C_p$. Esta funci\'on recibe como par\'ametros la imagen, el valor de $M$ y el radio de la vecindad que se debe tener en cuenta alrededor de un p\'ixel. Como calcular el contraste para cada p\'ixel de una imagen es un proceso que puede demorar seg\'un el tama\~no de la imagen, se tom\'o la decisi\'on de, para im\'agenes cuya resoluci\'on fuese mayor que $300\times300$, escoger un subconjunto de p\'ixeles. El criterio para escoger dichos p\'ixeles fue el siguiente:
 
 \begin{enumerate}
 	\item Iniciar desde la posici\'on $(0,0)$
-	\item Si se analiz\'o el pixel en la posici\'on $(i,j)$ el pr\'oximo pixel a analizar es el pixel $(i,j+3)$
+	\item Si se analiz\'o el pixel en la posici\'on $(i,j)$ el pr\'oximo p\'ixel a analizar es el p\'ixel $(i,j+3)$
 	\item Una vez terminada de analizar una fila $i$ la pr\'oxima fila a analizar es la fila $i+3$.
 \end{enumerate}
 
-El radio de la vecindad que se tom\'o para calcular el contraste de cada pixel fue de 2. Al comparar ambas formas se pudo comprobar que, para im\'agenes con una resoluci\'on grande, la forma propuesta, reduce considerablemente el tiempo de ejecuci\'on, afectando en una cantidad despreciable el resultado final.
+El radio de la vecindad que se tom\'o para calcular el contraste de cada p\'ixel fue de 2. Al comparar ambas formas se pudo comprobar que, para im\'agenes con una resoluci\'on grande, la forma propuesta, reduce considerablemente el tiempo de ejecuci\'on, afectando en una cantidad despreciable el resultado final.
 
 \subsection{Algoritmos}
 
@@ -298,7 +298,7 @@ A continuaci\'on se presentan los experimentos basados en la modificaci\'on del 
 			\includegraphics[width=4.33 cm]{images/he/moon/imgs/himg_eq_a.png}}
 		\subfigure[Transformaci\'on HLIP Histograma]{
 			\includegraphics[width=6.0 cm]{images/he/moon/hists/hata_hist.png}}
-		\subfigure[Transformaci\'on SLIP $C_p=6.77$]{
+		\subfigure[Transformaci\'on SLIP $C_p=5.07$]{
 			\includegraphics[width=4.3 cm]{images/he/moon/imgs/simg_eq_a.png}}
 		\subfigure[Transformaci\'on SLIP Histograma]{
 			\includegraphics[width=6.0 cm]{images/he/moon/hists/sata_hist.png}}
@@ -320,7 +320,7 @@ A continuaci\'on se presentan los experimentos basados en la modificaci\'on del 
 			\includegraphics[width=5.0 cm]{images/he/torax/imgs/himg_eq_b.png}}
 		\subfigure[Transformaci\'on HLIP Histograma]{
 			\includegraphics[width=5.5 cm]{images/he/torax/hists/hatb_hist.png}}
-		\subfigure[Transformaci\'on SLIP $C_p=2.76$]{
+		\subfigure[Transformaci\'on SLIP $C_p=2.19$]{
 			\includegraphics[width=5.0 cm]{images/he/torax/imgs/simg_eq_b.png}}
 		\subfigure[Transformaci\'on SLIP Histograma]{
 			\includegraphics[width=5.5 cm]{images/he/torax/hists/satb_hist.png}}
@@ -328,10 +328,10 @@ A continuaci\'on se presentan los experimentos basados en la modificaci\'on del 
 	\end{center}
 \end{figure}
 
-En la Fig 3.12 se puede apreciar de forma visual como la imagen Luna es una imagen con muy poco contraste. Su histograma y el valor de $C_p$ confirman esta apreciaci\'on. Luego se ve como aplicando una ecualizaci\'on del histograma la imagen mejora su contraste, pero quiz\'as se pueda considerar como una imagen poco natural, aunque esto ya es una cuesti\'on subjetiva. Aqu\'i es bueno recalcar que a pesar de que el valor de contraste promedio ($C_p$) en los experimentos realizados ha mostrado resultados consecuentes con la calidad de la imagen, esto no quiere decir que la calidad de una imagen dependa exclusivamente de su contraste, de hecho no lo hace. Para determinar la calidad de una imagen se pueden utilizar otras medidas objetivas como $C_p$ pero al final lo m\'as es la calidad que pueda percibir un usuario al mirar la imagen, lo cual es una medida subjetiva. Bajo este criterio es posible que prefieran transformaciones m\'as suaves como las que arrojan las transformaciones afines en los modelos HLIP y SLIP. Para el caso del modelo SLIP se obtiene un buen valor de contraste y la imagen obtenida se percibe bastante natural.
+En la Fig 3.12 se puede apreciar de forma visual como la imagen Luna es una imagen con muy poco contraste. Su histograma y el valor de $C_p$ confirman esta apreciaci\'on. Luego se ve como aplicando una ecualizaci\'on del histograma la imagen mejora su contraste, pero quiz\'as se pueda considerar como una imagen poco natural, aunque esto ya es una cuesti\'on subjetiva. Aqu\'i es bueno recalcar que a pesar de que el valor de contraste promedio ($C_p$) en los experimentos realizados ha mostrado resultados consecuentes con la calidad de la imagen, esto no quiere decir que la calidad de una imagen dependa exclusivamente de su contraste, de hecho no lo hace. Para determinar la calidad de una imagen se pueden utilizar otras medidas objetivas pero al final lo m\'as importante es la calidad que pueda percibir un usuario al mirar la imagen, lo cual es una medida subjetiva. Bajo este criterio es posible que prefieran transformaciones m\'as suaves como las que arrojan las transformaciones afines en los modelos HLIP y SLIP. Para ambos modelos se obtiene un buen valor de contraste y la imagen obtenida se percibe bastante natural.
 
 En la Fig 3.13 observamos que la imagen del t\'orax captada por el equipo que la tomo tuvo igual un muy bajo contraste; y como los diferentes algoritmos dan resultados que mejoran tanto la calidad visual percibida como el valor de contraste promedio. Esto tambi\'en se ve reflejado en como se expanden los valores de intensidad por el histograma.
 
-Al fijarse en los histogramas de ambas figuras se puede comprobar como la ecualizaci\'on del histograma es la transformaci\'on es la m\'as fuerte, la transformaci\'on af\'in utilizando el modelo HLIP es la m\'as suave y la transformaci\'on af\'in utilizando el modelo SLIP ocupa un t\'ermino medio entra ambas. Esto adem\'as es confirmado por el valor de $C_p$ en ambos casos.
+Al fijarse en los histogramas de ambas figuras se puede comprobar como la ecualizaci\'on del histograma es la transformaci\'on m\'as fuerte, la transformaci\'on af\'in utilizando el modelo HLIP  es muy parecida a la transformaci\'on af\'in utilizando el modelo SLIP, aunque la del HLIP es un poco m\'as fuerte. Esto adem\'as es confirmado por el valor de $C_p$ en ambos casos.
 
 Una algoritmo muy bueno e interesante es la Ecualización Adaptativa Limitada por Contraste del Histograma (CLAHE) que tambi\'en aparece implementada en \verb|skimage.exposure|~\cite{module_exposure}. Este es un algoritmo para la mejora del contraste local, que utiliza histogramas calculados sobre diferentes regiones de mosaico de la imagen. Por lo tanto, los detalles locales se pueden mejorar incluso en regiones que son más oscuras o más claras que la mayoría de la imagen. Ser\'ia interesante implementar un algoritmo que siguiera esta idea de calcular los histogramas de manera local pero utilizando el algoritmo de transformaci\'on af\'in con los diferentes modelos.

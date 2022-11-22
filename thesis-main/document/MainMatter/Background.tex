@@ -1,6 +1,6 @@
 \chapter{Estado del Arte}\label{chapter:state-of-the-art}
 
-En este cap\'itulo se abordar\'a primeramente sobre los antecedentes matem\'aticos que dan soporte a los modelos no lineales. Luego se analizar\'a en profundidad algunos de los m\'as conocidos.
+En este cap\'itulo se abordar\'an primeramente los antecedentes matem\'aticos que dan soporte a los modelos no lineales. Luego se analizar\'an en profundidad algunos de los m\'as conocidos.
 
 \section{Antecedentes Matemáticos}
 
@@ -86,7 +86,7 @@ El Modelo Cl\'asico para el Procesamiento Logar\'itmico de Im\'agenes (LIP) fue 
 	v = M - u
 \end{equation}
 
-La escala de intensidad se invierte de manera que 0 representa la blancura o transparencia total y M representa la negrura u opacidad absoluta. En el modelo LIP, la operación de adición se define para sumar dos imágenes de luz transmitida. Físicamente, la adición de dos imágenes de luz transmitida sigue la ley de transmitancia clásica y no se puede alcanzar la negrura total. Como tal, la inversión de escala está justificada, porque el 0 corresponde a la transparencia total y es el elemento neutral para una suma matemática en este caso.
+La escala de intensidad se invierte de manera que 0 representa la blancura o transparencia total y M representa la negrura u opacidad absoluta. En el modelo LIP, la operación de adición se define para sumar dos imágenes de luz transmitida. Físicamente, la adición de dos imágenes de luz transmitida sigue la ley de transmitancia clásica y no se puede alcanzar la negrura total. Como tal, la inversión de escala está justificada, porque el 0 corresponde a la transparencia total y es, en esta caso, el elemento neutral para una suma matemática.
 
 El objetivo inicial del modelo LIP era definir una operación aditiva cerrada en el rango acotado de intensidad de números reales positivos $[0, M)$~\cite{jourlin1988model}, es decir, un cono lineal positivo $[0, M )$. La suma de dos tonos de gris $v_1$ y $v_2$ se define como:
 
@@ -102,8 +102,7 @@ y la multiplicación por un escalar real positivo $\lambda \in \mathbb{R}^+$ se 
 
 La suma $\oplus$ es asociativa, conmutativa y tiene un elemento identidad: 0. La multiplicaci\'on escalar $\otimes$ es asociativa, tiene elemento identidad:1 y la distributividad se mantiene para la multiplicación escalar sobre la suma $\oplus$ y para la multiplicación escalar en el espacio de los escalares.
 
-En orden de extender el el cono lineal positivo a un espacio vectorial el rango de tonos de gris es
-extendido de $[0,M)$ a $(-\infty,M]$~\cite{jourlin2016logarithmic}. Esto permiti\'o entonces extender la multiplicaci\'on por un escalar a cualquier n\'umero real $\lambda \in \mathbb{R}$, permitiendo a su vez definir el negativo y la resta como:
+En orden de extender el cono lineal positivo a un espacio vectorial el rango de tonos de gris es extendido de $[0,M)$ a $(-\infty,M]$~\cite{jourlin2016logarithmic}. Esto permiti\'o entonces extender la multiplicaci\'on por un escalar a cualquier n\'umero real $\lambda \in \mathbb{R}$, permitiendo a su vez definir el negativo y la resta como:
 
 \begin{equation}
 	\ominus v=-\frac{v}{1-\frac{v}{M}}
@@ -138,7 +137,7 @@ y su inversa se define como:
 	\phi^{-1}(x) = Me^{-\frac{x}{M}} 
 \end{equation}
 
-Las operaciones para el conjunto de im\'agenes $I(D,E):D\subset R^2$ se extienden de forma natural, aplicando la operaci\'on en cuesti\'on a cada pixel de la imagen (funci\'on de tono de gris, multiplicaci\'on escalar, funci\'on de isomorfismo, etc.) o parejas de pixeles que se encuentra en la misma posici\'on en dos im\'agenes diferentes (suma, resta, etc). 
+Las operaciones para el conjunto de im\'agenes $I(D,E):D\subset R^2$ se extienden de forma natural, aplicando la operaci\'on en cuesti\'on a cada p\'ixel de la imagen (funci\'on de tono de gris, multiplicaci\'on escalar, funci\'on de isomorfismo, etc.) o parejas de p\'ixeles que se encuentran en la misma posici\'on en dos im\'agenes diferentes (suma, resta, etc). 
 
 \section{Modelo HLIP}
 
@@ -372,3 +371,7 @@ Dado que el modelo SLIP se define desde el punto de vista del espacio vectorial,
 Además, el conjunto de señales se cierra bajo la operación de multiplicación escalar, es decir, $\lambda \otimes v \in (-M, M), \forall \lambda \in \mathbb{R}, \forall v \in (-M, M)$. La operación también es distributiva en que $\lambda \otimes (v_1\oplus v_2) = (\lambda \otimes v_1 )\oplus (\lambda\otimes v_2)$ y $\beta\otimes (\lambda\otimes v_1 ) = (\beta \cdot \lambda)\otimes v_1, \forall \beta, \lambda \in \mathbb{R} \land v_1 , v_2 \in (-M, M)$. Su elemento de identidad es 1, es decir, $1\otimes v = v $.
 
 Por lo tanto, el conjunto es cerrado para estas dos operaciones. Estas propiedades son esenciales para resolver el problema del fuera de rango. Además, es fácil demostrar que el valor negativo $w$ se define como $w = (-1)\otimes v$ y la operación de resta se puede definir como: $v_1\ominus v_2=v_1\oplus(-1)\otimes v_2$.
+
+\subsection{Relación matemática entre los modelos LIP y SLIP}
+
+Desde un punto de vista matemático, se puede ver claramente que cuando $v \in [0, M)$ las dos funciones generadoras $\varphi_{LIP}(v)$ y $\varphi_{SLIP}(v)$ son exactamente las mismas (sin tener en cuenta la inversi\'on de la escala de grises). Por lo tanto, el modelo SLIP($\odot$) es el mismo que el modelo LIP($\boxdot$) para el rango de valores de píxeles $[0, M)$. Sin embargo, difieren entre sí en la forma en que tratan los valores negativos.  Por ejemplo, cuando $\lambda < 0$ y $v > 0$, tenemos $\lambda\boxminus v \in (-\infty, 0)$ y $\lambda \otimes v \in (-M, 0)$. Del mismo modo, cuando $\infty < v_1 < v_2 < M$ se tiene $v_1 \boxminus v_2 \in (-\infty, 0)$ y cuando $-M < v_1 < v_2 < M$, se tiene $v_1\ominus v_2 \in (-M, 0)$. 
