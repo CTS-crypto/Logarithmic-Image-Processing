@@ -18,7 +18,7 @@ Dado un escalar, $\alpha \in K \subseteq \mathbb{R}$ , y dos elementos del conju
 
 Las ecuaciones (1.1) y (1.2) son las condiciones que debe cumplir un homomorfismo entre dos estructuras algebraicas similares. La admisi\'on de un inverso y la existencia de biyectividad indica la presencia de un isomorfismo.
 
-Ahora analicemos la ecuación (1.2). Mientras que $u$ puede ser cualquier elemento del conjunto de entrada finito $E$ , $\alpha$ es, típicamente, un escalar real positivo $(K=\mathbb{R}^+)$. Bajo la condición de biyectividad asumida, $\exists u_m: \varphi( u_m ) = inf( F )$ y respectivamente, $\exists u_M , \varphi ( u_M ) = sup( F )$ .
+Ahora analicemos la ecuación (1.2). Mientras que $u$ puede ser cualquier elemento del conjunto de entrada finito $E$ , $\alpha$ es, típicamente, un escalar real positivo $(K=\mathbb{R}^+)$.
 
 Con respecto a la restricción de biyectividad y la existencia de $\varphi^{-1}$, las leyes de definición están determinadas por:
 
@@ -238,7 +238,7 @@ Teniendo en cuenta que la función generativa es una biyección, con valores en 
 
 \section{Modelo PLIP}
 
-El Modelo Parametrizado Logar\'itmico para el Procesamiento de Im\'agenes fue propuesto por Karen Panetta~\cite{panetta2007parameterization}~\cite{panetta2010parameterized}. Este incluye los modelos LIP y lineal como instancias especiales y también abarca todos los casos intermedios en un solo modelo unificado.
+El Modelo Logar\'itmico Parametrizado para el Procesamiento de Im\'agenes(PLIP) fue propuesto por Karen Panetta~\cite{panetta2007parameterization}~\cite{panetta2010parameterized}. Este incluye los modelos LIP y lineal como instancias especiales y también abarca todos los casos intermedios en un solo modelo unificado.
 
 Las operaciones aritméticas hacen uso de una función de tono de gris parametrizada. Las operaciones PLIP se muestran en la Tabla 1.1.
 
@@ -276,7 +276,7 @@ Propiedades del modelo PLIP~\cite{panetta2010parameterized}:
 	\item Las operaciones en el modelo PLIP son iguales a las del modelo tradicional LIP cuando $\mu(M) = \gamma(M) = k(M) = \lambda(M) = M$ y
 	$\beta = 1$.
 	\item Las operaciones en el modelo PLIP se asemejan a las operaciones aritméticas lineales a medida que $\gamma(M),~k(M)$ y $\lambda(M)$ se aproximan al infinito y $\beta = 1$
-	\item Las operaciones PLIP pueden generar más casos entre los dos casos extremos del LIP y las operaciones aritméticas lineales cuando los parámetros $\mu, \gamma, k$ y $\lambda$ cambian dentro de $[M, +\infty)$, como se muestra en la Fig. 1.1.
+	\item Las operaciones PLIP pueden generar más casos entre los dos casos extremos del LIP y las operaciones aritméticas lineales cuando los parámetros $\mu, \gamma, k$ y $\lambda$ cambian dentro de $[M, +\infty)$, como se muestra en la Figura 1.1.
 	\item Se puede demostrar que las operaciones PLIP cumplen las leyes de asociatividad, conmutatividad, elemento identidad y las propiedades distributivas.
 \end{enumerate}
 
@@ -318,7 +318,7 @@ Las operaciones LIP están acotadas en la parte positiva $[0, M )$ e ilimitadas 
 	f \ominus g \in (-\infty,0]
 \end{equation}
 
-Esta propiedad conduce potencialmente al problema de fuera de rango. Para solucionar dicho problema un nuevo modelo sim\'etrico es presentado por Laurent Navarro y Guang Deng~\cite{navarro2013symmetric}: el Modelo Sim\'etrico Logar\'itmico para el Procesamiento de Im\'agenes (SLIP). 
+Esta propiedad conduce potencialmente al problema de fuera de rango. Para solucionar dicho problema un nuevo modelo sim\'etrico es presentado por Laurent Navarro y Guang Deng~\cite{navarro2013symmetric}: el Modelo Logar\'itmico Sim\'etrico para el Procesamiento de Im\'agenes (SLIP). 
 
 En el modelo SLIP, una imagen está representada por su función de nivel de gris asociada, denominada f, definida en el dominio espacial no vacío $D \in \mathbb{R}^2$ . Las funciones de nivel de gris se valoran en el intervalo simétrico acotado de números reales $(-M, M)$, donde M es estrictamente positivo, denominado rango de niveles de gris. Los elementos de $(-M, M )$ se denominan niveles de gris. $M$ representa la intensidad de luz máxima y $-M$ es la absorción de luz total.
 

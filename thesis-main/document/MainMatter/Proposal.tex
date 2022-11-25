@@ -25,7 +25,7 @@ En la tabla 2.1 se muestra una peque\~na comparaci\'on entre los modelos LIP y P
 	\end{center}
 \end{table}
 
-Como se puede apreciar en los ejemplos de la tabla 2.1 al ejercer la suma se pierde m\'as informaci\'on en el modelo PSLIP que en el modelo LIP. Por ende si para evitar la p\'erdida de informaci\'on en el modelo LIP se presenta un nuevo modelo parametrizado, tiene gran sentido parametrizar tambi\'en el modelo PSLIP para lograr este fin. Por eso como parte de este trabajo se presenta el Modelo Parametrizado Pseudo-logar\'imico para el Procesamiento de Im\'agenes (PPSLIP). Para lograr esto lo que se hizo fue parametrizar la funci\'on de cambio de nivel de gris $u$ a tono de gris $v$ y su inversa de la siguiente forma:
+Como se puede apreciar en los ejemplos de la tabla 2.1 al ejercer la suma se pierde m\'as informaci\'on en el modelo PSLIP que en el modelo LIP. Por ende si para evitar la p\'erdida de informaci\'on en el modelo LIP se presenta un nuevo modelo parametrizado, tiene gran sentido parametrizar tambi\'en el modelo PSLIP para lograr este fin. Por eso como parte de este trabajo se presenta el Modelo Pseudo-logar\'imico Parametrizado para el Procesamiento de Im\'agenes (PPSLIP). Para lograr esto lo que se hizo fue parametrizar la funci\'on de cambio de nivel de gris $u$ a tono de gris $v$ y su inversa de la siguiente forma:
 
 \begin{equation}
 	v=\frac{u}{\delta(M)}
@@ -102,7 +102,7 @@ El m\'odulo implementado cuenta con dos tipos de objetos fundamentales: las estr
 	\end{center}
 \end{figure}
 
-Para entender mejor la composici\'on del m\'odulo v\'ease el diagrama de clases de la Fig 2.1. Como se puede ver en esta figura se tiene una clase abstracta \verb|LogImage| de la cual heredan las clases \verb|LIPImage|, \verb|HLIPImage|, \verb|PSLIPImage| y \verb|SLIPImage|. Cada una de estas clases representa una imagen en los respectivos modelos: LIP, HLIP, PSLIP y SLIP. Los atributos de la clase padre son:
+Para entender mejor la composici\'on del m\'odulo v\'ease el diagrama de clases de la Figura 2.1. Como se puede ver en esta figura se tiene una clase abstracta \verb|LogImage| de la cual heredan las clases \verb|LIPImage|, \verb|HLIPImage|, \verb|PSLIPImage| y \verb|SLIPImage|. Cada una de estas clases representa una imagen en los respectivos modelos: LIP, HLIP, PSLIP y SLIP. Los atributos de la clase padre son:
 
 \begin{itemize}
 	\item \verb|M|: el valor de $M$ tal que los niveles de gris de los p\'ixeles de la imagen original se encuentran en el rango $[0,M)$.
@@ -135,7 +135,7 @@ Con las clases vistas anteriormente se puede transformar una imagen a otra image
 	\end{center}
 \end{figure}
 
-Para entender mejor la composici\'on del m\'odulo v\'ease el diagrama de clases de la Fig 2.2. Como se puede ver en esta figura se tiene una clase abstracta \verb|LogSpace| de la cual heredan las clases \verb|LIPSpace|, \verb|HLIPSpace|, \verb|PSLIPSpace|, \verb|SLIPSpace|, \verb|PLIPSpace| y \verb|PPSLIPSpace|. Cada una de estas clases contiene las respectivas operaciones de los respectivos modelos: LIP, HLIP, PSLIP, SLIP, PSLIP y PPSLIP. Los atributos de la clase padre son:
+Para entender mejor la composici\'on del m\'odulo v\'ease el diagrama de clases de la Figura 2.2. Como se puede ver en esta figura se tiene una clase abstracta \verb|LogSpace| de la cual heredan las clases \verb|LIPSpace|, \verb|HLIPSpace|, \verb|PSLIPSpace|, \verb|SLIPSpace|, \verb|PLIPSpace| y \verb|PPSLIPSpace|. Cada una de estas clases contiene las respectivas operaciones de los respectivos modelos: LIP, HLIP, PSLIP, SLIP, PSLIP y PPSLIP. Los atributos de la clase padre son:
 
 \begin{itemize}
 	\item \verb|__init__|: El constructor, con el que se inicializa el espacio con un valor de $M$. El espacio PLIP se inicializa adem\'as con los valores de $\mu,~\gamma,~k,~\lambda$ y $\beta$; y por su parte el espacio PPSLIP se inicializa, adem\'as de con el valor de $M$, con los valores de $\gamma,~k$ y $\lambda$.
