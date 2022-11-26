@@ -21,7 +21,7 @@ La función $\varphi$ define la estructura del modelo y asigna el conjunto de de
 
 Dado lo planteado anteriormente ser\'ia de gran utilidad contar con un \textit{framework} para la realizaci\'on de las operaciones b\'asicas utilizando los modelos anteriormente mencionados, as\'i como la comparaci\'on de los mismos en diferentes situaciones para poder conocer, seg\'un la situaci\'on, usar el m\'as adecuado para obtener los mejores resultados.
 
-Por este motivo uno de los objetivos de esta tesis es el dise\~no de un m\'odulo de Python donde se encuentren los modelos no lineales para el procesamiento que ser\'an abordados en este trabajo. En dicho m\'odulo aparecer\'an implementadas funcionalidades para transformar una imagen $f$ a su estructura algebraica correspondiente en el espacio deseado, lo cual permitir\'a realizar en dicho espacio las operaciones que se deseen. Tambi\'en aparecer\'a, por supuesto, para cada espacio, una funcionalidad que dada una estructura permita obtener su equivalente en el espacio original. En resumen para cada modelo se implementar\'an las funciones $\varphi$ y $\varphi^{-1}$, as\'i como la definici\'on de los operadores de las diferentes operaciones b\'asicas (suma, resta, multiplicaci\'on y potenciaci\'on).
+Por este motivo uno de los objetivos de esta tesis, es el dise\~no de un m\'odulo de Python donde se encuentren los modelos no lineales para el procesamiento que ser\'an abordados en este trabajo. En dicho m\'odulo aparecer\'an implementadas funcionalidades para transformar una imagen $f$ a su estructura algebraica correspondiente en el espacio deseado, lo cual permitir\'a realizar en dicho espacio las operaciones que se deseen. Tambi\'en aparecer\'a, por supuesto, para cada espacio, una funcionalidad que dada una estructura permita obtener su equivalente en el espacio original. En resumen para cada modelo se implementar\'an las funciones $\varphi$ y $\varphi^{-1}$, as\'i como la definici\'on de los operadores de las diferentes operaciones b\'asicas (suma, resta, multiplicaci\'on y potenciaci\'on).
 
 Otro objetivo es para cada uno de los modelos implementar las operaciones b\'asicas sin tener que pasar las im\'agenes a otro espacio. Es decir, seg\'un sea la operaci\'on, obtener resultados similares a si se hubieran transformado las im\'agenes al espacio en cuesti\'on, operado con dichas transformaciones y luego el resultado obtenido de dicha operaci\'on, transformarlo al espacio original. O sea que se implementar\'an las operaciones: $\oplus$, $\ominus$, $\otimes$, otras propias del modelo (como las funciones de cambio a tono de gris y cambio a nivel de gris en algunos de los modelos) y otras \'utiles como la curva del isomorfismo.
 
@@ -37,6 +37,8 @@ Para la realizaci\'on de cada uno de estos objetivos generales, se definen los s
 	\item Evaluaci\'on de los modelos como se describi\'o anteriormente.
 	\item Arribar a conclusiones sobre la eficacia y utilidad de estos modelos. 
 \end{enumerate}
+
+Esta tesis pertenece a acciones del proyecto ``Métodos numéricos para problemas en múltiples escalas''. Proyecto asociado al Programa Nacional de Ciencias Básicas, Código PN223LH010-003, Ministerio de Ciencia, Tecnología y Medio Ambiente (CITMA), Cuba, 2021-2023.
 
 \section*{Organizaci\'on del resto del documento}
 
