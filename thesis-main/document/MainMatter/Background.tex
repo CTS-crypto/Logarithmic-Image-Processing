@@ -18,7 +18,7 @@ Dado un escalar, $\alpha \in K \subseteq \mathbb{R}$ , y dos elementos del conju
 
 Las ecuaciones (1.1) y (1.2) son las condiciones que debe cumplir un homomorfismo entre dos estructuras algebraicas similares. La admisi\'on de un inverso y la existencia de biyectividad indica la presencia de un isomorfismo.
 
-Ahora analicemos la ecuación (1.2). Mientras que $u$ puede ser cualquier elemento del conjunto de entrada finito $E$ , $\alpha$ es, típicamente, un escalar real positivo $(K=\mathbb{R}^+)$.
+Ahora analicemos la ecuación (1.2). Mientras que $u$ puede ser cualquier elemento del conjunto de definici\'on acotado $E$ , $\alpha$ es, típicamente, un escalar real positivo $(K=\mathbb{R}^+)$.
 
 Con respecto a la restricción de biyectividad y la existencia de $\varphi^{-1}$, las leyes de definición están determinadas por:
 
@@ -100,9 +100,9 @@ y la multiplicación por un escalar real positivo $\lambda \in \mathbb{R}^+$ se 
 	\lambda \oplus v = M - M\left(1-\frac{v}{M}\right)^\lambda
 \end{equation}
 
-La suma $\oplus$ es asociativa, conmutativa y tiene un elemento identidad: 0. La multiplicaci\'on escalar $\otimes$ es asociativa, tiene elemento identidad:1 y la distributividad se mantiene para la multiplicación escalar sobre la suma $\oplus$ y para la multiplicación escalar en el espacio de los escalares.
+La suma $\oplus$ es asociativa, conmutativa y tiene un elemento identidad: 0. La multiplicaci\'on escalar $\otimes$ es asociativa, tiene elemento identidad: 1 y la distributividad se mantiene para la multiplicación escalar sobre la suma $\oplus$ y para la multiplicación escalar en el espacio de los escalares.
 
-En orden de extender el cono lineal positivo a un espacio vectorial el rango de tonos de gris es extendido de $[0,M)$ a $(-\infty,M]$~\cite{jourlin2016logarithmic}. Esto permiti\'o entonces extender la multiplicaci\'on por un escalar a cualquier n\'umero real $\lambda \in \mathbb{R}$, permitiendo a su vez definir el negativo y la resta como:
+En orden de extender el cono lineal positivo a un espacio vectorial el rango de tonos de gris es extendido de $[0,M)$ a $(-\infty,M)$~\cite{jourlin2016logarithmic}. Esto permiti\'o entonces extender la multiplicaci\'on por un escalar a cualquier n\'umero real $\lambda \in \mathbb{R}$, permitiendo a su vez definir el negativo y la resta como:
 
 \begin{equation}
 	\ominus v=-\frac{v}{1-\frac{v}{M}}
@@ -112,7 +112,7 @@ En orden de extender el cono lineal positivo a un espacio vectorial el rango de 
 	v_1 \ominus v_2 = \frac{v_1-v_2}{1-\frac{v_2}{M}}
 \end{equation}
 
-El conjunto tonos de gris en el rango $(-\infty, M)$ está relacionado con $\mathbb{R}$ a través del isomorfismo fundamental ~\cite{jourlin2016logarithmic} definido como:
+El conjunto tonos de gris en el rango $(-\infty, M)$ está relacionado con $\mathbb{R}$ a través del isomorfismo fundamental~\cite{jourlin2016logarithmic} definido como:
 
 \begin{equation}
 	\varphi(v) = -M\ln\left(1-\frac{v}{M}\right)
@@ -137,7 +137,7 @@ y su inversa se define como:
 	\phi^{-1}(x) = Me^{-\frac{x}{M}} 
 \end{equation}
 
-Las operaciones para el conjunto de im\'agenes $I(D,E):D\subset R^2$ se extienden de forma natural, aplicando la operaci\'on en cuesti\'on a cada p\'ixel de la imagen (funci\'on de tono de gris, multiplicaci\'on escalar, funci\'on de isomorfismo, etc.) o parejas de p\'ixeles que se encuentran en la misma posici\'on en dos im\'agenes diferentes (suma, resta, etc). 
+Las operaciones para el conjunto de im\'agenes $I(D,E):D\subset R^2$ se extienden de forma natural, aplicando la operaci\'on en cuesti\'on a cada p\'ixel de la imagen (funci\'on de cambio a tono de gris, multiplicaci\'on escalar, funci\'on de isomorfismo, etc.) o parejas de p\'ixeles que se encuentran en la misma posici\'on en dos im\'agenes diferentes (suma, resta, etc). 
 
 \section{Modelo HLIP}
 
@@ -147,9 +147,9 @@ El Modelo Homom\'orfico para el Procesamiento Logar\'itmico de Im\'agenes (HLIP)
 	v=\frac{2}{M}\left(u-\frac{M}{2}\right)
 \end{equation}
 
-En el conjunto de tonos de gris $E$ definiremos la suma $\oplus$ y la multiplicación escalar real $\otimes$.
+En el conjunto de tonos de gris $E$ se define la suma $\oplus$ y la multiplicación escalar real $\otimes$.
 
-$\forall v_1,_2 \in E$ la suma es definida por la siguiente relaci\'on:
+$\forall v_1,v_2 \in E$ la suma es definida por la siguiente relaci\'on:
 
 \begin{equation}
 	v_1 \oplus v_2=\frac{v_1+v_2}{1+v_1v_2}
@@ -158,7 +158,7 @@ donde las operaciones en el lado derecho se mantienen en $E$.
 
 El elemento neutro para la suma es $\theta = 0$. Cada elemento $v \in E$ tiene como opuesto al elemento $w = - v$ y esto verifica la siguiente ecuación: $v \oplus w = \theta$.
 
-La suma $\oplus$ es estable, asociativa, conmutativa, tiene un elemento neutro y cada elemento tiene un opuesto. Significa que esta operación establece en $E$ una estructura de grupo conmutativo.
+La suma $\oplus$ es asociativa, conmutativa, tiene un elemento neutro y cada elemento tiene un opuesto. Significa que esta operación establece en $E$ una estructura de grupo conmutativo.
 
 La resta puede ser tambi\'en definida como:
 
@@ -190,7 +190,7 @@ Las operaciones para el conjunto de im\'agenes $I(D,E):D\subset R^2$ se extiende
 
 \section{Modelo PSLIP}
 
-El Modelo Pseudo-logar\'itmico para el Procesamiento de Im\'agenes (PSLIP) fue propuesto por Costantin Vertan~\cite{vertan2008pseudo} y su aplicaci\'on principal es para la detecci\'on de bordes. En este modelo para alg\'un nivel de gris $u\in[0,M)$, la relaci\'on con su tono de gris $v$ correspondiente viene dada por:
+El Modelo Pseudo-logar\'itmico para el Procesamiento de Im\'agenes (PSLIP) fue propuesto por Costantin Vertan y otros autores~\cite{vertan2008pseudo}. Su aplicaci\'on principal es para la detecci\'on de bordes. En este modelo para alg\'un nivel de gris $u\in[0,M)$, la relaci\'on con su tono de gris $v$ correspondiente viene dada por:
 
 \begin{equation}
 	v = \frac{u}{M}
@@ -198,13 +198,13 @@ El Modelo Pseudo-logar\'itmico para el Procesamiento de Im\'agenes (PSLIP) fue p
 
 de donde $v\in[0,1)$
 
-Se define la suma de dos tonos de grises $v_1,v_2\in[0,1)$ como:
+Se define la suma de dos tonos de gris $v_1,v_2\in[0,1)$ como:
 
 \begin{equation}
 	v_1\oplus v_2=\frac{v_1 + v_2 - 2v_1v_2}{1-v_1v_2}
 \end{equation}
 
-mientras que la multiplicación de un tono de gris, $v$ con un escalar real, $\lambda \in \mathbb{R}$ es:
+mientras que la multiplicación de un tono de gris, $v$ con un escalar real positivo, $\lambda \in \mathbb{R}^+$ es:
 
 \begin{equation}
 	\lambda \otimes v = \frac{\lambda v}{1+(\lambda-1)v}
@@ -238,7 +238,7 @@ Teniendo en cuenta que la función generativa es una biyección, con valores en 
 
 \section{Modelo PLIP}
 
-El Modelo Logar\'itmico Parametrizado para el Procesamiento de Im\'agenes(PLIP) fue propuesto por Karen Panetta~\cite{panetta2007parameterization}~\cite{panetta2010parameterized}. Este incluye los modelos LIP y lineal como instancias especiales y también abarca todos los casos intermedios en un solo modelo unificado.
+El Modelo Logar\'itmico Parametrizado para el Procesamiento de Im\'agenes(PLIP) fue propuesto por Karen Panetta y otros autores~\cite{panetta2007parameterization}~\cite{panetta2010parameterized}. Este incluye los modelos LIP y lineal como instancias especiales y también abarca todos los casos intermedios en un solo modelo unificado.
 
 Las operaciones aritméticas hacen uso de una función de tono de gris parametrizada. Las operaciones PLIP se muestran en la Tabla 1.1.
 
@@ -255,7 +255,7 @@ Las operaciones aritméticas hacen uso de una función de tono de gris parametri
 			\hline
 			$v_1\boxminus v_2=\frac{v_1-v_2}{1-\frac{v_2}{M}}$ & $v_1\ominus v_2=\frac{v_1-v_2}{1-\frac{v_2}{k(M)}}$\\
 			\hline
-			$c\boxtimes v=M-M(1-\frac{v}{M})^c$ & $c\otimes v=\gamma(M)-\gamma(M)(1-\frac{v}{\gamma(M)})$\\
+			$c\boxtimes v=M-M(1-\frac{v}{M})^c$ & $c\otimes v=\gamma(M)-\gamma(M)(1-\frac{v}{\gamma(M)})^c$\\
 			\hline
 			$\varPhi(v)=-M\ln(1-\frac{v}{M})$ & $\varphi(v)=-\lambda(M)\ln^\beta(1-\frac{v}{\lambda(M)})$\\
 			\hline
@@ -265,9 +265,9 @@ Las operaciones aritméticas hacen uso de una función de tono de gris parametri
 	\end{center}
 \end{table}
 
-El valor de $\mu(M)$ utilizado para calcular la función de tono de gris podría depender de la imagen, como el valor máximo de la imagen, o podría ser un valor mayor, como $\mu(M)$ = 1026. También se observa que la suma y la multiplicación escalar usan la misma función $\lambda(M)$. Esto se debe a que la multiplicación escalar es una extensión de la suma, sumando la imagen a sí misma c veces.
+El valor de $\mu(M)$ utilizado para calcular la función de tono de gris podría depender de la imagen, como el valor máximo de la imagen, o podría ser un valor mayor, como $\mu(M) = 1026$. También se observa que la suma y la multiplicación escalar usan la misma función $\lambda(M)$. Esto se debe a que la multiplicación escalar es una extensión de la suma, sumando la imagen a sí misma $c$ veces ($c>0$).
 
-Además, se propone un coeficiente exponencial $\beta$ a la función fundamental del isomorfismo $\varphi$. Al agregar este coeficiente exponencial $\beta$, podemos ajustar la sensibilidad al extremo oscuro del rango de intensidad de píxeles ($\beta$ pequeño) o al extremo brillante del rango de intensidad de píxeles de $[0, M)$ ($\beta$ grande).
+Además, se propone un coeficiente exponencial $\beta>0$ a la función fundamental del isomorfismo $\varphi$. Al agregar este coeficiente exponencial $\beta$, podemos ajustar la sensibilidad al extremo oscuro del rango de intensidad de píxeles ($\beta$ pequeño) o al extremo brillante del rango de intensidad de píxeles de $[0, M)$ ($\beta$ grande).
 
 Propiedades del modelo PLIP~\cite{panetta2010parameterized}:
 
@@ -358,14 +358,14 @@ La multiplicación por un escalar $\lambda (\lambda \in \mathbb{R})$ se define c
 	\lambda \otimes v = Msgn(\lambda v)=\left[1-\left(1-\frac{|v|}{M}\right)^{|\lambda|}\right]
 \end{equation}
 
-Dado que el modelo SLIP se define desde el punto de vista del espacio vectorial, su operación de suma satisface los siguientes axiomas de grupos abelianos:
+Dado que el modelo SLIP se define desde el punto de vista del espacio vectorial, su operación de suma $\otimes$ satisface los siguientes axiomas de grupos abelianos:
 
 \begin{enumerate}
-	\item El espacio se cierra bajo la operación, es decir, $v_1\oplus v_2 \in (-M, M ) \forall v_1, v_2 \in (-M, M )$.
+	\item El espacio se cierra bajo la operación, es decir, $v_1\oplus v_2 \in (-M, M )~\forall v_1, v_2 \in (-M, M )$.
 	\item La operación es asociativa.
 	\item La operación es conmutativa
 	\item El elemento identidad es $0$ tal que $0\oplus v = v$.
-	\item  Existe un opuesto $w \forall v \in (-M, M ): v \oplus w = 0$.  Se puede demostrar fácilmente que $w = (-1)\otimes v = -v $.
+	\item  Existe un opuesto $w, \forall v \in (-M, M ): v \oplus w = 0$.  Se puede demostrar fácilmente que $w = (-1)\otimes v = -v $.
 \end{enumerate}
   
 Además, el conjunto de señales se cierra bajo la operación de multiplicación escalar, es decir, $\lambda \otimes v \in (-M, M), \forall \lambda \in \mathbb{R}, \forall v \in (-M, M)$. La operación también es distributiva en que $\lambda \otimes (v_1\oplus v_2) = (\lambda \otimes v_1 )\oplus (\lambda\otimes v_2)$ y $\beta\otimes (\lambda\otimes v_1 ) = (\beta \cdot \lambda)\otimes v_1, \forall \beta, \lambda \in \mathbb{R} \land v_1 , v_2 \in (-M, M)$. Su elemento de identidad es 1, es decir, $1\otimes v = v $.
@@ -374,4 +374,4 @@ Por lo tanto, el conjunto es cerrado para estas dos operaciones. Estas propiedad
 
 \subsection{Relación matemática entre los modelos LIP y SLIP}
 
-Desde un punto de vista matemático, se puede ver claramente que cuando $v \in [0, M)$ las dos funciones generadoras $\varphi_{LIP}(v)$ y $\varphi_{SLIP}(v)$ son exactamente las mismas (sin tener en cuenta la inversi\'on de la escala de grises). Por lo tanto, el modelo SLIP($\odot$) es el mismo que el modelo LIP($\boxdot$) para el rango de valores de píxeles $[0, M)$. Sin embargo, difieren entre sí en la forma en que tratan los valores negativos.  Por ejemplo, cuando $\lambda < 0$ y $v > 0$, tenemos $\lambda\boxminus v \in (-\infty, 0)$ y $\lambda \otimes v \in (-M, 0)$. Del mismo modo, cuando $\infty < v_1 < v_2 < M$ se tiene $v_1 \boxminus v_2 \in (-\infty, 0)$ y cuando $-M < v_1 < v_2 < M$, se tiene $v_1\ominus v_2 \in (-M, 0)$. 
+Desde un punto de vista matemático, se puede ver claramente que cuando $v \in [0, M)$ las dos funciones generadoras $\varphi_{LIP}(v)$ y $\varphi_{SLIP}(v)$ son exactamente las mismas (sin tener en cuenta la inversi\'on de la escala de grises). Por lo tanto, el modelo SLIP($\odot$) es el mismo que el modelo LIP($\boxdot$) para el rango de valores de píxeles $[0, M)$. Sin embargo, difieren entre sí en la forma en que tratan los valores negativos.  Por ejemplo, cuando $\lambda < 0$ y $v > 0$, tenemos $\lambda\boxminus v \in (-\infty, 0)$ y $\lambda \otimes v \in (-M, 0)$. Del mismo modo, cuando $-\infty < v_1 < v_2 < M$ se tiene $v_1 \boxminus v_2 \in (-\infty, 0)$ y cuando $-M < v_1 < v_2 < M$, se tiene $v_1\ominus v_2 \in (-M, 0)$. 
