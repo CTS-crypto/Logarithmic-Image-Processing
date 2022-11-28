@@ -2,7 +2,7 @@
 
 \section{Detalles de implementaci\'on}
 
-En esta secci\'on se abordar\'an algunos detalles que se tuvieron en cuenta a la hora de implementar este m\'odulo.
+En esta secci\'on se abordan algunos detalles que se tuvieron en cuenta a la hora de implementar el m\'odulo propuesto.
 
 \subsection{Modelos}
 
@@ -22,7 +22,7 @@ En el archivo ``emee.py'' se encuentran dos funciones: \verb|emee| y \verb|find_
 La funci\'on \verb|find_min_max| se utiliza para calcular el menor y mayor valor de intensidad de un bloque. Da como salida una tupla con dichos valores en ese orden y recibe una imagen y 4 enteros: $n_1,n_2,m_1,m_2$, tal que $(n_1,m_1)$ son las coordenadas donde inicia el bloque y; $n_2$ y $m_2$ son la dimensi\'on horizontal y vertical del bloque, respectivamente.
 
 \subsubsection{Contraste Promedio}
-En el archivo ``contrast\_pixel.py'' se encuentran tres funciones. La primera funci\'on \verb|abs_contrast_2_pixels| se utiliza para calcular el contraste absoluto entre 2 p\'ixeles. Recibe dos tuplas de 3 elementos, tal que cada una representa un p\'ixel (las coordenadas y el valor de intensidad del p\'ixel), y el valor de $M$. La segunda funci\'on \verb|contras_pixel| calcula el contraste de un p\'ixel en una imagen; recibe como par\'ametros una tupla que representa al p\'ixel, la imagen, el valor de $M$ y un valor $v$ que indica el radio de la vecindad a considerarse. 
+En el archivo ``contrast\_pixel.py'' se encuentran tres funciones. La primera funci\'on \verb|abs_contrast_2_pixels| se utiliza para calcular el contraste absoluto entre 2 p\'ixeles. Recibe dos tuplas de 3 elementos, tal que cada una representa un p\'ixel (las coordenadas y el valor de intensidad del p\'ixel), y el valor de $M$. La segunda funci\'on \verb|contrast_pixel| calcula el contraste de un p\'ixel en una imagen; recibe como par\'ametros una tupla que representa al p\'ixel, la imagen, el valor de $M$ y un valor $v$ que indica el radio de la vecindad a considerarse. 
 
 La \'ultima funci\'on \verb|contrast_img| da como salida el contraste promedio de un p\'ixel en una imagen, o sea $C_p$. Esta funci\'on recibe como par\'ametros la imagen, el valor de $M$ y el radio de la vecindad que se debe tener en cuenta alrededor de un p\'ixel. Como calcular el contraste para cada p\'ixel de una imagen es un proceso que puede demorar seg\'un el tama\~no de la imagen, se tom\'o la decisi\'on de, para im\'agenes cuya resoluci\'on fuese mayor que $300\times300$, escoger un subconjunto de p\'ixeles. El criterio para escoger dichos p\'ixeles fue el siguiente:
 
@@ -58,6 +58,8 @@ El archivo ``affine\_transform.py'' contiene a \verb|space_affine_transform| com
 Para los experimentos que a continuaci\'on se muestran se utilizaron im\'agenes en escala de gris de 8 bits, o sea, que los valores de intensidad de los p\'ixeles son n\'umeros enteros en el intervalo $[0,255]$. Aqu\'i es importante aclarar que los modelos trabajan y dan resultados utilizando n\'umeros de tipo \textit{float64}. Para la visualizaci\'on y almacenamiento de las im\'agenes, \verb|skimage|, primero reescala los valores de intensidad de las im\'agenes a n\'umeros flotantes entre $[0,1]$, haciendo \textit{stretching}, utilizando como extremos los valores de menor y mayor intensidad presentes en la imagen. Luego la imagen se lleva a la escala de enteros de 8 bits para mostrar y guardar la imagen~\cite{image_data_types_and_what_they_mean}.
 
 Para la realizaci\'on de los an\'alisis estad\'isticos se confeccionaron tres \textit{datasets} de im\'agenes. El primero se compone de varias im\'agenes naturales separadas en diferentes grupos, tal que si dos im\'agenes pertenecen a un mismo grupo, estas tienen la misma resoluci\'on. Estas im\'agenes se utilizaron para el experimento de la suma, donde las im\'agenes de un mismo grupo se sumaron utilizando los diferentes modelos. En total, se formaron 774 parejas. El segundo \textit{dataset} es un conjunto de 200 im\'agenes naturales. El tercer \textit{dataset} es un conjunto de 200 im\'agenes m\'edicas de radiograf\'ias de t\'orax, tanto de frente como de perfil. Estos dos \'ultimos \textit{datasets} se utilizaron para el estudio de los diferentes algoritmos utilizando los diferentes modelos.
+
+Las im\'agenes naturales se obtuvieron del sitio~\cite{coco}, mientras que las im\'agenes m\'edicas se obtuvieron en~\cite{chestxrays}.
 
 En cada uno de los diferentes experimentos, primero, se muestran y analizan dos ejemplos y, luego, se presentan estad\'isticas del estudio realizado.
 
@@ -96,7 +98,7 @@ En las Figuras 3.2 y 3.3 se pueden observar varias curvas del modelo PLIP y PPSL
 	\end{center}
 \end{figure}
 
-\subsection{Suma de im\'agenes}
+\subsection{Suma de Im\'agenes}
 
 \subsubsection{Ejemplos}
 
@@ -156,20 +158,20 @@ Una de las formas m\'as utilizadas para la fusi\'on de im\'agenes es la suma de 
 	\end{center}
 \end{figure}
 
-En la Figura 3.5 se muestra la suma de la imagen ``Playa'' y la imagen ''Patineta'' utilizando los diferentes modelos. En esta figura se puede apreciar que el mejor valor de contraste promedio $C_p$ es el del modelo LIP. Adem\'as, se puede apreciar que las im\'agenes dadas por los modelos SLIP y PSLIP son im\'agenes claras, mientras que para el modelo LIP esta es m\'as oscura. Esto es l\'ogico debido a que en el modelo LIP, se invierte la escala de gris, mientras que en los dos antes mencionados esto no ocurre. El modelo HLIP muestra un comportamiento balanceado, como era de esperarse debido a su simetr\'ia. Dado que el modelo LIP es que el mejor resultado obtuvo, en consecuencia el modelo PLIP se comporta como este, mientras que al dar, el modelo PSLIP un valor de contraste peor al del modelo lineal, es l\'ogico que este tienda a la linealidad.
+En la Figura 3.5 se muestra la suma de la imagen ``Playa'' y la imagen ''Patineta'' utilizando los diferentes modelos. En esta figura se puede apreciar que el mejor valor de contraste promedio $C_p$ es el del modelo LIP. Adem\'as, se puede apreciar que las im\'agenes dadas por los modelos SLIP y PSLIP son im\'agenes claras, mientras que para el modelo LIP esta es m\'as oscura. Esto es l\'ogico debido a que en el modelo LIP, se invierte la escala de gris, mientras que en los dos antes mencionados esto no ocurre. El modelo HLIP muestra un comportamiento balanceado, como era de esperarse debido a su simetr\'ia. Dado que el modelo LIP es que el mejor resultado obtuvo, en consecuencia el modelo PLIP se comporta como este, mientras que al dar, el modelo PSLIP un valor de contraste peor al del modelo lineal, es l\'ogico que el modelo PPSLIP tienda a la linealidad.
 
-Para determinar los par\'ametros de $\gamma(M)$ y $\mu(M)$ en el modelo PLIP, se aplic\'o el cambio a tonos de gris utilizando el valor de $M=256$. Luego, se prob\'o la suma con diferentes valores de $\gamma(M)$ (256, 300, 1026 y 4100) y, por cada uno, se probaron varios valores de $\mu(M)$ para cambiar a niveles de grises. Para determinar el mejor valor de $\mu(M)$ para cada $\gamma(M)$ se utiliz\'o la m\'etrica EMEE. Despu\'es, se calcul\'o el valor de $C_p$ para cada pareja y el mejor valor se obtuvo para $\mu(M)=256$ y $\gamma(M)=256$. Para determinar el mejor valor de $\gamma(M)$ para el modelo PPSLIP se realiz\'o la operaci\'on de suma utilizando diferentes par\'ametros y se determin\'o el mejor utilizando el valor de $C_p$, el resultado fue de $\gamma(M)=4100$. 
+Para determinar los par\'ametros de $\gamma(M)$ y $\mu(M)$ en el modelo PLIP, se aplic\'o el cambio a tonos de gris utilizando el valor de $M=256$. Luego, se prob\'o la suma con diferentes valores de $\gamma(M)$ (256, 300, 1026 y 4100) y, por cada uno, se probaron varios valores de $\mu(M)$ para cambiar a niveles de gris. Para determinar el mejor valor de $\mu(M)$ para cada $\gamma(M)$ se utiliz\'o la m\'etrica EMEE. Despu\'es, se calcul\'o el valor de $C_p$ para cada pareja y el mejor valor se obtuvo para $\mu(M)=256$ y $\gamma(M)=256$. Para determinar el mejor valor de $\gamma(M)$ para el modelo PPSLIP se realiz\'o la operaci\'on de suma utilizando diferentes par\'ametros y se determin\'o el mejor utilizando el valor de $C_p$, el resultado fue de $\gamma(M)=4100$. 
 
 En la Figura 3.6 se puede observar otro ejemplo de la suma. En este caso el modelo LIP obtuvo una imagen muy oscura, mientras que el modelo lineal ofrece una m\'as clara. M\'as claras a\'un y con mejor valor de $C_p$ son las im\'agenes obtenidas por los modelos PSLIP y SLIP. Se vuelve a apreciar el balance en el modelo HLIP, dando una imagen donde se combinan en gran medida los negros y los blancos, dando el mejor valor de $C_p$. En este caso el modelo PLIP tendi\'o a la linealidad para lograr un mejor valor de $C_p$, mientras que por su parte el modelo PPSLIP se asemej\'o al modelo PSLIP.
 
-Con estos experimentos ya se observa lo que te\'oricamente se esperaba: la sensibilidad del modelo PLIP hacia los niveles de gris m\'as oscuros, la sensibilidad de los modelos PSLIP y SLIP hacia los niveles de gris m\'as claros y el balance entre ambos que muestra el modelo HLIP dado su car\'acter sim\'etrico. Aqu\'i aclarar que el modelo SLIP, aunque tambi\'en es sim\'etrico, una imagen transformada a este modelo no se expande por toda la escala de gris del modelo, como si ocurre en el HLIP, a no ser que se haga esto manualmente. Tambi\'en se puede apreciar como los modelos parametrizados utilizan los par\'ametros buscando la linealidad, para, en el caso del PLIP obtener una imagen m\'as clara, y para el caso del PPSLIP obtener una imagen m\'as oscura. 
+Con estos experimentos ya se observa lo que te\'oricamente se esperaba: la sensibilidad del modelo LIP hacia los niveles de gris m\'as oscuros, la sensibilidad de los modelos PSLIP y SLIP hacia los niveles de gris m\'as claros y el balance entre ambos que muestra el modelo HLIP dado su car\'acter sim\'etrico. Aqu\'i aclarar que el modelo SLIP, aunque tambi\'en es sim\'etrico, una imagen transformada a este modelo no se expande por toda la escala de gris del modelo, como si ocurre en el HLIP, a no ser que se haga esto manualmente. Tambi\'en se puede apreciar como los modelos parametrizados utilizan los par\'ametros buscando la linealidad, para, en el caso del PLIP obtener una imagen m\'as clara, y para el caso del PPSLIP obtener una imagen m\'as oscura. 
 
 \subsubsection{Estad\'isticas}
 
 \begin{figure}[h]
 	\begin{center}
 		\includegraphics[width=10.0 cm]{images/graphics/sum_all.png}
-		\caption{Diagramas de caja para la medida $C_P$ de los diferentes modelos para la operaci\'on suma utilizando im\'agenes naturales}
+		\caption{Diagramas de caja para la medida $C_p$ para la operaci\'on suma de los diferentes modelos utilizando im\'agenes naturales}
 	\end{center}
 \end{figure}
 
@@ -194,11 +196,11 @@ Con estos experimentos ya se observa lo que te\'oricamente se esperaba: la sensi
 			PPSLIP & $5.35$ & $5.20$\\
 			\hline
 		\end{tabular}
-		\caption{Media y mediana para la operaci\'on suma de los diferentes modelos utilizando im\'agenes naturales.}
+		\caption{Media y mediana del valor de $C_p$ para la operaci\'on suma de los diferentes modelos utilizando im\'agenes naturales.}
 	\end{center}
 \end{table}
 
-En la Figura 3.7 y en la Tabla 3.1 se puede ver una comparaci\'on de la suma de dos im\'agenes utilizando los diferentes modelos, usando la medida $C_p$. Se aprecia que los modelos lineal y LIP presentan un desempe\~no un tanto similar y el SLIP fue un tanto superior a ambos. Estos nos ilustra que en el conjunto de datos utilizado en los experimentos, las im\'agenes presentan un balance entre tonalidades oscuras y claras, aunque con una mayor presencia de tonalidades oscuras, pero sin que exista una diferencia considerable. Por esto el mejor resultado se obtiene para el modelo HLIP, que gracias a su simetr\'ia permite obtener im\'agenes de mayor contraste. Este modelo muestra un valor de $Cp$ promedio de $7.73$ y para el el $50\%$ de los datos se obtiene un valor superior o igual a $7.59$. Obs\'ervese que los modelos parametrizados dan mejores resultados que el lineal y sus modelos no parametrizados correspondientes, por lo que se se puede concluir que la parametrizaci\'on result\'o \'util.  
+En la Figura 3.7 y en la Tabla 3.1 se puede ver una comparaci\'on de la suma de dos im\'agenes utilizando los diferentes modelos, usando la medida $C_p$. Se aprecia que los modelos lineal y LIP presentan un desempe\~no un tanto similar y el SLIP fue un tanto superior a ambos. Estos nos ilustra que en el conjunto de datos utilizado en los experimentos, las im\'agenes presentan un balance entre tonalidades oscuras y claras, aunque con una mayor presencia de tonalidades oscuras, pero sin que exista una diferencia considerable. Por esto el mejor resultado se obtiene para el modelo HLIP, que gracias a su simetr\'ia permite obtener im\'agenes de mayor contraste. Este modelo muestra un valor de $Cp$ promedio de $7.73$ y para el el $50\%$ de los datos se obtiene un valor superior o igual a $7.59$. Obs\'ervese que los modelos parametrizados dan mejores resultados que el lineal y sus modelos no parametrizados correspondientes, por lo que se puede concluir que la parametrizaci\'on result\'o \'util.  
 
 \subsection{Detecci\'on de Bordes}
 
@@ -258,11 +260,11 @@ En estos experimentos se utilizaron las im\'agenes: C\'amara y T\'orax 1 que se 
 	\end{center}
 \end{figure} 
 
-Como se puede ver en la Figura 3.9, el modelo lineal se queda bastante rezagado con respecto a los modelos no lineales en cuanto al contraste promedio $C_p$. Esto adem\'as lo evidencia que el modelo PLIP arroj\'o un resultado similar al modelo LIP. Otro detalle es que el modelo LIP detect\'o mejor los bordes en las tonalidades m\'as oscuras, mientras que el SLIP hizo lo propio para las tonalidades m\'as claras. El modelo HLIP, por su parte, dio un resultado m\'as balanceado alcanzando un valor de $C_p$ superior a los anteriores. Para este caso, el mejor resultado se obtuvo utilizando el modelo PSLIP, lo cual se puede comprobar visualmente y mediante el valor de $C_p$, esto gracias a la gran sensibilidad de este modelo a las tonalidades m\'as claras, lo cual era de esperarse al ver la curva de dicho isomorfismo. Dado que este fue el mejor resultado, por ende, el modelo PPSLIP coincide con este. Aunque el PSLIP da muy buenos resultados se puede apreciar que para las tonalidades oscuras es superado por el LIP y el HLIP, una soluci\'on a esto pudiera ser invertir la escala de grises tal como se hace en el modelo LIP, aunque se perder\'ia la gran sensibilidad a tonalidades claras. Otra soluci\'on para mantener la sensibilidad hacia ambas tonalidades ser\'ia hacer este modelo sim\'etrico. Adem\'as se debe tener cuidado al usarlo ya que por su alta sensibilidad, esto lo hace tambi\'en muy sensible al ruido.
+Como se puede ver en la Figura 3.9, el modelo lineal se queda bastante rezagado con respecto a los modelos no lineales en cuanto al contraste promedio $C_p$. Esto adem\'as lo evidencia que el modelo PLIP obtuvo un resultado similar al modelo LIP. Otro detalle es que el modelo LIP detect\'o mejor los bordes en las tonalidades m\'as oscuras, mientras que el SLIP hizo lo propio para las tonalidades m\'as claras. El modelo HLIP, por su parte, dio un resultado m\'as balanceado alcanzando un valor de $C_p$ superior a los anteriores. Para este caso, el mejor resultado se obtuvo utilizando el modelo PSLIP, lo cual se puede comprobar visualmente y mediante el valor de $C_p$, esto gracias a la gran sensibilidad de este modelo a las tonalidades m\'as claras, lo cual era de esperarse al ver la curva de dicho isomorfismo. Dado que este fue el mejor resultado, por ende, el modelo PPSLIP coincide con este. Aunque el PSLIP da muy buenos resultados se puede apreciar que para las tonalidades oscuras es superado por el LIP y el HLIP, una soluci\'on a esto pudiera ser invertir la escala de grises tal como se hace en el modelo LIP, aunque se perder\'ia la gran sensibilidad a tonalidades claras. Otra soluci\'on para mantener la sensibilidad hacia ambas tonalidades ser\'ia hacer este modelo sim\'etrico. Adem\'as se debe tener cuidado al usarlo ya que por su alta sensibilidad, esto lo hace tambi\'en muy sensible al ruido.
 
 En este experimento los par\'ametros a estimar fueron $\lambda(M)$ para PLIP y PPSLIP, adem\'as de $\mu(M)$ en el caso de PLIP. La selecci\'on de estos par\'ametros se hizo de una forma similar a la explicada para la suma, lo que obviamente aplicada a la funci\'on del isomorfismo.
 
-Un uso muy pr\'actico de los filtros para la detecci\'on de bordes es en las im\'agenes m\'edicas. Como se dijo anteriormente, un ejemplo de estos se puede apreciar en la Figura 3.10 utilizando los diferentes modelos. En este ejemplo, se puede apreciar visualmente c\'omo todos los modelos no lineales superan al modelo lineal, lo cual es confirmado por el valor de $C_p$. Al ser una imagen donde predominan las tonalidades claras, es l\'ogico que el modelo LIP arroje los peores resultados, seguido del modelo HLIP. El SLIP alcanza un muy buen resultado, pero es superado en gran medida por el modelo PSLIP (y por ende el PPSLIP), dando una imagen muy detallada y de muy buena calidad. El valor de $C_p$ confirma esta apreciaci\'on visual.
+Un uso muy pr\'actico de los filtros para la detecci\'on de bordes es en las im\'agenes m\'edicas. Como se dijo anteriormente, un ejemplo de estos se puede apreciar en la Figura 3.10 utilizando los diferentes modelos. En este ejemplo, se puede apreciar visualmente c\'omo todos los modelos no lineales superan al modelo lineal, lo cual es confirmado por el valor de $C_p$. Al ser una imagen donde predominan las tonalidades claras, es l\'ogico que el modelo LIP obtenga los peores resultados, seguido del modelo HLIP. El SLIP alcanza un muy buen resultado, pero es superado en gran medida por el modelo PSLIP (y por ende el PPSLIP), dando una imagen muy detallada y de muy buena calidad. El valor de $C_p$ confirma esta apreciaci\'on visual.
 
 \subsubsection{Estad\'isticas}
 
@@ -271,7 +273,7 @@ En la Figura 3.11 y la Tabla 3.2 se ofrece una comparativa utilizando los difere
 \begin{figure}[h]
 	\begin{center}
 		\includegraphics[width=10.0 cm]{images/graphics/natural/ed/ed_all.png}
-		\caption{Diagramas de caja para la medida $C_P$ utilizando los diferentes modelos para la detecci\'on de bordes en im\'agenes naturales.}
+		\caption{Diagramas de caja para la medida $C_p$ utilizando los diferentes modelos para la detecci\'on de bordes en im\'agenes naturales.}
 	\end{center}
 \end{figure}
 
@@ -305,7 +307,7 @@ En la Figura 3.11 y la Tabla 3.2 se ofrece una comparativa utilizando los difere
 \begin{figure}[h]
 	\begin{center}
 		\includegraphics[width=10.0 cm]{images/graphics/torax/ed/ed_all.png}
-		\caption{Diagramas de caja para la medida $C_P$ utilizando los diferentes modelos para la detecci\'on de bordes en im\'agenes de radiograf\'ias de t\'orax.}
+		\caption{Diagramas de caja para la medida $C_p$ utilizando los diferentes modelos para la detecci\'on de bordes en im\'agenes de radiograf\'ias de t\'orax.}
 	\end{center}
 \end{figure}
 
@@ -405,7 +407,7 @@ En la Figura 3.14 si bien todos los modelos resaltan en alguna medida los bordes
 \begin{figure}
 	\begin{center}
 		\includegraphics[width=10.0 cm]{images/graphics/natural/unsharp_masking/um_all.png}
-		\caption{Diagramas de caja para la medida $C_P$ utilizando los diferentes modelos para el algoritmo \textit{unsharp masking} en im\'agenes naturales.}
+		\caption{Diagramas de caja para la medida $C_p$ utilizando los diferentes modelos para el algoritmo \textit{unsharp masking} en im\'agenes naturales.}
 	\end{center}
 \end{figure}
 
@@ -443,7 +445,7 @@ En la Figura 3.15 y la Tabla 3.4 se puede apreciar una comparaci\'on de este alg
 \begin{figure}
 	\begin{center}
 		\includegraphics[width=10.0 cm]{images/graphics/torax/unsharp_masking/um_all.png}
-		\caption{Diagramas de caja para la medida $C_P$ utilizando los diferentes modelos para el algoritmo \textit{unsharp masking} en im\'agenes de radiograf\'ias de t\'orax.}
+		\caption{Diagramas de caja para la medida $C_p$ utilizando los diferentes modelos para el algoritmo \textit{unsharp masking} en im\'agenes de radiograf\'ias de t\'orax.}
 	\end{center}
 \end{figure}
 
@@ -478,9 +480,9 @@ En la Figura 3.15 y la Tabla 3.4 se puede apreciar una comparaci\'on de este alg
 
 En la Figura 3.16 y la Tabla 3.5 se puede apreciar una comparaci\'on de este algoritmo en im\'agenes de radiograf\'ias de t\'orax. Aqu\'i se observa que aunque el modelo HLIP  utilizando fusi\'on por suma, sigue ofreciendo resultados destacables; el mejor desempe\~no corresponde al modelo PPSLIP propuesto el cual aprovecha la sensibilidad del modelo PSLIP para detectar bordes, la cual mejora incluso, con la ayuda de la parametrizaci\'on, y adem\'as utiliza esta para realizar la suma resolviendo el problema del d\'ebil desempe\~no que s\'i presenta el modelo PSLIP para esta operaci\'on. Para el modelo PPSLIP se obtiene un valor de $C_p$ promedio de $3.00$, dando un valor igual o superior a $2.94$ para el $50\%$ de los casos.
 
-\subsection{Transformaci\'on af\'in}
+\subsection{Transformaci\'on Af\'in}
 
-A continuaci\'on se presentan los experimentos basados en la modificaci\'on del histograma. Espec\'ificamente se analizar\'a la ecualizaci\'on del histograma que extiende los valores de intensidad más frecuentes y ya viene implementada el m\'odulo \verb|skimage.exposure|~\cite{histogram_equalization}. Aunque si bien la ecualización del histograma tiene la ventaja de que no requiere parámetros, a veces produce imágenes de aspecto poco natural. El otro algoritmo analizado es el de transformaci\'on af\'in utilizando los modelos HLIP y SLIP. Para el caso del modelo SLIP, antes de aplicar la transformaci\'on af\'in, primero se extiende la imagen por todo el rango de valores $(-M,M)$, utilizando la transformaci\'on lineal $2f-M\cdot\frac{255}{256}$ donde $f$ es una imagen. Esta transformaci\'on se hizo para aprovechar todo el rango de valores del modelo SLIP y obtener mejores resultados, pero no es algo inherente al modelo. Esta es una de las ventajas que tiene usar los modelos definidos desde un punto de vista matem\'atico. 
+A continuaci\'on se presentan los experimentos basados en la modificaci\'on del histograma. Espec\'ificamente se analiza la ecualizaci\'on del histograma que extiende los valores de intensidad más frecuentes y ya viene implementada el m\'odulo \verb|skimage.exposure|~\cite{histogram_equalization}. Aunque si bien la ecualización del histograma tiene la ventaja de que no requiere parámetros, a veces produce imágenes de aspecto poco natural. El otro algoritmo analizado es el de transformaci\'on af\'in utilizando los modelos HLIP y SLIP. Para el caso del modelo SLIP, antes de aplicar la transformaci\'on af\'in, primero se extiende la imagen por todo el rango de valores $(-M,M)$, utilizando la transformaci\'on lineal $2f-M\cdot\frac{255}{256}$ donde $f$ es una imagen. Esta transformaci\'on se hizo para aprovechar todo el rango de valores del modelo SLIP y obtener mejores resultados, pero no es algo inherente al modelo. Esta es una de las ventajas que tiene usar los modelos definidos desde un punto de vista matem\'atico. 
 
 \subsubsection{Ejemplos}
 
@@ -541,7 +543,7 @@ Al fijarse en los histogramas de ambas figuras se puede comprobar como la ecuali
 \begin{figure}[h]
 	\begin{center}
 		\includegraphics[width=10.0 cm]{images/graphics/natural/affine_transform/eq_all.png}
-		\caption{Diagramas de caja para la medida $C_P$ utilizando los diferentes algoritmos para la modificaci\'on del histograma en im\'agenes naturales.}
+		\caption{Diagramas de caja para la medida $C_p$ utilizando los diferentes algoritmos para la modificaci\'on del histograma en im\'agenes naturales.}
 	\end{center}
 \end{figure}
 
@@ -567,7 +569,7 @@ Al fijarse en los histogramas de ambas figuras se puede comprobar como la ecuali
 \begin{figure}
 	\begin{center}
 		\includegraphics[width=10.0 cm]{images/graphics/torax/affine_transform/eq_all.png}
-		\caption{Diagramas de caja para la medida $C_P$ utilizando los diferentes algoritmos para la modificaci\'on del histograma en im\'agenes de radiograf\'ia de t\'orax}
+		\caption{Diagramas de caja para la medida $C_p$ utilizando los diferentes algoritmos para la modificaci\'on del histograma en im\'agenes de radiograf\'ias de t\'orax}
 	\end{center}
 \end{figure}
 

@@ -95,7 +95,7 @@ Para entender mejor la composici\'on del m\'odulo v\'ease el diagrama de clases 
 Como se puede ver en Figura 2.1, se tiene una clase abstracta \verb|LogImage|, de la cual heredan las clases \verb|LIPImage|, \verb|HLIPImage|, \verb|PSLIPImage| y \verb|SLIPImage|. Cada una de estas clases representa una imagen en los respectivos modelos: LIP, HLIP, PSLIP y SLIP. Los atributos de la clase padre son:
 
 \begin{itemize}
-	\item \verb|M|: el valor de $M$ tal que los niveles de gris de los p\'ixeles de la imagen original se encuentran en el rango $[0,M)$.
+	\item \verb|M|: el valor de $M$, l\'imite superior del rango de niveles de gris.
 	\item \verb|image|: la imagen transformada al espacio de la estructura.
 	\item \verb|shape|: una \textit{tupla} de dos enteros que son las dimensiones de la imagen.
 \end{itemize}
@@ -107,7 +107,7 @@ Adem\'as, se definieron los siguientes m\'etodos:
 	\item \verb|__repr__|: Para representar una instancia como un \textit{string} semejante a su atributo \verb|image|.
 	\item \verb|__array__|: Que permite que la instancia pueda ser utilizada por las funciones del paquete \verb|numpy| como un \verb|numpy.ndarray|  utilizando su atributo \verb|image|.
 	\item \verb|__getitem__|: Que permite indexar una instancia con un entero positivo \verb|i| devolviendo la fila $i$ de la imagen, la cual puede indexarse para acceder a un p\'ixel en espec\'ifico.
-	\item \verb|__add__|, \verb|__sub__| y \verb|__mul__|: Que redefinen los operadores \verb|+|, \verb|-| y \verb|*| para la suma, resta y multiplicaci\'on, respectivamente. Obs\'ervese que cada una de las clases que heredan de \verb|LogImage| redefinen estos operadores admitiendo solamente, para realizar la operaci\'on, una instancia de la misma clase, un entero o un n\'umero flotante, dando como salida una nueva instancia de la clase resultado de la operaci\'on realizada. Aclarar que la multiplicaci\'on de dos im\'agenes se hace por parejas de p\'ixeles en la misma posici\'on, diferente a la multiplicaci\'on cl\'asica de matrices.
+	\item \verb|__add__|, \verb|__sub__| y \verb|__mul__|: Que redefinen los operadores \verb|+|, \verb|-| y \verb|*| para la suma, resta y multiplicaci\'on, respectivamente. Obs\'ervese que cada una de las clases que heredan de \verb|LogImage| redefinen estos operadores admitiendo solamente, para realizar la operaci\'on, una instancia de la misma clase, un entero o un n\'umero flotante, dando como salida una nueva instancia de la clase, resultado de la operaci\'on realizada. Aclarar que la multiplicaci\'on de dos im\'agenes se hace por parejas de p\'ixeles en la misma posici\'on, diferente a la multiplicaci\'on cl\'asica de matrices.
 	\item \verb|__pow__|: Que redefine el operador \verb|**| para elevar la imagen a un escalar $\lambda\in \mathbb{R}$.
 	\item \verb|show|: Que muestra la imagen en dicho espacio.
 	\item \verb|histogram|: Que muestra el histograma de la imagen en dicho espacio.
@@ -127,7 +127,7 @@ Para entender mejor la composici\'on del m\'odulo v\'ease el diagrama de clases 
 	\end{center}
 \end{figure}
 
-Como se puede ver en la Figura 2.2, se tiene una clase abstracta \verb|LogSpace|, de la cual heredan las clases \verb|LIPSpace|, \verb|HLIPSpace|, \verb|PSLIPSpace|, \verb|SLIPSpace|, \verb|PLIPSpace| y \verb|PPSLIPSpace|. Cada una de estas clases contiene las operaciones de los respectivos modelos: LIP, HLIP, PSLIP, SLIP, PLIP y PPSLIP. Los atributos de la clase padre son:
+Como se puede ver en la Figura 2.2, se tiene una clase abstracta \verb|LogSpace|, de la cual heredan las clases \verb|LIPSpace|, \verb|HLIPSpace|, \verb|PSLIPSpace|, \verb|SLIPSpace|, \verb|PLIPSpace| y \verb|PPSLIPSpace|. Cada una de estas clases contiene las operaciones de los respectivos modelos: LIP, HLIP, PSLIP, SLIP, PLIP y PPSLIP. Los m\'etodos de la clase padre son:
 
 \begin{itemize}
 	\item \verb|__init__|: El constructor, con el que se inicializa el espacio con un valor de $M$. El espacio PLIP se inicializa adem\'as con los valores de $\mu,~\gamma,~k,~\lambda$ y $\beta$; y por su parte el espacio PPSLIP se inicializa, adem\'as de con el valor de $M$, con los valores de $\gamma,~k$ y $\lambda$.
@@ -166,10 +166,10 @@ Si se tienen dos parejas de p\'ixeles en la cl\'asica escala de enteros de 8 bit
 	C_A(p_1,p_2)=\frac{1}{t}\cdot\frac{|100-20|}{1-\frac{100\cdot20}{256^2}}\approx\frac{82,51}{t}
 \end{equation} 
 \begin{equation}
-	C_A(p_1,p_2)=\frac{1}{t}\cdot\frac{|230-200|}{1-\frac{230\cdot200}{256^2}}\approx\frac{100,63}{t}
+	C_A(p_3,p_4)=\frac{1}{t}\cdot\frac{|230-200|}{1-\frac{230\cdot200}{256^2}}\approx\frac{100,63}{t}
 \end{equation}
 
-Por tanto, $C_A(p_1,p_2)<C_A(p_1,p_2)$, a pesar de que $d(p_1,p_2)=d(p_3,p_4)$ y la diferencia entre las intensidades de $p_1$ y $p_2$ es mucho mayor que la diferencia entre las intensidades de $p_3$ y $p_4$, lo cual en la mayor\'ia de situaciones es incorrecto.
+Por tanto, $C_A(p_1,p_2)<C_A(p_3,p_4)$, a pesar de que $d(p_1,p_2)=d(p_3,p_4)$ y la diferencia entre las intensidades de $p_1$ y $p_2$ es mucho mayor que la diferencia entre las intensidades de $p_3$ y $p_4$, lo cual en la mayor\'ia de situaciones es incorrecto.
 
 A pesar de esto, la ecuaci\'on (2.10) mostr\'o resultados consecuentes con la calidad de las im\'agenes obtenidas en una gran cantidad de experimentos, pero se mostr\'o deficiente en algunos donde potenciaba una imagen m\'as intensa por encima de una menos intensa, en donde claramente se pod\'ia apreciar que la menos intensa ten\'ia una mayor calidad y un mejor contraste. Por este motivo, se propuso sustituir la ecuaci\'on (2.10) por la siguiente:
 \begin{equation}
@@ -189,7 +189,7 @@ Luego de hallado este valor para cada p\'ixel, se promedian los resultados para 
 
 \subsubsection{Detecci\'on de Bordes}
 
-La detecci\'on de bordes es uno de los algoritmos m\'as utilizados en el procesamiento de im\'agenes. Para esto se pueden utilizar diferentes filtros como Sobel, Prewitt, Scharr, etc. En particular los tres mencionados anteriormente aparecen implementados en la librer\'ia \verb|skimage.filters| de Python~\cite{module_filters}. En este trabajo se presenta una extensi\'on de estos filtros para utilizarlos con los diferentes modelos no lineales abordados. 
+La detecci\'on de bordes es uno de los algoritmos m\'as utilizados en el procesamiento de im\'agenes. Para esto se pueden utilizar diferentes filtros como Sobel, Prewitt, Scharr, etc. En particular los tres mencionados anteriormente aparecen implementados en la librer\'ia \verb|skimage.filters| de Python~\cite{module_filters}~\cite{scikit-image}. En este trabajo se presenta una extensi\'on de estos filtros para utilizarlos con los diferentes modelos no lineales abordados. 
 
 \subsubsection{Unsharp Masking}
 

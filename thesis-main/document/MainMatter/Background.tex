@@ -26,7 +26,7 @@ Con respecto a la restricción de biyectividad y la existencia de $\varphi^{-1}$
 	a \otimes u = \varphi^{-1}(\alpha\cdot\varphi(u)).
 \end{equation} 
 
-\subsection{Propiedad de cierre}
+\subsection{Propiedad de Cierre}
 
 La propiedad de cierre, tanto de la suma como de la multiplicación por un escalar, es de suma importancia práctica, ya que la suma de dos imágenes cualquiera debería conducir a otra imagen válida y, respectivamente, cualquier imagen amplificada o atenuada debería ser una imagen. Formalmente, se puede escribir:
 \begin{equation}
@@ -76,18 +76,18 @@ El Modelo Cl\'asico para el Procesamiento Logar\'itmico de Im\'agenes (LIP) fue 
 
 La escala de intensidad se invierte de manera que 0 representa la blancura o transparencia total y $M$ representa la negrura u opacidad absoluta. En el modelo LIP, la operación de adición se define para sumar dos imágenes de luz transmitida. Físicamente, la adición de dos imágenes de luz transmitida sigue la ley de transmitancia clásica y no se puede alcanzar la negrura total. Como tal, la inversión de escala está justificada, porque el 0 corresponde a la transparencia total y es, en esta caso, el elemento neutral para una suma matemática.
 
-El objetivo inicial del modelo LIP era definir una operación aditiva cerrada en el rango acotado de intensidad de números reales positivos $[0, M)$~\cite{jourlin1988model}, es decir, un cono lineal positivo $[0, M )$. La suma de dos tonos de gris $v_1$ y $v_2$ se define como:
+El objetivo inicial del modelo LIP era definir una operación aditiva cerrada en el rango acotado de intensidad de números reales positivos $[0, M)$~\cite{jourlin1988model}, es decir, un cono positivo $[0, M )$. La suma de dos tonos de gris $v_1$ y $v_2$ se define como:
 \begin{equation}
 	v_1\oplus v_2=v_1+v_2-\frac{v_1v_2}{M}
 \end{equation}
 y la multiplicación por un escalar real positivo $\lambda \in \mathbb{R}^+$ se define como:
 \begin{equation}
-	\lambda \oplus v = M - M\left(1-\frac{v}{M}\right)^\lambda
+	\lambda \otimes v = M - M\left(1-\frac{v}{M}\right)^\lambda
 \end{equation}
 
 La suma $\oplus$ es asociativa, conmutativa y tiene un elemento identidad: 0. La multiplicaci\'on escalar $\otimes$ es asociativa, tiene elemento identidad: 1 y la distributividad se mantiene para la multiplicación escalar sobre la suma $\oplus$ y para la multiplicación escalar en el espacio de los escalares~\cite{jourlin1988model}~\cite{jourlin2016logarithmic}.
 
-En orden de extender el cono lineal positivo a un espacio vectorial, el rango de tonos de gris es extendido de $[0,M)$ a $(-\infty,M)$~\cite{jourlin2016logarithmic}. Esto permiti\'o entonces, extender la multiplicaci\'on por un escalar a cualquier n\'umero real $\lambda \in \mathbb{R}$, permitiendo a su vez definir el negativo y la resta como:
+En orden de extender el cono lineal positivo a un espacio vectorial, el rango de tonos de gris es extendido de $[0,M)$ a $(-\infty,M)$~\cite{jourlin1988model}~\cite{jourlin2016logarithmic}. Esto permiti\'o entonces, extender la multiplicaci\'on por un escalar a cualquier n\'umero real $\lambda \in \mathbb{R}$, permitiendo a su vez definir el negativo y la resta como:
 \begin{equation}
 	\ominus v=-\frac{v}{1-\frac{v}{M}},
 \end{equation}
@@ -143,7 +143,6 @@ Adem\'as $\forall \lambda \in \mathbb{R}, \forall v \in E $, se define el produc
 \begin{equation}
 	\lambda \otimes v =\frac{(1+v)^\lambda-(1-v)^\lambda}{(1+v)^\lambda+(1-v)^\lambda},
 \end{equation}
-
 donde nuevamente las operaciones en el lado derecho de la igualdad se mantienen en $E$. Las dos operaciones, suma $\oplus$ y multiplicación escalar $\otimes$ establecen una estructura de espacio vectorial.
 
 El espacio vectorial de tonos de gris $(E, \mathbb{R}, \oplus, \otimes)$ es isomorfo al espacio de números reales $(\mathbb{R},\mathbb{R}, +, \cdot)$ por la función $\varphi(v) : E \rightarrow \mathbb{R}$, definida como:
@@ -188,7 +187,7 @@ y su inversa:
 	\varphi^{-1}(x)=\frac{x}{1+x}.
 \end{equation}
 
-Las operaciones para el conjunto de im\'agenes $I(D,E)$ se extienden como se explic\'o en el modelos anteriores.
+Las operaciones para el conjunto de im\'agenes $I(D,E)$ se extienden como se explic\'o en los modelos anteriores.
 
 Teniendo en cuenta que la función generadora es una biyección, con valores en $F = [ 0 , +\infty )$ y $\varphi(0)=0$, el modelo cumple con todas las propiedades de una estructura de espacio cónico. La extensión a una estructura de espacio vectorial se puede lograr mediante el uso de la función generadora $\varphi:(-1,1)\rightarrow (-\infty,+\infty)$~\cite{florea2009piecewise}:
 \begin{equation}
@@ -197,11 +196,11 @@ Teniendo en cuenta que la función generadora es una biyección, con valores en 
 
 \section{Modelo PLIP}
 
-El Modelo Logar\'itmico Parametrizado para el Procesamiento de Im\'agenes(PLIP) fue propuesto por Karen Panetta y otros autores~\cite{panetta2007parameterization}~\cite{panetta2010parameterized}. Este incluye los modelos LIP y lineal como instancias especiales y también abarca todos los casos intermedios en un solo modelo unificado.
+El Modelo Logar\'itmico Parametrizado para el Procesamiento de Im\'agenes(PLIP) fue propuesto por Karen Panetta y otros colaboradores~\cite{panetta2007parameterization}~\cite{panetta2010parameterized}. Este incluye los modelos LIP y lineal como instancias especiales y también abarca todos los casos intermedios en un solo modelo unificado.
 
 Las operaciones aritméticas hacen uso de una función de tono de gris parametrizada. Las operaciones PLIP se muestran en la Tabla 1.1.
 
-\begin{table}
+\begin{table}[h]
 	\caption{Resumen de las operaciones aritm\'eticas LIP y PLIP.}
 	\begin{center}
 		\begin{tabular}{|l|l|}
@@ -269,12 +268,12 @@ donde $EMEE_{optimal}$ es el valor $EMEE$ optimizado para la imagen, $m\'ax_{loc
 
 Las operaciones LIP están acotadas en la parte positiva $[0, M )$ e ilimitadas en la parte negativa. Por ejemplo, el resultado de la siguiente operación de resta podría ser ilimitado cuando $v_1 < v_2$:
 \begin{equation}
-	v_1 \ominus v_2 \in (-\infty,0].
+	v_1 \ominus v_2 \in (-\infty,0).
 \end{equation}
 
 Esta propiedad conduce potencialmente al problema de fuera de rango. Para solucionar dicho problema un nuevo modelo sim\'etrico es presentado por Laurent Navarro y otros colaboradores~\cite{navarro2013symmetric}: el Modelo Logar\'itmico Sim\'etrico para el Procesamiento de Im\'agenes (SLIP). 
 
-En el modelo SLIP, una imagen está representada por su función de nivel de gris asociada, denominada $f$, definida en el dominio espacial no vacío $D \subset \mathbb{R}^2$. Las funciones de nivel de gris se valoran en el intervalo simétrico acotado de números reales $(-M, M)$, donde $M$ es estrictamente positivo, denominado rango de niveles de gris. Los elementos de $(-M, M )$ se denominan niveles de gris. $M$ representa la intensidad de luz máxima y $-M$ es la absorción de luz total.
+En el modelo SLIP, una imagen está representada por su función de nivel de gris asociada, denominada $f$, definida en el dominio espacial no vacío $D \subset \mathbb{R}^2$. Las funciones de nivel de gris toman valores en el intervalo simétrico acotado de números reales $(-M, M)$, donde $M$ es estrictamente positivo, denominado rango de niveles de gris. Los elementos de $(-M, M )$ se denominan niveles de gris. $M$ representa la intensidad de luz máxima y $-M$ es la absorción de luz total.
 
 El modelo SLIP se basa en un isomorfismo impar inspirado en el isomorfismo del modelo LIP para obtener un modelo que tenga el mismo comportamiento para valores positivos y negativos. En el modelo SLIP, el isomorfismo fundamental y su inversa se definen como:
 \begin{equation}
@@ -303,7 +302,7 @@ La multiplicación por un escalar $\lambda (\lambda \in \mathbb{R})$ se define c
 	\lambda \otimes v = Msgn(\lambda v)=\left[1-\left(1-\frac{|v|}{M}\right)^{|\lambda|}\right].
 \end{equation}
 
-Dado que el modelo SLIP se define desde el punto de vista del espacio vectorial, su operación de suma $\otimes$ satisface los siguientes axiomas de grupos abelianos:
+Dado que el modelo SLIP se define desde el punto de vista del espacio vectorial, su operación de suma $\otimes$ satisface los siguientes axiomas de grupos abelianos~\cite{navarro2013symmetric}:
 
 \begin{enumerate}
 	\item El espacio se cierra bajo la operación, es decir, $v_1\oplus v_2 \in (-M, M )~\forall v_1, v_2 \in (-M, M )$.
@@ -317,6 +316,6 @@ Además, el conjunto de señales se cierra bajo la operación de multiplicación
 
 Por lo tanto, el conjunto es cerrado para estas dos operaciones. Estas propiedades son esenciales para resolver el problema del fuera de rango. Además, es fácil demostrar que el valor opuesto $w$ se define como $w = (-1)\otimes v$ y la operación de resta se puede definir como: $v_1\ominus v_2=v_1\oplus(-1)\otimes v_2$.
 
-\subsection{Relación matemática entre los modelos LIP y SLIP}
+\subsection{Relación Matemática entre los Modelos LIP y SLIP}
 
-Desde un punto de vista matemático, se puede ver claramente que cuando $v \in [0, M)$, las dos funciones generadoras $\varphi_{LIP}(v)$ y $\varphi_{SLIP}(v)$ son exactamente las mismas (sin tener en cuenta la inversi\'on de la escala de grises). Por lo tanto, el modelo SLIP($\odot$) es el mismo que el modelo LIP($\boxdot$) para el rango de valores de píxeles $[0, M)$. Sin embargo, difieren entre sí en la forma en que tratan los valores negativos.  Por ejemplo, cuando $\lambda < 0$ y $v > 0$, tenemos $\lambda\boxminus v \in (-\infty, 0)$ y $\lambda \otimes v \in (-M, 0)$. Del mismo modo, cuando $-\infty < v_1 < v_2 < M$ se tiene $v_1 \boxminus v_2 \in (-\infty, 0)$ y cuando $-M < v_1 < v_2 < M$, se tiene $v_1\ominus v_2 \in (-M, 0)$. 
+Desde un punto de vista matemático, se puede ver claramente que cuando $v \in [0, M)$, las dos funciones generadoras $\varphi_{LIP}(v)$ y $\varphi_{SLIP}(v)$ son exactamente las mismas (sin tener en cuenta la inversi\'on de la escala de grises). Por lo tanto, el modelo SLIP($\odot$) es el mismo que el modelo LIP($\boxdot$) para el rango de valores de píxeles $[0, M)$. Sin embargo, difieren entre sí en la forma en que tratan los valores negativos.  Por ejemplo, cuando $\lambda < 0$ y $v > 0$, tenemos $\lambda\boxtimes v \in (-\infty, 0)$ y $\lambda \otimes v \in (-M, 0)$. Del mismo modo, cuando $-\infty < v_1 < v_2 < M$ se tiene $v_1 \boxminus v_2 \in (-\infty, 0)$ y cuando $-M < v_1 < v_2 < M$, se tiene $v_1\ominus v_2 \in (-M, 0)$. 
