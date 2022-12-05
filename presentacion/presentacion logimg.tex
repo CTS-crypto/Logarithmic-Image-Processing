@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[10pt]{beamer}
 \usepackage[spanish]{babel}
 \usepackage[latin1]{inputenc}
 \usetheme{Warsaw} 
@@ -7,264 +7,392 @@
 \useinnertheme{rectangles}
 \setbeamertemplate{navigation symbols}{}
 
-\title[Modelos no Lineales para el Procesamiento de Im\'agenes]{Comparaci\'on de Modelos no Lineales para el Procesamiento de Im\'agenes}
-\subtitle{Modelos no Lineales para el Procesamiento de Im\'agenes de Mamograf\'ias y Lesiones de la Piel}
-\author{Carlos Toledo Silva}
+\newtheorem{dfn}{Definici\'on}
+
+\title[Modelos no Lineales para el Procesamiento de Im\'agenes]{Paquete de Python para el Procesamiento de Im\'agenes Usando Varios Modelos no Lineales}
+\author[Carlos Toledo Silva]{{Carlos Toledo Silva}\\
+	{\and} \\
+	{Tutor} \\
+	Damian Vald\'es Santiago}
 \institute{Universidad de La Habana}
 
 \date{\today}
 
 \begin{document}
-	
+
 	\frame{\titlepage}
 	
 	\begin{frame}
-		\frametitle{Introducci\'on}
-		En la mayoría de las circunstancias imaginables, las imágenes digitales se obtienen por medios que implican máquinas con fuente de alimentación finita; por lo tanto, las imágenes digitales se definen en un rango finito de valores. Los algoritmos de procesamiento de imágenes, tradicionalmente, se basan en operaciones reales clásicas para su implementación. Bajo ciertas circunstancias, tal combinación, denominada procesamiento lineal clásico de imágenes (CLIP) demuestra sus limitaciones. Por ejemplo, mencionemos el desbordamiento del rango superior e inferior, que se resuelve brutalmente mediante el truncamiento. En consecuencia, estructuras más elaboradas
-		aparecieron, como los modelos de procesamiento logarítmico de imágenes (LIP).
-	\end{frame}
-	
-	\begin{frame}
-		\frametitle{Introducci\'on}
-		El punto de partida de los modelos logarítmicos de procesamiento de imágenes radica en la teoría homomórfica introducida por Oppenheim. Las implementaciones de los modelos LIP han sido proporcionadas, según nuestro mejor conocimiento, por Jourlin y Pinoli y, respectivamente, por Patrascu. Luego, el esquema de un nuevo modelo pseudo-logarítmico fue propuesto por Vertan. Con estos modelos se han desarrollado diversas aplicaciones: corrección de iluminación, mejora de contraste, mejora de imagen en color, ecualización de histogramas, mejora de rango dinámico, detección de bordes, etc.
-	\end{frame}
-	
-	\begin{frame}
-		\frametitle{Jourlin - Pinoli Model (LIP)}
-			
-		\begin{block}{Dominio}
-			$[0,M)$
-		\end{block}
+		\frametitle{Introducci\'on -- Surgimiento de los modelos LIP}
 		
-		\begin{block}{F\'ormula del isomorfismo}
-			$\varphi(v)=-M\ln(1-\frac{v}{M})$
-		\end{block}
-	
-		\begin{block}{Suma}
-			$v_1 \oplus v_2 = v_1 + v_2 - \frac{v_1v_2}{M}$
-		\end{block}
-	
-		\begin{block}{Resta}
-			$v_1 \ominus v_2 = \frac{v_1-v_2}{1-\frac{v_2}{M}}$
-		\end{block}
-	
-		\begin{block}{Multiplicaci\'on por escalar}
-			$\lambda \otimes v = M - M(1-\frac{v}{M})^\lambda$
-		\end{block}
+		Puntos claves:
+		
+		\begin{itemize}
+			\item Bajo ciertas circunstancias el Procesamiento Lineal Cl\'asico de Im\'agenes (CLIP) demuestra sus limitaciones.
+			\item Alan V. Oppenheim introduce la teor\'ia homom\'orfica.
+			\item Michel Jourlin y Jean-Charles Pinoli proponen el primer modelo logar\'itmico para el procesamiento de im\'agenes definido desde un punto de vista f\'isico.
+			\item Vasile Patrascu y Vasile Buzuloiu proponen otro modelo logar\'itmico definido desde un punto de vista matem\'atico.
+			\item Constantin Vertan y colaboradores proponen un modelo pseudo-logar\'itmico. 
+			\item Se siguen desarrollando modelos no lineales, muchos inspirados en los anteriores.
+			\item Con estos modelos se han desarrollado diversas
+			aplicaciones: corrección de iluminación, mejora de contraste, mejora de imagen en color, ecualización de histogramas, mejora de rango dinámico, detección de bordes, etc.
+		\end{itemize}
+		
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Jourlin - Pinoli Model (LIP)}
-		\begin{columns}[t]
-			\column{0.5\textwidth}
-			\begin{figure}[h]
-				\begin{center}
-					\includegraphics[width =3.0cm]{original.png}
-					\caption{Imagen original}		
-				\end{center}
-			\end{figure}
+		\frametitle{Introducci\'on -- Objetivos}
 		
-			\begin{figure}[h]
-				\begin{center}
-					\includegraphics[width =3.0cm]{originalh.png}
-					\caption{Histograma imagen original}		
-				\end{center}
-			\end{figure}
-			
-			\column{0.5\textwidth}
-			\begin{figure}[h]
-				\begin{center}
-					\includegraphics[width =3.0cm]{lip.png}
-					\caption{Imagen en el isomorfismo}		
-				\end{center}
-			\end{figure}
-			
-			\begin{figure}[h]
-				\begin{center}
-					\includegraphics[width =3.0cm]{liph.png}
-					\caption{Histograma en isomorfismo}		
-				\end{center}
-			\end{figure}
-		\end{columns}
-	\end{frame}
-
-	\begin{frame}
-		\frametitle{SLIP}
-		\begin{block}{Dominio}
-			$(-M,M)$
-		\end{block}
+		Objetivos generales:
 		
-		\begin{block}{F\'ormula del isomorfismo}
-			$\varphi(v)=-M sgn(v)\ln(1-\frac{|v|}{M})$
-		\end{block}
-		
-		\begin{block}{Suma}
-			$v_1 \oplus v_2 = M sgn(v_1+v_2)[1-(1-\frac{|v_1|}{M})^{\gamma_1}(1-\frac{|v_2|}{M})^{\gamma_2}],~~\gamma_1=\frac{sgn(v_1)}{sgn(v_1+v_2)}$
-			
-			$\gamma_2=\frac{sgn(v_2)}{sgn(v_1+v_2)}$
-			
-		\end{block}
-		
-		\begin{block}{Resta}
-			$v_1 \ominus v_2 = v_1 \oplus (-1 \otimes v_2)$
-		\end{block}
-		
-		\begin{block}{Multiplicaci\'on por escalar}
-			$\lambda \otimes v = Msgn(\lambda v)[1-(1-\frac{|v|}{M})^{|\lambda|}]$
-		\end{block}
-	\end{frame}
+		\begin{itemize}
+			\item  Diseño e implementación de un módulo de Python donde se encuentren los modelos no lineales para el procesamiento de imágenes abordados en este trabajo.
+			\item  Evaluación de los diferentes modelos en cuanto a las
+			diferentes operaciones, algoritmos, tipos de imágenes y situaciones
+		\end{itemize}
 	
-	\begin{frame}
-		\frametitle{SLIP}
-		\begin{columns}[t]
-			\column{0.5\textwidth}
-			\begin{figure}[h]
-				\begin{center}
-					\includegraphics[width =3.0cm]{original.png}
-					\caption{Imagen original}		
-				\end{center}
-			\end{figure}
-			
-			\begin{figure}[h]
-				\begin{center}
-					\includegraphics[width =3.0cm]{originalh.png}
-					\caption{Histograma imagen original}		
-				\end{center}
-			\end{figure}
-			
-			\column{0.5\textwidth}
-			\begin{figure}[h]
-				\begin{center}
-					\includegraphics[width =3.0cm]{slip.png}
-					\caption{Imagen en el isomorfismo}		
-				\end{center}
-			\end{figure}
-			
-			\begin{figure}[h]
-				\begin{center}
-					\includegraphics[width =3.0cm]{sliph.png}
-					\caption{Histograma en isomorfismo}		
-				\end{center}
-			\end{figure}
-		\end{columns}
+		Objetivos espec\'ificos:
+		
+		\begin{itemize}
+			\item Revisar la literatura referente a los modelos no lineales para el procesamiento de im\'agenes.
+			\item Implementaci\'on en Python de los diferentes modelos a partir de la bibliograf\'ia consultada.
+			\item Creaci\'on de \textit{datasets} con diferentes tipos de im\'agenes para evaluar los modelos.
+			\item Selecci\'on de m\'etricas para la evaluaci\'on de los modelos.
+			\item Evaluaci\'on de los modelos.
+			\item Arribar a conclusiones sobre la eficacia y utilidad de estos modelos. 
+		\end{itemize}
+		
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Patrascu Model}
-		\begin{block}{Dominio}
-			$[0,M)$
-		\end{block}
-		
-		\begin{block}{F\'ormula del isomorfismo}
-			$\varphi(v)=\frac{M}{4}\ln(\frac{x}{1-x}), x=\frac{v+1}{M+1}$
-		\end{block}
-		
-		\begin{block}{Suma}
-			$v_1 \oplus v_2 = (M+1) \frac{x_1x_2}{(1-x_1)(1-x_2)-x_1x_2}-1, x_1=\frac{v_1+1}{M+1},x_2=\frac{v_2+1}{M+1}$
-		\end{block}
-		
-		\begin{block}{Resta}
-			$v_1 \ominus v_2 = (M+1) \frac{x_1(1-x_2)}{(1-x_1)x_2+(1-x_2)x_1}-1, x_1=\frac{v_1+1}{M+1},x_2=\frac{v_2+1}{M+1}$
-		\end{block}
-		
-		\begin{block}{Multiplicaci\'on por escalar}
-			$\lambda \otimes v = (M+1)\frac{x^\lambda}{x^\lambda+(1-x)^\lambda}-1, x=\frac{v+1}{M+1}$
-		\end{block}
+		\frametitle{Estado del Arte -- Antecedentes Matem\'aticos}
+		\begin{dfn}
+			Sean $(E, K, \oplus, \otimes)$ y  $(F , K, +, \cdot)$ dos estructuras algebraicas, $K\subseteq\mathbb{R}$, se denomina homomorfismo a la relaci\'on  $\varphi : E \rightarrow F$ que satisface:
+			\begin{equation}
+				\varphi(u\oplus v) = \varphi(u)+\varphi(v), \forall u,v \in E,
+			\end{equation}
+			\begin{equation}
+				\varphi(\alpha \otimes u) = \alpha \cdot \varphi(u), \forall u \in E, \forall \alpha \in K.
+			\end{equation} 
+			La admisi\'on de un inverso y la existencia de biyectividad indica la presencia de un isomorfismo.
+		\end{dfn}
+	 
+		En este trabajo:
+		\begin{itemize}
+			\item $E\subseteq\mathbb{R}$, conjunto de definici\'on de las im\'agenes.
+			\item $F\subseteq\mathbb{R}$, conjunto de definici\'on de las estructuras vectoriales. Si $u\in E$ entonces $\varphi(u)\in F$
+			\item $I(D,E)$ conjunto de im\'agenes definidas en $D \subset \mathbb{R}^2$ y valoradas en $E$.
+			\item $I(D,F)$ conjunto de las estructuras vectoriales definidas en $D \subset \mathbb{R}^2$ y valoradas en $F$. Si $f\in I(D,E)$ entonces $\varphi(f)\in I(D,F)$.
+		\end{itemize}
+	
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Estado del Arte -- Antecedentes Matem\'aticos}
+		Ejemplos:
+		\begin{itemize}
+			\item Si los valores de la imagen son intensidades, como cualquier plano en representación de color RGB, el conjunto $E$ tiene la forma $[0,M)$;
+			\item En el caso del espacio YUV, para los canales de diferencias de color, el conjunto $E$ tiene una forma simétrica, como $( - M/2 , + M/2 )$
+			\item Una imagen en niveles de gris toma sus valores (niveles de gris) en la escala de grises $[0, M)$. Para imágenes de 8 bits, $ M = 256$ y los 256 niveles de gris están en la escala de números enteros $[0,\cdots, 255]$
+		\end{itemize}
 	\end{frame}
 	
 
 	\begin{frame}
-		\frametitle{Patrascu Model}
-		\begin{columns}[t]
-			\column{0.5\textwidth}
-			\begin{figure}[h]
-				\begin{center}
-					\includegraphics[width =3.0cm]{original.png}
-					\caption{Imagen original}		
-				\end{center}
-			\end{figure}
-			
-			\begin{figure}[h]
-				\begin{center}
-					\includegraphics[width =3.0cm]{originalh.png}
-					\caption{Histograma imagen original}		
-				\end{center}
-			\end{figure}
-			
-			\column{0.5\textwidth}
-			\begin{figure}[h]
-				\begin{center}
-					\includegraphics[width =3.0cm]{patrascu.png}
-					\caption{Imagen en el isomorfismo}		
-				\end{center}
-			\end{figure}
-			
-			\begin{figure}[h]
-				\begin{center}
-					\includegraphics[width =3.0cm]{patrascuh.png}
-					\caption{Histograma en isomorfismo}		
-				\end{center}
-			\end{figure}
-		\end{columns}
-	\end{frame}
+		\frametitle{Estado del Arte -- Antecedentes Matem\'aticos}
+		Con respecto a la restricción de biyectividad y la existencia de $\varphi^{-1}$, las leyes de definición están determinadas por:
+		\begin{equation}
+			u \oplus v = \varphi^{-1}(\varphi(u)+\varphi(v)),	
+		\end{equation}
+		\begin{equation}	
+			\alpha \otimes u = \varphi^{-1}(\alpha\cdot\varphi(u)).
+		\end{equation} 
+		
+		Propiedad de cierre:
+		\begin{equation}
+			\forall u,v \in E, z = u \oplus v \Rightarrow z \in E,
+		\end{equation}
+		\begin{equation}
+			\forall u \in E, \forall \alpha \in K, z=\alpha \otimes v \Rightarrow z \in E.
+		\end{equation}
 	
+		Estas propiedades se mantienen bajo la hipótesis de biyectividad asumida ya que: 
+		\begin{equation}
+			z=\varphi^{-1}(\varphi(u)+\varphi(v)) \land \forall x \in F, \varphi^{-1}(x) \in E \Rightarrow z \in E.
+		\end{equation}
+		\begin{equation}
+			z=\varphi^{-1}(\alpha\cdot\varphi(u)) \land \forall x \in F, \varphi^{-1}(x) \in E \Rightarrow z \in E.
+		\end{equation}
+	\end{frame}
+
 	\begin{frame}
-		\frametitle{Vertan Model (Pseudo-logarithmic Model)}
-		\begin{block}{Dominio}
-			$[0,M)$
-		\end{block}
+		\frametitle{Estado del Arte -- Antecedentes Matem\'aticos}
+		\begin{dfn}
+			Dadas las dos leyes operativas, $\oplus$, $\otimes$, el conjunto vectorial $E$ y el conjunto escalar $K$, la definición formal de espacio vectorial implica varias propiedades:
+			\begin{itemize}
+				\item La ley de la suma debe ser asociativa, conmutativa, debe tener elemento identidad y elemento inverso
+				\item La distributividad debe mantenerse para la multiplicación escalar sobre la suma de vectores y para la multiplicación escalar en el espacio de los escalares.
+				\item La multiplicación escalar debe tener elemento identidad y ser compatible con la multiplicación en el espacio de los escalares.
+			\end{itemize}
+		\end{dfn}
 		
-		\begin{block}{F\'ormula del isomorfismo}
-			$\varphi(v)=M\frac{v}{M-v}$
-		\end{block}
-		
-		\begin{block}{Suma}
-			$v_1 \oplus v_2 = M \frac{x_1+x_2-2x_1x_2}{1-x_1x_2},x_1=\frac{v_1}{M}~x_2=\frac{v_2}{M}$
-		\end{block}
-		
-		\begin{block}{Resta}
-			$v_1 \ominus v_2 = M \frac{x_1-x_2}{1+x_1x_2-2x_2},x_1=\frac{v_1}{M}~x_2=\frac{v_2}{M}$
-		\end{block}
-		
-		\begin{block}{Multiplicaci\'on por escalar}
-			$\lambda \otimes v = M\frac{\lambda x}{1-(\lambda-1)x},x=\frac{v}{M}$
-		\end{block}
+		Las propiedades conmutativas, asociativas y distributivas se pueden comprobar bajo la hip\'otesis de biyectividad y la admisi\'on de inverso asumidas.
 	\end{frame}
-	
-	
+
 	\begin{frame}
-		\frametitle{Vertan Model (Pseudo-logarithmic Model)}
-		\begin{columns}[t]
-			\column{0.5\textwidth}
-			\begin{figure}[h]
-				\begin{center}
-					\includegraphics[width =3.0cm]{original.png}
-					\caption{Imagen original}		
-				\end{center}
-			\end{figure}
-			
-			\begin{figure}[h]
-				\begin{center}
-					\includegraphics[width =3.0cm]{originalh.png}
-					\caption{Histograma imagen original}		
-				\end{center}
-			\end{figure}
-			
-			\column{0.5\textwidth}
-			\begin{figure}[h]
-				\begin{center}
-					\includegraphics[width =3.0cm]{plipf.png}
-					\caption{Imagen en el isomorfismo}		
-				\end{center}
-			\end{figure}
-			
-			\begin{figure}[h]
-				\begin{center}
-					\includegraphics[width =3.0cm]{plipfh.png}
-					\caption{Histograma en isomorfismo}		
-				\end{center}
-			\end{figure}
-		\end{columns}
-	\end{frame}
+		\frametitle{Estado del Arte -- Antecedentes Matem\'aticos}
+		Elemento identidad con respecto a la suma:
+		\begin{equation}
+			\forall u\in E, \exists u_0 : u \oplus u_0 = u | \varphi(u_0)=0.
+		\end{equation}
+		
+		Elemento inverso con respecto a la suma:
+		\begin{equation}
+			\forall u \in E, \exists u^- \Rightarrow u \oplus u^- = u_0 | \varphi(u) + \varphi(u^-) = 0 \Rightarrow \varphi(u^-)=-\varphi(u). 
+		\end{equation}
 	
+		Elemento identidad de la multiplicación escalar tiene que ser 1:
+		\begin{equation}
+			\forall u \in E - \{u_0\}, \exists \alpha_1 : \alpha_1 \otimes u = u | \alpha_1 = 1.
+		\end{equation}
+	
+		\begin{dfn}
+			Sea $V$ un espacio vectorial real y $K$, el conjunto escalar. Un cono $C$ en $V$ es un subconjunto de $V$ que satisface:
+			\begin{enumerate}
+				\item si $u_1,u_2\in C$ y $\alpha,\beta\in K:\alpha,\beta\geq0$, entonces $\alpha u_1+\beta u_2\in C$.
+				\item $C \cap (-C)={0}$.
+			\end{enumerate}
+		\end{dfn}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Estado del Arte -- Modelo LIP}
+		
+		Nombre: Modelo Logar\'itmico Cl\'asico para el Procesamiento de Im\'agenes.
+		
+		Propuesto por: Michel Jourlin y Jean-Charles Pinoli.
+		
+		Dominio: $E=[0,M) \lor E=(-\infty,M)$.
+		
+		Funciones de cambio: $v=M-u$, $u=M-v$.
+		
+		Suma: $v_1\oplus v_2=v_1+v_2-\frac{v_1v_2}{M}$.
+		
+		Multiplicaci\'on por un escalar: $\lambda \otimes v = M - M\left(1-\frac{v}{M}\right)^\lambda$.
+		
+		Opuesto: $\ominus v=-\frac{v}{1-\frac{v}{M}}$.
+		
+		Resta: $v_1 \ominus v_2 = \frac{v_1-v_2}{1-\frac{v_2}{M}}$.
+		
+		Funci\'on del isomorfismo: $\varphi(v) = -M\ln\left(1-\frac{v}{M}\right)$.
+		
+		Inversa de la funci\'on del isomorfismo: $\varphi^{-1} (x) = M\left(1-e^{-\frac{x}{M}}\right)$.
+		
+		Propiedades:
+		
+		\begin{itemize}
+			\item La suma $\oplus$ es asociativa, conmutativa, tiene un elemento identidad: 0 y cada elemento tiene un opuesto.
+			\item La multiplicaci\'on escalar $\otimes$ es asociativa, tiene elemento identidad: 1 y la distributividad se mantiene para la multiplicación escalar sobre $\oplus$ y para la multiplicación escalar en el espacio de los escalares.
+		\end{itemize}
+		
+		Si $E=[0,M)$ entonces $(E, R^+, \oplus, \otimes)$ es un cono positivo.
+		
+		Si $E=(-\infty,M)$ entonces $(E, R, \oplus, \otimes)$ es un espacio vectorial.
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Estado del Arte -- Modelo HLIP}
+		
+		Nombre: Modelo Logar\'itmico Homom\'orfico para el Procesamiento de Im\'agenes.
+		
+		Propuesto por: Vasile Patrascu y Vasile Buzuloiu.
+		
+		Dominio: $E = (-1, 1)$.
+		
+		Funciones de cambio: $v=\frac{2}{M}\left(u-\frac{M}{2}\right)$, $u=\frac{M}{2}(v+1)$.
+		
+		Suma: $	v_1 \oplus v_2=\frac{v_1+v_2}{1+v_1v_2}$.
+		
+		Multiplicaci\'on por un escalar: $\lambda \otimes v =\frac{(1+v)^\lambda-(1-v)^\lambda}{(1+v)^\lambda+(1-v)^\lambda}$.
+		
+		Opuesto: $\ominus v=-v$.
+		
+		Resta: $v_1\ominus v_2=\frac{v_1-v_2}{1-v_1v_2}$.
+		
+		Funci\'on del isomorfismo: $\varphi(v)=\frac{1}{2}\ln\left(\frac{1+v}{1-v}\right)$.
+		
+		Inversa de la funci\'on del isomorfismo: $\varphi^{-1}(x)=\frac{e^{2x}-1}{e^{2x}+1}$.
+		
+		Propiedades:
+		
+		\begin{itemize}
+			\item La suma $\oplus$ es asociativa, conmutativa, tiene un elemento identidad: 0 y cada elemento tiene un opuesto.
+			\item La multiplicaci\'on escalar $\otimes$ es asociativa, tiene elemento identidad: 1 y la distributividad se mantiene para la multiplicación escalar sobre $\oplus$ y para la multiplicación escalar en el espacio de los escalares.
+		\end{itemize}
+	
+		La estructura $(E, R, \oplus, \otimes)$ es un espacio vectorial.
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Estado del Arte -- Modelo PSLIP}
+		
+		Nombre: Modelo Pseudo-logar\'itmico para el Procesamiento de Im\'agenes.
+		
+		Propuesto por: Constantin Vertan y colaboradores.
+		
+		Dominio: $E = [0, 1)$.
+		
+		Funciones de cambio: $v = \frac{u}{M}$, $u=M\cdot v$.
+		
+		Suma: $v_1\oplus v_2=\frac{v_1 + v_2 - 2v_1v_2}{1-v_1v_2}$.
+		
+		Multiplicaci\'on por un escalar: $\lambda \otimes v = \frac{\lambda v}{1+(\lambda-1)v}$.
+		
+		Resta: $v_1\ominus v_2=\frac{v_1-v_2}{1+v_1v_2-2v_2}: v_1\geq v_2$.
+		
+		Funci\'on del isomorfismo: $\varphi(v)=\frac{v}{1-v}$.
+		
+		Inversa de la funci\'on del isomorfismo: $\varphi^{-1}(x)=\frac{x}{1+x}$.
+		
+		Propiedades:
+		
+		\begin{itemize}
+			\item La suma $\oplus$ es asociativa, conmutativa y tiene un elemento identidad: 0.
+			\item La multiplicaci\'on escalar $\otimes$ es asociativa, tiene elemento identidad: 1 y la distributividad se mantiene para la multiplicación escalar sobre $\oplus$ y para la multiplicación escalar en el espacio de los escalares.
+		\end{itemize}
+		
+		$(E, R^+, \oplus, \otimes)$ es un cono positivo. La extensión a un espacio vectorial se puede lograr mediante el uso de la función generadora definida en $(-1,1)$:
+		\begin{equation}
+			\varphi(v)=\frac{v}{1-|v|}.
+		\end{equation}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Estado del Arte -- Modelo PLIP}
+		
+		Nombre: Modelo Logar\'itmico Parametrizado para el Procesamiento de Im\'agenes.
+		
+		Propuesto por: Karen Panetta y colaboradores.
+		
+		Dominio: $E=[0,M) \lor E=(-\infty,M)$.
+		
+		Funciones de cambio: $v=\mu(M)-u$, $u=\mu(M)-v$.
+		
+		Suma: $v_1\oplus v_2=v_1+v_2-\frac{v_1v_2}{\gamma(M)}$.
+		
+		Multiplicaci\'on por un escalar: $c\otimes v=\gamma(M)-\gamma(M)(1-\frac{v}{\gamma(M)})^c$.
+		
+		Opuesto: $\ominus v=-\frac{v}{1-\frac{v}{\gamma(M)}}$.
+		
+		Resta: $v_1\ominus v_2=\frac{v_1-v_2}{1-\frac{v_2}{k(M)}}$.
+		
+		Funci\'on del isomorfismo: $\varphi(v)=-\lambda(M)\ln^\beta(1-\frac{v}{\lambda(M)})$.
+		
+		Inversa de la funci\'on del isomorfismo: $\varphi^{-1}(x)=\lambda(M)(1-(e^{-\frac{x}{\lambda(M)}})^{\frac{1}{\beta}})$.
+		
+		\begin{figure}
+			\begin{center}
+				\includegraphics[width=8.0 cm]{plip_scheme.png}
+				\caption{Operaciones en el modelo PLIP}
+			\end{center}
+		\end{figure}	
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Estado del Arte -- Modelo PLIP}
+		Propiedades del modelo PLIP:
+		\begin{itemize}
+			\item En el modelo PLIP, las operaciones aritméticas lineales se reemplazan con nuevas operaciones de la misma manera que en el modelo LIP tradicional.
+			\item Las operaciones en el modelo PLIP son iguales a las del modelo tradicional LIP cuando $\mu(M) = \gamma(M) = k(M) = \lambda(M) = M$ y $\beta = 1$.
+			\item Las operaciones en el modelo PLIP se asemejan a las operaciones aritméticas lineales a medida que $\gamma(M),~k(M)$ y $\lambda(M)$ se aproximan al infinito.
+			\item Las operaciones PLIP pueden generar más casos entre los dos casos extremos del LIP y las operaciones aritméticas lineales cuando los parámetros $\mu, \gamma, k$ y $\lambda$ cambian dentro de $[M, +\infty)$.
+			\item Las operaciones PLIP cumplen las leyes de asociatividad, conmutatividad, elemento identidad, elemento opuesto para la suma y las propiedades distributivas.
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Estado del Arte -- Modelo SLIP}
+		
+		Nombre: Modelo Logar\'itmico Sim\'etrico para el Procesamiento de Im\'agenes.
+		
+		Propuesto por: Laurent Navarro y colaboradores.
+		
+		Dominio: $E=(-M,M)$.
+		
+		Suma: $	v_1\oplus v_2=Msgn(v_1+v_2)\left[1-\left(1-\frac{|v_1|}{M}\right)^{\gamma_1}\left(1-\frac{|v_2|}{M}\right)^{\gamma_2}\right],$
+		
+		$\gamma_1=\frac{sgn(v_1)}{sgn(v_1+v_2)},~\gamma_2=\frac{sgn(v_2)}{sgn(v_1+v_2)}$.
+		
+		Multiplicaci\'on por un escalar: $\lambda \otimes v = Msgn(\lambda v)=\left[1-\left(1-\frac{|v|}{M}\right)^{|\lambda|}\right]$.
+		
+		Opuesto: $\ominus v = (-1)\otimes v$.
+		
+		Resta: $v_1\ominus v_2=v_1\oplus(-1)\otimes v_2$.
+		
+		Funci\'on del isomorfismo: $\varphi(v)=-Msgn(v)\ln\left(1-\frac{|v|}{M}\right)$.
+		
+		Inversa de la funci\'on del isomorfismo: $\varphi^{-1}(x)=Msgn(x)\left(1-e^{-\frac{|x|}{M}}\right)$.
+		
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Estado del Arte -- Modelo SLIP}
+		
+		Propiedades:
+		
+		\begin{itemize}
+			\item La suma $\oplus$ es asociativa, conmutativa, tiene un elemento identidad: 0 y cada elemento tiene un opuesto.
+			\item La multiplicaci\'on escalar $\otimes$ es asociativa, tiene elemento identidad: 1 y la distributividad se mantiene para la multiplicación escalar sobre $\oplus$ y para la multiplicación escalar en el espacio de los escalares.
+		\end{itemize}
+		
+		La estructura $(E, R, \oplus, \otimes)$ es un espacio vectorial.
+		
+		Relación Matemática entre los Modelos LIP y SLIP:
+		\begin{itemize}
+			\item Desde un punto de vista matemático, cuando $v \in [0, M)$, las dos funciones generadoras $\varphi_{LIP}(v)$ y $\varphi_{SLIP}(v)$ son exactamente las mismas (sin tener en cuenta la inversi\'on de la escala de grises).
+			\item El modelo SLIP($\odot$) es el mismo que el modelo LIP($\boxdot$) para el rango de valores de píxeles $[0, M)$
+			\item Difieren entre sí en la forma en que tratan los valores negativos.  Por ejemplo, cuando $\lambda < 0$ y $v > 0$, tenemos $\lambda\boxtimes v \in (-\infty, 0)$ y $\lambda \otimes v \in (-M, 0)$. Del mismo modo, cuando $-\infty < v_1 < v_2 < M$ se tiene $v_1 \boxminus v_2 \in (-\infty, 0)$ y cuando $-M < v_1 < v_2 < M$, se tiene $v_1\ominus v_2 \in (-M, 0)$.
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Propuesta -- Modelo PPSLIP}
+		
+		Nombre: Modelo Pseudo-logar\'itmico Parametrizado para el Procesamiento de Im\'agenes.
+		
+		\begin{block}{Versi\'on inicial: Parametrizar las funciones de cambio}
+			Se parametrizan solo las funciones de cambio de la siguiente forma:
+			$v=\frac{u}{\delta(M)}$ y $u=\delta(M)v$, tal que $\delta(M) \geq M$ y mantener el dominio y el resto de operaciones del modelo PSLIP.
+			
+			Ventaja: Se parametriza el modelo para evitar la p\'erdida de informaci\'on.
+			Desventaja: Las operaciones se parametrizan con el mismo par\'ametro. 
+		\end{block}
+		
+		\begin{block}{Versi\'on final: Eliminar las funciones de cambio y hacerlos directamente}
+			Dominio: $E = [0, M)$.
+			
+			Suma: $u_1\oplus u_2=\frac{u_1+u_2-\frac{2u_1u_2}{\gamma(M)}}{1-\frac{u_1u_2}{\gamma(M)^2}}$.
+			
+			Multiplicaci\'on por un escalar: $c\otimes u=\frac{cu}{1+\frac{(c-1)u}{\gamma(M)}}$.
+			
+			Resta: $	u_1\ominus u_2=\frac{u_1-u_2}{1+\frac{u_1u_2}{k(M)^2}-\frac{2u_2}{k(M)}}: u_1\geq u_2$.
+			
+			Funci\'on del isomorfismo: $\varphi(u)=\frac{u}{\lambda(M)-u}$.
+			
+			Inversa de la funci\'on del isomorfismo: $\varphi^{-1}(x)=\lambda(M)\frac{x}{1+x}$.
+		\end{block}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Propuesta -- Modelo PPSLIP}
+		Propiedades del modelo PPSLIP:
+		\begin{itemize}
+			\item En el modelo PPSLIP, las operaciones aritméticas lineales se reemplazan con nuevas operaciones de la misma manera que en el modelo PSLIP tradicional.
+			\item Las operaciones en el modelo PPSLIP son iguales a las del modelo tradicional PSLIP cuando $\gamma(M) = k(M) = \lambda(M) = M$.
+			\item Las operaciones en el modelo PLIP se asemejan a las operaciones aritméticas lineales a medida que $\gamma(M),~k(M)$ y $\lambda(M)$ se aproximan al infinito.
+			\item Las operaciones PPSLIP pueden generar más casos entre los dos casos extremos del PSLIP y las operaciones aritméticas lineales cuando los parámetros $\gamma, k$ y $\lambda$ cambian dentro de $[M, +\infty)$.
+			\item Las operaciones PPSLIP cumplen las leyes de asociatividad, conmutatividad, elemento identidad y las propiedades distributivas.
+		\end{itemize}
+	\end{frame}
+
 \end{document}

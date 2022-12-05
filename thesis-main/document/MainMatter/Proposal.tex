@@ -114,7 +114,7 @@ Adem\'as, se definieron los siguientes m\'etodos:
 	\item \verb|transform|: Transforma la imagen al espacio original aplicando la inversa de la funci\'on del isomorfismo y, posteriormente, la funci\'on de cambio a niveles de gris.
 \end{itemize}
 
-Con las clases vistas anteriormente, se puede transformar una imagen a su estructura correspondiente en el espacio deseado, operar con ella en dicho espacio y luego regresar al espacio original. Obs\'ervese que los espacios parametrizados no se implementaron con estas estructuras, pues estos utilizan diferentes par\'ametros para las diferentes operaciones, algo que no se puede hacer utilizando las estructuras pues una imagen solo se puede transformar de un espacio a otro con un \'unico valor de $M$.
+Con las clases vistas anteriormente, se puede transformar una imagen a su estructura vectorial correspondiente en el espacio deseado, operar con ella en dicho espacio y luego regresar al espacio original. Obs\'ervese que los espacios parametrizados no se implementaron con estas estructuras, pues estos utilizan diferentes par\'ametros para las diferentes operaciones, algo que no se puede hacer utilizando las estructuras pues una imagen solo se puede transformar de un espacio a otro con un \'unico valor de $M$.
 
 \subsection{Espacios}
 
@@ -146,7 +146,7 @@ Con la implementaci\'on de estos espacios se puede trabajar directamente con las
 
 \subsection{M\'etricas}
 
-Adem\'as de la EMEE, para determinar las mejores combinaciones de par\'ametros en el modelo PLIP, se implement\'o un algoritmo para calcular el contraste promedio de un p\'ixel en una imagen y poder hacer una comparaci\'on entre las diferentes resultados que arrojan las operaciones de los modelos y los algoritmos de procesamiento de im\'agenes utilizando estos modelos.
+Adem\'as de la EMEE, para determinar las mejores combinaciones de par\'ametros en el modelo PLIP, se implement\'o un algoritmo para calcular el contraste promedio de un p\'ixel en una imagen y poder hacer una comparaci\'on entre las diferentes resultados que arrojan las operaciones de los modelos y los algoritmos para el procesamiento de im\'agenes utilizando estos modelos.
 
 Denotando $p_i =(x_i ,y_i )$, los pares de coordenadas que definen la posición espacial de un píxel en una imagen, el contraste relativo entre dos píxeles distintos $p_1, p_2 \in D$, para una imagen, $f : D \to E$ se define por la relación:
 \begin{equation}

@@ -40,15 +40,19 @@ La implementaci\'on de los algoritmos explicados en el cap\'itulo anterior se en
 
 \subsubsection{Detecci\'on de Bordes}
 
-El archivo ``edge\_detection'' tiene implementadas dos funciones: \verb|edge_detection| y \verb|space_edge_detection|. La primera recibe como par\'ametros una imagen y un filtro y da como salida el resultado de aplicarle el filtro a la imagen. 
+El archivo ``edge\_detection'' tiene implementadas tres funciones: \verb|edge_detection|, \verb|space_edge_detection|, y \verb|parameterized_space_edge_detection|. La primera recibe como par\'ametros una imagen y un filtro y da como salida el resultado de aplicarle el filtro a la imagen. 
 
-La segunda funci\'on, adem\'as de recibir estos mismos par\'ametros, recibe una instancia de tipo \verb|LogSpace|. Esta se utiliza para indicar el modelo que se desea utilizar. El funcionamiento es sencillo: se transforma la imagen al isomorfismo utilizando, primeramente, la funci\'on de cambio a tonos de gris y luego la funci\'on del isomorfismo, se aplica el filtro a la imagen transformada y se regresa este resultado al espacio original utilizando, primero, la inversa de la funci\'on del isomorfismo y, luego, la funci\'on de cambio a niveles de gris. Recu\'erdese que los modelos que no utilizan funciones de cambio, en su implementaci\'on, dan como salida la misma imagen de entrada.
+La segunda funci\'on, adem\'as de recibir estos mismos par\'ametros, recibe una instancia de tipo \verb|LogSpace|. Esta se utiliza para indicar el modelo que se desea utilizar. El funcionamiento es sencillo: se transforma la imagen al isomorfismo utilizando, primeramente, la funci\'on de cambio a tonos de gris y luego la funci\'on del isomorfismo, se aplica el filtro a la imagen transformada y se regresa este resultado al espacio original utilizando, primero, la inversa de la funci\'on del isomorfismo y, luego, la funci\'on de cambio a niveles de gris. Recu\'erdese que los modelos que no utilizan funciones de cambio, en su implementaci\'on, dan como salida la misma imagen de entrada. Esta funci\'on debe utilizarse para los casos de los modelos no parametrizados.
+
+La tercera funci\'on se utiliza para los casos de los modelos parametrizados y adem\'as de recibir los mismos par\'ametros que la funci\'on anterior, recibe otros dos argumentos opcionales \textit{keyword only}. Estos dos \'ultimos argumentos constituyen los valores de $\lambda(M)$ y $\mu(M)$ para parametrizar la funci\'on del isomorfismo y su inversa, y la funci\'on de cambio a niveles de gris en los casos de los modelos que la presentan. Es importante aclarar que si el modelo que se va utilizar no utiliza una funci\'on de cambio parametrizada, no se debe especificar el valor de $\mu(M)$ pues esto conducir\'ia a un error.  En caso de no especificarse alguno de estos valores para la parametrizaci\'on, se utiliza el asignado previamente al modelo.
 
 \subsubsection{Unsharp Masking}
 
-El archivo ``unsharp\_masking.py'' consta de dos funciones: \verb|unsharp_masking| y \verb|space_unsharp_masking|. La primera recibe como par\'ametros una imagen, un filtro y un \textit{string} que puede ser: \verb|``+''| o \verb|``-''|. La salida de esta funci\'on es el resultado de utilizar el filtro para detectar los bordes de la imagen y fusionar la imagen original y la imagen de bordes utilizando la suma (\verb|``+''|) o la resta (\verb|``-''|) lineal. 
+El archivo ``unsharp\_masking.py'' consta de tres funciones: \verb|unsharp_masking|, \verb|space_unsharp_masking| y \verb|parameterized_space_unsharp_masking|. La primera recibe como par\'ametros una imagen, un filtro y un \textit{string} que puede ser: \verb|``+''| o \verb|``-''|. La salida de esta funci\'on es el resultado de utilizar el filtro para detectar los bordes de la imagen y fusionar la imagen original y la imagen de bordes utilizando la suma (\verb|``+''|) o la resta (\verb|``-''|) lineal. 
 
-La segunda funci\'on, adem\'as de recibir estos mismos par\'ametros, recibe una instancia de tipo \verb|LogSpace|. Este algoritmo, primero, transforma la imagen al isomorfismo utilizando primeramente, la funci\'on de cambio a tonos de gris y, luego, la funci\'on del isomorfismo, se aplica el filtro dado y luego seg\'un el operador especificado, a la imagen original se le suma o se le resta la imagen de bordes. Finalmente, se utilizan la inversa de la funci\'on del isomorfismo y la funci\'on de cambio a niveles de gris para regresar al espacio original. Permitir la fusi\'on por resta como alternativa a la fusi\'on por suma, se tom\'o como decisi\'on despu\'es de que uno de los modelos mostr\'o buenos resultados utilizando la resta en lugar de la suma. 
+La segunda funci\'on, adem\'as de recibir estos mismos par\'ametros, recibe una instancia de tipo \verb|LogSpace|. Este algoritmo, primero, transforma la imagen al isomorfismo utilizando primeramente, la funci\'on de cambio a tonos de gris y, luego, la funci\'on del isomorfismo, se aplica el filtro dado y luego seg\'un el operador especificado, a la imagen transformada se le suma o se le resta la imagen de bordes. Finalmente, se utilizan la inversa de la funci\'on del isomorfismo y la funci\'on de cambio a niveles de gris para regresar al espacio original. Permitir la fusi\'on por resta como alternativa a la fusi\'on por suma, se tom\'o como decisi\'on despu\'es de que uno de los modelos mostr\'o buenos resultados utilizando la resta en lugar de la suma. Esta funci\'on debe utilizarse para los casos de los modelos no parametrizados.
+
+La tercera funci\'on se utiliza para los casos de los modelos parametrizados y adem\'as de recibir los mismos par\'ametros que la funci\'on anterior, recibe otros tres argumentos opcionales \textit{keyword only}. Estos tres \'ultimos argumentos constituyen los valores de $\gamma(M)$, $\lambda(M)$ y $\mu(M)$. El valor de $\gamma(M)$ se utiliza para parametrizar la fusi\'on indicada (suma o resta) y el valor de $\lambda(M)$ para parametrizar la funci\'on del ismorfismo y su inversa en los modelos parametrizados. Adem\'as el valor de $\mu(M)$ se utiliza para parametrizar la funci\'on de cambio a niveles de gris, en los casos de los modelos que la presentan. En este m\'etodo se obtiene, primero, la funci\'on de tono de gris de la imagen dada de entrada. Luego, esta se transforma al espacio en cuesti\'on utilizando la funci\'on del isomorfismo, se aplica el filtro y al resultado se le aplica la inversa de la funci\'on del isomorfismo, obteni\'endose de esta forma la imagen de bordes. Posteriormente, se hace la fusi\'on parametrizada especificada y, finalmente, se aplica la funci\'on de cambio a tono de gris al resultado obtenido. Es importante aclarar que si el modelo que se va utilizar no utiliza una funci\'on de cambio parametrizada, no se debe especificar el valor de $\mu(M)$ pues esto conducir\'ia a un error. En caso de no especificarse alguno de estos valores para la parametrizaci\'on, se utiliza el asignado previamente al modelo.
 
 \subsubsection{Transformaci\'on Af\'in}
 
@@ -204,7 +208,7 @@ En la Figura 3.7 y en la Tabla 3.1 se puede ver una comparaci\'on de la suma de 
 
 \subsection{Detecci\'on de Bordes}
 
-En esta secci\'on se muestra una comparaci\'on entre los diferentes modelos utilizando el filtro de Scharr para la detecci\'on de bordes. Para la realizaci\'on de estos experimentos se pueden utilizar las funciones descritas en la secci\'on \textbf{Detalles de Implementaci\'on} o se puede hacer el proceso descrito manualmente. 
+En esta secci\'on se muestra una comparaci\'on entre los diferentes modelos utilizando el filtro de Scharr para la detecci\'on de bordes. Para la realizaci\'on de estos experimentos se pueden utilizar las funciones descritas en la secci\'on \textbf{Detalles de Implementaci\'on} o se puede hacer el proceso descrito manualmente. Algo importante es, que para los modelos LIP y PLIP, para obtener una imagen como las que se muestran en los ejemplos, a la imagen obtenida por cualquiera de las dos v\'ias mencionadas se le debe hallar el ``negativo'' de la imagen utilizando el valor de $M$ o $\mu(M)$ utilizado por el modelo. De lo contrario se obtiene una imagen con la misma informaci\'on pero con los niveles de gris invertidos.
 
 \subsubsection{Ejemplos}
 
@@ -404,7 +408,7 @@ En la Figura 3.14 si bien todos los modelos resaltan en alguna medida los bordes
 
 \subsubsection{Estad\'isticas}
 
-\begin{figure}
+\begin{figure}[h]
 	\begin{center}
 		\includegraphics[width=10.0 cm]{images/graphics/natural/unsharp_masking/um_all.png}
 		\caption{Diagramas de caja para la medida $C_p$ utilizando los diferentes modelos para el algoritmo \textit{unsharp masking} en im\'agenes naturales.}
@@ -442,7 +446,7 @@ En la Figura 3.14 si bien todos los modelos resaltan en alguna medida los bordes
 
 En la Figura 3.15 y la Tabla 3.4 se puede apreciar una comparaci\'on de este algoritmo en im\'agenes naturales. Los mejores resultados se obtuvieron para el modelo HLIP, tanto para la fusi\'on por suma como para la fusi\'on por resta, aunque siendo la suma un tanto superior. Esto se pod\'ia esperar ya que el modelo HLIP fue el mejor modelo tanto para la detecci\'on de bordes en im\'agenes naturales como para la suma de im\'agenes, las dos operaciones que se hacen en este algoritmo. Utilizando el modelo HLIP con fusi\'on por suma, se obtuvo un valor de $C_p$ promedio de $9.67$ y un valor igual o superior a $9.07$ para el $50\%$ de los casos. Tambi\'en se aprecia que los modelos parametrizados superan tanto al lineal como a sus respectivos modelos no parametrizados.
 
-\begin{figure}
+\begin{figure}[h]
 	\begin{center}
 		\includegraphics[width=10.0 cm]{images/graphics/torax/unsharp_masking/um_all.png}
 		\caption{Diagramas de caja para la medida $C_p$ utilizando los diferentes modelos para el algoritmo \textit{unsharp masking} en im\'agenes de radiograf\'ias de t\'orax.}

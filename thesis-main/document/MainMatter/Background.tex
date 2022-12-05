@@ -16,14 +16,14 @@ Dado un escalar, $\alpha \in K \subseteq \mathbb{R}$, y dos elementos del conjun
 
 Las ecuaciones (1.1) y (1.2) son las condiciones que debe cumplir un homomorfismo entre dos estructuras algebraicas similares. La admisi\'on de un inverso y la existencia de biyectividad indica la presencia de un isomorfismo.
 
-Ahora se analiza la ecuación (1.2). Mientras que $u$ puede ser cualquier elemento del conjunto de definici\'on acotado $E$, $\alpha$ es, típicamente, un escalar real positivo $(K=\mathbb{R}^+)$.
+Ahora se analiza la ecuación (1.2). Mientras que $u$ puede ser cualquier elemento del conjunto de definici\'on $E$, $\alpha$ es, típicamente, un escalar real positivo $(K=\mathbb{R}^+)$.
 
 Con respecto a la restricción de biyectividad y la existencia de $\varphi^{-1}$, las leyes de definición están determinadas por:
 \begin{equation}
 	u \oplus v = \varphi^{-1}(\varphi(u)+\varphi(v)),	
 \end{equation}
 \begin{equation}	
-	a \otimes u = \varphi^{-1}(\alpha\cdot\varphi(u)).
+	\alpha \otimes u = \varphi^{-1}(\alpha\cdot\varphi(u)).
 \end{equation} 
 
 \subsection{Propiedad de Cierre}
@@ -39,6 +39,9 @@ La propiedad de cierre, tanto de la suma como de la multiplicación por un escal
 Estas propiedades se mantienen bajo la hipótesis de biyectividad asumida ya que: 
 \begin{equation}
 	z=\varphi^{-1}(\varphi(u)+\varphi(v)) \land \forall x \in F, \varphi^{-1}(x) \in E \Rightarrow z \in E.
+\end{equation}
+\begin{equation}
+	z=\varphi^{-1}(\alpha\cdot\varphi(u)) \land \forall x \in F, \varphi^{-1}(x) \in E \Rightarrow z \in E.
 \end{equation}
 
 \subsection{Espacio Vectorial y Cono}
@@ -69,7 +72,7 @@ Otro concepto importante es el de cono. Siendo $V$ un espacio vectorial real y $
 
 \section{Modelo LIP}
 
-El Modelo Cl\'asico para el Procesamiento Logar\'itmico de Im\'agenes (LIP) fue el primero de estos modelos en ser presentado. Fue introducido por Michel Jourlin y Jean-Charles Pinoli~\cite{jourlin1988model}. En el modelo LIP, una imagen se representa mediante su función de tono de gris asociada, denominada $f$, que se define en el dominio espacial no vacío $D \subset \mathbb{R}^2$. Una función de tono de gris toma valores en el intervalo acotado de números reales $[0, M)$, donde $M$ es estrictamente positivo, denominado rango de tonos de gris. Los elementos de $[0, M )$ se denominan tonos de gris. El valor de un tono de gris $v$ est\'a asociado a su valor de nivel de gris $u$ correspondiente de la siguiente manera:
+El Modelo Logar\'itmico Cl\'asico para el Procesamiento de Im\'agenes (LIP) fue el primero de estos modelos en ser presentado. Fue introducido por Michel Jourlin y Jean-Charles Pinoli~\cite{jourlin1988model}. En el modelo LIP, una imagen se representa mediante su función de tono de gris asociada, denominada $f$, que se define en el dominio espacial no vacío $D \subset \mathbb{R}^2$. Una función de tono de gris toma valores en el intervalo acotado de números reales $[0, M)$, donde $M$ es estrictamente positivo, denominado rango de tonos de gris. Los elementos de $[0, M )$ se denominan tonos de gris. El valor de un tono de gris $v$ est\'a asociado a su valor de nivel de gris $u$ correspondiente de la siguiente manera:
 \begin{equation}
 	v = M - u.
 \end{equation}
@@ -87,7 +90,7 @@ y la multiplicación por un escalar real positivo $\lambda \in \mathbb{R}^+$ se 
 
 La suma $\oplus$ es asociativa, conmutativa y tiene un elemento identidad: 0. La multiplicaci\'on escalar $\otimes$ es asociativa, tiene elemento identidad: 1 y la distributividad se mantiene para la multiplicación escalar sobre la suma $\oplus$ y para la multiplicación escalar en el espacio de los escalares~\cite{jourlin1988model}~\cite{jourlin2016logarithmic}.
 
-En orden de extender el cono lineal positivo a un espacio vectorial, el rango de tonos de gris es extendido de $[0,M)$ a $(-\infty,M)$~\cite{jourlin1988model}~\cite{jourlin2016logarithmic}. Esto permiti\'o entonces, extender la multiplicaci\'on por un escalar a cualquier n\'umero real $\lambda \in \mathbb{R}$, permitiendo a su vez definir el negativo y la resta como:
+En orden de extender el cono positivo a un espacio vectorial, el rango de tonos de gris es extendido de $[0,M)$ a $(-\infty,M)$~\cite{jourlin1988model}~\cite{jourlin2016logarithmic}. Esto permiti\'o entonces, extender la multiplicaci\'on por un escalar a cualquier n\'umero real $\lambda \in \mathbb{R}$, permitiendo a su vez definir el negativo y la resta como:
 \begin{equation}
 	\ominus v=-\frac{v}{1-\frac{v}{M}},
 \end{equation}
@@ -117,7 +120,7 @@ Las operaciones para el conjunto de im\'agenes $I(D,E)$ se extienden, aplicando 
 
 \section{Modelo HLIP}
 
-El Modelo Homom\'orfico para el Procesamiento Logar\'itmico de Im\'agenes (HLIP) fue presentado por Vasile Pătraşcu y Vasile Buzuloiu~\cite{patrascu2014mathematical}. Dentro del modelo matemático desarrollado, el conjunto de tonos de gris es el intervalo acotado $E = (-1, 1)$ puesto en correspondencia uno a uno con el intervalo de niveles de gris $(0,M)$, por la transformaci\'on lineal:
+El Modelo Logar\'itmico Homom\'orfico para el Procesamiento de Im\'agenes (HLIP) fue presentado por Vasile Pătraşcu y Vasile Buzuloiu~\cite{patrascu2014mathematical}. Dentro del modelo matemático desarrollado, el conjunto de tonos de gris es el intervalo acotado $E = (-1, 1)$ puesto en correspondencia uno a uno con el intervalo de niveles de gris $(0,M)$, por la transformaci\'on lineal:
 \begin{equation}
 	v=\frac{2}{M}\left(u-\frac{M}{2}\right).
 \end{equation}
@@ -158,7 +161,7 @@ Las operaciones para el conjunto de im\'agenes $I(D,E)$ se extienden como se exp
 
 \section{Modelo PSLIP}
 
-El Modelo Pseudo-logar\'itmico para el Procesamiento de Im\'agenes (PSLIP) fue propuesto por Costantin Vertan y otros autores~\cite{vertan2008pseudo}. Su aplicaci\'on principal es para la detecci\'on de bordes. En este modelo para alg\'un nivel de gris $u\in[0,M)$, la relaci\'on con su tono de gris $v$ correspondiente viene dada por:
+El Modelo Pseudo-logar\'itmico para el Procesamiento de Im\'agenes (PSLIP) fue propuesto por Costantin Vertan y otros colaboradores~\cite{vertan2008pseudo}. Su aplicaci\'on principal es para la detecci\'on de bordes. En este modelo para alg\'un nivel de gris $u\in[0,M)$, la relaci\'on con su tono de gris $v$ correspondiente viene dada por:
 \begin{equation}
 	v = \frac{u}{M},
 \end{equation}
@@ -196,7 +199,7 @@ Teniendo en cuenta que la función generadora es una biyección, con valores en 
 
 \section{Modelo PLIP}
 
-El Modelo Logar\'itmico Parametrizado para el Procesamiento de Im\'agenes(PLIP) fue propuesto por Karen Panetta y otros colaboradores~\cite{panetta2007parameterization}~\cite{panetta2010parameterized}. Este incluye los modelos LIP y lineal como instancias especiales y también abarca todos los casos intermedios en un solo modelo unificado.
+El Modelo Logar\'itmico Parametrizado para el Procesamiento de Im\'agenes (PLIP) fue propuesto por Karen Panetta y otros colaboradores~\cite{panetta2007parameterization}~\cite{panetta2010parameterized}. Este incluye los modelos LIP y lineal como instancias especiales y también abarca todos los casos intermedios en un solo modelo unificado.
 
 Las operaciones aritméticas hacen uso de una función de tono de gris parametrizada. Las operaciones PLIP se muestran en la Tabla 1.1.
 
@@ -231,8 +234,7 @@ Propiedades del modelo PLIP~\cite{panetta2010parameterized}:
 
 \begin{enumerate}
 	\item En el modelo PLIP, las operaciones aritméticas lineales se reemplazan con nuevas operaciones de la misma manera que en el modelo LIP tradicional.
-	\item Las operaciones en el modelo PLIP son iguales a las del modelo tradicional LIP cuando $\mu(M) = \gamma(M) = k(M) = \lambda(M) = M$ y
-	$\beta = 1$.
+	\item Las operaciones en el modelo PLIP son iguales a las del modelo tradicional LIP cuando $\mu(M) = \gamma(M) = k(M) = \lambda(M) = M$ y $\beta = 1$.
 	\item Las operaciones en el modelo PLIP se asemejan a las operaciones aritméticas lineales a medida que $\gamma(M),~k(M)$ y $\lambda(M)$ se aproximan al infinito y $\beta = 1$
 	\item Las operaciones PLIP pueden generar más casos entre los dos casos extremos del LIP y las operaciones aritméticas lineales cuando los parámetros $\mu, \gamma, k$ y $\lambda$ cambian dentro de $[M, +\infty)$, como se muestra en la Figura 1.1.
 	\item Se puede demostrar que las operaciones PLIP cumplen las leyes de asociatividad, conmutatividad, elemento identidad y las propiedades distributivas.
@@ -240,8 +242,8 @@ Propiedades del modelo PLIP~\cite{panetta2010parameterized}:
 
 \begin{figure}
 	\begin{center}
-		\caption{Operaciones en el modelo PLIP}
 		\includegraphics[width=8.0 cm]{images/plip_scheme.png}
+		\caption{Operaciones en el modelo PLIP}
 	\end{center}
 \end{figure}
 
@@ -251,8 +253,7 @@ El objetivo de la parametrizaci\'on es disminuir la p\'erdida de informaci\'on. 
 
 Para designar una imagen como visualmente ``buena'', es necesario establecer unos criterios objetivos de cuantificación de los resultados. La mejora automática de imágenes basada en los requisitos visuales humanos sigue siendo un problema muy desafiante. No existe un método único de mejora de imágenes que funcione bien para todas las imágenes. Este problema se vuelve más apremiante cuando se necesita mejorar miles de imágenes en un entorno automatizado.
 
-La Medida de Mejora por Entropía (EMEE, en ingl\'es) ha demostrado ser una medida eficaz para evaluar la calidad de mejora de la imagen~\cite{agaian2000new}. Esta medida se basa en las mismas leyes psicovisuales que forman la base de
-los modelos LIP y PLIP. La EMEE se calcula dividiendo una imagen $I$ en $k_1 \times k_2$ bloques, obteniendo el máximo local $I_{max k,l}$ y el mínimo $I_{min k,l}$ dentro de cada bloque individualmente, y luego procesándolos usando la siguiente ecuación:
+La Medida de Mejora por Entropía (EMEE, en ingl\'es) ha demostrado ser una medida eficaz para evaluar la calidad de mejora de la imagen~\cite{agaian2000new}. Esta medida se basa en las mismas leyes psicovisuales que forman la base de los modelos LIP y PLIP. La EMEE se calcula dividiendo una imagen $I$ en $k_1 \times k_2$ bloques, obteniendo el máximo local $I_{max k,l}$ y el mínimo $I_{min k,l}$ dentro de cada bloque individualmente, y luego procesándolos usando la siguiente ecuación:
 \begin{equation}
 	\displaystyle EMEE_{\alpha,k_1,k_2=\frac{1}{k_1k_2}}\sum_{l=1}^{k_1}\sum_{k=1}^{k_2}\alpha\left(\frac{I_{max k,l}}{I_{min k,l}}\right)^\alpha\ln\left(\frac{I_{max k,l}}{I_{min k,l}}\right),
 \end{equation}
