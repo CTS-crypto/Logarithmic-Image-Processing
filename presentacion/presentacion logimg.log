@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.2)  5 DEC 2022 02:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.2)  5 DEC 2022 19:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -945,20 +945,16 @@ thkerncmss.
 
 ] [10
 
-]
-Overfull \vbox (6.60312pt too high) detected at line 268
- []
-
-[11
+] [11
 
 ]
 <plip_scheme.png, id=154, 1927.2pt x 488.82625pt>
 File: plip_scheme.png Graphic file (type png)
 <use plip_scheme.png>
-Package pdftex.def Info: plip_scheme.png  used on input line 299.
+Package pdftex.def Info: plip_scheme.png  used on input line 296.
 (pdftex.def)             Requested size: 227.62204pt x 57.7317pt.
 
-Overfull \vbox (7.43723pt too high) detected at line 299
+Overfull \vbox (7.43723pt too high) detected at line 296
  []
 
 [12
@@ -970,12 +966,58 @@ Overfull \vbox (7.43723pt too high) detected at line 299
 ] [15
 
 ]
-Overfull \vbox (2.90742pt too high) detected at line 384
+Overfull \vbox (2.90742pt too high) detected at line 381
  []
 
 [16
 
 ] [17
+
+]
+<structures_class_diagram.png, id=222, 1105.12875pt x 465.74pt>
+File: structures_class_diagram.png Graphic file (type png)
+<use structures_class_diagram.png>
+Package pdftex.def Info: structures_class_diagram.png  used on input line 405.
+(pdftex.def)             Requested size: 312.9803pt x 131.8987pt.
+
+Overfull \hbox (5.69043pt too wide) in paragraph at lines 405--405
+ [] 
+ []
+
+[18
+
+ <./structures_class_diagram.png>]
+<spaces_class_diagram.png, id=230, 924.45375pt x 606.265pt>
+File: spaces_class_diagram.png Graphic file (type png)
+<use spaces_class_diagram.png>
+Package pdftex.def Info: spaces_class_diagram.png  used on input line 417.
+(pdftex.def)             Requested size: 312.9803pt x 205.25778pt.
+
+Overfull \hbox (5.69043pt too wide) in paragraph at lines 417--417
+ [] 
+ []
+
+
+Overfull \vbox (14.01675pt too high) detected at line 417
+ []
+
+[19
+
+ <./spaces_class_diagram.png>] [20
+
+]
+Overfull \vbox (2.42168pt too high) detected at line 457
+ []
+
+[21
+
+] [22
+
+] [23
+
+] [24
+
+] [25
 
 ]
 \tf@nav=\write6
@@ -995,11 +1037,11 @@ Package rerunfilecheck Info: File `"presentacion logimg".out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 23310 strings out of 478268
- 455014 string characters out of 5850345
- 722097 words of memory out of 5000000
- 41001 multiletter control sequences out of 15000+600000
- 474322 words of font info for 46 fonts, out of 8000000 for 9000
+ 23387 strings out of 478268
+ 456701 string characters out of 5850345
+ 722098 words of memory out of 5000000
+ 41056 multiletter control sequences out of 15000+600000
+ 476434 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,16n,122p,452b,689s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/tex
@@ -1009,17 +1051,20 @@ t/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2022/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmss12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmss8.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9
-.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb><c:
-/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb><c:/texlive/
-2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2022/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2022/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2022/texmf-dist/fonts/type1/p
-ublic/amsfonts/symbols/msam10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/publi
-c/amsfonts/symbols/msbm10.pfb>
-Output written on "presentacion logimg.pdf" (17 pages, 205064 bytes).
+.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><c
+:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb><c:/texliv
+e/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb><c:/texlive/2022/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb><c:/texlive/2022/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2022/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmsy7.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmtt10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/m
+sam10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm1
+0.pfb>
+Output written on "presentacion logimg.pdf" (25 pages, 304552 bytes).
 PDF statistics:
- 294 PDF objects out of 1000 (max. 8388607)
- 192 compressed objects within 2 object streams
- 35 named destinations out of 1000 (max. 500000)
- 294 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 405 PDF objects out of 1000 (max. 8388607)
+ 266 compressed objects within 3 object streams
+ 51 named destinations out of 1000 (max. 500000)
+ 412 words of extra memory for PDF output out of 10000 (max. 10000000)
 

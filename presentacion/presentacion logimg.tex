@@ -195,9 +195,9 @@
 			\item La multiplicaci\'on escalar $\otimes$ es asociativa, tiene elemento identidad: 1 y la distributividad se mantiene para la multiplicación escalar sobre $\oplus$ y para la multiplicación escalar en el espacio de los escalares.
 		\end{itemize}
 		
-		Si $E=[0,M)$ entonces $(E, R^+, \oplus, \otimes)$ es un cono positivo.
+		Si $E=[0,M)$ entonces $(E,\mathbb{R}^+, \oplus, \otimes)$ es un cono positivo.
 		
-		Si $E=(-\infty,M)$ entonces $(E, R, \oplus, \otimes)$ es un espacio vectorial.
+		Si $E=(-\infty,M)$ entonces $(E, \mathbb{R}, \oplus, \otimes)$ es un espacio vectorial.
 	\end{frame}
 
 	\begin{frame}
@@ -213,7 +213,7 @@
 		
 		Suma: $	v_1 \oplus v_2=\frac{v_1+v_2}{1+v_1v_2}$.
 		
-		Multiplicaci\'on por un escalar: $\lambda \otimes v =\frac{(1+v)^\lambda-(1-v)^\lambda}{(1+v)^\lambda+(1-v)^\lambda}$.
+		Multiplicaci\'on por un escalar: $\lambda \otimes v =\frac{(1+v)^\lambda-(1-v)^\lambda}{(1+v)^\lambda+(1-v)^\lambda},~\lambda\in \mathbb{R}$.
 		
 		Opuesto: $\ominus v=-v$.
 		
@@ -230,7 +230,7 @@
 			\item La multiplicaci\'on escalar $\otimes$ es asociativa, tiene elemento identidad: 1 y la distributividad se mantiene para la multiplicación escalar sobre $\oplus$ y para la multiplicación escalar en el espacio de los escalares.
 		\end{itemize}
 	
-		La estructura $(E, R, \oplus, \otimes)$ es un espacio vectorial.
+		La estructura $(E, \mathbb{R}, \oplus, \otimes)$ es un espacio vectorial.
 	\end{frame}
 
 	\begin{frame}
@@ -246,7 +246,7 @@
 		
 		Suma: $v_1\oplus v_2=\frac{v_1 + v_2 - 2v_1v_2}{1-v_1v_2}$.
 		
-		Multiplicaci\'on por un escalar: $\lambda \otimes v = \frac{\lambda v}{1+(\lambda-1)v}$.
+		Multiplicaci\'on por un escalar: $\lambda \otimes v = \frac{\lambda v}{1+(\lambda-1)v},~\lambda\in \mathbb{R}^+$.
 		
 		Resta: $v_1\ominus v_2=\frac{v_1-v_2}{1+v_1v_2-2v_2}: v_1\geq v_2$.
 		
@@ -261,10 +261,7 @@
 			\item La multiplicaci\'on escalar $\otimes$ es asociativa, tiene elemento identidad: 1 y la distributividad se mantiene para la multiplicación escalar sobre $\oplus$ y para la multiplicación escalar en el espacio de los escalares.
 		\end{itemize}
 		
-		$(E, R^+, \oplus, \otimes)$ es un cono positivo. La extensión a un espacio vectorial se puede lograr mediante el uso de la función generadora definida en $(-1,1)$:
-		\begin{equation}
-			\varphi(v)=\frac{v}{1-|v|}.
-		\end{equation}
+		La estructura $(E,\mathbb{R}^+, \oplus, \otimes)$ es un cono positivo. La extensión a un espacio vectorial se puede lograr mediante el uso de la función generadora definida en $(-1,1)\to (-\infty,+\infty): \varphi(v)=\frac{v}{1-|v|}$.
 	\end{frame}
 
 	\begin{frame}
@@ -345,7 +342,7 @@
 			\item La multiplicaci\'on escalar $\otimes$ es asociativa, tiene elemento identidad: 1 y la distributividad se mantiene para la multiplicación escalar sobre $\oplus$ y para la multiplicación escalar en el espacio de los escalares.
 		\end{itemize}
 		
-		La estructura $(E, R, \oplus, \otimes)$ es un espacio vectorial.
+		La estructura $(E, \mathbb{R}, \oplus, \otimes)$ es un espacio vectorial.
 		
 		Relación Matemática entre los Modelos LIP y SLIP:
 		\begin{itemize}
@@ -394,5 +391,132 @@
 			\item Las operaciones PPSLIP cumplen las leyes de asociatividad, conmutatividad, elemento identidad y las propiedades distributivas.
 		\end{itemize}
 	\end{frame}
+
+	\begin{frame}
+		\frametitle{Propuesta -- M\'odulo Implementado -- Estructuras}
+		
+		\begin{figure}[h]
+			\begin{center}
+				\includegraphics[width=11.0 cm]{structures_class_diagram.png}
+				\caption{Diagrama de clases de las estructuras no lineales.}
+			\end{center}
+		\end{figure}
+		
+	\end{frame}	
+
+	\begin{frame}
+		\frametitle{Propuesta -- M\'odulo Implementado -- Espacios}
+		
+		\begin{figure}[h]
+			\begin{center}
+				\includegraphics[width=11.0 cm]{spaces_class_diagram.png}
+				\caption{Diagrama de clases de los espacios no lineales.}
+			\end{center}
+		\end{figure}
+		
+	\end{frame}	
+
+	\begin{frame}
+		\frametitle{Propuesta -- M\'odulo Implementado -- M\'etricas -- EMEE}
+		
+		La Medida de Mejora por Entropía se calcula dividiendo una imagen $I$ en $k_1 \times k_2$ bloques, obteniendo el máximo local $I_{max k,l}$ y el mínimo $I_{min k,l}$ dentro de cada bloque individualmente, y luego procesándolos usando la siguiente ecuación:
+		\begin{equation}
+			\displaystyle EMEE_{\alpha,k_1,k_2=\frac{1}{k_1k_2}}\sum_{l=1}^{k_1}\sum_{k=1}^{k_2}\alpha\left(\frac{I_{max k,l}}{I_{min k,l}}\right)^\alpha\ln\left(\frac{I_{max k,l}}{I_{min k,l}}\right),
+		\end{equation}
+		donde $\alpha$ es una constante que puede ayudar a seleccionar los parámetros. Se eligi\'o $\alpha = 1$ y el tamaño de bloque $4 \times 4$, $4 \times 5$, $5 \times 4$ y $5 \times 5$, seg\'un las dimensiones de la imagen.
+		
+		El mejor parámetro (óptimo) se obtiene si se cumple la siguiente condición:
+		\begin{equation}
+			EMEE_{optimal}=max_{local}(EMEE(\alpha, \mu, \gamma, k, \lambda, \beta))
+		\end{equation}
+		
+		Esta medida se utiliz\'o para obtener las mejores combinaciones de par\'ametros en el modelo PLIP.
+		
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Propuesta -- M\'odulo Implementado -- M\'etricas -- $C_p$}
+		
+		En bibliograf\'ia consultada, denotando $p_i =(x_i ,y_i )$, los pares de coordenadas que definen la posición espacial de un píxel en una imagen, el contraste absoluto entre dos píxeles distintos $p_1, p_2 \in D$, para una imagen, $f\in I(D,E)$ se define por la relación:
+		\begin{equation}
+			C_A(p_1,p_2)=\frac{1}{d(p_1,p_2)}\cdot\frac{|f(p_1)-f(p_2)|}{1-\frac{f(p_1)\cdot f(p_2)}{M^2}},
+		\end{equation}
+	
+		Luego de la realizaci\'on de una serie de experimentos, se decidi\'o modificar la ecuaci\'on anterior, cambiando la definici\'on a:
+		\begin{equation}
+			C_A(p_1,p_2)=\frac{|f(p_1)-f(p_2)|}{d(p_1,p_2)}\cdot\frac{256}{M}
+		\end{equation}
+		
+		El contraste para un píxel arbitrario $p \in D$, para una imagen $f \in I ( D , E )$, se define por la media del contraste absoluto entre el píxel $p$ y los píxeles $( p_i )_{i = 1,\cdots,n}$ que pertenecen a una vecindad $V$:
+		\begin{equation}
+			\displaystyle C(p)=\frac{1}{n}\sum_{i=1}^{n}C_A(p,p_i).
+		\end{equation}
+	
+		Luego el valor de $C_p$ de una imagen es el promedio de los valores de $C(p)$ de los pixeles que la conforman.
+		
+	\end{frame}	
+
+	\begin{frame}
+		\frametitle{Propuesta -- M\'odulo Implementado -- Algoritmos}
+		
+		\begin{block}{Detecci\'on de bordes}
+			Para esto se pueden utilizar diferentes filtros como Sobel, Prewitt, Scharr, etc. En particular los tres mencionados anteriormente aparecen implementados en la librer\'ia \texttt{skimage.filters} de Python.
+		\end{block}
+	
+		\begin{block}{Unsharp masking}
+			\textit{Unsharp Masking} es una t\'ecnica para mejorar la calidad de una imagen. Esta t\'ecnica consiste en determinar los bordes de una imagen y luego fusionar la imagen original con la imagen de bordes de dicha imagen.
+		\end{block}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Propuesta -- M\'odulo Implementado -- Algoritmos}
+		\begin{block}{Transformaci\'on Af\'in}
+			Consid\'erense la transformaci\'on af\'in en el conjunto de imágenes $I (D, E)$, definida a continuaci\'on: $\psi : I (D, E) \to I (D, E )$
+			\begin{equation}
+				\psi(f)=\lambda\otimes(f\oplus\tau),
+			\end{equation}
+			donde $\lambda \in \mathbb{R}, \tau \in E$ y $f\in I(D,E)$.
+			
+			Los parámetros $(\lambda, \tau )$ se eligen de tal manera que se obtenga una nueva imagen muy cercana a una imagen con una distribución uniforme de los niveles de gris en el conjunto $E=(a,b)$. 
+			
+			Bajo este criterio la imagen mejorada debe tener su media $\mu_u = \frac{a+b}{2}$ y su varianza $\sigma_u^2 = \frac{(b-a)^2}{12}$. 
+			
+			En estas condiciones para cualquier imagen $f$ con la media $\mu_f$ y la varianza $\sigma_f^2 $, la transformaci\'on afín se convierte en:
+			\begin{equation}
+				\psi(f)=\frac{\sigma_u}{\sigma_f}\otimes(f\ominus\mu_f).
+			\end{equation}
+		
+			Importante: Este algoritmo solo se puede utilizar en espacios acotados.
+			
+		\end{block}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Detalles de implementaci\'on -- Modelos}
+		
+	     Las im\'agenes en niveles de gris se definen en el intervalo $[0,M)$. 
+	     
+	     Problema con los modelos LIP y HLIP pues, si $u$ es un nivel de gris, $v$ su tono de gris correspondiente y $u=0$ entonces:
+	     
+	     \begin{itemize}
+	     	\item LIP: $v=M-u=M-0=M$. Contradicci\'on $E=[0,M)$.
+	     	\item HLIP: $v=\frac{2}{M}(u-\frac{M}{2})=\frac{2}{M}(0-\frac{M}{2})=\frac{2}{M}(-\frac{M}{2})=-1$. Contradicci\'on $E=(-1,1)$
+	     \end{itemize} 
+		
+		\textbf{Soluci\'on:} Antes de cambiar la imagen de niveles de gris a tonos de gris, esta primero se procesa de tal forma que el menor valor admisible sea un n\'umero cercano a cero, pero mayor que este. En esta implementaci\'on se decidi\'o utilizar el n\'umero $0.0001$.
+		
+		Esto tambi\'en se hizo para el modelo PLIP ya que este constituye una generalizaci\'on del modelo LIP.
+		
+		Todos los modelos implementados, tanto en forma de estructura como de espacio, se encuentran en el subm\'odulo ``models''. Cada uno con su archivo correspondiente
+		
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Detalles de implementaci\'on -- M\'etricas -- EMEE}
+		
+		
+		
+		
+	\end{frame}	
 
 \end{document}
