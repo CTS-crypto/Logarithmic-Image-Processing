@@ -1,7 +1,7 @@
 import numpy as np
 from math import sqrt
 
-def space_affine_transform(image:np.ndarray,a:int,b:int,space):
+def space_affine_transform(image:np.ndarray,a:float,b:float,space):
     aux_image=space.gray_tone(image)
     sigma=sqrt((b-a)**2/12)
     mean_image=np.mean(aux_image)

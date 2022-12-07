@@ -6,7 +6,7 @@ def abs_contrast_2_pixels(f:Tuple,g:Tuple,M:int) -> float:
     d=dist((f[0],f[1]),(g[0],g[1]))
     return abs(f[2]-g[2])/d*256/M
 
-def contrast_pixel(f:Tuple,img:ndarray,M:int,v:int) -> float:
+def contrast_pixel(f:Tuple,img:ndarray,M:float,v:int) -> float:
     acc=0
     count=0
     for i in range(f[0]-v,f[0]+v+1):
@@ -18,7 +18,7 @@ def contrast_pixel(f:Tuple,img:ndarray,M:int,v:int) -> float:
                 count+=1
     return acc/count
 
-def contrast_img(img:ndarray,M:int,v:int) -> float:
+def contrast_img(img:ndarray,M:float,v:int) -> float:
     aux_img=array(img.tolist())
     acc=0
     count=0

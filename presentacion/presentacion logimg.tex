@@ -1,6 +1,7 @@
 \documentclass[10pt]{beamer}
 \usepackage[spanish]{babel}
 \usepackage[latin1]{inputenc}
+\usepackage{subfigure}
 \usetheme{Warsaw} 
 \usecolortheme{rose}
 \useoutertheme{shadow}
@@ -23,7 +24,7 @@
 	\frame{\titlepage}
 	
 	\begin{frame}
-		\frametitle{Introducci\'on -- Surgimiento de los modelos LIP}
+		\frametitle{Introducci\'on -- Surgimiento de los Modelos no Lineales}
 		
 		Puntos claves:
 		
@@ -48,7 +49,7 @@
 		\begin{itemize}
 			\item  Diseño e implementación de un módulo de Python donde se encuentren los modelos no lineales para el procesamiento de imágenes abordados en este trabajo.
 			\item  Evaluación de los diferentes modelos en cuanto a las
-			diferentes operaciones, algoritmos, tipos de imágenes y situaciones
+			diferentes operaciones, tipos de imágenes y situaciones.
 		\end{itemize}
 	
 		Objetivos espec\'ificos:
@@ -79,8 +80,8 @@
 	 
 		En este trabajo:
 		\begin{itemize}
-			\item $E\subseteq\mathbb{R}$, conjunto de definici\'on de las im\'agenes.
-			\item $F\subseteq\mathbb{R}$, conjunto de definici\'on de las estructuras vectoriales. Si $u\in E$ entonces $\varphi(u)\in F$
+			\item $E\subseteq\mathbb{R}$, conjunto de valoraci\'on de las im\'agenes.
+			\item $F\subseteq\mathbb{R}$, conjunto de valoraci\'on de las estructuras vectoriales. Si $u\in E$ entonces $\varphi(u)\in F$
 			\item $I(D,E)$ conjunto de im\'agenes definidas en $D \subset \mathbb{R}^2$ y valoradas en $E$.
 			\item $I(D,F)$ conjunto de las estructuras vectoriales definidas en $D \subset \mathbb{R}^2$ y valoradas en $F$. Si $f\in I(D,E)$ entonces $\varphi(f)\in I(D,F)$.
 		\end{itemize}
@@ -91,9 +92,9 @@
 		\frametitle{Estado del Arte -- Antecedentes Matem\'aticos}
 		Ejemplos:
 		\begin{itemize}
-			\item Si los valores de la imagen son intensidades, como cualquier plano en representación de color RGB, el conjunto $E$ tiene la forma $[0,M)$;
-			\item En el caso del espacio YUV, para los canales de diferencias de color, el conjunto $E$ tiene una forma simétrica, como $( - M/2 , + M/2 )$
-			\item Una imagen en niveles de gris toma sus valores (niveles de gris) en la escala de grises $[0, M)$. Para imágenes de 8 bits, $ M = 256$ y los 256 niveles de gris están en la escala de números enteros $[0,\cdots, 255]$
+			\item Si los valores de la imagen son intensidades, como cualquier plano en representación de color RGB, el conjunto $E$ tiene la forma $[0,M)$.
+			\item En el caso del espacio YUV, para los canales de diferencias de color, el conjunto $E$ tiene una forma simétrica, como $( - M/2 , + M/2 )$.
+			\item Una imagen en niveles de gris toma sus valores (niveles de gris) en la escala de grises $[0, M)$. Para imágenes de 8 bits, $ M = 256$ y los 256 niveles de gris están en la escala de números enteros $[0,\cdots, 255]$.
 		\end{itemize}
 	\end{frame}
 	
@@ -289,7 +290,7 @@
 		
 		\begin{figure}
 			\begin{center}
-				\includegraphics[width=8.0 cm]{plip_scheme.png}
+				\includegraphics[width=8.0 cm]{images/plip_scheme.png}
 				\caption{Operaciones en el modelo PLIP}
 			\end{center}
 		\end{figure}	
@@ -395,9 +396,9 @@
 	\begin{frame}
 		\frametitle{Propuesta -- M\'odulo Implementado -- Estructuras}
 		
-		\begin{figure}[h]
+		\begin{figure}
 			\begin{center}
-				\includegraphics[width=11.0 cm]{structures_class_diagram.png}
+				\includegraphics[width=11.0 cm]{images/structures_class_diagram.png}
 				\caption{Diagrama de clases de las estructuras no lineales.}
 			\end{center}
 		\end{figure}
@@ -407,9 +408,9 @@
 	\begin{frame}
 		\frametitle{Propuesta -- M\'odulo Implementado -- Espacios}
 		
-		\begin{figure}[h]
+		\begin{figure}
 			\begin{center}
-				\includegraphics[width=11.0 cm]{spaces_class_diagram.png}
+				\includegraphics[width=11.0 cm]{images/spaces_class_diagram.png}
 				\caption{Diagrama de clases de los espacios no lineales.}
 			\end{center}
 		\end{figure}
@@ -492,7 +493,17 @@
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Detalles de implementaci\'on -- Modelos}
+		\frametitle{Detalles de Implementaci\'on -- Estructura del M\'odulo}
+		\begin{figure}
+			\begin{center}
+				\includegraphics[width=11.0 cm]{images/module_structure.png}
+				\caption{Diagrama de la estructura del m\'odulo.}
+			\end{center}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Detalles de Implementaci\'on -- Modelos}
 		
 	     Las im\'agenes en niveles de gris se definen en el intervalo $[0,M)$. 
 	     
@@ -506,17 +517,623 @@
 		\textbf{Soluci\'on:} Antes de cambiar la imagen de niveles de gris a tonos de gris, esta primero se procesa de tal forma que el menor valor admisible sea un n\'umero cercano a cero, pero mayor que este. En esta implementaci\'on se decidi\'o utilizar el n\'umero $0.0001$.
 		
 		Esto tambi\'en se hizo para el modelo PLIP ya que este constituye una generalizaci\'on del modelo LIP.
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Detalles de Implementaci\'on -- M\'etricas -- EMEE}
 		
-		Todos los modelos implementados, tanto en forma de estructura como de espacio, se encuentran en el subm\'odulo ``models''. Cada uno con su archivo correspondiente
+		\begin{block}{\texttt{emee(numpy.ndarray,float,int,int,float): float}}
+			
+			\textbf{Entrada}: Una imagen, el valor de $\alpha$, las dimensiones de los bloques en los que se desea dividir la imagen y una constante $c$. Esta constante se suma tanto al numerador como al denominador de las fracciones que aparecen. De esta forma se redefini\'o el c\'aculo de EMEE como: 
+			
+			\begin{equation}
+				\displaystyle EMEE_{\alpha,k_1,k_2=\frac{1}{k_1k_2}}\sum_{l=1}^{k_1}\sum_{k=1}^{k_2}\alpha\left(\frac{I_{max k,l+c}}{I_{min k,l+c}}\right)^\alpha\ln\left(\frac{I_{max k,l+c}}{I_{min k,l+c}}\right).
+			\end{equation}
+			La constante utilizada fue $0.5$.
+			
+			\textbf{Salida}: El valor de EMEE de la imagen.
+		\end{block}
+	
+		\begin{block}{\texttt{find\_min\_max(numpy.ndarray,int,int,int,int): (float,float)}}
+			\textbf{Entrada}: Una imagen y 4 enteros: $n_1,n_2,m_1,m_2$, tal que $(n_1,m_1)$ son las coordenadas donde inicia el bloque y; $n_2$ y $m_2$ son las dimensiones horizontal y vertical del bloque, respectivamente.
+			
+			\textbf{Salida}: Una tupla con el menor y el mayor valor de intensidad del bloque.
+		\end{block}
+		
+	\end{frame}	
+
+	\begin{frame}
+		\frametitle{Detalles de Implementaci\'on -- M\'etricas -- $C_p$}
+		
+		\begin{block}{\texttt{abs\_contrast\_2\_pixels(Tuple,Tuple,float): float}}
+			
+			\textbf{Entrada}: Dos tuplas de 3 elementos, tal que cada una representa un p\'ixel (las coordenadas y el valor de intensidad del p\'ixel), y el valor de $M$.
+			
+			\textbf{Salida}: El contraste absoluto entre los 2 p\'ixeles.
+		\end{block}
+		
+		\begin{block}{\texttt{contrast\_pixel(Tuple,numpy.ndarray,float,int): float}}
+			\textbf{Entrada}: Una tupla que representa un p\'ixel, una imagen, el valor de $M$ y el radio de la vecindad a considerarse.
+			
+			\textbf{Salida}: El contraste del p\'ixel en la imagen.
+		\end{block}
+	
+		\begin{block}{\texttt{contrast\_img(numpy.ndarray,float,int): float}}
+			\textbf{Entrada}: La imagen, el valor de $M$ y el radio de la vecindad que se debe tener en cuenta alrededor de un p\'ixel.
+			
+			\textbf{Salida}: El contraste promedio de un p\'ixel en la imagen, o sea $C_p$.
+			
+			El radio de la vecindad que se tom\'o para calcular el contraste de cada p\'ixel fue de 2.
+		\end{block}
 		
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Detalles de implementaci\'on -- M\'etricas -- EMEE}
+		\frametitle{D. de Implementaci\'on -- Algoritmos -- Detecci\'on de Bordes}
 		
+		\begin{block}{\texttt{edge\_detection(numpy.ndarray,filter): numpy.ndarray}}
+			
+			\textbf{Entrada}: Una imagen y un filtro.
+			
+			\textbf{Salida}: El resultado de aplicarle el filtro a la imagen.
+		\end{block}
 		
+		\begin{block}{\texttt{space\_edge\_detection(numpy.ndarray,filter,LogSpace): numpy.ndarray}}
+			\textbf{Entrada}: Los mismos par\'ametros que la anterior, adem\'as una instancia de tipo \texttt{LogSpace}.
+			
+			\textbf{Salida}: El resultado de aplicarle el filtro a la imagen utilizando el modelo especificado.
+		\end{block}
 		
+		\begin{block}{\texttt{parameterized\_space\_edge\_detection(numpy.ndarray,filter, LogSpace,*,float,float): numpy.ndarray}}
+			\textbf{Entrada}: Los mismos par\'ametros que la funci\'on anterior, adem\'as de los valores de $\lambda(M)$ y $\mu(M)$.
+			
+			\textbf{Salida}: El resultado de aplicarle el filtro a la imagen utilizando el modelo y los par\'ametros especificados.
+		\end{block}
 		
 	\end{frame}	
 
+	\begin{frame}
+		\frametitle{D. de Implementaci\'on -- Algoritmos -- Unsharp Masking}
+		
+		\begin{block}{\texttt{unsharp\_masking(numpy.ndarray,filter,str): numpy.ndarray}}
+			
+			\textbf{Entrada}: Una imagen, un filtro y un \textit{string}: \texttt{``+''} o \texttt{``-''}.
+			
+			\textbf{Salida}: El resultado de utilizar el filtro para obtener la imagen de bordes y fusionarla con la original utilizando la suma (\texttt{``+''}) o la resta (\texttt{``-''}).
+		\end{block}
+		
+		\begin{block}{\texttt{space\_unsharp\_masking(numpy.ndarray,filter,str,LogSpace): numpy.ndarray}}
+			\textbf{Entrada}: Los mismos par\'ametros que la anterior, adem\'as una instancia de tipo \texttt{LogSpace}.
+			
+			\textbf{Salida}: El resultado de utilizar el filtro para obtener la imagen de bordes y fusionarla con la original utilizando el modelo especificado.
+		\end{block}
+		
+		\begin{block}{\texttt{parameterized\_space\_unsharp\_masking(numpy.ndarray,filter, str,LogSpace,*,float,float,float): numpy.ndarray}}
+			\textbf{Entrada}: Los mismos par\'ametros que la funci\'on anterior, adem\'as de los valores de $\gamma(M),~\lambda(M)$ y $\mu(M)$.
+			
+			\textbf{Salida}: El resultado de utilizar el filtro para obtener la imagen de bordes y fusionarla con la original utilizando el modelo y los par\'ametros dados.
+		\end{block}
+		
+	\end{frame}	
+
+	\begin{frame}
+		\frametitle{D. de Implementaci\'on -- Algoritmos -- Transformaci\'on Af\'in}
+		
+		\begin{block}{\texttt{space\_affine\_transform(numpy.ndarray,float,float,LogSpace): numpy.ndarray}}
+			
+			\textbf{Entrada}: Una imagen, los extremos del intervalo en el cual se va a realizar la transformaci\'on y una instancia de tipo \texttt{LogSpace}.
+			
+			\textbf{Salida}: La transformaci\'on af\'in utilizando las operaciones aritm\'eticas del modelo especificado.
+		\end{block}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Experimentos -- Curvas de los Modelos no Parametrizados}
+		
+		\begin{figure}
+			\begin{center}
+				\includegraphics[width=5.0 cm]{images/clasics_curves/lip_curve.png}
+				\includegraphics[width=5.0 cm]{images/clasics_curves/hlip_curve.png}
+				\includegraphics[width=5.0 cm]{images/clasics_curves/pslip_curve.png}
+				\includegraphics[width=5.0 cm]{images/clasics_curves/slip_curve.png}
+				\caption{Curvas representativas de los modelos no parametrizados.}
+			\end{center}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Experimentos -- Curvas del Modelo PLIP}
+		\begin{figure}
+			\begin{center}
+				\includegraphics[width=5.0 cm]{images/plip_curves/plip_curve_256.png}
+				\includegraphics[width=5.0 cm]{images/plip_curves/plip_curve_300.png}
+				\includegraphics[width=5.0 cm]{images/plip_curves/plip_curve_1026.png}
+				\includegraphics[width=5.0 cm]{images/plip_curves/plip_curve_4100.png}
+				\caption{Curvas representativas del modelo PLIP con diferentes valores de $\lambda(M)$.}
+			\end{center}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Experimentos -- Curvas del Modelo PPSLIP}
+		\begin{figure}
+			\begin{center}
+				\includegraphics[width=5.0 cm]{images/ppslip_curves/ppslip_curve_256.png}
+				\includegraphics[width=5.0 cm]{images/ppslip_curves/ppslip_curve_300.png}
+				\includegraphics[width=5.0 cm]{images/ppslip_curves/ppslip_curve_1026.png}
+				\includegraphics[width=5.0 cm]{images/ppslip_curves/ppslip_curve_4100.png}
+				\caption{Curvas representativas del modelo PPSLIP, diferentes valores de $\lambda(M)$.}
+			\end{center}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Experimentos -- Suma de Im\'agenes}
+		
+		\begin{figure}[h]
+			\begin{center}
+				\subfigure[Playa]{
+					\includegraphics[width=4.5 cm]{images/originals/playa.jpg}}
+				\subfigure[Patineta]{
+					\includegraphics[width=4.5 cm]{images/originals/patineta.jpg}}
+				\subfigure[Monta\~na]{
+					\includegraphics[width=4.5 cm]{images/originals/montania.jpg}}
+				\subfigure[Insecto]{
+					\includegraphics[width=4.5 cm]{images/originals/insecto.jpg}}
+				\caption{Im\'agenes para los experimentos de suma.}
+			\end{center}
+		\end{figure}
+		
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Experimentos -- Suma de Im\'agenes -- Playa y Patineta}
+		\begin{figure}
+			\begin{center}
+				\subfigure[Lineal $C_p=3.49$]{
+					\includegraphics[width=3.0 cm]{images/sums/p y p/sab.png}}
+				\subfigure[LIP $C_p=5.71$]{
+					\includegraphics[width=3.0 cm]{images/sums/p y p/jsab.png}}
+				\subfigure[HLIP $C_p=4.96$]{
+					\includegraphics[width=3.0 cm]{images/sums/p y p/hsab.png}}
+				\subfigure[PSLIP $C_p=1.39$]{
+					\includegraphics[width=3.0 cm]{images/sums/p y p/pssab.png}}
+				\subfigure[SLIP $C_p=1.45$]{
+					\includegraphics[width=3.0 cm]{images/sums/p y p/ssab.png}}
+				\subfigure[PLIP $C_p=5.71$]{
+					\includegraphics[width=3.0 cm]{images/sums/p y p/psab.png}}
+				\subfigure[PPSLIP $C_p=3.35$]{
+					\includegraphics[width=3.0 cm]{images/sums/p y p/ppssab.png}}
+			\end{center}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Experimentos -- Suma de Im\'agenes -- Monta\~na e Insecto}
+		\begin{figure}
+			\begin{center}
+				\subfigure[Lineal $C_p=3.15$]{
+					\includegraphics[width=2.8 cm]{images/sums/m y i/scd.png}}
+				\subfigure[LIP $C_p=2.77$]{
+					\includegraphics[width=2.8 cm]{images/sums/m y i/jscd.png}}
+				\subfigure[HLIP $C_p=4.53$]{
+					\includegraphics[width=2.8 cm]{images/sums/m y i/hscd.png}}
+				\subfigure[PSLIP $C_p=3.47$]{
+					\includegraphics[width=2.8 cm]{images/sums/m y i/psscd.png}}
+				\subfigure[SLIP $C_p=3.65$]{
+					\includegraphics[width=2.8 cm]{images/sums/m y i/sscd.png}}
+				\subfigure[PLIP $C_p=3.13$]{
+					\includegraphics[width=2.8 cm]{images/sums/m y i/pscd.png}}
+				\subfigure[PPSLIP $C_p=3.47$]{
+					\includegraphics[width=2.8 cm]{images/sums/m y i/ppsscd.png}}
+				\caption{Suma de Monta\~na e Insecto utilizando los diferentes modelos}
+			\end{center}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Experimentos -- Suma de Im\'agenes -- Estad\'isticas}
+		\begin{figure}
+			\begin{center}
+				\subfigure[Diagramas de caja para la medida $C_p$.]{
+				\includegraphics[width=6.0 cm]{images/graphics/sum_all.png}}
+				\subfigure[Media y mediana del valor de $C_p$.]{
+				\resizebox{4.0 cm}{1.5 cm}{
+				\begin{tabular}{|l|l|l|}
+					\hline 
+					Modelo & Media & Mediana\\
+					\hline
+					Lineal & $5.05$ & $4.98$\\
+					\hline
+					LIP & $5.00$ & $4.85$\\
+					\hline
+					HLIP & $7.73$ & $7.59$\\
+					\hline
+					PSLIP & $4.95$ & $4.78$\\
+					\hline
+					SLIP & $5.24$ & $5.08$\\
+					\hline
+					PLIP & $5.60$ & $5.54$\\
+					\hline
+					PPSLIP & $5.35$ & $5.20$\\
+					\hline
+				\end{tabular}}}
+			\caption{An\'alisis estad\'istico de la operaci\'on suma de los diferentes modelos utilizando im\'agenes naturales}	
+			\end{center}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Experimentos -- Im\'agenes Utilizadas}
+		
+		\begin{figure}[h]
+			\begin{center}
+				\subfigure[C\'amara $C_p=5.00$]{
+					\includegraphics[width=5.0 cm]{images/originals/camera.jpg}}
+				\subfigure[T\'orax 1 $C_p=2.26$]{
+					\includegraphics[width=5.0 cm]{images/originals/torax.png}}
+				\caption{Im\'agenes para los experimentos de detecci\'on de bordes}
+			\end{center}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Experimentos -- Detecci\'on de Bordes -- C\'amara}
+		\begin{figure}
+			\begin{center}
+				\subfigure[Lineal $C_p=4.69$]{
+					\includegraphics[width=2.5 cm]{images/scharr/camera/sla.png}}
+				\subfigure[LIP $C_p=7.43$]{
+					\includegraphics[width=2.5 cm]{images/scharr/camera/sja.png}}
+				\subfigure[HLIP $C_p=8.05$]{
+					\includegraphics[width=2.5 cm]{images/scharr/camera/sha.png}}
+				\subfigure[PSLIP $C_p=9.41$]{
+					\includegraphics[width=2.5 cm]{images/scharr/camera/spsa.png}}
+				\subfigure[SLIP $C_p=6.26$]{
+					\includegraphics[width=2.5 cm]{images/scharr/camera/ssa.png}}
+				\subfigure[PLIP $C_p=7.43$]{
+					\includegraphics[width=2.5 cm]{images/scharr/camera/spa.png}}
+				\subfigure[PPSLIP $C_p=9.41$]{
+					\includegraphics[width=2.5 cm]{images/scharr/camera/sppsa.png}}
+				\caption{Filtro de Scharr aplicado a la imagen C\'amara con los diferentes modelos.}
+			\end{center}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Experimentos -- Detecci\'on de Bordes -- T\'orax 1}
+		\begin{figure}
+			\begin{center}
+				\subfigure[Lineal $C_p=2.89$]{
+					\includegraphics[width=2.5 cm]{images/scharr/torax/slb.png}}
+				\subfigure[LIP $C_p=3.66$]{
+					\includegraphics[width=2.5 cm]{images/scharr/torax/sjb.png}}
+				\subfigure[HLIP $C_p=4.40$]{
+					\includegraphics[width=2.5 cm]{images/scharr/torax/shb.png}}
+				\subfigure[PSLIP $C_p=9.73$]{
+					\includegraphics[width=2.5 cm]{images/scharr/torax/spsb.png}}
+				\subfigure[SLIP $C_p=6.85$]{
+					\includegraphics[width=2.5 cm]{images/scharr/torax/ssb.png}}
+				\subfigure[PLIP $C_p=3.66$]{
+					\includegraphics[width=2.5 cm]{images/scharr/torax/spb.png}}
+				\subfigure[PPSLIP $C_p=9.73$]{
+					\includegraphics[width=2.5 cm]{images/scharr/torax/sppsb.png}}
+				\caption{Filtro de Scharr aplicado a la imagen T\'orax 1 con los diferentes modelos.}
+			\end{center}
+		\end{figure} 
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Experimentos -- Detecci\'on de Bordes -- Estad\'isticas}
+		\begin{figure}
+			\begin{center}
+				\subfigure[Diagramas de caja para la medida $C_p$.]{
+					\includegraphics[width=6.0 cm]{images/graphics/natural/ed/ed_all.png}}
+				\subfigure[Media y mediana del valor de $C_p$.]{
+					\resizebox{4.0 cm}{1.7 cm}{
+					\begin{tabular}{|l|l|l|}
+						\hline 
+						Modelo & Media & Mediana\\
+						\hline
+						Lineal & $5.02$ & $4.75$\\
+						\hline
+						LIP & $11.55$ & $10.82$\\
+						\hline
+						HLIP & $12.81$ & $12.36$\\
+						\hline
+						PSLIP & $11.57$ & $11.38$\\
+						\hline
+						SLIP & $9.30$ & $8.91$\\
+						\hline
+						PLIP & $11.59$ & $10.82$\\
+						\hline
+						PPSLIP & $11.65$ & $11.47$\\
+						\hline
+					\end{tabular}}}
+				\caption{An\'alisis estad\'istico para la medida $C_p$ utilizando los diferentes modelos para la detecci\'on de bordes en im\'agenes naturales.}	
+			\end{center}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Experimentos -- Detecci\'on de Bordes -- Estad\'isticas}
+		\begin{figure}
+			\begin{center}
+				\subfigure[Diagramas de caja para la medida $C_p$.]{
+					\includegraphics[width=6.0 cm]{images/graphics/torax/ed/ed_all.png}}
+				\subfigure[Media y mediana del valor de $C_p$.]{
+					\resizebox{4.0 cm}{1.7 cm}{
+						\begin{tabular}{|l|l|l|}
+							\hline 
+							Modelo & Media & Mediana\\
+							\hline
+							Lineal & $0.96$ & $0.89$\\
+							\hline
+							LIP & $3.48$ & $3.38$\\
+							\hline
+							HLIP & $3.69$ & $3.85$\\
+							\hline
+							PSLIP & $5.55$ & $5.38$\\
+							\hline
+							SLIP & $3.11$ & $3.09$\\
+							\hline
+							PLIP & $3.68$ & $3.60$\\
+							\hline
+							PPSLIP & $5.64$ & $5.41$\\
+							\hline
+						\end{tabular}}}
+				\caption{An\'alisis estad\'istico para la medida $C_p$ utilizando los diferentes modelos para la detecci\'on de bordes en im\'agenes de radiograf\'ias de t\'orax.}	
+			\end{center}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Experimentos -- Unsharp Masking -- C\'amara}
+		\begin{figure}
+			\begin{center}
+				\subfigure[Lineal $C_p=4.13$]{
+					\includegraphics[width=2.5 cm]{images/unsharp_masking/camera/la_sla.png}}
+				\subfigure[LIP $C_p=5.14$]{
+					\includegraphics[width=2.5 cm]{images/unsharp_masking/camera/ja_sja.png}}
+				\subfigure[HLIP+ $C_p=5.66$]{
+					\includegraphics[width=2.5 cm]{images/unsharp_masking/camera/ha_sha+.png}}
+				\subfigure[HLIP- $C_p=5.73$]{
+					\includegraphics[width=2.5 cm]{images/unsharp_masking/camera/ha_sha-.png}}
+				\subfigure[PSLIP $C_p=4.84$]{
+					\includegraphics[width=2.5 cm]{images/unsharp_masking/camera/psa_spsa.png}}
+				\subfigure[SLIP $C_p=5.16$]{
+					\includegraphics[width=2.5 cm]{images/unsharp_masking/camera/sa_ssa.png}}
+				\subfigure[PLIP $C_p=5.14$]{
+					\includegraphics[width=2.5 cm]{images/unsharp_masking/camera/pa_spa.png}}
+				\subfigure[PPSLIP $C_p=5.80$]{
+					\includegraphics[width=2.5 cm]{images/unsharp_masking/camera/ppsa_sppsa.png}}
+				\caption{Unsharp masking aplicado a la imagen C\'amara con los diferentes modelos.}
+			\end{center}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Experimentos -- Unsharp Masking -- T\'orax 1}
+		\begin{figure}
+			\begin{center}
+				\subfigure[Lineal $C_p=2.60$]{
+					\includegraphics[width=2.5 cm]{images/unsharp_masking/torax/lb_slb.png}}
+				\subfigure[LIP $C_p=2.53$]{
+					\includegraphics[width=2.5 cm]{images/unsharp_masking/torax/jb_sjb.png}}
+				\subfigure[HLIP+ $C_p=3.46$]{
+					\includegraphics[width=2.5 cm]{images/unsharp_masking/torax/hb_shb+.png}}
+				\subfigure[HLIP- $C_p=2.62$]{
+					\includegraphics[width=2.5 cm]{images/unsharp_masking/torax/hb_shb-.png}}
+				\subfigure[PSLIP $C_p=2.52$]{
+					\includegraphics[width=2.5 cm]{images/unsharp_masking/torax/psb_spsb.png}}
+				\subfigure[SLIP $C_p=2.59$]{
+					\includegraphics[width=2.5 cm]{images/unsharp_masking/torax/sb_ssb.png}}
+				\subfigure[PLIP $C_p=2.53$]{
+					\includegraphics[width=2.5 cm]{images/unsharp_masking/torax/pb_spb.png}}
+				\subfigure[PPSLIP $C_p=4.97$]{
+					\includegraphics[width=2.5 cm]{images/unsharp_masking/torax/ppsb_sppsb.png}}
+				\caption{Unsharp masking aplicado a la imagen T\'orax 1 con los diferentes modelos.}
+			\end{center}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Experimentos -- Unsharp Masking -- Estad\'isticas}
+		\begin{figure}
+			\begin{center}
+				\subfigure[Diagramas de caja para la medida $C_p$.]{
+					\includegraphics[width=6.0 cm]{images/graphics/natural/unsharp_masking/um_all.png}}
+				\subfigure[Media y mediana del valor de $C_p$.]{
+					\resizebox{4.0 cm}{2.0 cm}{
+						\begin{tabular}{|l|l|l|}
+							\hline 
+							Modelo & Media & Mediana\\
+							\hline
+							Original & $7.63$ & $7.07$\\
+							\hline
+							Lineal & $6.04$ & $5.66$\\
+							\hline
+							LIP & $7.24$ & $6.81$\\
+							\hline
+							HLIP+ & $9.67$ & $9.07$\\
+							\hline
+							HLIP- & $8.23$ & $7.52$\\
+							\hline
+							PSLIP & $7.10$ & $6.73$\\
+							\hline
+							SLIP & $7.65$ & $7.24$\\
+							\hline
+							PLIP & $7.95$ & $7.72$\\
+							\hline
+							PPSLIP & $7.99$ & $7.84$\\
+							\hline
+					\end{tabular}}}
+				\caption{An\'alisis estad\'istico para la medida $C_p$ utilizando los diferentes modelos para el algoritmo \textit{unsharp masking} en im\'agenes naturales.}	
+			\end{center}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Experimentos -- Unsharp Masking -- Estad\'isticas}
+		\begin{figure}
+			\begin{center}
+				\subfigure[Diagramas de caja para la medida $C_p$.]{
+					\includegraphics[width=6.0 cm]{images/graphics/torax/unsharp_masking/um_all.png}}
+				\subfigure[Media y mediana del valor de $C_p$.]{
+					\resizebox{4.0 cm}{2.0 cm}{
+						\begin{tabular}{|l|l|l|}
+							\hline 
+							Modelo & Media & Mediana\\
+							\hline
+							Original & $1.64$ & $1.57$\\
+							\hline
+							Lineal & $1.49$ & $1.42$\\
+							\hline
+							LIP & $1.88$ & $1.78$\\
+							\hline
+							HLIP+ & $2.71$ & $2.78$\\
+							\hline
+							HLIP- & $1.91$ & $1.82$\\
+							\hline
+							PSLIP & $1.84$ & $1.78$\\
+							\hline
+							SLIP & $1.87$ & $1.80$\\
+							\hline
+							PLIP & $2.21$ & $2.27$\\
+							\hline
+							PPSLIP & $3.00$ & $2.94$\\
+							\hline
+					\end{tabular}}}
+				\caption{An\'alisis estad\'istico para la medida $C_p$ utilizando los diferentes modelos parael algoritmo \textit{unsharp masking} en im\'agenes de radiograf\'ias de t\'orax.}	
+			\end{center}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Experimentos -- Transformaci\'on Af\'in -- Luna}
+		\begin{figure}
+			\begin{center}
+				\subfigure[Original $C_p=1.30$]{
+					\includegraphics[width=2.2 cm]{images/he/moon/imgs/moon.png}}
+				\subfigure[Original Histograma]{
+					\includegraphics[width=2.8 cm]{images/he/moon/hists/oa_hist.png}}
+				\subfigure[Ecualizada $C_p=10.86$]{
+					\includegraphics[width=2.2 cm]{images/he/moon/imgs/limg_eq_a.png}}
+				\subfigure[Ecualizada Histograma]{
+					\includegraphics[width=2.8 cm]{images/he/moon/hists/leqa_hist.png}}
+				\subfigure[HLIP $C_p=5.35$]{
+					\includegraphics[width=2.2 cm]{images/he/moon/imgs/himg_eq_a.png}}
+				\subfigure[HLIP Histograma]{
+					\includegraphics[width=2.8 cm]{images/he/moon/hists/hata_hist.png}}
+				\subfigure[SLIP $C_p=5.07$]{
+					\includegraphics[width=2.2 cm]{images/he/moon/imgs/simg_eq_a.png}}
+				\subfigure[SLIP Histograma]{
+					\includegraphics[width=2.8 cm]{images/he/moon/hists/sata_hist.png}}
+				\caption{Diferentes t\'ecnicas de modificaci\'on del histograma de la imagen Luna.}
+			\end{center}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Experimentos -- Transformaci\'on Af\'in -- T\'orax 2}
+		\begin{figure}
+			\begin{center}
+				\subfigure[Original $C_p=1.05$]{
+					\includegraphics[width=2.2 cm]{images/he/torax/imgs/torax.png}}
+				\subfigure[Original Histograma]{
+					\includegraphics[width=2.8 cm]{images/he/torax/hists/ob_hist.png}}
+				\subfigure[Ecualizada $C_p=2.82$]{
+					\includegraphics[width=2.2 cm]{images/he/torax/imgs/limg_eq_b.png}}
+				\subfigure[Ecualizada Histograma]{
+					\includegraphics[width=2.8 cm]{images/he/torax/hists/leqb_hist.png}}
+				\subfigure[HLIP $C_p=2.36$]{
+					\includegraphics[width=2.2 cm]{images/he/torax/imgs/himg_eq_b.png}}
+				\subfigure[HLIP Histograma]{
+					\includegraphics[width=2.8 cm]{images/he/torax/hists/hatb_hist.png}}
+				\subfigure[SLIP $C_p=2.19$]{
+					\includegraphics[width=2.2 cm]{images/he/torax/imgs/simg_eq_b.png}}
+				\subfigure[SLIP Histograma]{
+					\includegraphics[width=2.8 cm]{images/he/torax/hists/satb_hist.png}}
+				\caption{Diferentes t\'ecnicas de modificaci\'on del histograma de la imagen T\'orax 2.}
+			\end{center}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Experimentos -- Transformaci\'on Af\'in -- Estad\'isticas}
+		\begin{figure}
+			\begin{center}
+				\subfigure[Diagramas de caja para la medida $C_p$.]{
+					\includegraphics[width=6.0 cm]{images/graphics/natural/affine_transform/eq_all.png}}
+				\subfigure[Media y mediana del valor de $C_p$.]{
+					\resizebox{4.0 cm}{1.0 cm}{
+						\begin{tabular}{|l|l|l|}
+							\hline 
+							Modelo & Media & Mediana\\
+							\hline
+							Original & $7.63$ & $7.07$\\
+							\hline
+							Ecualizaci\'on & $10.75$ & $9.29$\\
+							\hline
+							TA HLIP & $9.20$ & $8.07$\\
+							\hline
+							TA SLIP & $9.11$ & $7.94$\\
+							\hline
+					\end{tabular}}}
+				\caption{An\'alisis estad\'istico para la medida $C_p$ utilizando los diferentes algoritmos para la modificaci\'on del histograma en im\'agenes naturales.}	
+			\end{center}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Experimentos -- Transformaci\'on Af\'in -- Estad\'isticas}
+		\begin{figure}
+			\begin{center}
+				\subfigure[Diagramas de caja para la medida $C_p$.]{
+					\includegraphics[width=6.0 cm]{images/graphics/torax/affine_transform/eq_all.png}}
+				\subfigure[Media y mediana del valor de $C_p$.]{
+					\resizebox{4.0 cm}{1.0 cm}{
+						\begin{tabular}{|l|l|l|}
+							\hline 
+							Modelo & Media & Mediana\\
+							\hline
+							Original & $1.64$ & $1.57$\\
+							\hline
+							Ecualizaci\'on & $2.32$ & $2.24$\\
+							\hline
+							TA HLIP & $2.01$ & $1.89$\\
+							\hline
+							TA SLIP & $1.98$ & $1.86$\\
+							\hline
+					\end{tabular}}}
+				\caption{An\'alisis estad\'istico para la medida $C_p$ utilizando los diferentes algoritmos para la modificaci\'on del histograma en im\'agenes de radiograf\'ias de t\'orax.}	
+			\end{center}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Conclusiones}
+		\begin{enumerate}
+			\item El modelo lineal muestra deficiencias en determinadas ocasiones, las cuales pueden ser resueltas por alguno de los modelos no lineales presentados.
+			\item  El modelo LIP presenta sensibilidad hacia las tonalidades oscuras, mientras que el SLIP sin expansi\'on presenta sensibilidad hacia las tonalidades claras.
+			\item El modelo HLIP demostr\'o ser muy efectivo en los diferentes experimentos realizados dado su car\'acter sim\'etrico.
+			\item El modelo PSLIP demostr\'o ser muy efectivo para la detecci\'on de bordes, fundamentalmente en los niveles de mayor intensidad, quedando a deber en los de menor intensidad
+			\item La parametrizaci\'on de los modelos demostr\'o tener gran utilidad ya que permite cierta flexibilidad en favor de obtener mejores resultados.
+			\item  El algoritmo de transformaci\'on af\'in con los dos modelos utilizados puede dar como resultado una imagen de mejor contraste que la imagen original y m\'as natural que la imagen ecualizada.
+			\item La m\'etrica $C_p$ utilizada para evaluar los experimentos puede ser utilizada para la evaluaci\'on de distintos algoritmos para el procesamiento de im\'agenes.
+		\end{enumerate}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Recomendaciones}
+		\begin{enumerate}
+			\item Utilizaci\'on de los modelos no lineales abordados en sustituci\'on del modelo lineal en los casos estudiados donde se evidencia un mejor resultado.
+			\item Continuar el estudio de estos modelos
+			\item Implementar algoritmos que combinen dos o m\'as modelos aprovechando las ventajas que ofrece cada uno.
+			\item En los futuros estudios que se realicen, incluir tambi\'en, como medida subjetiva, la opini\'on de diferentes usuarios con respecto a la calidad de los resultados obtenidos.
+			\item Implementaci\'on de un algoritmo que permita estimar para un modelo parametrizado el mejor o los mejores par\'ametros para la realizaci\'on de una determinada operaci\'on
+		\end{enumerate}
+	\end{frame}
+	
+	\frame{\titlepage}
 \end{document}
