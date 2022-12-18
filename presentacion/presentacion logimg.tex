@@ -64,88 +64,28 @@
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Estado del Arte -- Antecedentes Matem\'aticos}
-		\begin{dfn}
-			Sean $(E, K, \oplus, \otimes)$ y  $(F , K, +, \cdot)$ dos estructuras algebraicas, $K\subseteq\mathbb{R}$, se denomina homomorfismo a la relaci\'on  $\varphi : E \rightarrow F$ que satisface:
-			\begin{equation}
-				\varphi(u\oplus v) = \varphi(u)+\varphi(v), \forall u,v \in E,
-			\end{equation}
-			\begin{equation}
-				\varphi(\alpha \otimes u) = \alpha \cdot \varphi(u), \forall u \in E, \forall \alpha \in K.
-			\end{equation} 
-			La admisi\'on de un inverso y la existencia de biyectividad indica la presencia de un isomorfismo.
-		\end{dfn}
-	\end{frame}
-	\begin{frame}
-		\frametitle{Estado del Arte -- Antecedentes Matem\'aticos}
-		En este trabajo:
-		\begin{itemize}
-			\item $E\subseteq\mathbb{R}$, conjunto de valoraci\'on de las im\'agenes.
-			\item $F\subseteq\mathbb{R}$, conjunto de valoraci\'on de las estructuras vectoriales. Si $u\in E$ entonces $\varphi(u)\in F$.
-			\item $I(D,E)$ conjunto de im\'agenes definidas en $D \subset \mathbb{R}^2$ y valoradas en $E$.
-			\item $I(D,F)$ conjunto de las estructuras vectoriales definidas en $D \subset \mathbb{R}^2$ y valoradas en $F$. Si $f\in I(D,E)$ entonces $\varphi(f)\in I(D,F)$.
-		\end{itemize}
-	
-		Una imagen en niveles de gris toma sus valores (niveles de gris) en la escala de grises $[0, M)$. Para imágenes de 8 bits, $ M = 256$ y los 256 niveles de gris están en la escala de números enteros $[0,\cdots, 255]$.
-	\end{frame}
-
-	\begin{frame}
-		\frametitle{Estado del Arte -- Antecedentes Matem\'aticos}
-		Con respecto a la restricción de biyectividad y la existencia de $\varphi^{-1}$, las leyes de definición están determinadas por:
-		\begin{equation}
-			u \oplus v = \varphi^{-1}(\varphi(u)+\varphi(v)),	
-		\end{equation}
-		\begin{equation}	
-			\alpha \otimes u = \varphi^{-1}(\alpha\cdot\varphi(u)).
-		\end{equation} 
+		\frametitle{Estado del Arte -- Conceptos}
 		
-		Propiedad de cierre:
-		\begin{equation}
-			\forall u,v \in E, z = u \oplus v \Rightarrow z \in E,
-		\end{equation}
-		\begin{equation}
-			\forall u \in E, \forall \alpha \in K, z=\alpha \otimes v \Rightarrow z \in E.
-		\end{equation}
-	\end{frame}
-
-	\begin{frame}
-		\frametitle{Estado del Arte -- Antecedentes Matem\'aticos}
-		\begin{dfn}
-			Dados los dos operadores, $\oplus$, $\otimes$, el conjunto vectorial $E$ y el conjunto escalar $K$, la definición formal de espacio vectorial implica que:
-			\begin{itemize}
-				\item La ley de la suma debe ser asociativa, conmutativa, debe tener elemento identidad y elemento inverso
-				\item La distributividad debe mantenerse para la multiplicación escalar sobre la suma de vectores y para la multiplicación escalar en el espacio de los escalares.
-				\item La multiplicación escalar debe tener elemento identidad y ser compatible con la multiplicación en el espacio de los escalares.
-			\end{itemize}
-		\end{dfn}
-		
-		Las propiedades conmutativas, asociativas y distributivas se pueden comprobar.
-	\end{frame}
-
-	\begin{frame}
-		\frametitle{Estado del Arte -- Antecedentes Matem\'aticos}
-		Elemento identidad con respecto a la suma:
-		\begin{equation}
-			\forall u\in E, \exists u_0 : u \oplus u_0 = u | \varphi(u_0)=0.
-		\end{equation}
-		
-		Elemento inverso con respecto a la suma:
-		\begin{equation}
-			\forall u \in E, \exists u^- \Rightarrow u \oplus u^- = u_0 | \varphi(u) + \varphi(u^-) = 0 \Rightarrow \varphi(u^-)=-\varphi(u). 
-		\end{equation}
-	
-		Elemento identidad de la multiplicación escalar tiene que ser 1:
-		\begin{equation}
-			\forall u \in E - \{u_0\}, \exists \alpha_1 : \alpha_1 \otimes u = u | \alpha_1 = 1.
-		\end{equation}
-	
-		\begin{dfn}
-			Sea $V$ un espacio vectorial real y $K$, el conjunto escalar. Un cono $C$ en $V$ es un subconjunto de $V$ que satisface:
-			\begin{enumerate}
-				\item si $u_1,u_2\in C$ y $\alpha,\beta\in K:\alpha,\beta\geq0$, entonces $\alpha u_1+\beta u_2\in C$.
-				\item $C \cap (-C)={0}$.
-			\end{enumerate}
-		\end{dfn}
+		Conceptos relacionados a estos modelos:
+		\begin{enumerate}
+			\item M: L\'imite superior del rango de niveles de gris. Ej: $[0,M)$.
+			
+			\item Dominio: $E\subseteq \mathbb{R}$.
+			
+			\item Funci\'on de cambio a tonos de gris. 
+			
+			\item Funci\'on de cambio a niveles de gris.
+			
+			\item Suma: $v_1\oplus v_2$.
+			
+			\item Multiplicaci\'on por un escalar: $\lambda \otimes v$.
+			
+			\item Resta: $v_1 \ominus v_2$.
+			
+			\item Funci\'on del isomorfismo: $\varphi: E\to F,~ F\subseteq \mathbb{R}$.
+			
+			\item Inversa de la funci\'on del isomorfismo: $\varphi^{-1}: F\to E$.
+		\end{enumerate}
 	\end{frame}
 
 	\begin{frame}
@@ -157,7 +97,9 @@
 		
 		Dominio: $E=[0,M) \lor E=(-\infty,M)$.
 		
-		Funciones de cambio: $v=M-u$, $u=M-v$.
+		Funci\'on de cambio a tonos de gris: $v=M-u$. 
+		
+		Funci\'on de cambio a niveles de gris: $u=M-v$.
 		
 		Suma: $v_1\oplus v_2=v_1+v_2-\frac{v_1v_2}{M}$.
 		
@@ -169,18 +111,7 @@
 		
 		Funci\'on del isomorfismo: $\varphi(v) = -M\ln\left(1-\frac{v}{M}\right)$.
 		
-		Inversa de la funci\'on del isomorfismo: $\varphi^{-1} (x) = M\left(1-e^{-\frac{x}{M}}\right)$.
-	\end{frame}
-
-	\begin{frame}
-		\frametitle{Estado del Arte -- Modelo LIP}		
-		
-		Propiedades:
-		
-		\begin{itemize}
-			\item La suma $\oplus$ es asociativa, conmutativa, tiene un elemento identidad: 0 y cada elemento tiene un opuesto.
-			\item La multiplicaci\'on escalar $\otimes$ es asociativa, tiene elemento identidad: 1 y la distributividad se mantiene para la multiplicación escalar sobre $\oplus$ y para la multiplicación escalar en el espacio de los escalares.
-		\end{itemize}
+		Inversa de la funci\'on del isomorfismo: $\varphi^{-1} (x) = M\left(1-e^{-\frac{x}{M}}\right)$.\newline
 		
 		Si $E=[0,M)$ entonces $(E,\mathbb{R}^+, \oplus, \otimes)$ es un cono positivo.
 		
@@ -196,7 +127,9 @@
 		
 		Dominio: $E = (-1, 1)$.
 		
-		Funciones de cambio: $v=\frac{2}{M}\left(u-\frac{M}{2}\right)$, $u=\frac{M}{2}(v+1)$.
+		Funci\'on de cambio a tonos de gris: $v=\frac{2}{M}\left(u-\frac{M}{2}\right)$.
+		
+		Funci\'on de cambio a niveles de gris: $u=\frac{M}{2}(v+1)$.
 		
 		Suma: $	v_1 \oplus v_2=\frac{v_1+v_2}{1+v_1v_2}$.
 		
@@ -208,21 +141,11 @@
 		
 		Funci\'on del isomorfismo: $\varphi(v)=\frac{1}{2}\ln\left(\frac{1+v}{1-v}\right)$.
 		
-		Inversa de la funci\'on del isomorfismo: $\varphi^{-1}(x)=\frac{e^{2x}-1}{e^{2x}+1}$.
+		Inversa de la funci\'on del isomorfismo: $\varphi^{-1}(x)=\frac{e^{2x}-1}{e^{2x}+1}$.\newline
 		
-	\end{frame}
-	\begin{frame}
-		\frametitle{Estado del Arte -- Modelo HLIP}
-		Propiedades:
-		
-		\begin{itemize}
-			\item La suma $\oplus$ es asociativa, conmutativa, tiene un elemento identidad: 0 y cada elemento tiene un opuesto.
-			\item La multiplicaci\'on escalar $\otimes$ es asociativa, tiene elemento identidad: 1 y la distributividad se mantiene para la multiplicación escalar sobre $\oplus$ y para la multiplicación escalar en el espacio de los escalares.
-		\end{itemize}
-	
 		La estructura $(E, \mathbb{R}, \oplus, \otimes)$ es un espacio vectorial.
 	\end{frame}
-
+	
 	\begin{frame}
 		\frametitle{Estado del Arte -- Modelo PSLIP}
 		
@@ -232,7 +155,9 @@
 		
 		Dominio: $E = [0, 1)$.
 		
-		Funciones de cambio: $v = \frac{u}{M}$, $u=M\cdot v$.
+		Funci\'on de cambio a tonos de gris: $v = \frac{u}{M}$.
+		
+		Funci\'on de cambio a niveles de gris:  $u=M\cdot v$.
 		
 		Suma: $v_1\oplus v_2=\frac{v_1 + v_2 - 2v_1v_2}{1-v_1v_2}$.
 		
@@ -242,16 +167,7 @@
 		
 		Funci\'on del isomorfismo: $\varphi(v)=\frac{v}{1-v}$.
 		
-		Inversa de la funci\'on del isomorfismo: $\varphi^{-1}(x)=\frac{x}{1+x}$.
-	\end{frame}
-	\begin{frame}
-		\frametitle{Estado del Arte -- Modelo PSLIP}
-		Propiedades:
-		
-		\begin{itemize}
-			\item La suma $\oplus$ es asociativa, conmutativa y tiene un elemento identidad: 0.
-			\item La multiplicaci\'on escalar $\otimes$ es asociativa, tiene elemento identidad: 1 y la distributividad se mantiene para la multiplicación escalar sobre $\oplus$ y para la multiplicación escalar en el espacio de los escalares.
-		\end{itemize}
+		Inversa de la funci\'on del isomorfismo: $\varphi^{-1}(x)=\frac{x}{1+x}$.\newline
 		
 		La estructura $(E,\mathbb{R}^+, \oplus, \otimes)$ es un cono positivo. La extensión a un espacio vectorial se puede lograr mediante el uso de la función generadora definida en $(-1,1)\to (-\infty,+\infty): \varphi(v)=\frac{v}{1-|v|}$.
 	\end{frame}
@@ -263,9 +179,9 @@
 		
 		Propuesto por: Panetta y colaboradores (2010).
 		
-		Dominio: $E=[0,M) \lor E=(-\infty,M)$.
+		Funci\'on de cambio a tonos de gris: $v=\mu(M)-u$.
 		
-		Funciones de cambio: $v=\mu(M)-u$, $u=\mu(M)-v$.
+		Funci\'on de cambio a niveles de gris: $u=\mu(M)-v$.
 		
 		Suma: $v_1\oplus v_2=v_1+v_2-\frac{v_1v_2}{\gamma(M)}$.
 		
@@ -281,28 +197,6 @@
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Estado del Arte -- Modelo PLIP}
-		Propiedades:
-		\begin{itemize}
-			\item Las operaciones aritméticas lineales se reemplazan con nuevas operaciones de la misma manera que en el modelo LIP.
-			\item Las operaciones son iguales a las del modelo LIP cuando $\mu(M) = \gamma(M) = k(M) = \lambda(M) = M$ y $\beta = 1$.
-			\item Las operaciones se asemejan a las operaciones aritméticas lineales a medida que $\gamma(M),~k(M)$ y $\lambda(M)$ se aproximan al infinito.
-			\item Las operaciones pueden generar más casos entre los dos casos extremos del LIP y las operaciones aritméticas lineales cuando los parámetros $\mu, \gamma, k$ y $\lambda$ cambian dentro de $[M, +\infty)$.
-			\item Las operaciones cumplen las leyes de asociatividad, conmutatividad, elemento identidad, elemento opuesto para la suma y las propiedades distributivas.
-		\end{itemize}
-	\end{frame}
-
-	\begin{frame}
-		\frametitle{Estado del Arte -- Modelo PLIP}
-		\begin{figure}
-			\begin{center}
-				\includegraphics[width=10.0 cm]{images/plip_scheme.png}
-				\caption{Operaciones en el modelo PLIP}
-			\end{center}
-		\end{figure}	
-	\end{frame}
-
-	\begin{frame}
 		\frametitle{Estado del Arte -- Modelo SLIP}
 		
 		Nombre: Modelo Logar\'itmico Sim\'etrico para el Procesamiento de Im\'agenes.
@@ -315,7 +209,7 @@
 		
 		$\gamma_1=\frac{sgn(v_1)}{sgn(v_1+v_2)},~\gamma_2=\frac{sgn(v_2)}{sgn(v_1+v_2)}$.
 		
-		Multiplicaci\'on por un escalar: $\lambda \otimes v = M\cdot sgn(\lambda v)\left[1-\left(1-\frac{|v|}{M}\right)^{|\lambda|}\right]$.
+		Multiplicaci\'on por un escalar: $\lambda \otimes v = M\cdot sgn(\lambda v)\left[1-\left(1-\frac{|v|}{M}\right)^{|\lambda|}\right]$, $\lambda\in\mathbb{R}$.
 		
 		Opuesto: $\ominus v = (-1)\otimes v$.
 		
@@ -323,19 +217,7 @@
 		
 		Funci\'on del isomorfismo: $\varphi(v)=-M\cdot sgn(v)\ln\left(1-\frac{|v|}{M}\right)$.
 		
-		Inversa de la funci\'on del isomorfismo: $\varphi^{-1}(x)=M\cdot sgn(x)\left(1-e^{-\frac{|x|}{M}}\right)$.
-		
-	\end{frame}
-
-	\begin{frame}
-		\frametitle{Estado del Arte -- Modelo SLIP}
-		
-		Propiedades:
-		
-		\begin{itemize}
-			\item La suma $\oplus$ es asociativa, conmutativa, tiene un elemento identidad: 0 y cada elemento tiene un opuesto.
-			\item La multiplicaci\'on escalar $\otimes$ es asociativa, tiene elemento identidad: 1 y la distributividad se mantiene para la multiplicación escalar sobre $\oplus$ y para la multiplicación escalar en el espacio de los escalares.
-		\end{itemize}
+		Inversa de la funci\'on del isomorfismo: $\varphi^{-1}(x)=M\cdot sgn(x)\left(1-e^{-\frac{|x|}{M}}\right)$.\newline
 		
 		La estructura $(E, \mathbb{R}, \oplus, \otimes)$ es un espacio vectorial.
 	\end{frame}
@@ -347,10 +229,10 @@
 		
 		\begin{block}{Versi\'on inicial: Parametrizar las funciones de cambio}
 			Se parametrizan solo las funciones de cambio de la siguiente forma:
-			
-			$v=\frac{u}{\delta(M)}$, $u=\delta(M)v$ 
-			
-			tal que $\delta(M) \geq M$ y mantener el dominio y el resto de operaciones del modelo PSLIP.
+			\begin{equation*}
+				v=\frac{u}{\delta(M)},~u=\delta(M)v 
+			\end{equation*}
+			tal que $\delta(M) \geq M$ y se mantienen el resto de operaciones del modelo PSLIP.
 			
 			Ventaja: Se parametriza el modelo para evitar la p\'erdida de informaci\'on.
 			Desventaja: Las operaciones se parametrizan con el mismo par\'ametro. 
@@ -360,7 +242,6 @@
 	\begin{frame}
 		\frametitle{Propuesta -- Modelo PPSLIP}
 		\begin{block}{Versi\'on final: Eliminar las funciones de cambio y hacer los cambios directamente en las operaciones.}
-			Dominio: $E = [0, M)$.
 			
 			Suma: $u_1\oplus u_2=\frac{u_1+u_2-\frac{2u_1u_2}{\gamma(M)}}{1-\frac{u_1u_2}{\gamma(M)^2}}$.
 			
@@ -372,18 +253,6 @@
 			
 			Inversa de la funci\'on del isomorfismo: $\varphi^{-1}(x)=\lambda(M)\frac{x}{1+x}$.
 		\end{block}
-	\end{frame}
-
-	\begin{frame}
-		\frametitle{Propuesta -- Modelo PPSLIP}
-		Propiedades:
-		\begin{itemize}
-			\item Las operaciones aritméticas lineales se reemplazan con nuevas operaciones de la misma manera que en el modelo PSLIP.
-			\item Las operaciones son iguales a las del modelo PSLIP cuando $\gamma(M) = k(M) = \lambda(M) = M$.
-			\item Las operaciones se asemejan a las operaciones aritméticas lineales a medida que $\gamma(M),~k(M)$ y $\lambda(M)$ se aproximan al infinito.
-			\item Las operaciones pueden generar más casos entre los dos casos extremos del PSLIP y las operaciones aritméticas lineales cuando los parámetros $\gamma, k$ y $\lambda$ cambian dentro de $[M, +\infty)$.
-			\item Las operaciones cumplen las leyes de asociatividad, conmutatividad, elemento identidad y las propiedades distributivas.
-		\end{itemize}
 	\end{frame}
 
 	\begin{frame}
@@ -435,7 +304,7 @@
 	\begin{frame}
 		\frametitle{Propuesta -- M\'odulo Implementado -- M\'etricas -- $C_p$}
 		
-		El contraste absoluto entre dos píxeles distintos $p_1, p_2 \in D$, para una imagen, $f\in I(D,E)$ se define:
+		El contraste absoluto entre dos píxeles distintos $p_1, p_2 \in D, D\subseteq\mathbb{R}^2$, para una imagen, $f\in I(D,E)$ se define:
 		\begin{equation}
 			C_A(p_1,p_2)=\frac{1}{d(p_1,p_2)}\cdot\frac{|f(p_1)-f(p_2)|}{1-\frac{f(p_1)\cdot f(p_2)}{M^2}},
 		\end{equation}
@@ -468,13 +337,17 @@
 		\begin{block}{Unsharp masking}
 			\textit{Unsharp Masking} es una t\'ecnica para mejorar la calidad de una imagen. Esta t\'ecnica consiste en determinar los bordes de una imagen y luego fusionar la imagen original con la imagen de bordes de dicha imagen.
 		\end{block}
-	
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Propuesta -- M\'odulo Implementado -- Algoritmos}
 		\begin{block}{Transformaci\'on Af\'in}
-			Transformaci\'on af\'in  $\psi : I (D, E) \to I (D, E ): E=(a,b)$, para una imagen $f\in I(D,E)$ cuya media es $\mu_f$ y su varianza es $\sigma_f^2 $:
+			Transformaci\'on af\'in  $\psi : I (D, E) \to I (D, E ): E=(a,b)$, para una imagen $f\in I(D,E)$:
 			
 			\begin{equation}
 				\psi(f)=\frac{\sigma_u}{\sigma_f}\otimes(f\ominus\mu_f).
 			\end{equation}
+			tal que $\mu_f$ es la media de la imagen, $\sigma_f^2$ es la varianza de la imagen y $\sigma_u^2=\frac{(b-a)^2}{12}$.
 			
 			Importante: Este algoritmo solo se puede utilizar en espacios vectoriales acotados.
 			
@@ -491,32 +364,6 @@
 		\end{figure}
 	\end{frame}
 
-	\begin{frame}
-		\frametitle{Detalles de Implementaci\'on -- Modelos}
-		
-	     Las im\'agenes en niveles de gris se definen en el intervalo $[0,M)$. 
-	     
-	     Problema con los modelos LIP y HLIP pues, si $u$ es un nivel de gris, $v$ su tono de gris correspondiente y $u=0$ entonces:
-	     
-	     \begin{itemize}
-	     	\item LIP: $v=M-u=M-0=M$. Contradicci\'on $E=[0,M)$.
-	     	\item HLIP: $v=\frac{2}{M}(u-\frac{M}{2})=\frac{2}{M}(0-\frac{M}{2})=\frac{2}{M}(-\frac{M}{2})=-1$. Contradicci\'on $E=(-1,1)$
-	     \end{itemize} 
-		
-		\textbf{Soluci\'on:} Antes de cambiar la imagen de niveles de gris a tonos de gris, esta primero se procesa de tal forma que el menor valor admisible sea un n\'umero cercano a cero, pero mayor que este. En esta implementaci\'on se decidi\'o utilizar el n\'umero $0.0001$.
-		
-		Esto tambi\'en se hizo para el modelo PLIP ya que este constituye una generalizaci\'on del modelo LIP.
-		
-	\end{frame}
-
-	\begin{frame}
-		\frametitle{Detalles de Implementaci\'on -- Modelos}
-		
-		En el modelo SLIP si $sgn(v_1+v_2)=0$ entonces $\gamma_1=\frac{sgn(v_1)}{sgn(v_1+v_2)}$ y $\gamma_2=\frac{sgn(v_2)}{sgn(v_1+v_2)}$ se indefinen.
-
-		\textbf{Soluci\'on:} Cambiar, en la implementaci\'on, las definiciones por $\gamma_1=sgn(v_1)\cdot sgn(v_1+v_2)$ y $\gamma_2=sgn(v_2)\cdot sgn(v_1+v_2)$. 		
-		
-	\end{frame}
 
 	\begin{frame}
 		\frametitle{Experimentos -- Curvas de los Modelos no Parametrizados}
@@ -1006,7 +853,7 @@
 		\frametitle{Conclusiones}
 		\begin{itemize}
 			\item El modelo lineal mostr\'o deficiencias en determinadas ocasiones, las cuales pueden ser resueltas por alguno de los modelos no lineales presentados.
-			\item  El modelo LIP present\'o sensibilidad hacia las tonalidades oscuras, mientras que el SLIP sin expansi\'on presenta sensibilidad hacia las tonalidades claras.
+			\item  El modelo LIP present\'o sensibilidad hacia las tonalidades oscuras, mientras que el SLIP sin expansi\'on present\'o sensibilidad hacia las tonalidades claras.
 			\item El modelo HLIP demostr\'o ser muy efectivo en los diferentes experimentos realizados dado su car\'acter sim\'etrico.
 			\item El modelo PSLIP demostr\'o ser muy efectivo para la detecci\'on de bordes, fundamentalmente en los niveles de mayor intensidad, quedando a deber en los de menor intensidad.
 		\end{itemize}
@@ -1031,4 +878,348 @@
 	\end{frame}
 	
 	\frame{\titlepage}
+	
+	\begin{frame}
+		\frametitle{Preguntas del Oponente}
+		\begin{enumerate}
+			\item Demuestre las afirmaciones que se realizan en los dos últimos párrafos de la sección 1.6 (página 14) del
+			Trabajo de Diploma.
+			\item En la sección 2.1, (página 15) se plantea ``Como se puede apreciar en los ejemplos de la Tabla 2.1, al ejercer la suma, \textit{se pierde más información} en el modelo PSLIP que en el modelo LIP''. Argumente con mayor amplitud esta afirmación sobre la pérdida de información.
+			\item Proporcione una tabla similar a la 3.1 (página 36) sobre operación de suma de imágenes naturales para
+			imágenes médicas.
+		\end{enumerate}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Pregunta 1}
+		Demostrar las siguientes propiedades del Modelo SLIP: 
+		\begin{enumerate}
+			\item $\lambda \otimes v \in (-M, M), \forall \lambda \in \mathbb{R}, \forall v \in (-M, M)$
+			\item $\lambda \otimes (v_1\oplus v_2) = (\lambda \otimes v_1 )\oplus (\lambda\otimes v_2), \forall\lambda \in \mathbb{R} \land \forall v_1 , v_2 \in (-M, M)$
+			\item $\beta\otimes (\lambda\otimes v ) = (\beta \cdot \lambda)\otimes v, \forall \beta, \lambda \in \mathbb{R} \land \forall v \in (-M, M)$
+			\item  $1\otimes v = v, \forall v \in (-M, M) $
+			\item  Opuesto de $v$ es $w = (-1)\otimes v, \forall v \in (-M, M)$
+		\end{enumerate}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Pregunta 1}
+		Asumiendo que $\varphi:(-M,M)\to(-\infty,+\infty)$ definida por \begin{equation}
+			\varphi(v)=-M\cdot sgn(v)\ln\left(1-\frac{|v|}{M}\right),
+		\end{equation}
+		es un isomorfismo entre las estructuras algebraicas $(E, \mathbb{R}, \oplus, \otimes): E=(-M, M)$ y  $(\mathbb{R}, \mathbb{R}, +, \cdot)$ se pueden demostrar estas afirmaciones utilizando las siguientes propiedades de un isomorfismo: 
+		\begin{equation}
+			v_1 \oplus v_2 = \varphi^{-1}(\varphi(v_1)+\varphi(v_2)),	
+		\end{equation}
+		\begin{equation}	
+			\lambda \otimes v = \varphi^{-1}(\lambda\cdot\varphi(v)).
+		\end{equation} 
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Pregunta 1}
+		\begin{enumerate}
+			\item[1.] Demostraci\'on $\lambda \otimes v \in (-M, M), \forall \lambda \in \mathbb{R}, \forall v \in (-M, M)$.
+			$\lambda\otimes v=\varphi^{-1}(\lambda\cdot\varphi(v)) \land \forall x \in F, \varphi^{-1}(x) \in E \Rightarrow \lambda\otimes v \in E.$\newline
+			
+			\item[2.] Demostraci\'on $\lambda\otimes(v_1\oplus v_2)=(\lambda\otimes v_1)\oplus(\lambda\otimes v_2)$\newline
+			
+			$\lambda\otimes(v_1\oplus v_2)=\varphi^{-1}(\lambda\cdot\varphi(v_1\oplus v_2))$
+			
+			$~~~~~~~~~~~~~~~~~=\varphi^{-1}(\lambda\cdot\varphi(\varphi^{-1}(\varphi(v_1)+\varphi(v_2))))$
+			
+			$~~~~~~~~~~~~~~~~~=\varphi^{-1}(\lambda\cdot(\varphi(v_1)+\varphi(v_2))$
+			
+			$~~~~~~~~~~~~~~~~~=\varphi^{-1}(\lambda\cdot\varphi(v_1)+\lambda\cdot\varphi(v_2))$\newline
+			
+			$(\lambda\otimes v_1)\oplus(\lambda\otimes v_2)=\varphi^{-1}(\varphi(\lambda\otimes v_1)+\varphi(\lambda\otimes v_2))$
+			
+			$~~~~~~~~~~~~~~~~~~~~~~~~=\varphi^{-1}(\varphi(\varphi^{-1}(\lambda\cdot\varphi(v_1)))+\varphi(\varphi^{-1}(\lambda\cdot\varphi(v_2))))$
+			
+			$~~~~~~~~~~~~~~~~~~~~~~~~=\varphi^{-1}(\lambda\cdot\varphi(v_1)+\lambda\cdot\varphi(v_2))$
+			
+		\end{enumerate}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Pregunta 1}
+		\begin{enumerate}
+			\item[3.] Demostraci\'on $\beta\otimes(\lambda\otimes v)=(\beta\cdot\lambda)\otimes v$
+			
+			$\beta\otimes(\lambda\otimes v)= \beta\otimes\varphi^{-1}(\lambda\cdot\varphi(v))$
+			
+			$~~~~~~~~~~~~~~~=\varphi^{-1}(\beta\cdot\varphi(\varphi^{-1}(\lambda\cdot\varphi(v))))$
+			
+			$~~~~~~~~~~~~~~~=\varphi^{-1}(\beta\cdot\lambda\cdot\varphi(v))$
+			
+			$~~~~~~~~~~~~~~~=\varphi^{-1}((\beta\cdot\lambda)\cdot\varphi(v))$
+			
+			$~~~~~~~~~~~~~~~=(\beta\cdot\lambda)\otimes v$\newline
+			
+			\item[4.] Demostraci\'on $1\otimes v=v$
+			
+			$1\otimes v=M\cdot sgn(v)\left[1-\left(1-\frac{|v|}{M}\right)\right]$
+			
+			$~~~~~~~=M\cdot sgn(v)\left[1-1+\frac{|v|}{M}\right]$
+			
+			$~~~~~~~=M\cdot sgn(v)\frac{|v|}{M}$
+			
+			$~~~~~~~=v$
+			
+		\end{enumerate}
+	\end{frame}
+
+	\begin{frame}
+		\begin{enumerate}
+			\frametitle{Pregunta 1}
+			\item[5.] Demostraci\'on opuesto de $v$ es $w=-1\otimes v$
+			
+			$-1\otimes v=M\cdot sgn(-v)\left[1-\left(1-\frac{|v|}{M}\right)\right]$
+			
+			$~~~~~~~=sgn(-v)|v|$
+			
+			$~~~~~~~=sgn(-1)sgn(v)|v|$
+			
+			$~~~~~~~=-v$\newline
+			
+			$v\oplus(-v)=M\cdot sgn(v-v)\left[1-\left(1-\frac{|v_1|}{M}\right)^{\gamma_1}\left(1-\frac{|v_2|}{M}\right)^{\gamma_2}\right]$
+			
+			$~~~~~~~~~~~~=0$
+		\end{enumerate}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Pregunta 1}
+		Para demostrar que $\varphi$ es un isomorfismo se debe verificar que:
+		\begin{enumerate}
+			\item $\varphi(v_1\oplus v_2) = \varphi(v_1)+\varphi(v_2), \forall v_1,v_2 \in E$.
+			\item $\varphi(\lambda \otimes v) = \lambda \cdot \varphi(v), \forall v \in E, \forall \lambda \in K$. 
+			\item $\varphi$ es biyectiva.
+			\item $\varphi$ admite inverso.
+		\end{enumerate}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Pregunta 1}
+		
+		Demostraci\'on $\varphi(v_1\oplus v_2) = \varphi(v_1)+\varphi(v_2), \forall v_1,v_2 \in E$.
+		
+		\begin{enumerate}
+			\item[1.] $sign(v_1+v_2)=0\Rightarrow v_2=-v_1$
+			
+			Sin p\'erdida de generalidad suponer que $v_1\geq 0$.
+			
+			$\varphi(v_1\oplus v_2)=\varphi\left(M\cdot sgn(v_1+v_2)\left[1-\left(1-\frac{|v_1|}{M}\right)^{\gamma_1}\left(1-\frac{|v_2|}{M}\right)^{\gamma_2}\right]\right)$
+			
+			$~~~~~~~~~~~~~=\varphi\left(M\cdot0\cdot\left[1-\left(1-\frac{|v_1|}{M}\right)^{\gamma_1}\left(1-\frac{|v_2|}{M}\right)^{\gamma_2}\right]\right)$
+			
+			$~~~~~~~~~~~~~=\varphi(0)$
+			
+			$~~~~~~~~~~~~~=-M\cdot sgn(0)\ln\left(1-\frac{|0|}{M}\right)$
+			
+			$~~~~~~~~~~~~~=0$\newline
+			
+			$\varphi(v_1)+\varphi(v_2)=-M\cdot sgn(v_1)\ln\left(1-\frac{|v_1|}{M}\right)-M\cdot sgn(v_2)\ln\left(1-\frac{|v_2|}{M}\right)$
+			
+			$~~~~~~~~~~~~~~~~~=-M\ln\left(1-\frac{v_1}{M}\right)+M\ln\left(1-\frac{v_1}{M}\right)$
+			
+			$~~~~~~~~~~~~~~~~~=0$
+			
+		\end{enumerate}
+		
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Pregunta 1}
+		\begin{enumerate}
+			\item[2.] $sgn(v_1+v_2)\neq0\Rightarrow sgn(v_1\oplus v_2)=sgn(v_1+v_2)$.
+			$v_1\oplus v_2=M\cdot sgn(v_1+v_2)\left[1-\left(1-\frac{|v_1|}{M}\right)^{\gamma_1}\left(1-\frac{|v_2|}{M}\right)^{\gamma_2}\right]$, 
+			
+			$\gamma_1=\frac{sgn(v_1)}{sgn(v_1+v_2)}$, 
+			
+			$\gamma_2=\frac{sgn(v_2)}{sgn(v_1+v_2)}$\newline
+			
+			$M>0$ por definici\'on.
+			
+			Se demostr\'o que $\left[1-\left(1-\frac{|v_1|}{M}\right)^{\gamma_1}\left(1-\frac{|v_2|}{M}\right)^{\gamma_2}\right]>0$. Para esto se analizaron los siguientes casos:
+			\begin{enumerate}
+				\item $sgn(v_1)=sgn(v_2)=sgn(v_1+v_2)$.
+				\item Cuando uno es cero y el otro es distinto de cero.
+				\item $sgn(v_1)\neq sgn(v_2), sgn(v_1)\neq 0, sgn(v_2)\neq 0:$
+				\begin{enumerate}
+					\item $sgn(v_1+v_2)=1$.
+					\item $sgn(v_1+v_2)=-1$.
+				\end{enumerate}
+			\end{enumerate}
+			En todos estos casos se comprob\'o la desigualdad.
+			
+			Por tanto $sgn(v_1\oplus v_2)=sgn(v_1+v_2)$. 
+		\end{enumerate}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Pregunta 1}
+		\begin{enumerate}
+			\item[3.] $\varphi(v_1\oplus v_2)=-M\cdot sgn(v_1+v_2)\ln\left(1-\frac{\left|M\cdot sgn(v_1+v_2)\left[1-\left(1-\frac{|v_1|}{M}\right)^{\gamma_1}\left(1-\frac{|v_2|}{M}\right)^{\gamma_2}\right]\right|}{M}\right)$
+			
+			$~~~~~~~~~~~~~=-M\cdot sgn(v_1+v_2)\ln\left(1-\frac{ M\cdot \left[1-\left(1-\frac{|v_1|}{M}\right)^{\gamma_1}\left(1-\frac{|v_2|}{M}\right)^{\gamma_2}\right]}{M}\right)$
+			
+			$~~~~~~~~~~~~~~~\vdots$
+			
+			$~~~~~~~~~~~~~=-M\ln\left(\left(1-\frac{|v_1|}{M}\right)^{sgn(v_1)}\left(1-\frac{|v_2|}{M}\right)^{sgn(v_2)}\right)$\newline\newline
+			
+			$\varphi(v_1)+\varphi(v_2)=-M\cdot sgn(v_1)\ln\left(1-\frac{|v_1|}{M}\right)-M\cdot sgn(v_2)\ln\left(1-\frac{|v_2|}{M}\right)$
+			
+			$~~~~~~~~~~~~~~~~~~~\vdots$
+			
+			$~~~~~~~~~~~~~~~~~=-M\ln\left(\left(1-\frac{|v_1|}{M}\right)^{sgn(v_1)}\left(1-\frac{|v_2|}{M}\right)^{sgn(v_2)}\right)$
+		\end{enumerate}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Pregunta 1}
+		Demostraci\'on $\varphi(\lambda \otimes v) = \lambda \cdot \varphi(v)$ $\forall v \in E, \forall \lambda \in K$.
+		
+		$\lambda \otimes v = M\cdot sgn(\lambda v)\left[1-\left(1-\frac{|v|}{M}\right)^{|\lambda|}\right]$\newline
+		
+		Si $sgn(\lambda v)=0\Rightarrow \lambda=0\lor v=0$ y es sencillo demostrar que $\varphi(\lambda\otimes v)=\lambda\cdot\varphi(v)=0$.\newline
+		
+		
+		
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Pregunta 1}
+		
+		Para $sgn(\lambda v)\neq 0$ es sencillo demostrar que $sgn(\lambda\otimes v)=sgn(\lambda v)$
+		
+		$\varphi(\lambda\otimes v)=\varphi\left(M\cdot sgn(\lambda v)\left[1-\left(1-\frac{|v|}{M}\right)^{|\lambda|}\right]\right)$
+		
+		$~~~~~~~~~~~=-M\cdot sgn(\lambda v)\ln\left(1-\frac{M\left[1-\left(1-\frac{|v|}{M}\right)^{|\lambda|}\right]}{M}\right)$
+		
+		$~~~~~~~~~~~~\vdots$
+		
+		$~~~~~~~~~~~=-\lambda M\cdot sgn(v)\ln\left(1-\frac{|v|}{M}\right)$\newline\newline
+		
+		$\lambda\cdot \varphi(v)=\lambda(-M\cdot sgn(v)\ln\left(1-\frac{|v|}{M}\right))$
+		
+		$~~~~~~~~~~=-\lambda M\cdot sgn(v)\ln\left(1-\frac{|v|}{M}\right)$
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Pregunta 1}
+		
+		Demostraci\'on Inyectividad
+		
+		Suponer que se tiene $\varphi(v_1)=\varphi(v_2)$ entonces:
+		
+		$-M\cdot sgn(v_1)\ln\left(1-\frac{|v_1|}{M}\right)=-M\cdot sgn(v_2)\ln\left(1-\frac{|v_2|}{M}\right)$
+		
+		$~~~~~~~sgn(v_1)\ln\left(1-\frac{|v_1|}{M}\right)=sgn(v_2)\ln\left(1-\frac{|v_2|}{M}\right),~sgn(v_1)=sgn(v_2)$
+		
+		$~~~~~~~~~~~~~~~~\ln\left(1-\frac{|v_1|}{M}\right)=\ln\left(1-\frac{|v_2|}{M}\right)$
+		
+		$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\vdots$
+		
+		$~~~~~~~~~~~~~~~~~~~~~~~~~~~~|v_1|=|v_2| \land sgn(v_1)=sgn(v_2)$
+		
+		$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~v_1=v_2$
+		
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Pregunta 1}
+		
+		Inverso.
+		
+		Se puede comprobar mediante una serie de despejes que el inverso de $\varphi$ es efectivamente la funci\'on: $\varphi^{-1}: (-\infty,+\infty)\to (-M,M)$ definida como:
+		
+		\begin{equation*}
+			\varphi^{-1}(x)=M\cdot sgn(x)\left(1-e^{-\frac{|x|}{M}}\right)
+		\end{equation*}\newline
+		
+		Demostraci\'on Sobreyectividad.
+		
+		Se puede comprobar de forma gr\'afica mediante el gr\'afico mostrado anteriormente de la funci\'on $\varphi$.
+		
+		Otra v\'ia es la anal\'itica al comprobar que el codominio de la funci\'on $\varphi$ coincide con el dominio de su inversa $\varphi^{-1}$.
+		
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Pregunta 2}
+		
+		\begin{table}
+			\caption{Comparativa de la suma en los modelos LIP y PSLIP}
+			\begin{center}
+				\begin{tabular}{|l|l|}
+					\hline 
+					\textbf{LIP} & \textbf{PSLIP}\\
+					\hline
+					$45 \boxplus 15 = 57.36$ & $45 \oplus 15 = 55.29$\\
+					\hline
+					$45 \boxplus 70 = 102.69$ & $45 \oplus 70 = 94.95$\\
+					\hline
+					$45 \boxplus 150 = 168.63$ & $45 \oplus 150 = 158.60$\\
+					\hline
+					$45 \boxplus 215 = 222.20$ & $45 \oplus 215 = 216.35$\\
+					\hline
+				\end{tabular}
+			\end{center}
+		\end{table}
+	
+	Informaci\'on a nivel de pixel: Cuanto de su valor de intensidad aporta al resultado final de la operaci\'on.\newline
+	
+	Informaci\'on a nivel de imagen: Informaci\'on de la imagen que se mantuvo despu\'es de realizar la operaci\'on.
+		
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Pregunta 2}
+		\begin{figure}
+			\begin{center}
+				\subfigure[Lineal $C_p=3.49$]{
+					\includegraphics[width=5.0 cm]{images/sums/p y p/sab.png}}
+				\subfigure[LIP $C_p=5.71$]{
+					\includegraphics[width=5.0 cm]{images/sums/p y p/jsab.png}}
+				\subfigure[PSLIP $C_p=1.39$]{
+					\includegraphics[width=5.0 cm]{images/sums/p y p/pssab.png}}
+			\end{center}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Pregunta 3}
+		
+		\begin{figure}
+			\begin{center}
+				\subfigure[Diagramas de caja para la medida $C_p$.]{
+					\includegraphics[width=6.0 cm]{images/graphics/sum_med_all.png}}
+				\subfigure[Media y mediana del valor de $C_p$.]{
+					\resizebox{4.0 cm}{1.5 cm}{
+						\begin{tabular}{|l|l|l|}
+							\hline 
+							Modelo & Media & Mediana\\
+							\hline
+							Lineal & $1.68$ & $1.68$\\
+							\hline
+							LIP & $1.63$ & $1.63$\\
+							\hline
+							HLIP & $2.18$ & $2.17$\\
+							\hline
+							PSLIP & $1.74$ & $1.73$\\
+							\hline
+							SLIP & $1.78$ & $1.77$\\
+							\hline
+							PLIP & $1.73$ & $1.73$\\
+							\hline
+							PPSLIP & $1.77$ & $1.77$\\
+							\hline
+				\end{tabular}}}
+				\caption{An\'alisis estad\'istico de la operaci\'on suma de los diferentes modelos utilizando im\'agenes de radiograf\'ias de t\'orax.}	
+			\end{center}
+		\end{figure}
+		
+	\end{frame}
+	
 \end{document}

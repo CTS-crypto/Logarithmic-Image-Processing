@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.2)  10 DEC 2022 01:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.2)  12 DEC 2022 19:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -932,20 +932,20 @@ LaTeX Info: Redefining \% on input line 22.
 ] [3
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 78.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 89.
 
 
 (c:/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 78.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 89.
 
 
 (c:/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 78.
+ut line 89.
 
 (c:/texlive/2022/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
@@ -967,518 +967,488 @@ thkerncmss.
 
 ] [11
 
-] [12
+]
+<images/structures_class_diagram.png, id=143, 1105.12875pt x 465.74pt>
+File: images/structures_class_diagram.png Graphic file (type png)
+<use images/structures_class_diagram.png>
+Package pdftex.def Info: images/structures_class_diagram.png  used on input lin
+e 268.
+(pdftex.def)             Requested size: 312.9803pt x 131.8987pt.
 
-] [13
+Overfull \hbox (5.69043pt too wide) in paragraph at lines 268--268
+ [] 
+ []
 
-] [14
+[12
+
+ <./images/structures_class_diagram.png>]
+<images/spaces_class_diagram.png, id=153, 924.45375pt x 606.265pt>
+File: images/spaces_class_diagram.png Graphic file (type png)
+<use images/spaces_class_diagram.png>
+Package pdftex.def Info: images/spaces_class_diagram.png  used on input line 28
+0.
+(pdftex.def)             Requested size: 312.9803pt x 205.25778pt.
+
+Overfull \hbox (5.69043pt too wide) in paragraph at lines 280--280
+ [] 
+ []
+
+
+Overfull \vbox (14.01675pt too high) detected at line 280
+ []
+
+[13
+
+ <./images/spaces_class_diagram.png>] [14
 
 ] [15
 
 ] [16
 
-]
-<images/plip_scheme.png, id=186, 1927.2pt x 488.82625pt>
-File: images/plip_scheme.png Graphic file (type png)
-<use images/plip_scheme.png>
-Package pdftex.def Info: images/plip_scheme.png  used on input line 303.
-(pdftex.def)             Requested size: 284.52756pt x 72.16464pt.
- [17
+] [17
 
- <./images/plip_scheme.png>] [18
+] [18
 
 ] [19
 
-] [20
-
-] [21
-
-] [22
-
 ]
-<images/structures_class_diagram.png, id=252, 1105.12875pt x 465.74pt>
-File: images/structures_class_diagram.png Graphic file (type png)
-<use images/structures_class_diagram.png>
-Package pdftex.def Info: images/structures_class_diagram.png  used on input lin
-e 399.
-(pdftex.def)             Requested size: 312.9803pt x 131.8987pt.
-
-Overfull \hbox (5.69043pt too wide) in paragraph at lines 399--399
- [] 
- []
-
-[23
-
- <./images/structures_class_diagram.png>]
-<images/spaces_class_diagram.png, id=260, 924.45375pt x 606.265pt>
-File: images/spaces_class_diagram.png Graphic file (type png)
-<use images/spaces_class_diagram.png>
-Package pdftex.def Info: images/spaces_class_diagram.png  used on input line 41
-1.
-(pdftex.def)             Requested size: 312.9803pt x 205.25778pt.
-
-Overfull \hbox (5.69043pt too wide) in paragraph at lines 411--411
- [] 
- []
-
-
-Overfull \vbox (14.01675pt too high) detected at line 411
- []
-
-[24
-
- <./images/spaces_class_diagram.png>] [25
-
-] [26
-
-] [27
-
-] [28
-
-] [29
-
-]
-<images/module_structure.png, id=338, 573.14125pt x 343.2825pt>
+<images/module_structure.png, id=238, 573.14125pt x 343.2825pt>
 File: images/module_structure.png Graphic file (type png)
 <use images/module_structure.png>
-Package pdftex.def Info: images/module_structure.png  used on input line 492.
+Package pdftex.def Info: images/module_structure.png  used on input line 365.
 (pdftex.def)             Requested size: 312.9803pt x 187.45976pt.
 
-Overfull \hbox (5.69043pt too wide) in paragraph at lines 492--492
+Overfull \hbox (5.69043pt too wide) in paragraph at lines 365--365
  [] 
  []
 
-[30
+[20
 
- <./images/module_structure.png>] [31
-
-] [32
-
-]
-<images/clasics_curves/lip_curve.png, id=360, 462.528pt x 346.896pt>
+ <./images/module_structure.png>]
+<images/clasics_curves/lip_curve.png, id=246, 462.528pt x 346.896pt>
 File: images/clasics_curves/lip_curve.png Graphic file (type png)
 <use images/clasics_curves/lip_curve.png>
 Package pdftex.def Info: images/clasics_curves/lip_curve.png  used on input lin
-e 533.
+e 380.
 (pdftex.def)             Requested size: 142.26378pt x 106.70032pt.
-<images/clasics_curves/hlip_curve.png, id=361, 462.528pt x 346.896pt>
+<images/clasics_curves/hlip_curve.png, id=247, 462.528pt x 346.896pt>
 File: images/clasics_curves/hlip_curve.png Graphic file (type png)
 <use images/clasics_curves/hlip_curve.png>
 Package pdftex.def Info: images/clasics_curves/hlip_curve.png  used on input li
-ne 533.
+ne 380.
 (pdftex.def)             Requested size: 142.26378pt x 106.70032pt.
-<images/clasics_curves/pslip_curve.png, id=362, 462.528pt x 346.896pt>
+<images/clasics_curves/pslip_curve.png, id=248, 462.528pt x 346.896pt>
 File: images/clasics_curves/pslip_curve.png Graphic file (type png)
 <use images/clasics_curves/pslip_curve.png>
 Package pdftex.def Info: images/clasics_curves/pslip_curve.png  used on input l
-ine 533.
+ine 380.
 (pdftex.def)             Requested size: 142.26378pt x 106.70032pt.
-<images/clasics_curves/slip_curve.png, id=363, 462.528pt x 346.896pt>
+<images/clasics_curves/slip_curve.png, id=249, 462.528pt x 346.896pt>
 File: images/clasics_curves/slip_curve.png Graphic file (type png)
 <use images/clasics_curves/slip_curve.png>
 Package pdftex.def Info: images/clasics_curves/slip_curve.png  used on input li
-ne 533.
+ne 380.
 (pdftex.def)             Requested size: 142.26378pt x 106.70032pt.
 
-Overfull \vbox (11.1596pt too high) detected at line 533
+Overfull \vbox (11.1596pt too high) detected at line 380
  []
 
-[33
+[21
 
  <./images/clasics_curves/lip_curve.png> <./images/clasics_curves/hlip_curve.pn
 g> <./images/clasics_curves/pslip_curve.png> <./images/clasics_curves/slip_curv
 e.png>]
-<images/plip_curves/plip_curve_256.png, id=374, 462.528pt x 346.896pt>
+<images/plip_curves/plip_curve_256.png, id=260, 462.528pt x 346.896pt>
 File: images/plip_curves/plip_curve_256.png Graphic file (type png)
 <use images/plip_curves/plip_curve_256.png>
 Package pdftex.def Info: images/plip_curves/plip_curve_256.png  used on input l
-ine 546.
+ine 393.
 (pdftex.def)             Requested size: 142.26378pt x 106.70032pt.
-<images/plip_curves/plip_curve_300.png, id=375, 462.528pt x 346.896pt>
+<images/plip_curves/plip_curve_300.png, id=261, 462.528pt x 346.896pt>
 File: images/plip_curves/plip_curve_300.png Graphic file (type png)
 <use images/plip_curves/plip_curve_300.png>
 Package pdftex.def Info: images/plip_curves/plip_curve_300.png  used on input l
-ine 546.
+ine 393.
 (pdftex.def)             Requested size: 142.26378pt x 106.70032pt.
-<images/plip_curves/plip_curve_1026.png, id=376, 462.528pt x 346.896pt>
+<images/plip_curves/plip_curve_1026.png, id=262, 462.528pt x 346.896pt>
 File: images/plip_curves/plip_curve_1026.png Graphic file (type png)
 <use images/plip_curves/plip_curve_1026.png>
 Package pdftex.def Info: images/plip_curves/plip_curve_1026.png  used on input 
-line 546.
+line 393.
 (pdftex.def)             Requested size: 142.26378pt x 106.70032pt.
-<images/plip_curves/plip_curve_4100.png, id=377, 462.528pt x 346.896pt>
+<images/plip_curves/plip_curve_4100.png, id=263, 462.528pt x 346.896pt>
 File: images/plip_curves/plip_curve_4100.png Graphic file (type png)
 <use images/plip_curves/plip_curve_4100.png>
 Package pdftex.def Info: images/plip_curves/plip_curve_4100.png  used on input 
-line 546.
+line 393.
 (pdftex.def)             Requested size: 142.26378pt x 106.70032pt.
 
-Overfull \vbox (10.6596pt too high) detected at line 546
+Overfull \vbox (10.6596pt too high) detected at line 393
  []
 
-[34
+[22
 
  <./images/plip_curves/plip_curve_256.png> <./images/plip_curves/plip_curve_300
 .png> <./images/plip_curves/plip_curve_1026.png> <./images/plip_curves/plip_cur
 ve_4100.png>]
-<images/ppslip_curves/ppslip_curve_256.png, id=390, 462.528pt x 346.896pt>
+<images/ppslip_curves/ppslip_curve_256.png, id=276, 462.528pt x 346.896pt>
 File: images/ppslip_curves/ppslip_curve_256.png Graphic file (type png)
 <use images/ppslip_curves/ppslip_curve_256.png>
 Package pdftex.def Info: images/ppslip_curves/ppslip_curve_256.png  used on inp
-ut line 559.
+ut line 406.
 (pdftex.def)             Requested size: 142.26378pt x 106.70032pt.
-<images/ppslip_curves/ppslip_curve_300.png, id=391, 462.528pt x 346.896pt>
+<images/ppslip_curves/ppslip_curve_300.png, id=277, 462.528pt x 346.896pt>
 File: images/ppslip_curves/ppslip_curve_300.png Graphic file (type png)
 <use images/ppslip_curves/ppslip_curve_300.png>
 Package pdftex.def Info: images/ppslip_curves/ppslip_curve_300.png  used on inp
-ut line 559.
+ut line 406.
 (pdftex.def)             Requested size: 142.26378pt x 106.70032pt.
-<images/ppslip_curves/ppslip_curve_1026.png, id=392, 462.528pt x 346.896pt>
+<images/ppslip_curves/ppslip_curve_1026.png, id=278, 462.528pt x 346.896pt>
 File: images/ppslip_curves/ppslip_curve_1026.png Graphic file (type png)
 <use images/ppslip_curves/ppslip_curve_1026.png>
 Package pdftex.def Info: images/ppslip_curves/ppslip_curve_1026.png  used on in
-put line 559.
+put line 406.
 (pdftex.def)             Requested size: 142.26378pt x 106.70032pt.
-<images/ppslip_curves/ppslip_curve_4100.png, id=393, 462.528pt x 346.896pt>
+<images/ppslip_curves/ppslip_curve_4100.png, id=279, 462.528pt x 346.896pt>
 File: images/ppslip_curves/ppslip_curve_4100.png Graphic file (type png)
 <use images/ppslip_curves/ppslip_curve_4100.png>
 Package pdftex.def Info: images/ppslip_curves/ppslip_curve_4100.png  used on in
-put line 559.
+put line 406.
 (pdftex.def)             Requested size: 142.26378pt x 106.70032pt.
 
-Overfull \vbox (11.6596pt too high) detected at line 559
+Overfull \vbox (11.6596pt too high) detected at line 406
  []
 
-[35
+[23
 
  <./images/ppslip_curves/ppslip_curve_256.png> <./images/ppslip_curves/ppslip_c
 urve_300.png> <./images/ppslip_curves/ppslip_curve_1026.png> <./images/ppslip_c
 urves/ppslip_curve_4100.png>]
-<images/originals/playa.jpg, id=404, 642.4pt x 431.6125pt>
+<images/originals/playa.jpg, id=290, 642.4pt x 431.6125pt>
 File: images/originals/playa.jpg Graphic file (type jpg)
 <use images/originals/playa.jpg>
-Package pdftex.def Info: images/originals/playa.jpg  used on input line 578.
+Package pdftex.def Info: images/originals/playa.jpg  used on input line 425.
 (pdftex.def)             Requested size: 128.0374pt x 86.0246pt.
-<images/originals/patineta.jpg, id=405, 642.4pt x 431.6125pt>
+<images/originals/patineta.jpg, id=291, 642.4pt x 431.6125pt>
 File: images/originals/patineta.jpg Graphic file (type jpg)
 <use images/originals/patineta.jpg>
-Package pdftex.def Info: images/originals/patineta.jpg  used on input line 578.
+Package pdftex.def Info: images/originals/patineta.jpg  used on input line 425.
 
 (pdftex.def)             Requested size: 128.0374pt x 86.0246pt.
-<images/originals/montania.jpg, id=406, 1284.8pt x 913.4125pt>
+<images/originals/montania.jpg, id=292, 1284.8pt x 913.4125pt>
 File: images/originals/montania.jpg Graphic file (type jpg)
 <use images/originals/montania.jpg>
-Package pdftex.def Info: images/originals/montania.jpg  used on input line 578.
+Package pdftex.def Info: images/originals/montania.jpg  used on input line 425.
 
 (pdftex.def)             Requested size: 128.0374pt x 91.02603pt.
-<images/originals/insecto.jpg, id=407, 1284.8pt x 913.4125pt>
+<images/originals/insecto.jpg, id=293, 1284.8pt x 913.4125pt>
 File: images/originals/insecto.jpg Graphic file (type jpg)
 <use images/originals/insecto.jpg>
-Package pdftex.def Info: images/originals/insecto.jpg  used on input line 578.
+Package pdftex.def Info: images/originals/insecto.jpg  used on input line 425.
 (pdftex.def)             Requested size: 128.0374pt x 91.02603pt.
 
-Overfull \vbox (13.0596pt too high) detected at line 578
+Overfull \vbox (13.0596pt too high) detected at line 425
  []
 
-[36
+[24
 
  <./images/originals/playa.jpg> <./images/originals/patineta.jpg> <./images/ori
 ginals/montania.jpg> <./images/originals/insecto.jpg>]
-<images/sums/p y p/sab.png, id=414, 642.4pt x 431.6125pt>
+<images/sums/p y p/sab.png, id=300, 642.4pt x 431.6125pt>
 File: images/sums/p y p/sab.png Graphic file (type png)
 <use images/sums/p y p/sab.png>
-Package pdftex.def Info: images/sums/p y p/sab.png  used on input line 600.
+Package pdftex.def Info: images/sums/p y p/sab.png  used on input line 447.
 (pdftex.def)             Requested size: 85.35826pt x 57.34973pt.
-<images/sums/p y p/jsab.png, id=415, 642.4pt x 431.6125pt>
+<images/sums/p y p/jsab.png, id=301, 642.4pt x 431.6125pt>
 File: images/sums/p y p/jsab.png Graphic file (type png)
 <use images/sums/p y p/jsab.png>
-Package pdftex.def Info: images/sums/p y p/jsab.png  used on input line 600.
+Package pdftex.def Info: images/sums/p y p/jsab.png  used on input line 447.
 (pdftex.def)             Requested size: 85.35826pt x 57.34973pt.
-<images/sums/p y p/hsab.png, id=416, 642.4pt x 431.6125pt>
+<images/sums/p y p/hsab.png, id=302, 642.4pt x 431.6125pt>
 File: images/sums/p y p/hsab.png Graphic file (type png)
 <use images/sums/p y p/hsab.png>
-Package pdftex.def Info: images/sums/p y p/hsab.png  used on input line 600.
+Package pdftex.def Info: images/sums/p y p/hsab.png  used on input line 447.
 (pdftex.def)             Requested size: 85.35826pt x 57.34973pt.
-<images/sums/p y p/pssab.png, id=417, 642.4pt x 431.6125pt>
+<images/sums/p y p/pssab.png, id=303, 642.4pt x 431.6125pt>
 File: images/sums/p y p/pssab.png Graphic file (type png)
 <use images/sums/p y p/pssab.png>
-Package pdftex.def Info: images/sums/p y p/pssab.png  used on input line 600.
+Package pdftex.def Info: images/sums/p y p/pssab.png  used on input line 447.
 (pdftex.def)             Requested size: 85.35826pt x 57.34973pt.
-<images/sums/p y p/ssab.png, id=418, 642.4pt x 431.6125pt>
+<images/sums/p y p/ssab.png, id=304, 642.4pt x 431.6125pt>
 File: images/sums/p y p/ssab.png Graphic file (type png)
 <use images/sums/p y p/ssab.png>
-Package pdftex.def Info: images/sums/p y p/ssab.png  used on input line 600.
+Package pdftex.def Info: images/sums/p y p/ssab.png  used on input line 447.
 (pdftex.def)             Requested size: 85.35826pt x 57.34973pt.
-<images/sums/p y p/psab.png, id=419, 642.4pt x 431.6125pt>
+<images/sums/p y p/psab.png, id=305, 642.4pt x 431.6125pt>
 File: images/sums/p y p/psab.png Graphic file (type png)
 <use images/sums/p y p/psab.png>
-Package pdftex.def Info: images/sums/p y p/psab.png  used on input line 600.
+Package pdftex.def Info: images/sums/p y p/psab.png  used on input line 447.
 (pdftex.def)             Requested size: 85.35826pt x 57.34973pt.
-<images/sums/p y p/ppssab.png, id=420, 642.4pt x 431.6125pt>
+<images/sums/p y p/ppssab.png, id=306, 642.4pt x 431.6125pt>
 File: images/sums/p y p/ppssab.png Graphic file (type png)
 <use images/sums/p y p/ppssab.png>
-Package pdftex.def Info: images/sums/p y p/ppssab.png  used on input line 600.
+Package pdftex.def Info: images/sums/p y p/ppssab.png  used on input line 447.
 (pdftex.def)             Requested size: 85.35826pt x 57.34973pt.
 
-Overfull \vbox (5.55814pt too high) detected at line 600
+Overfull \vbox (5.55814pt too high) detected at line 447
  []
 
-[37
+[25
 
  <./images/sums/p y p/sab.png (PNG copy)> <./images/sums/p y p/jsab.png (PNG co
 py)> <./images/sums/p y p/hsab.png (PNG copy)> <./images/sums/p y p/pssab.png (
 PNG copy)> <./images/sums/p y p/ssab.png (PNG copy)> <./images/sums/p y p/psab.
 png (PNG copy)> <./images/sums/p y p/ppssab.png (PNG copy)>]
-<images/sums/m y i/scd.png, id=429, 1284.8pt x 913.4125pt>
+<images/sums/m y i/scd.png, id=315, 1284.8pt x 913.4125pt>
 File: images/sums/m y i/scd.png Graphic file (type png)
 <use images/sums/m y i/scd.png>
-Package pdftex.def Info: images/sums/m y i/scd.png  used on input line 623.
+Package pdftex.def Info: images/sums/m y i/scd.png  used on input line 470.
 (pdftex.def)             Requested size: 79.6678pt x 56.62819pt.
-<images/sums/m y i/jscd.png, id=430, 1284.8pt x 913.4125pt>
+<images/sums/m y i/jscd.png, id=316, 1284.8pt x 913.4125pt>
 File: images/sums/m y i/jscd.png Graphic file (type png)
 <use images/sums/m y i/jscd.png>
-Package pdftex.def Info: images/sums/m y i/jscd.png  used on input line 623.
+Package pdftex.def Info: images/sums/m y i/jscd.png  used on input line 470.
 (pdftex.def)             Requested size: 79.6678pt x 56.62819pt.
-<images/sums/m y i/hscd.png, id=431, 1284.8pt x 913.4125pt>
+<images/sums/m y i/hscd.png, id=317, 1284.8pt x 913.4125pt>
 File: images/sums/m y i/hscd.png Graphic file (type png)
 <use images/sums/m y i/hscd.png>
-Package pdftex.def Info: images/sums/m y i/hscd.png  used on input line 623.
+Package pdftex.def Info: images/sums/m y i/hscd.png  used on input line 470.
 (pdftex.def)             Requested size: 79.6678pt x 56.62819pt.
-<images/sums/m y i/psscd.png, id=432, 1284.8pt x 913.4125pt>
+<images/sums/m y i/psscd.png, id=318, 1284.8pt x 913.4125pt>
 File: images/sums/m y i/psscd.png Graphic file (type png)
 <use images/sums/m y i/psscd.png>
-Package pdftex.def Info: images/sums/m y i/psscd.png  used on input line 623.
+Package pdftex.def Info: images/sums/m y i/psscd.png  used on input line 470.
 (pdftex.def)             Requested size: 79.6678pt x 56.62819pt.
-<images/sums/m y i/sscd.png, id=433, 1284.8pt x 913.4125pt>
+<images/sums/m y i/sscd.png, id=319, 1284.8pt x 913.4125pt>
 File: images/sums/m y i/sscd.png Graphic file (type png)
 <use images/sums/m y i/sscd.png>
-Package pdftex.def Info: images/sums/m y i/sscd.png  used on input line 623.
+Package pdftex.def Info: images/sums/m y i/sscd.png  used on input line 470.
 (pdftex.def)             Requested size: 79.6678pt x 56.62819pt.
-<images/sums/m y i/pscd.png, id=434, 1284.8pt x 913.4125pt>
+<images/sums/m y i/pscd.png, id=320, 1284.8pt x 913.4125pt>
 File: images/sums/m y i/pscd.png Graphic file (type png)
 <use images/sums/m y i/pscd.png>
-Package pdftex.def Info: images/sums/m y i/pscd.png  used on input line 623.
+Package pdftex.def Info: images/sums/m y i/pscd.png  used on input line 470.
 (pdftex.def)             Requested size: 79.6678pt x 56.62819pt.
-<images/sums/m y i/ppsscd.png, id=435, 1284.8pt x 913.4125pt>
+<images/sums/m y i/ppsscd.png, id=321, 1284.8pt x 913.4125pt>
 File: images/sums/m y i/ppsscd.png Graphic file (type png)
 <use images/sums/m y i/ppsscd.png>
-Package pdftex.def Info: images/sums/m y i/ppsscd.png  used on input line 623.
+Package pdftex.def Info: images/sums/m y i/ppsscd.png  used on input line 470.
 (pdftex.def)             Requested size: 79.6678pt x 56.62819pt.
 
-Overfull \vbox (26.39351pt too high) detected at line 623
+Overfull \vbox (26.39351pt too high) detected at line 470
  []
 
-[38
+[26
 
  <./images/sums/m y i/scd.png (PNG copy)> <./images/sums/m y i/jscd.png (PNG co
 py)> <./images/sums/m y i/hscd.png (PNG copy)> <./images/sums/m y i/psscd.png (
 PNG copy)> <./images/sums/m y i/sscd.png (PNG copy)> <./images/sums/m y i/pscd.
 png (PNG copy)> <./images/sums/m y i/ppsscd.png (PNG copy)>]
-<images/graphics/sum_all.png, id=442, 462.528pt x 346.896pt>
+<images/graphics/sum_all.png, id=328, 462.528pt x 346.896pt>
 File: images/graphics/sum_all.png Graphic file (type png)
 <use images/graphics/sum_all.png>
-Package pdftex.def Info: images/graphics/sum_all.png  used on input line 655.
+Package pdftex.def Info: images/graphics/sum_all.png  used on input line 502.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
- [39
+ [27
 
  <./images/graphics/sum_all.png>]
-<images/originals/camera.jpg, id=450, 513.92pt x 513.92pt>
+<images/originals/camera.jpg, id=336, 513.92pt x 513.92pt>
 File: images/originals/camera.jpg Graphic file (type jpg)
 <use images/originals/camera.jpg>
-Package pdftex.def Info: images/originals/camera.jpg  used on input line 669.
+Package pdftex.def Info: images/originals/camera.jpg  used on input line 516.
 (pdftex.def)             Requested size: 142.26378pt x 142.26552pt.
-<images/originals/torax.png, id=451, 513.92pt x 513.92pt>
+<images/originals/torax.png, id=337, 513.92pt x 513.92pt>
 File: images/originals/torax.png Graphic file (type png)
 <use images/originals/torax.png>
-Package pdftex.def Info: images/originals/torax.png  used on input line 669.
+Package pdftex.def Info: images/originals/torax.png  used on input line 516.
 (pdftex.def)             Requested size: 142.26378pt x 142.26552pt.
- [40
+ [28
 
  <./images/originals/camera.jpg> <./images/originals/torax.png (PNG copy)>]
-<images/scharr/camera/sla.png, id=458, 513.92pt x 513.92pt>
+<images/scharr/camera/sla.png, id=344, 513.92pt x 513.92pt>
 File: images/scharr/camera/sla.png Graphic file (type png)
 <use images/scharr/camera/sla.png>
-Package pdftex.def Info: images/scharr/camera/sla.png  used on input line 692.
+Package pdftex.def Info: images/scharr/camera/sla.png  used on input line 539.
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
-<images/scharr/camera/sja.png, id=459, 513.92pt x 513.92pt>
+<images/scharr/camera/sja.png, id=345, 513.92pt x 513.92pt>
 File: images/scharr/camera/sja.png Graphic file (type png)
 <use images/scharr/camera/sja.png>
-Package pdftex.def Info: images/scharr/camera/sja.png  used on input line 692.
+Package pdftex.def Info: images/scharr/camera/sja.png  used on input line 539.
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
-<images/scharr/camera/sha.png, id=460, 513.92pt x 513.92pt>
+<images/scharr/camera/sha.png, id=346, 513.92pt x 513.92pt>
 File: images/scharr/camera/sha.png Graphic file (type png)
 <use images/scharr/camera/sha.png>
-Package pdftex.def Info: images/scharr/camera/sha.png  used on input line 692.
+Package pdftex.def Info: images/scharr/camera/sha.png  used on input line 539.
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
-<images/scharr/camera/spsa.png, id=461, 513.92pt x 513.92pt>
+<images/scharr/camera/spsa.png, id=347, 513.92pt x 513.92pt>
 File: images/scharr/camera/spsa.png Graphic file (type png)
 <use images/scharr/camera/spsa.png>
-Package pdftex.def Info: images/scharr/camera/spsa.png  used on input line 692.
+Package pdftex.def Info: images/scharr/camera/spsa.png  used on input line 539.
 
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
-<images/scharr/camera/ssa.png, id=462, 513.92pt x 513.92pt>
+<images/scharr/camera/ssa.png, id=348, 513.92pt x 513.92pt>
 File: images/scharr/camera/ssa.png Graphic file (type png)
 <use images/scharr/camera/ssa.png>
-Package pdftex.def Info: images/scharr/camera/ssa.png  used on input line 692.
+Package pdftex.def Info: images/scharr/camera/ssa.png  used on input line 539.
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
-<images/scharr/camera/spa.png, id=463, 513.92pt x 513.92pt>
+<images/scharr/camera/spa.png, id=349, 513.92pt x 513.92pt>
 File: images/scharr/camera/spa.png Graphic file (type png)
 <use images/scharr/camera/spa.png>
-Package pdftex.def Info: images/scharr/camera/spa.png  used on input line 692.
+Package pdftex.def Info: images/scharr/camera/spa.png  used on input line 539.
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
-<images/scharr/camera/sppsa.png, id=464, 513.92pt x 513.92pt>
+<images/scharr/camera/sppsa.png, id=350, 513.92pt x 513.92pt>
 File: images/scharr/camera/sppsa.png Graphic file (type png)
 <use images/scharr/camera/sppsa.png>
-Package pdftex.def Info: images/scharr/camera/sppsa.png  used on input line 692
+Package pdftex.def Info: images/scharr/camera/sppsa.png  used on input line 539
 .
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
 
-Underfull \hbox (badness 1490) in paragraph at lines 692--692
+Underfull \hbox (badness 1490) in paragraph at lines 539--539
 []\OT1/cmss/m/n/8 (g) PPS-LIP $\OT1/mathkerncmss/m/sl/8 C[] \OT1/cmss/m/n/8 =
  []
 
-[41
+[29
 
  <./images/scharr/camera/sla.png (PNG copy)> <./images/scharr/camera/sja.png (P
 NG copy)> <./images/scharr/camera/sha.png (PNG copy)> <./images/scharr/camera/s
 psa.png (PNG copy)> <./images/scharr/camera/ssa.png (PNG copy)> <./images/schar
 r/camera/spa.png (PNG copy)> <./images/scharr/camera/sppsa.png (PNG copy)>]
-<images/scharr/torax/slb.png, id=471, 513.92pt x 513.92pt>
+<images/scharr/torax/slb.png, id=357, 513.92pt x 513.92pt>
 File: images/scharr/torax/slb.png Graphic file (type png)
 <use images/scharr/torax/slb.png>
-Package pdftex.def Info: images/scharr/torax/slb.png  used on input line 715.
+Package pdftex.def Info: images/scharr/torax/slb.png  used on input line 562.
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
-<images/scharr/torax/sjb.png, id=472, 513.92pt x 513.92pt>
+<images/scharr/torax/sjb.png, id=358, 513.92pt x 513.92pt>
 File: images/scharr/torax/sjb.png Graphic file (type png)
 <use images/scharr/torax/sjb.png>
-Package pdftex.def Info: images/scharr/torax/sjb.png  used on input line 715.
+Package pdftex.def Info: images/scharr/torax/sjb.png  used on input line 562.
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
-<images/scharr/torax/shb.png, id=473, 513.92pt x 513.92pt>
+<images/scharr/torax/shb.png, id=359, 513.92pt x 513.92pt>
 File: images/scharr/torax/shb.png Graphic file (type png)
 <use images/scharr/torax/shb.png>
-Package pdftex.def Info: images/scharr/torax/shb.png  used on input line 715.
+Package pdftex.def Info: images/scharr/torax/shb.png  used on input line 562.
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
-<images/scharr/torax/spsb.png, id=474, 513.92pt x 513.92pt>
+<images/scharr/torax/spsb.png, id=360, 513.92pt x 513.92pt>
 File: images/scharr/torax/spsb.png Graphic file (type png)
 <use images/scharr/torax/spsb.png>
-Package pdftex.def Info: images/scharr/torax/spsb.png  used on input line 715.
+Package pdftex.def Info: images/scharr/torax/spsb.png  used on input line 562.
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
-<images/scharr/torax/ssb.png, id=475, 513.92pt x 513.92pt>
+<images/scharr/torax/ssb.png, id=361, 513.92pt x 513.92pt>
 File: images/scharr/torax/ssb.png Graphic file (type png)
 <use images/scharr/torax/ssb.png>
-Package pdftex.def Info: images/scharr/torax/ssb.png  used on input line 715.
+Package pdftex.def Info: images/scharr/torax/ssb.png  used on input line 562.
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
-<images/scharr/torax/spb.png, id=476, 513.92pt x 513.92pt>
+<images/scharr/torax/spb.png, id=362, 513.92pt x 513.92pt>
 File: images/scharr/torax/spb.png Graphic file (type png)
 <use images/scharr/torax/spb.png>
-Package pdftex.def Info: images/scharr/torax/spb.png  used on input line 715.
+Package pdftex.def Info: images/scharr/torax/spb.png  used on input line 562.
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
-<images/scharr/torax/sppsb.png, id=477, 513.92pt x 513.92pt>
+<images/scharr/torax/sppsb.png, id=363, 513.92pt x 513.92pt>
 File: images/scharr/torax/sppsb.png Graphic file (type png)
 <use images/scharr/torax/sppsb.png>
-Package pdftex.def Info: images/scharr/torax/sppsb.png  used on input line 715.
+Package pdftex.def Info: images/scharr/torax/sppsb.png  used on input line 562.
 
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
 
-Underfull \hbox (badness 1490) in paragraph at lines 715--715
+Underfull \hbox (badness 1490) in paragraph at lines 562--562
 []\OT1/cmss/m/n/8 (g) PPS-LIP $\OT1/mathkerncmss/m/sl/8 C[] \OT1/cmss/m/n/8 =
  []
 
-[42
+[30
 
  <./images/scharr/torax/slb.png (PNG copy)> <./images/scharr/torax/sjb.png (PNG
  copy)> <./images/scharr/torax/shb.png (PNG copy)> <./images/scharr/torax/spsb.
 png (PNG copy)> <./images/scharr/torax/ssb.png (PNG copy)> <./images/scharr/tor
 ax/spb.png (PNG copy)> <./images/scharr/torax/sppsb.png (PNG copy)>]
-<images/graphics/natural/ed/ed_all.png, id=484, 462.528pt x 346.896pt>
+<images/graphics/natural/ed/ed_all.png, id=370, 462.528pt x 346.896pt>
 File: images/graphics/natural/ed/ed_all.png Graphic file (type png)
 <use images/graphics/natural/ed/ed_all.png>
 Package pdftex.def Info: images/graphics/natural/ed/ed_all.png  used on input l
-ine 747.
+ine 594.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 
-Overfull \vbox (3.46039pt too high) detected at line 747
+Overfull \vbox (3.46039pt too high) detected at line 594
  []
 
-[43
+[31
 
  <./images/graphics/natural/ed/ed_all.png>]
-<images/graphics/torax/ed/ed_all.png, id=493, 462.528pt x 346.896pt>
+<images/graphics/torax/ed/ed_all.png, id=379, 462.528pt x 346.896pt>
 File: images/graphics/torax/ed/ed_all.png Graphic file (type png)
 <use images/graphics/torax/ed/ed_all.png>
 Package pdftex.def Info: images/graphics/torax/ed/ed_all.png  used on input lin
-e 779.
+e 626.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 
-Overfull \vbox (3.46039pt too high) detected at line 779
+Overfull \vbox (3.46039pt too high) detected at line 626
  []
 
-[44
+[32
 
  <./images/graphics/torax/ed/ed_all.png>]
-<images/unsharp_masking/camera/la_sla.png, id=501, 513.92pt x 513.92pt>
+<images/unsharp_masking/camera/la_sla.png, id=388, 513.92pt x 513.92pt>
 File: images/unsharp_masking/camera/la_sla.png Graphic file (type png)
 <use images/unsharp_masking/camera/la_sla.png>
 Package pdftex.def Info: images/unsharp_masking/camera/la_sla.png  used on inpu
-t line 804.
+t line 651.
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
-<images/unsharp_masking/camera/ja_sja.png, id=502, 513.92pt x 513.92pt>
+<images/unsharp_masking/camera/ja_sja.png, id=389, 513.92pt x 513.92pt>
 File: images/unsharp_masking/camera/ja_sja.png Graphic file (type png)
 <use images/unsharp_masking/camera/ja_sja.png>
 Package pdftex.def Info: images/unsharp_masking/camera/ja_sja.png  used on inpu
-t line 804.
+t line 651.
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
-<images/unsharp_masking/camera/ha_sha+.png, id=503, 513.92pt x 513.92pt>
+<images/unsharp_masking/camera/ha_sha+.png, id=390, 513.92pt x 513.92pt>
 File: images/unsharp_masking/camera/ha_sha+.png Graphic file (type png)
 <use images/unsharp_masking/camera/ha_sha+.png>
 Package pdftex.def Info: images/unsharp_masking/camera/ha_sha+.png  used on inp
-ut line 804.
+ut line 651.
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
 
-Underfull \hbox (badness 3375) in paragraph at lines 804--804
+Underfull \hbox (badness 3375) in paragraph at lines 651--651
 []\OT1/cmss/m/n/8 (c) HLIP+ $\OT1/mathkerncmss/m/sl/8 C[] \OT1/cmss/m/n/8 =
  []
 
-<images/unsharp_masking/camera/ha_sha-.png, id=504, 513.92pt x 513.92pt>
+<images/unsharp_masking/camera/ha_sha-.png, id=391, 513.92pt x 513.92pt>
 File: images/unsharp_masking/camera/ha_sha-.png Graphic file (type png)
 <use images/unsharp_masking/camera/ha_sha-.png>
 Package pdftex.def Info: images/unsharp_masking/camera/ha_sha-.png  used on inp
-ut line 804.
+ut line 651.
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
-<images/unsharp_masking/camera/psa_spsa.png, id=505, 513.92pt x 513.92pt>
+<images/unsharp_masking/camera/psa_spsa.png, id=392, 513.92pt x 513.92pt>
 File: images/unsharp_masking/camera/psa_spsa.png Graphic file (type png)
 <use images/unsharp_masking/camera/psa_spsa.png>
 Package pdftex.def Info: images/unsharp_masking/camera/psa_spsa.png  used on in
-put line 804.
+put line 651.
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
-<images/unsharp_masking/camera/sa_ssa.png, id=506, 513.92pt x 513.92pt>
+<images/unsharp_masking/camera/sa_ssa.png, id=393, 513.92pt x 513.92pt>
 File: images/unsharp_masking/camera/sa_ssa.png Graphic file (type png)
 <use images/unsharp_masking/camera/sa_ssa.png>
 Package pdftex.def Info: images/unsharp_masking/camera/sa_ssa.png  used on inpu
-t line 804.
+t line 651.
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
-<images/unsharp_masking/camera/pa_spa.png, id=507, 513.92pt x 513.92pt>
+<images/unsharp_masking/camera/pa_spa.png, id=394, 513.92pt x 513.92pt>
 File: images/unsharp_masking/camera/pa_spa.png Graphic file (type png)
 <use images/unsharp_masking/camera/pa_spa.png>
 Package pdftex.def Info: images/unsharp_masking/camera/pa_spa.png  used on inpu
-t line 804.
+t line 651.
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
-<images/unsharp_masking/camera/ppsa_sppsa.png, id=508, 513.92pt x 513.92pt>
+<images/unsharp_masking/camera/ppsa_sppsa.png, id=395, 513.92pt x 513.92pt>
 File: images/unsharp_masking/camera/ppsa_sppsa.png Graphic file (type png)
 <use images/unsharp_masking/camera/ppsa_sppsa.png>
 Package pdftex.def Info: images/unsharp_masking/camera/ppsa_sppsa.png  used on 
-input line 804.
+input line 651.
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
 
-Underfull \hbox (badness 1436) in paragraph at lines 804--804
+Underfull \hbox (badness 1436) in paragraph at lines 651--651
 []\OT1/cmss/m/n/8 (h) PPS-LIP $\OT1/mathkerncmss/m/sl/8 C[] \OT1/cmss/m/n/8 =
  []
 
 
-Overfull \vbox (5.6199pt too high) detected at line 804
+Overfull \vbox (5.6199pt too high) detected at line 651
  []
 
-[45
+[33
 
  <./images/unsharp_masking/camera/la_sla.png (PNG copy)> <./images/unsharp_mask
 ing/camera/ja_sja.png (PNG copy)> <./images/unsharp_masking/camera/ha_sha+.png 
@@ -1486,69 +1456,69 @@ ing/camera/ja_sja.png (PNG copy)> <./images/unsharp_masking/camera/ha_sha+.png
 unsharp_masking/camera/psa_spsa.png (PNG copy)> <./images/unsharp_masking/camer
 a/sa_ssa.png (PNG copy)> <./images/unsharp_masking/camera/pa_spa.png (PNG copy)
 > <./images/unsharp_masking/camera/ppsa_sppsa.png (PNG copy)>]
-<images/unsharp_masking/torax/lb_slb.png, id=515, 513.92pt x 513.92pt>
+<images/unsharp_masking/torax/lb_slb.png, id=402, 513.92pt x 513.92pt>
 File: images/unsharp_masking/torax/lb_slb.png Graphic file (type png)
 <use images/unsharp_masking/torax/lb_slb.png>
 Package pdftex.def Info: images/unsharp_masking/torax/lb_slb.png  used on input
- line 829.
+ line 676.
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
-<images/unsharp_masking/torax/jb_sjb.png, id=516, 513.92pt x 513.92pt>
+<images/unsharp_masking/torax/jb_sjb.png, id=403, 513.92pt x 513.92pt>
 File: images/unsharp_masking/torax/jb_sjb.png Graphic file (type png)
 <use images/unsharp_masking/torax/jb_sjb.png>
 Package pdftex.def Info: images/unsharp_masking/torax/jb_sjb.png  used on input
- line 829.
+ line 676.
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
-<images/unsharp_masking/torax/hb_shb+.png, id=517, 513.92pt x 513.92pt>
+<images/unsharp_masking/torax/hb_shb+.png, id=404, 513.92pt x 513.92pt>
 File: images/unsharp_masking/torax/hb_shb+.png Graphic file (type png)
 <use images/unsharp_masking/torax/hb_shb+.png>
 Package pdftex.def Info: images/unsharp_masking/torax/hb_shb+.png  used on inpu
-t line 829.
+t line 676.
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
 
-Underfull \hbox (badness 3375) in paragraph at lines 829--829
+Underfull \hbox (badness 3375) in paragraph at lines 676--676
 []\OT1/cmss/m/n/8 (c) HLIP+ $\OT1/mathkerncmss/m/sl/8 C[] \OT1/cmss/m/n/8 =
  []
 
-<images/unsharp_masking/torax/hb_shb-.png, id=518, 513.92pt x 513.92pt>
+<images/unsharp_masking/torax/hb_shb-.png, id=405, 513.92pt x 513.92pt>
 File: images/unsharp_masking/torax/hb_shb-.png Graphic file (type png)
 <use images/unsharp_masking/torax/hb_shb-.png>
 Package pdftex.def Info: images/unsharp_masking/torax/hb_shb-.png  used on inpu
-t line 829.
+t line 676.
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
-<images/unsharp_masking/torax/psb_spsb.png, id=519, 513.92pt x 513.92pt>
+<images/unsharp_masking/torax/psb_spsb.png, id=406, 513.92pt x 513.92pt>
 File: images/unsharp_masking/torax/psb_spsb.png Graphic file (type png)
 <use images/unsharp_masking/torax/psb_spsb.png>
 Package pdftex.def Info: images/unsharp_masking/torax/psb_spsb.png  used on inp
-ut line 829.
+ut line 676.
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
-<images/unsharp_masking/torax/sb_ssb.png, id=520, 513.92pt x 513.92pt>
+<images/unsharp_masking/torax/sb_ssb.png, id=407, 513.92pt x 513.92pt>
 File: images/unsharp_masking/torax/sb_ssb.png Graphic file (type png)
 <use images/unsharp_masking/torax/sb_ssb.png>
 Package pdftex.def Info: images/unsharp_masking/torax/sb_ssb.png  used on input
- line 829.
+ line 676.
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
-<images/unsharp_masking/torax/pb_spb.png, id=521, 513.92pt x 513.92pt>
+<images/unsharp_masking/torax/pb_spb.png, id=408, 513.92pt x 513.92pt>
 File: images/unsharp_masking/torax/pb_spb.png Graphic file (type png)
 <use images/unsharp_masking/torax/pb_spb.png>
 Package pdftex.def Info: images/unsharp_masking/torax/pb_spb.png  used on input
- line 829.
+ line 676.
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
-<images/unsharp_masking/torax/ppsb_sppsb.png, id=522, 513.92pt x 513.92pt>
+<images/unsharp_masking/torax/ppsb_sppsb.png, id=409, 513.92pt x 513.92pt>
 File: images/unsharp_masking/torax/ppsb_sppsb.png Graphic file (type png)
 <use images/unsharp_masking/torax/ppsb_sppsb.png>
 Package pdftex.def Info: images/unsharp_masking/torax/ppsb_sppsb.png  used on i
-nput line 829.
+nput line 676.
 (pdftex.def)             Requested size: 71.13188pt x 71.12491pt.
 
-Underfull \hbox (badness 1436) in paragraph at lines 829--829
+Underfull \hbox (badness 1436) in paragraph at lines 676--676
 []\OT1/cmss/m/n/8 (h) PPS-LIP $\OT1/mathkerncmss/m/sl/8 C[] \OT1/cmss/m/n/8 =
  []
 
 
-Overfull \vbox (5.6199pt too high) detected at line 829
+Overfull \vbox (5.6199pt too high) detected at line 676
  []
 
-[46
+[34
 
  <./images/unsharp_masking/torax/lb_slb.png (PNG copy)> <./images/unsharp_maski
 ng/torax/jb_sjb.png (PNG copy)> <./images/unsharp_masking/torax/hb_shb+.png (PN
@@ -1556,224 +1526,283 @@ G copy)> <./images/unsharp_masking/torax/hb_shb-.png (PNG copy)> <./images/unsh
 arp_masking/torax/psb_spsb.png (PNG copy)> <./images/unsharp_masking/torax/sb_s
 sb.png (PNG copy)> <./images/unsharp_masking/torax/pb_spb.png (PNG copy)> <./im
 ages/unsharp_masking/torax/ppsb_sppsb.png (PNG copy)>]
-<images/graphics/natural/unsharp_masking/um_all.png, id=529, 462.528pt x 346.89
+<images/graphics/natural/unsharp_masking/um_all.png, id=416, 462.528pt x 346.89
 6pt>
 File: images/graphics/natural/unsharp_masking/um_all.png Graphic file (type png
 )
 <use images/graphics/natural/unsharp_masking/um_all.png>
 Package pdftex.def Info: images/graphics/natural/unsharp_masking/um_all.png  us
-ed on input line 865.
+ed on input line 712.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 
-Overfull \vbox (12.22084pt too high) detected at line 865
+Overfull \vbox (12.22084pt too high) detected at line 712
  []
 
-[47
+[35
 
  <./images/graphics/natural/unsharp_masking/um_all.png>]
-<images/graphics/torax/unsharp_masking/um_all.png, id=538, 462.528pt x 346.896p
+<images/graphics/torax/unsharp_masking/um_all.png, id=425, 462.528pt x 346.896p
 t>
 File: images/graphics/torax/unsharp_masking/um_all.png Graphic file (type png)
 <use images/graphics/torax/unsharp_masking/um_all.png>
 Package pdftex.def Info: images/graphics/torax/unsharp_masking/um_all.png  used
- on input line 901.
+ on input line 748.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 
-Overfull \vbox (12.22084pt too high) detected at line 901
+Overfull \vbox (12.22084pt too high) detected at line 748
  []
 
-[48
+[36
 
  <./images/graphics/torax/unsharp_masking/um_all.png>]
-<images/he/moon/imgs/moon.png, id=547, 513.92pt x 513.92pt>
+<images/he/moon/imgs/moon.png, id=433, 513.92pt x 513.92pt>
 File: images/he/moon/imgs/moon.png Graphic file (type png)
 <use images/he/moon/imgs/moon.png>
-Package pdftex.def Info: images/he/moon/imgs/moon.png  used on input line 926.
+Package pdftex.def Info: images/he/moon/imgs/moon.png  used on input line 773.
 (pdftex.def)             Requested size: 62.59596pt x 62.59306pt.
-<images/he/moon/hists/oa_hist.png, id=548, 411.2163pt x 298.4751pt>
+<images/he/moon/hists/oa_hist.png, id=434, 411.2163pt x 298.4751pt>
 File: images/he/moon/hists/oa_hist.png Graphic file (type png)
 <use images/he/moon/hists/oa_hist.png>
-Package pdftex.def Info: images/he/moon/hists/oa_hist.png  used on input line 9
-26.
+Package pdftex.def Info: images/he/moon/hists/oa_hist.png  used on input line 7
+73.
 (pdftex.def)             Requested size: 79.6678pt x 57.82211pt.
 
-Underfull \hbox (badness 1484) in paragraph at lines 926--926
+Underfull \hbox (badness 1484) in paragraph at lines 773--773
 []\OT1/cmss/m/n/8 (b) Ori-gi-nal His-to-gra-
  []
 
-<images/he/moon/imgs/limg_eq_a.png, id=549, 513.92pt x 513.92pt>
+<images/he/moon/imgs/limg_eq_a.png, id=435, 513.92pt x 513.92pt>
 File: images/he/moon/imgs/limg_eq_a.png Graphic file (type png)
 <use images/he/moon/imgs/limg_eq_a.png>
 Package pdftex.def Info: images/he/moon/imgs/limg_eq_a.png  used on input line 
-926.
+773.
 (pdftex.def)             Requested size: 62.59596pt x 62.59306pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 926--926
+Underfull \hbox (badness 10000) in paragraph at lines 773--773
 []\OT1/cmss/m/n/8 (c) Ecua-li-za-da
  []
 
-<images/he/moon/hists/leqa_hist.png, id=550, 411.2163pt x 298.4751pt>
+<images/he/moon/hists/leqa_hist.png, id=436, 411.2163pt x 298.4751pt>
 File: images/he/moon/hists/leqa_hist.png Graphic file (type png)
 <use images/he/moon/hists/leqa_hist.png>
 Package pdftex.def Info: images/he/moon/hists/leqa_hist.png  used on input line
- 926.
+ 773.
 (pdftex.def)             Requested size: 79.6678pt x 57.82211pt.
 
-Underfull \hbox (badness 3271) in paragraph at lines 926--926
+Underfull \hbox (badness 3271) in paragraph at lines 773--773
 []\OT1/cmss/m/n/8 (d) Ecua-li-za-da His-to-
  []
 
-<images/he/moon/imgs/himg_eq_a.png, id=551, 513.92pt x 513.92pt>
+<images/he/moon/imgs/himg_eq_a.png, id=437, 513.92pt x 513.92pt>
 File: images/he/moon/imgs/himg_eq_a.png Graphic file (type png)
 <use images/he/moon/imgs/himg_eq_a.png>
 Package pdftex.def Info: images/he/moon/imgs/himg_eq_a.png  used on input line 
-926.
+773.
 (pdftex.def)             Requested size: 62.59596pt x 62.59306pt.
 
-Underfull \hbox (badness 2197) in paragraph at lines 926--926
+Underfull \hbox (badness 2197) in paragraph at lines 773--773
 []\OT1/cmss/m/n/8 (e) HLIP $\OT1/mathkerncmss/m/sl/8 C[] \OT1/cmss/m/n/8 =
  []
 
-<images/he/moon/hists/hata_hist.png, id=552, 411.2163pt x 298.4751pt>
+<images/he/moon/hists/hata_hist.png, id=438, 411.2163pt x 298.4751pt>
 File: images/he/moon/hists/hata_hist.png Graphic file (type png)
 <use images/he/moon/hists/hata_hist.png>
 Package pdftex.def Info: images/he/moon/hists/hata_hist.png  used on input line
- 926.
+ 773.
 (pdftex.def)             Requested size: 79.6678pt x 57.82211pt.
-<images/he/moon/imgs/simg_eq_a.png, id=553, 513.92pt x 513.92pt>
+<images/he/moon/imgs/simg_eq_a.png, id=439, 513.92pt x 513.92pt>
 File: images/he/moon/imgs/simg_eq_a.png Graphic file (type png)
 <use images/he/moon/imgs/simg_eq_a.png>
 Package pdftex.def Info: images/he/moon/imgs/simg_eq_a.png  used on input line 
-926.
+773.
 (pdftex.def)             Requested size: 62.59596pt x 62.59306pt.
 
-Underfull \hbox (badness 2653) in paragraph at lines 926--926
+Underfull \hbox (badness 2653) in paragraph at lines 773--773
 []\OT1/cmss/m/n/8 (g) SLIP $\OT1/mathkerncmss/m/sl/8 C[] \OT1/cmss/m/n/8 =
  []
 
-<images/he/moon/hists/sata_hist.png, id=554, 411.2163pt x 298.4751pt>
+<images/he/moon/hists/sata_hist.png, id=440, 411.2163pt x 298.4751pt>
 File: images/he/moon/hists/sata_hist.png Graphic file (type png)
 <use images/he/moon/hists/sata_hist.png>
 Package pdftex.def Info: images/he/moon/hists/sata_hist.png  used on input line
- 926.
+ 773.
 (pdftex.def)             Requested size: 79.6678pt x 57.82211pt.
-[49
+[37
 
  <./images/he/moon/imgs/moon.png (PNG copy)> <./images/he/moon/hists/oa_hist.pn
 g> <./images/he/moon/imgs/limg_eq_a.png (PNG copy)> <./images/he/moon/hists/leq
 a_hist.png> <./images/he/moon/imgs/himg_eq_a.png (PNG copy)> <./images/he/moon/
 hists/hata_hist.png> <./images/he/moon/imgs/simg_eq_a.png (PNG copy)> <./images
 /he/moon/hists/sata_hist.png>]
-<images/he/torax/imgs/torax.png, id=566, 513.92pt x 421.575pt>
+<images/he/torax/imgs/torax.png, id=452, 513.92pt x 421.575pt>
 File: images/he/torax/imgs/torax.png Graphic file (type png)
 <use images/he/torax/imgs/torax.png>
-Package pdftex.def Info: images/he/torax/imgs/torax.png  used on input line 951
+Package pdftex.def Info: images/he/torax/imgs/torax.png  used on input line 798
 .
 (pdftex.def)             Requested size: 62.59596pt x 51.34587pt.
-<images/he/torax/hists/ob_hist.png, id=567, 404.712pt x 298.4751pt>
+<images/he/torax/hists/ob_hist.png, id=453, 404.712pt x 298.4751pt>
 File: images/he/torax/hists/ob_hist.png Graphic file (type png)
 <use images/he/torax/hists/ob_hist.png>
 Package pdftex.def Info: images/he/torax/hists/ob_hist.png  used on input line 
-951.
+798.
 (pdftex.def)             Requested size: 79.6678pt x 58.7512pt.
 
-Underfull \hbox (badness 1484) in paragraph at lines 951--951
+Underfull \hbox (badness 1484) in paragraph at lines 798--798
 []\OT1/cmss/m/n/8 (b) Ori-gi-nal His-to-gra-
  []
 
-<images/he/torax/imgs/limg_eq_b.png, id=568, 513.92pt x 421.575pt>
+<images/he/torax/imgs/limg_eq_b.png, id=454, 513.92pt x 421.575pt>
 File: images/he/torax/imgs/limg_eq_b.png Graphic file (type png)
 <use images/he/torax/imgs/limg_eq_b.png>
 Package pdftex.def Info: images/he/torax/imgs/limg_eq_b.png  used on input line
- 951.
+ 798.
 (pdftex.def)             Requested size: 62.59596pt x 51.34587pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 951--951
+Underfull \hbox (badness 10000) in paragraph at lines 798--798
 []\OT1/cmss/m/n/8 (c) Ecua-li-za-da
  []
 
-<images/he/torax/hists/leqb_hist.png, id=569, 404.712pt x 298.4751pt>
+<images/he/torax/hists/leqb_hist.png, id=455, 404.712pt x 298.4751pt>
 File: images/he/torax/hists/leqb_hist.png Graphic file (type png)
 <use images/he/torax/hists/leqb_hist.png>
 Package pdftex.def Info: images/he/torax/hists/leqb_hist.png  used on input lin
-e 951.
+e 798.
 (pdftex.def)             Requested size: 79.6678pt x 58.7512pt.
 
-Underfull \hbox (badness 3271) in paragraph at lines 951--951
+Underfull \hbox (badness 3271) in paragraph at lines 798--798
 []\OT1/cmss/m/n/8 (d) Ecua-li-za-da His-to-
  []
 
-<images/he/torax/imgs/himg_eq_b.png, id=570, 513.92pt x 421.575pt>
+<images/he/torax/imgs/himg_eq_b.png, id=456, 513.92pt x 421.575pt>
 File: images/he/torax/imgs/himg_eq_b.png Graphic file (type png)
 <use images/he/torax/imgs/himg_eq_b.png>
 Package pdftex.def Info: images/he/torax/imgs/himg_eq_b.png  used on input line
- 951.
+ 798.
 (pdftex.def)             Requested size: 62.59596pt x 51.34587pt.
 
-Underfull \hbox (badness 2197) in paragraph at lines 951--951
+Underfull \hbox (badness 2197) in paragraph at lines 798--798
 []\OT1/cmss/m/n/8 (e) HLIP $\OT1/mathkerncmss/m/sl/8 C[] \OT1/cmss/m/n/8 =
  []
 
-<images/he/torax/hists/hatb_hist.png, id=571, 404.712pt x 298.4751pt>
+<images/he/torax/hists/hatb_hist.png, id=457, 404.712pt x 298.4751pt>
 File: images/he/torax/hists/hatb_hist.png Graphic file (type png)
 <use images/he/torax/hists/hatb_hist.png>
 Package pdftex.def Info: images/he/torax/hists/hatb_hist.png  used on input lin
-e 951.
+e 798.
 (pdftex.def)             Requested size: 79.6678pt x 58.7512pt.
-<images/he/torax/imgs/simg_eq_b.png, id=572, 513.92pt x 421.575pt>
+<images/he/torax/imgs/simg_eq_b.png, id=458, 513.92pt x 421.575pt>
 File: images/he/torax/imgs/simg_eq_b.png Graphic file (type png)
 <use images/he/torax/imgs/simg_eq_b.png>
 Package pdftex.def Info: images/he/torax/imgs/simg_eq_b.png  used on input line
- 951.
+ 798.
 (pdftex.def)             Requested size: 62.59596pt x 51.34587pt.
 
-Underfull \hbox (badness 2653) in paragraph at lines 951--951
+Underfull \hbox (badness 2653) in paragraph at lines 798--798
 []\OT1/cmss/m/n/8 (g) SLIP $\OT1/mathkerncmss/m/sl/8 C[] \OT1/cmss/m/n/8 =
  []
 
-<images/he/torax/hists/satb_hist.png, id=573, 404.712pt x 298.4751pt>
+<images/he/torax/hists/satb_hist.png, id=459, 404.712pt x 298.4751pt>
 File: images/he/torax/hists/satb_hist.png Graphic file (type png)
 <use images/he/torax/hists/satb_hist.png>
 Package pdftex.def Info: images/he/torax/hists/satb_hist.png  used on input lin
-e 951.
+e 798.
 (pdftex.def)             Requested size: 79.6678pt x 58.7512pt.
-[50
+[38
 
  <./images/he/torax/imgs/torax.png (PNG copy)> <./images/he/torax/hists/ob_hist
 .png> <./images/he/torax/imgs/limg_eq_b.png (PNG copy)> <./images/he/torax/hist
 s/leqb_hist.png> <./images/he/torax/imgs/himg_eq_b.png (PNG copy)> <./images/he
 /torax/hists/hatb_hist.png> <./images/he/torax/imgs/simg_eq_b.png (PNG copy)> <
 ./images/he/torax/hists/satb_hist.png>]
-<images/graphics/natural/affine_transform/eq_all.png, id=584, 462.528pt x 346.8
+<images/graphics/natural/affine_transform/eq_all.png, id=470, 462.528pt x 346.8
 96pt>
 File: images/graphics/natural/affine_transform/eq_all.png Graphic file (type pn
 g)
 <use images/graphics/natural/affine_transform/eq_all.png>
 Package pdftex.def Info: images/graphics/natural/affine_transform/eq_all.png  u
-sed on input line 977.
+sed on input line 824.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
- [51
+ [39
 
  <./images/graphics/natural/affine_transform/eq_all.png>]
-<images/graphics/torax/affine_transform/eq_all.png, id=592, 462.528pt x 346.896
+<images/graphics/torax/affine_transform/eq_all.png, id=478, 462.528pt x 346.896
 pt>
 File: images/graphics/torax/affine_transform/eq_all.png Graphic file (type png)
 
 <use images/graphics/torax/affine_transform/eq_all.png>
 Package pdftex.def Info: images/graphics/torax/affine_transform/eq_all.png  use
-d on input line 1003.
+d on input line 850.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
- [52
+ [40
 
- <./images/graphics/torax/affine_transform/eq_all.png>] [53
+ <./images/graphics/torax/affine_transform/eq_all.png>] [41
+
+] [42
+
+] [43
+
+] [44
+
+] [45
+
+] [46
+
+] [47
+
+] [48
+
+] [49
+
+] [50
+
+] [51
+
+] [52
+
+] [53
 
 ] [54
 
-] [55
+]
+[55
 
 ] [56
 
+] [57
+
+] [58
+
+] [59
+
 ]
+File: images/sums/p y p/sab.png Graphic file (type png)
+<use images/sums/p y p/sab.png>
+Package pdftex.def Info: images/sums/p y p/sab.png  used on input line 1189.
+(pdftex.def)             Requested size: 142.26378pt x 95.58069pt.
+File: images/sums/p y p/jsab.png Graphic file (type png)
+<use images/sums/p y p/jsab.png>
+Package pdftex.def Info: images/sums/p y p/jsab.png  used on input line 1189.
+(pdftex.def)             Requested size: 142.26378pt x 95.58069pt.
+File: images/sums/p y p/pssab.png Graphic file (type png)
+<use images/sums/p y p/pssab.png>
+Package pdftex.def Info: images/sums/p y p/pssab.png  used on input line 1189.
+(pdftex.def)             Requested size: 142.26378pt x 95.58069pt.
+
+Overfull \vbox (4.50366pt too high) detected at line 1189
+ []
+
+[60
+
+]
+<images/graphics/sum_med_all.png, id=624, 462.528pt x 346.896pt>
+File: images/graphics/sum_med_all.png Graphic file (type png)
+<use images/graphics/sum_med_all.png>
+Package pdftex.def Info: images/graphics/sum_med_all.png  used on input line 12
+23.
+(pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
+ [61
+
+ <./images/graphics/sum_med_all.png>]
 \tf@nav=\write6
 \openout6 = `"presentacion logimg.nav"'.
 
@@ -1791,35 +1820,39 @@ Package rerunfilecheck Info: File `"presentacion logimg".out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 24333 strings out of 478268
- 482392 string characters out of 5850345
- 721281 words of memory out of 5000000
- 41819 multiletter control sequences out of 15000+600000
+ 24403 strings out of 478268
+ 484066 string characters out of 5850345
+ 725282 words of memory out of 5000000
+ 41879 multiletter control sequences out of 15000+600000
  482328 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,16n,122p,452b,689s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,16n,122p,452b,670s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/tex
-live/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2022
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2022/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2022/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmmi9.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmss10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12
-.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb><c:/t
-exlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb><c:/texlive/202
-2/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><c:/texlive/2022/texmf
--dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb><c:/texlive/2022/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmssi12.pfb><c:/texlive/2022/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmssi8.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmssi9.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmsy10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.
-pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/te
-xlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/202
-2/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on "presentacion logimg.pdf" (56 pages, 10564989 bytes).
+live/2022/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><c:/texlive/
+2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2022/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2022/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2022/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmmi8.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmmi9.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+ss10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb>
+<c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb><c:/texliv
+e/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb><c:/texlive/2022/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><c:/texlive/2022/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmssi10.pfb><c:/texlive/2022/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmssi12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmssi8.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmssi9.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><
+c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive
+/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2022/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><c:/texlive/2022/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/
+public/amsfonts/symbols/msam10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/publ
+ic/amsfonts/symbols/msbm10.pfb>
+Output written on "presentacion logimg.pdf" (61 pages, 10598669 bytes).
 PDF statistics:
- 748 PDF objects out of 1000 (max. 8388607)
- 452 compressed objects within 5 object streams
- 113 named destinations out of 1000 (max. 500000)
- 872 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 765 PDF objects out of 1000 (max. 8388607)
+ 474 compressed objects within 5 object streams
+ 123 named destinations out of 1000 (max. 500000)
+ 764 words of extra memory for PDF output out of 10000 (max. 10000000)
 
